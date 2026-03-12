@@ -6,6 +6,8 @@ export type NumericMetricKey =
   | "debtToGdp"
   | "borrowingThisYear";
 
+export const annualInterestPaymentValue = (state: RootState) => state.metrics.annualInterestPaymentMetric.formattedValue;
+
 export const selectMetrics = (state: RootState) => state.metrics;
 
 export const selectMetricByKey = (state: RootState, metricKey: NumericMetricKey) =>

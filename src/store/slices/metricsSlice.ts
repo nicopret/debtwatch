@@ -1,5 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import totalDebtMetricData from "@/data/totalDebtMetrics.json";
+import annualInterestPaymentData from "@/data/annualInterestPayableMetric.json"
+
+export interface AnnualInterestPaymentState {
+  numericValue: number;
+  formattedValue: string;
+  currencySymbol: string;
+  timestamp: string;
+  dateValue: string;
+}
 
 export interface TotalDebtMetricState {
   numericValue: number;
@@ -10,6 +19,7 @@ export interface TotalDebtMetricState {
 }
 
 export interface MetricsState {
+  annualInterestPaymentMetric: AnnualInterestPaymentState;
   totalDebtMetric: TotalDebtMetricState;
   annualInterest: number;
   monthlyDebtPayment: number;
@@ -17,9 +27,11 @@ export interface MetricsState {
   borrowingThisYear: number;
 }
 
+const annualInterestPaymentMetric: AnnualInterestPaymentState = annualInterestPaymentData;
 const totalDebtMetric: TotalDebtMetricState = totalDebtMetricData;
 
 const initialState: MetricsState = {
+  annualInterestPaymentMetric,
   totalDebtMetric,
   annualInterest: 104000000000,
   monthlyDebtPayment: 8670000000,

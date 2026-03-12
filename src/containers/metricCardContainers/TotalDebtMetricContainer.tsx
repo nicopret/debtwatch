@@ -16,9 +16,6 @@ export default function TotalDebtMetricContainer() {
       headerText="Total UK Debt"
       bodyText={formattedValue}
       footerText={dateValue}
-      headerColor="#0f766e"
-      moreText={undefined}
-      moreHref={undefined}
     />
   );
 }

@@ -10,7 +10,8 @@
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "update:debt": "ts-node scripts/updateTotalDebt.ts"
+    "update:debt": "ts-node scripts/updateTotalDebt.ts",
+    "update:interest": "ts-node scripts/updateAnnualInterestPayable.ts"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",

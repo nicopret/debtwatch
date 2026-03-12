@@ -1,5 +1,5 @@
-import { writeFile } from "node:fs/promises";
-import { join } from "node:path";
+import { mkdir, writeFile } from "node:fs/promises";
+import { dirname, join } from "node:path";
 
 type OnsObservation = {
   date?: string;
@@ -10,15 +10,12 @@ type OnsObservation = {
 
 type OnsResponse = {
   months?: OnsObservation[];
-  quarters?: OnsObservation[];
-  years?: OnsObservation[];
   description?: {
     unit?: string;
-    preUnit?: string;
   };
 };
 
-type TotalDebtMetric = {
+type AnnualInterestPayableMetric = {
   numericValue: number;
   formattedValue: string;
   currencySymbol: string;
@@ -26,9 +23,18 @@ type TotalDebtMetric = {
   dateValue: string;
 };
 
-const ONS_URL =
-  "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6w/pusf/data";
-const OUTPUT_PATH = join(process.cwd(), "src", "data", "totalDebtMetrics.json");
+const ONS_ENDPOINTS = [
+  "https://api.ons.gov.uk/timeseries/NMFX/dataset/pusf/data",
+  "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/nmfx/pusf/data",
+];
+
+const OUTPUT_PATH = join(
+  process.cwd(),
+  "src",
+  "data",
+  "annualInterestPayableMetric.json",
+);
+
 const MONTH_MAP: Record<string, number> = {
   jan: 0,
   feb: 1,
@@ -58,13 +64,11 @@ function normalizeDate(rawDate: string | undefined): Date | null {
   if (!rawDate) return null;
 
   const trimmed = rawDate.trim();
-
-  // Common ONS labels for this series include "YYYY MON" e.g. "2026 JAN".
   const onsMonthMatch = /^(\d{4})\s+([A-Za-z]{3})$/i.exec(trimmed);
+
   if (onsMonthMatch) {
     const year = Number(onsMonthMatch[1]);
-    const monthKey = onsMonthMatch[2].toLowerCase();
-    const monthIndex = MONTH_MAP[monthKey];
+    const monthIndex = MONTH_MAP[onsMonthMatch[2].toLowerCase()];
     if (monthIndex !== undefined) {
       return new Date(Date.UTC(year, monthIndex, 1));
     }
@@ -106,13 +110,35 @@ function formatMonthYear(date: Date): string {
   }).format(date);
 }
 
-function getLatestObservation(data: OnsResponse): { value: number; date: Date } {
-  const candidates = data.months ?? data.quarters ?? data.years ?? [];
-  if (!Array.isArray(candidates) || candidates.length === 0) {
-    throw new Error("No observations returned by ONS dataset.");
+async function fetchOnsData(): Promise<OnsResponse> {
+  let lastError: string | null = null;
+
+  for (const endpoint of ONS_ENDPOINTS) {
+    try {
+      const response = await fetch(endpoint, {
+        headers: { Accept: "application/json" },
+      });
+
+      if (!response.ok) {
+        lastError = `Request failed (${response.status}) for ${endpoint}`;
+        continue;
+      }
+
+      return (await response.json()) as OnsResponse;
+    } catch (error) {
+      lastError = error instanceof Error ? error.message : "Unknown request error";
+    }
   }
 
-  const parsed = candidates
+  throw new Error(lastError ?? "Unable to fetch ONS data from known endpoints.");
+}
+
+function getLatest12MonthlyObservations(data: OnsResponse): Array<{ value: number; date: Date }> {
+  if (!Array.isArray(data.months) || data.months.length === 0) {
+    throw new Error("ONS response did not include monthly observations.");
+  }
+
+  const parsed = data.months
     .map((entry) => ({
       value: toNumber(entry.value),
       date: normalizeDate(entry.date ?? `${entry.year ?? ""} ${entry.month ?? ""}`.trim()),
@@ -122,45 +148,43 @@ function getLatestObservation(data: OnsResponse): { value: number; date: Date } 
     })
     .sort((a, b) => a.date.getTime() - b.date.getTime());
 
-  if (parsed.length === 0) {
-    throw new Error("ONS response did not contain a valid latest observation.");
+  if (parsed.length < 12) {
+    throw new Error(`Expected at least 12 monthly observations but found ${parsed.length}.`);
   }
 
-  return parsed[parsed.length - 1];
+  return parsed.slice(-12);
 }
 
 async function main() {
   try {
-    const response = await fetch(ONS_URL, {
-      headers: {
-        Accept: "application/json",
-      },
-    });
+    const data = await fetchOnsData();
+    const latest12 = getLatest12MonthlyObservations(data);
+    const unit = data.description?.unit;
 
-    if (!response.ok) {
-      throw new Error(`ONS request failed with status ${response.status}.`);
-    }
+    const numericValue = latest12.reduce((sum, observation) => {
+      return sum + toPounds(observation.value, unit);
+    }, 0);
 
-    const data = (await response.json()) as OnsResponse;
-    const latest = getLatestObservation(data);
-    const numericValue = toPounds(latest.value, data.description?.unit);
-    const metric: TotalDebtMetric = {
+    const latestObservationDate = latest12[latest12.length - 1].date;
+
+    const metric: AnnualInterestPayableMetric = {
       numericValue,
       formattedValue: formatCompactPounds(numericValue),
       currencySymbol: "\u00A3",
       timestamp: new Date().toISOString(),
-      dateValue: formatMonthYear(latest.date),
+      dateValue: formatMonthYear(latestObservationDate),
     };
 
+    await mkdir(dirname(OUTPUT_PATH), { recursive: true });
     await writeFile(OUTPUT_PATH, `${JSON.stringify(metric, null, 2)}\n`, "utf8");
 
-    console.log("Updated Total UK Debt metric");
+    console.log("Updated Annual Interest Payable metric");
     console.log(`Raw value: ${metric.numericValue}`);
     console.log(`Formatted: ${metric.formattedValue}`);
-    console.log("Saved to src/data/totalDebtMetrics.json");
+    console.log("Saved to src/data/annualInterestPayableMetric.json");
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown error";
-    console.error("Failed to update Total UK Debt metric.");
+    console.error("Failed to update Annual Interest Payable metric.");
     console.error(message);
     process.exitCode = 1;
   }
