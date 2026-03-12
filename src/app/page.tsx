@@ -1,4 +1,5 @@
 import MetricCardContainer from "@/containers/metricCardContainers/MetricCardContainer";
+import RowContainer from "@/containers/rowContainers/RowContainer";
 
 export default function Home() {
   return (
@@ -7,12 +8,12 @@ export default function Home() {
         <h1>DebtWatch snapshot</h1>
         <p>Static baseline metrics wired through container components and Redux.</p>
       </div>
-      <div className="metrics-grid">
+      <RowContainer variant="metrics">
         <MetricCardContainer metricKey="totalDebt" />
         <MetricCardContainer metricKey="annualInterest" />
         <MetricCardContainer metricKey="debtToGdp" />
         <MetricCardContainer metricKey="borrowingThisYear" />
-      </div>
+      </RowContainer>
     </section>
   );
 }
