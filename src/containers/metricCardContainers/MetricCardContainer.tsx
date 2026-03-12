@@ -4,12 +4,12 @@ import MetricCard, { type MetricCardTone } from "@/components/ui/metricCardCompo
 import { formatCurrencyCompact, formatPercentage } from "@/lib/format";
 import { useAppSelector } from "@/store/hooks";
 import {
-  type MetricKey,
+  type NumericMetricKey,
   selectMetricByKey,
 } from "@/store/selectors/metricsSelectors";
 
 interface MetricCardContainerProps {
-  metricKey: MetricKey;
+  metricKey: NumericMetricKey;
 }
 
 type MetricPresentation = {
@@ -21,15 +21,7 @@ type MetricPresentation = {
   formatValue: (value: number) => string;
 };
 
-const METRIC_PRESENTATION: Record<MetricKey, MetricPresentation> = {
-  totalDebt: {
-    label: "Total UK public sector debt",
-    helperText: "Rolling central government debt total.",
-    tone: "teal",
-    href: "/methodology",
-    linkLabel: "How this is measured",
-    formatValue: formatCurrencyCompact,
-  },
+const METRIC_PRESENTATION: Record<NumericMetricKey, MetricPresentation> = {
   annualInterest: {
     label: "Annual debt interest",
     helperText: "Estimated yearly interest cost from debt servicing.",
