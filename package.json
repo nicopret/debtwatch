@@ -2,13 +2,15 @@
   "name": "debtwatch",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "update:debt": "ts-node scripts/updateTotalDebt.ts"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
@@ -29,6 +31,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "storybook": "^10.2.17",
+    "ts-node": "^10.9.2",
     "typescript": "^5",
     "vite": "^7.3.1"
   }

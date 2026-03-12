@@ -25,6 +25,15 @@ type Story = StoryObj<typeof meta>;
 
 export const DefaultMetricCard: Story = {};
 
+export const TotalUkDebtMetric: Story = {
+  args: {
+    headerText: "Total UK Debt",
+    bodyText: "\u00A32.9T",
+    footerText: "Jan 2026",
+    headerColor: "#0f766e",
+  },
+};
+
 export const TextOnly: Story = {
   args: {
     headerText: "Debt to GDP ratio",
