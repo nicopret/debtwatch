@@ -1,0 +1,29 @@
+.row {
+  display: flex;
+  width: 100%;
+  gap: var(--row-gap);
+}
+
+.autoColumns > * {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.withColumns > * {
+  min-width: 0;
+  flex: 0 0
+    calc(
+      (100% - (var(--row-columns) - 1) * var(--row-gap)) / var(--row-columns)
+    );
+  max-width: calc(
+    (100% - (var(--row-columns) - 1) * var(--row-gap)) / var(--row-columns)
+  );
+}
+
+@media (max-width: 768px) {
+  .autoColumns > *,
+  .withColumns > * {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
