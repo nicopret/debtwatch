@@ -120,49 +120,6 @@ a {
   gap: 1rem;
 }
 
-.metric-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1rem;
-}
-
-.metric-card--teal {
-  border-left: 4px solid #0f766e;
-}
-
-.metric-card--amber {
-  border-left: 4px solid #b45309;
-}
-
-.metric-card--neutral {
-  border-left: 4px solid #6b7280;
-}
-
-.metric-card-label {
-  font-size: 0.85rem;
-  color: #4b5563;
-}
-
-.metric-card-value {
-  margin-top: 0.5rem;
-  font-size: 1.45rem;
-  font-weight: 700;
-}
-
-.metric-card-helper {
-  margin-top: 0.4rem;
-  font-size: 0.9rem;
-  color: #4b5563;
-}
-
-.metric-card-link {
-  margin-top: 0.75rem;
-  display: inline-block;
-  font-size: 0.9rem;
-  color: #0f766e;
-}
-
 @media (max-width: 640px) {
   .site-header-inner {
     flex-direction: column;
