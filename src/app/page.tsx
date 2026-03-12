@@ -1,4 +1,4 @@
-import MetricCardContainer from "@/components/containers/MetricCardContainer";
+import MetricCardContainer from "@/containers/metricCardContainers/MetricCardContainer";
 
 export default function Home() {
   return (

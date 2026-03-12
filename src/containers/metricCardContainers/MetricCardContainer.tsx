@@ -1,6 +1,6 @@
 "use client";
 
-import MetricCard, { type MetricCardTone } from "@/components/ui/MetricCard";
+import MetricCard, { type MetricCardTone } from "@/components/ui/metricCardComponent/MetricCard";
 import { formatCurrencyCompact, formatPercentage } from "@/lib/format";
 import { useAppSelector } from "@/store/hooks";
 import {
