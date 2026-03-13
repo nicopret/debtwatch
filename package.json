@@ -13,6 +13,7 @@
     "update:debt": "ts-node scripts/updateTotalDebt.ts",
     "update:interest": "ts-node scripts/updateAnnualInterestPayable.ts",
     "update:gdp": "ts-node scripts/updateGDP.ts",
+    "update:gilt-yield": "node --loader ts-node/esm scripts/updateTenYearGiltYield.ts",
     "update:lending": "ts-node scripts/updateAnnualLending.ts"
   },
   "dependencies": {

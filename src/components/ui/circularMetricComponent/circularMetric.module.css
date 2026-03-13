@@ -1,0 +1,57 @@
+.panel {
+  width: 100%;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle {
+  width: min(100%, 220px);
+  height: min(100%, 220px);
+  flex: 0 0 auto;
+  border-radius: 50%;
+  border: 1px solid #d98282;
+  background:
+    radial-gradient(circle at 30% 30%, #ffd2d2 0%, #f59696 34%, #d65a5a 100%);
+  color: #ffffff;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+  gap: 0.55rem;
+  padding: 2rem;
+  box-shadow: 0 24px 48px rgba(182, 60, 60, 0.22);
+}
+
+.labelText {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.mainValueText {
+  font-size: clamp(2.25rem, 4vw, 3.2rem);
+  font-weight: 800;
+  line-height: 0.95;
+}
+
+.helperText {
+  max-width: 16ch;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+@media (max-width: 768px) {
+  .panel {
+    min-height: auto;
+  }
+
+  .circle {
+    width: min(80%, 180px);
+    height: min(80vw, 180px);
+    padding: 1.4rem;
+  }
+}
