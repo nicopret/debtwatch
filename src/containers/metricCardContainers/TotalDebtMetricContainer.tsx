@@ -15,7 +15,7 @@ export default function TotalDebtMetricContainer() {
     <MetricCard
       headerText="Total UK Debt"
       bodyText={formattedValue}
-      footerText={dateValue}
+      footerText={`Updated ${dateValue}`}
     />
   );
 }

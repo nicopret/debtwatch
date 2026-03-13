@@ -1,7 +1,5 @@
-import RowContainer from "@/containers/rowContainers/RowContainer";
-import TotalDebtMetricContainer from "@/containers/metricCardContainers/TotalDebtMetricContainer";
-import YearlyInterestMetricContainer from "@/containers/metricCardContainers/YearlyInterestMetricContainer";
-import MonthlyInterestPayableContainer from "@/containers/metricCardContainers/MontlyInterestPayableContainer";
+import FirstMetricRowContainer from "@/containers/rowContainers/FirstMetricRowContainer";
+import SecondMetricRowContainer from "@/containers/rowContainers/SecondMetricRowContainer";
 
 export default function Home() {
   return (
@@ -11,11 +9,8 @@ export default function Home() {
         <p>Static baseline metrics wired through container components and Redux.</p>
       </div>
       <div className="metrics-rows">
-        <RowContainer>
-          <TotalDebtMetricContainer />
-          <MonthlyInterestPayableContainer />
-          <YearlyInterestMetricContainer />
-        </RowContainer>
+        <FirstMetricRowContainer />
+        <SecondMetricRowContainer />
       </div>
     </section>
   );

@@ -1,6 +1,15 @@
 import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
+import gdpData from "../src/data/gdpMetric.json" with { type: "json" };
+
+type DebtToGdp = {
+  numericValue: number;
+  formattedValue: string;
+  timestamp: string;
+  dateValue: string;
+}
+
 type OnsObservation = {
   date?: string;
   year?: string;
@@ -26,9 +35,22 @@ type TotalDebtMetric = {
   dateValue: string;
 };
 
+type TaxpayerDebtMetric = {
+  currencySymbol: string;
+  dateValue: string;
+  formattedValue: string;
+  numericValue: number;
+  taxpayers: number;
+  taxpayersFormatted: string;
+  source: string;
+  taxYear: string;
+  timestamp: string;
+}
+
 const ONS_URL =
   "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6w/pusf/data";
 const OUTPUT_PATH = join(process.cwd(), "src", "data", "totalDebtMetrics.json");
+const DEBT_TO_GDP_OUTPUT_PATH = join(process.cwd(), "src", "data", "debtToGdpMetrics.json");
 const MONTH_MAP: Record<string, number> = {
   jan: 0,
   feb: 1,
@@ -43,6 +65,14 @@ const MONTH_MAP: Record<string, number> = {
   nov: 10,
   dec: 11,
 };
+const TAXPAYER_OUTPUT_PATH = join(process.cwd(), "src", "data", "taxpayerDebt.json");
+
+const TAXPAYERS = {
+  "taxpayers": 39100000,
+  "taxpayersFormatted": "39m",
+  "source": "HMRC Income Tax Liabilities Statistics",
+  "taxYear": "2025-2026"
+}
 
 function toNumber(value: string | undefined): number | null {
   if (!value) return null;
@@ -144,6 +174,7 @@ async function main() {
     const data = (await response.json()) as OnsResponse;
     const latest = getLatestObservation(data);
     const numericValue = toPounds(latest.value, data.description?.unit);
+    const debtToGdp = (numericValue / gdpData.numericValue) * 100
     const metric: TotalDebtMetric = {
       numericValue,
       formattedValue: formatCompactPounds(numericValue),
@@ -152,8 +183,26 @@ async function main() {
       dateValue: formatMonthYear(latest.date),
     };
 
-    await writeFile(OUTPUT_PATH, `${JSON.stringify(metric, null, 2)}\n`, "utf8");
+    const taxpayerDebtMetric: TaxpayerDebtMetric = {
+      currencySymbol: "\u00A3",
+      dateValue: formatMonthYear(latest.date),
+      formattedValue: formatCompactPounds(Number((numericValue / TAXPAYERS.taxpayers).toFixed(0))),
+      numericValue, ...TAXPAYERS,
+      timestamp: new Date().toISOString()
+    }
 
+    const debtToGdpMetric: DebtToGdp = {
+      dateValue: formatMonthYear(latest.date),
+      formattedValue: `${debtToGdp.toFixed(1)}%`,
+      numericValue: debtToGdp,
+      timestamp: new Date().toISOString()
+    }
+
+    await writeFile(OUTPUT_PATH, `${JSON.stringify(metric, null, 2)}\n`, "utf8");
+    await writeFile(TAXPAYER_OUTPUT_PATH, `${JSON.stringify(taxpayerDebtMetric, null, 2)}\n`, 'utf8');
+    await writeFile(DEBT_TO_GDP_OUTPUT_PATH, `${JSON.stringify(debtToGdpMetric, null, 2)}\n`, "utf8");
+
+    console.log(`Total GDP: ${gdpData.numericValue}`);
     console.log("Updated Total UK Debt metric");
     console.log(`Raw value: ${metric.numericValue}`);
     console.log(`Formatted: ${metric.formattedValue}`);
