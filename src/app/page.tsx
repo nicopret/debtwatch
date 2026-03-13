@@ -1,7 +1,7 @@
-import MetricCardContainer from "@/containers/metricCardContainers/MetricCardContainer";
 import RowContainer from "@/containers/rowContainers/RowContainer";
 import TotalDebtMetricContainer from "@/containers/metricCardContainers/TotalDebtMetricContainer";
 import YearlyInterestMetricContainer from "@/containers/metricCardContainers/YearlyInterestMetricContainer";
+import MonthlyInterestPayableContainer from "@/containers/metricCardContainers/MontlyInterestPayableContainer";
 
 export default function Home() {
   return (
@@ -13,12 +13,8 @@ export default function Home() {
       <div className="metrics-rows">
         <RowContainer>
           <TotalDebtMetricContainer />
+          <MonthlyInterestPayableContainer />
           <YearlyInterestMetricContainer />
-        </RowContainer>
-        <RowContainer variant="metrics">
-          <MetricCardContainer metricKey="annualInterest" />
-          <MetricCardContainer metricKey="debtToGdp" />
-          <MetricCardContainer metricKey="borrowingThisYear" />
         </RowContainer>
       </div>
     </section>

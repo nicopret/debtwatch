@@ -8,10 +8,9 @@ export type NumericMetricKey =
 
 export const annualInterestPaymentValue = (state: RootState) => state.metrics.annualInterestPaymentMetric.formattedValue;
 
-export const selectMetrics = (state: RootState) => state.metrics;
+export const monthlyInterestPayableValue = (state: RootState) => state.metrics.monthlyInterestPayableMetric.formattedValue;
 
-export const selectMetricByKey = (state: RootState, metricKey: NumericMetricKey) =>
-  state.metrics[metricKey];
+export const selectMetrics = (state: RootState) => state.metrics;
 
 export const selectTotalDebtMetric = (state: RootState) => state.metrics.totalDebtMetric;
 
@@ -20,3 +19,7 @@ export const selectTotalDebtFormattedValue = (state: RootState) =>
 
 export const selectTotalDebtDateValue = (state: RootState) =>
   state.metrics.totalDebtMetric.dateValue;
+
+export const taxPayersValue = (state: RootState) => state.metrics.monthlyInterestPayableMetric.taxpayersFormatted;
+
+export const taxYear = (state: RootState) => state.metrics.monthlyInterestPayableMetric.taxYear;

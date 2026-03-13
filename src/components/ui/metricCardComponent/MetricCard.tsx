@@ -54,7 +54,7 @@ export default function MetricCard({
 
   const resolvedHeaderColor = headerColor ?? toneColor;
   const resolvedBodyColor = bodyColor ?? "var(--foreground)";
-  const resolvedFooterColor = footerColor ?? toneColor;
+  const resolvedFooterColor = footerColor ?? tone;
   const resolvedMoreColor = moreColor ?? toneColor;
 
   const hasFooterText = Boolean(resolvedFooterText);

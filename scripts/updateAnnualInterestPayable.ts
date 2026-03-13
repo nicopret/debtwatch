@@ -23,10 +23,29 @@ type AnnualInterestPayableMetric = {
   dateValue: string;
 };
 
+type MonthlyTaxpayersInterestPayableMetric = {
+  currencySymbol: string;
+  dateValue: string;
+  formattedValue: string;
+  numericValue: number;
+  taxpayers: number;
+  taxpayersFormatted: string;
+  source: string;
+  taxYear: string;
+  timestamp: string;
+}
+
 const ONS_ENDPOINTS = [
   "https://api.ons.gov.uk/timeseries/NMFX/dataset/pusf/data",
   "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/nmfx/pusf/data",
 ];
+
+const MONTHLY_OUTPUT_PATH = join(
+  process.cwd(),
+  "src",
+  "data",
+  "monthlyInterestPayableMetric.json",
+);
 
 const OUTPUT_PATH = join(
   process.cwd(),
@@ -49,6 +68,13 @@ const MONTH_MAP: Record<string, number> = {
   nov: 10,
   dec: 11,
 };
+
+const TAXPAYERS = {
+  "taxpayers": 39100000,
+  "taxpayersFormatted": "39m",
+  "source": "HMRC Income Tax Liabilities Statistics",
+  "taxYear": "2025-2026"
+}
 
 function toNumber(value: string | undefined): number | null {
   if (!value) return null;
@@ -175,8 +201,18 @@ async function main() {
       dateValue: formatMonthYear(latestObservationDate),
     };
 
+    const monthlyMetric: MonthlyTaxpayersInterestPayableMetric = {
+      currencySymbol: "\u00A3",
+      dateValue: formatMonthYear(latestObservationDate),
+      formattedValue: formatCompactPounds(Number((numericValue / TAXPAYERS.taxpayers / 12).toFixed(0))),
+      numericValue, ...TAXPAYERS,
+      timestamp: new Date().toISOString()
+    }
+
     await mkdir(dirname(OUTPUT_PATH), { recursive: true });
     await writeFile(OUTPUT_PATH, `${JSON.stringify(metric, null, 2)}\n`, "utf8");
+
+    await writeFile(MONTHLY_OUTPUT_PATH, `${JSON.stringify(monthlyMetric, null, 2)}\n`, 'utf8')
 
     console.log("Updated Annual Interest Payable metric");
     console.log(`Raw value: ${metric.numericValue}`);
