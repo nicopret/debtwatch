@@ -15,10 +15,7 @@ export default function TotalDebtMetricContainer() {
     <MetricCard
       headerText="Total UK Debt"
       bodyText={formattedValue}
-      footerText={dateValue}
-      headerColor="#0f766e"
-      moreText={undefined}
-      moreHref={undefined}
+      footerText={`Updated ${dateValue}`}
     />
   );
 }

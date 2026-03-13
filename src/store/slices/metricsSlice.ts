@@ -1,5 +1,58 @@
 import { createSlice } from "@reduxjs/toolkit";
+
+import annualInterestPaymentData from "@/data/annualInterestPayableMetric.json";
+import annualLendingData from "@/data/annualLendingMetric.json";
+import debtToGdpData from "@/data/debtToGdpMetrics.json";
+import monthlyInterestPayableData from "@/data/monthlyInterestPayableMetric.json";
+import taxpayerDebtData from "@/data/taxpayerDebt.json";
 import totalDebtMetricData from "@/data/totalDebtMetrics.json";
+
+export interface AnnualInterestPaymentState {
+  numericValue: number;
+  formattedValue: string;
+  currencySymbol: string;
+  timestamp: string;
+  dateValue: string;
+}
+
+export interface AnnualLendingtState {
+  numericValue: number;
+  formattedValue: string;
+  currencySymbol: string;
+  timestamp: string;
+  dateValue: string;
+}
+
+export interface DebtToGdpState {
+  numericValue: number;
+  formattedValue: string;
+  timestamp: string;
+  dateValue: string;
+}
+
+export interface MonthlyInterestPayableState {
+  currencySymbol: string;
+  dateValue: string;
+  formattedValue: string;
+  numericValue: number;
+  taxpayers: number;
+  taxpayersFormatted: string;
+  source: string;
+  taxYear: string;
+  timestamp: string;
+}
+
+export interface TaxpayerDebtState {
+  currencySymbol: string;
+  dateValue: string;
+  formattedValue: string;
+  numericValue: number;
+  taxpayers: number;
+  taxpayersFormatted: string;
+  source: string;
+  taxYear: string;
+  timestamp: string;
+}
 
 export interface TotalDebtMetricState {
   numericValue: number;
@@ -10,21 +63,28 @@ export interface TotalDebtMetricState {
 }
 
 export interface MetricsState {
+  annualInterestPaymentMetric: AnnualInterestPaymentState;
+  annualLendingMetric: AnnualLendingtState;
+  debtToGdpMetric: DebtToGdpState;
+  monthlyInterestPayableMetric: MonthlyInterestPayableState;
+  taxpayerDebtMetric: TaxpayerDebtState;
   totalDebtMetric: TotalDebtMetricState;
-  annualInterest: number;
-  monthlyDebtPayment: number;
-  debtToGdp: number;
-  borrowingThisYear: number;
 }
 
+const annualInterestPaymentMetric: AnnualInterestPaymentState = annualInterestPaymentData;
+const annualLendingMetric: AnnualLendingtState = annualLendingData;
+const debtToGdpMetric: DebtToGdpState = debtToGdpData;
+const monthlyInterestPayableMetric: MonthlyInterestPayableState = monthlyInterestPayableData;
+const taxpayerDebtMetric: TaxpayerDebtState = taxpayerDebtData;
 const totalDebtMetric: TotalDebtMetricState = totalDebtMetricData;
 
 const initialState: MetricsState = {
+  annualInterestPaymentMetric,
+  annualLendingMetric,
+  debtToGdpMetric,
+  monthlyInterestPayableMetric,
+  taxpayerDebtMetric,
   totalDebtMetric,
-  annualInterest: 104000000000,
-  monthlyDebtPayment: 8670000000,
-  debtToGdp: 0.976,
-  borrowingThisYear: 127000000000,
 };
 
 const metricsSlice = createSlice({

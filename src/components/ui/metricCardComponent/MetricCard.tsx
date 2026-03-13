@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./metricCard.module.css";
 
-export type MetricCardTone = "neutral" | "teal" | "amber";
+export type MetricCardTone = "neutral" | "teal" | "amber" | "navyblue";
 
 export interface MetricCardProps {
   headerText?: string;
@@ -36,12 +36,15 @@ export default function MetricCard({
   label,
   value,
   helperText,
-  tone = "neutral",
+  tone = "navyblue",
   href,
   linkLabel,
 }: MetricCardProps) {
   const toneColor =
-    tone === "teal" ? "#0f766e" : tone === "amber" ? "#b45309" : "var(--foreground)";
+    tone === "navyblue" ? "#093967" :
+    tone === "teal" ? "#0f766e" : 
+    tone === "amber" ? "#b45309" : 
+    "var(--foreground)";
 
   const resolvedHeaderText = headerText ?? label;
   const resolvedBodyText = bodyText ?? value;
@@ -51,7 +54,7 @@ export default function MetricCard({
 
   const resolvedHeaderColor = headerColor ?? toneColor;
   const resolvedBodyColor = bodyColor ?? "var(--foreground)";
-  const resolvedFooterColor = footerColor ?? "var(--foreground)";
+  const resolvedFooterColor = footerColor ?? tone;
   const resolvedMoreColor = moreColor ?? toneColor;
 
   const hasFooterText = Boolean(resolvedFooterText);
