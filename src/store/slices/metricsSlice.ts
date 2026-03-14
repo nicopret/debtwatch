@@ -136,7 +136,6 @@ export interface DebtInterestSummaryState {
   };
   governmentTotals: DebtInterestSummaryGovernmentTotalState[];
 }
-
 export interface DebtToGdpState {
   numericValue: number;
   formattedValue: string;
