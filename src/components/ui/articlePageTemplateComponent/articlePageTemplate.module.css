@@ -1,0 +1,10 @@
+.page {
+  display: grid;
+  gap: 1rem;
+}
+
+.sections {
+  display: grid;
+  gap: 1rem;
+}
+

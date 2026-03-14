@@ -1,0 +1,72 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.textColumn,
+.visualColumn {
+  min-width: 0;
+}
+
+.textColumn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 1.5rem;
+  display: grid;
+  align-content: start;
+  gap: 0.9rem;
+}
+
+.tagline,
+.takeawayLabel {
+  color: #6b7280;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.header {
+  color: #17315f;
+  font-size: clamp(2.3rem, 6vw, 4.2rem);
+  line-height: 0.98;
+}
+
+.description {
+  color: #24324a;
+  font-size: clamp(1.03rem, 2.2vw, 1.3rem);
+  line-height: 1.65;
+  max-width: 48rem;
+}
+
+.takeaway {
+  border-top: 1px solid #e8edf4;
+  padding-top: 1rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.takeawayText {
+  color: #17315f;
+  font-size: 1rem;
+  line-height: 1.55;
+  font-weight: 600;
+}
+
+.visualColumn {
+  display: flex;
+}
+
+.visualColumn > * {
+  flex: 1;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+
