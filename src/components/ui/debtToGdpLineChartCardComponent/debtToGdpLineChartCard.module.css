@@ -1,0 +1,44 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 1.25rem;
+  min-height: 420px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
+}
+
+.header {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  color: #17315f;
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.chartWrap {
+  position: relative;
+  min-height: 300px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    min-height: 380px;
+  }
+
+  .chartWrap {
+    min-height: 260px;
+  }
+}

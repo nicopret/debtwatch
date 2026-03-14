@@ -1,0 +1,71 @@
+{
+  "timestamp": "2026-03-14T08:06:21.050Z",
+  "dateValue": "2025",
+  "source": "Office for National Statistics",
+  "latestAnnualInterest": {
+    "year": "2025",
+    "numericValue": 98410000000,
+    "formattedValue": "£98.4B"
+  },
+  "peakYear": "2022",
+  "peakYearAmount": {
+    "numericValue": 107845000000,
+    "formattedValue": "£108B"
+  },
+  "peakGovernment": {
+    "governmentKey": "conservative_2015",
+    "governmentLabel": "Conservative (2015-2024)"
+  },
+  "averageAnnualInterest": {
+    "numericValue": 46045482758.62069,
+    "formattedValue": "£46.0B"
+  },
+  "latestVsAverage": {
+    "numericDifference": 52364517241.37931,
+    "formattedDifference": "+£52.4B",
+    "percentageDifference": 113.72346233371951,
+    "formattedPercentageDifference": "+113.7%"
+  },
+  "governmentTotals": [
+    {
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)",
+      "startYear": 1997,
+      "endYear": 2009,
+      "totalNumericValue": 355215000000,
+      "totalFormattedValue": "£355B",
+      "averageAnnualNumericValue": 27324230769.23077,
+      "averageAnnualFormattedValue": "£27.3B"
+    },
+    {
+      "governmentKey": "coalition_2010",
+      "governmentLabel": "Coalition (2010-2015)",
+      "startYear": 2010,
+      "endYear": 2014,
+      "totalNumericValue": 250881000000,
+      "totalFormattedValue": "£251B",
+      "averageAnnualNumericValue": 50176200000,
+      "averageAnnualFormattedValue": "£50.2B"
+    },
+    {
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)",
+      "startYear": 2015,
+      "endYear": 2023,
+      "totalNumericValue": 548893000000,
+      "totalFormattedValue": "£549B",
+      "averageAnnualNumericValue": 60988111111.111115,
+      "averageAnnualFormattedValue": "£61.0B"
+    },
+    {
+      "governmentKey": "labour_2024",
+      "governmentLabel": "Labour (2024-)",
+      "startYear": 2024,
+      "endYear": null,
+      "totalNumericValue": 180330000000,
+      "totalFormattedValue": "£180B",
+      "averageAnnualNumericValue": 90165000000,
+      "averageAnnualFormattedValue": "£90.2B"
+    }
+  ]
+}

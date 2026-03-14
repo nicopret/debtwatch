@@ -6,8 +6,14 @@ export type NumericMetricKey =
   | "debtToGdp"
   | "borrowingThisYear";
 
+export const selectCanonicalDebtToGdpMetric = (state: RootState) =>
+  state.metrics.debtToGdpMetric;
+
+export const selectCanonicalAnnualDebtInterestMetric = (state: RootState) =>
+  state.metrics.annualInterestPaymentMetric;
+
 export const annualInterestPaymentValue = (state: RootState) =>
-  state.metrics.annualInterestPaymentMetric.formattedValue;
+  selectCanonicalAnnualDebtInterestMetric(state).formattedValue;
 
 export const annualLendingValue = (state: RootState) =>
   state.metrics.annualLendingMetric.formattedValue;
@@ -16,7 +22,7 @@ export const annualLendingDate = (state: RootState) =>
   state.metrics.annualLendingMetric.dateValue;
 
 export const debtToGdpValue = (state: RootState) =>
-  state.metrics.debtToGdpMetric.formattedValue;
+  selectCanonicalDebtToGdpMetric(state).formattedValue;
 
 export const monthlyInterestPayableValue = (state: RootState) =>
   state.metrics.monthlyInterestPayableMetric.formattedValue;
@@ -73,3 +79,218 @@ export const selectOtherIncomeBreakdown = (state: RootState) =>
 
 export const selectOtherSpendingBreakdown = (state: RootState) =>
   state.metrics.otherSpendingBreakdown;
+
+export const selectAnnualBorrowingTimeline = (state: RootState) =>
+  state.metrics.annualBorrowingTimeline;
+
+export const selectAnnualBorrowingTimelineItems = (state: RootState) =>
+  state.metrics.annualBorrowingTimeline.items;
+
+export const selectBorrowingByGovernmentSummary = (state: RootState) =>
+  state.metrics.borrowingByGovernmentSummary;
+
+export const selectBorrowingGovernmentSummaries = (state: RootState) =>
+  state.metrics.borrowingByGovernmentSummary.governments;
+
+export const selectBorrowingOverallPeak = (state: RootState) =>
+  state.metrics.borrowingByGovernmentSummary.overallPeak;
+
+export const selectGovernmentPeriods = (state: RootState) =>
+  state.metrics.governmentPeriods;
+
+function buildGovernmentBands<
+  TPoint extends {
+    governmentKey: string;
+  },
+>(points: TPoint[], periods: RootState["metrics"]["governmentPeriods"]) {
+  return periods
+    .map((period) => {
+      const startIndex = points.findIndex(
+        (point) => point.governmentKey === period.governmentKey,
+      );
+      const reverseIndex = [...points]
+        .reverse()
+        .findIndex((point) => point.governmentKey === period.governmentKey);
+
+      if (startIndex === -1 || reverseIndex === -1) {
+        return null;
+      }
+
+      return {
+        governmentKey: period.governmentKey,
+        label: period.shortLabel ?? period.governmentLabel,
+        color: period.bandColor,
+        startIndex,
+        endIndex: points.length - 1 - reverseIndex,
+      };
+    })
+    .filter((band): band is NonNullable<typeof band> => band !== null);
+}
+
+export const selectAnnualBorrowingTimelinePoints = (state: RootState) =>
+  selectAnnualBorrowingTimelineItems(state).map((item) => ({
+    yearLabel: item.yearLabel,
+    numericValue: item.numericValue,
+    formattedValue: item.formattedValue,
+    governmentLabel: item.governmentLabel,
+  }));
+
+export const selectBorrowingGovernmentBands = (state: RootState) => {
+  const points = selectAnnualBorrowingTimelineItems(state);
+  return buildGovernmentBands(points, selectGovernmentPeriods(state));
+};
+
+export const selectDebtInterestTimeline = (state: RootState) =>
+  state.metrics.debtInterestTimeline;
+
+export const selectDebtInterestTimelineItems = (state: RootState) =>
+  state.metrics.debtInterestTimeline.items;
+
+export const selectDebtInterestTimelinePoints = (state: RootState) =>
+  selectDebtInterestTimelineItems(state).map((item) => ({
+    yearLabel: item.yearLabel,
+    numericValue: item.numericValue,
+    formattedValue: item.formattedValue,
+    governmentLabel: item.governmentLabel,
+  }));
+
+export const selectDebtInterestGovernmentBands = (state: RootState) =>
+  buildGovernmentBands(selectDebtInterestTimelineItems(state), selectGovernmentPeriods(state));
+
+export const selectDebtInterestSummary = (state: RootState) =>
+  state.metrics.debtInterestSummary;
+
+export const selectLatestAnnualDebtInterest = (state: RootState) => {
+  const metric = selectCanonicalAnnualDebtInterestMetric(state);
+
+  return {
+    year: metric.dateValue,
+    numericValue: metric.numericValue,
+    formattedValue: metric.formattedValue,
+  };
+};
+
+export const selectDebtInterestPeakYear = (state: RootState) =>
+  state.metrics.debtInterestSummary.peakYear;
+
+export const selectDebtInterestPeakAmount = (state: RootState) =>
+  state.metrics.debtInterestSummary.peakYearAmount;
+
+export const selectDebtInterestPeakGovernment = (state: RootState) =>
+  state.metrics.debtInterestSummary.peakGovernment;
+
+export const selectAverageAnnualDebtInterest = (state: RootState) =>
+  state.metrics.debtInterestSummary.averageAnnualInterest;
+
+export const selectDebtInterestLatestVsAverage = (state: RootState) => {
+  const latest = selectLatestAnnualDebtInterest(state);
+  const average = selectAverageAnnualDebtInterest(state);
+  const numericDifference = latest.numericValue - average.numericValue;
+  const percentageDifference =
+    average.numericValue === 0 ? 0 : (numericDifference / average.numericValue) * 100;
+  const sign = numericDifference > 0 ? "+" : numericDifference < 0 ? "-" : "";
+
+  return {
+    numericDifference,
+    formattedDifference: `${sign}\u00A3${(
+      Math.abs(numericDifference) / 1_000_000_000
+    ).toFixed(Math.abs(numericDifference) >= 100_000_000_000 ? 0 : 1)}B`,
+    percentageDifference,
+    formattedPercentageDifference: `${sign}${Math.abs(percentageDifference).toFixed(1)}%`,
+  };
+};
+
+export const selectDebtInterestGovernmentTotals = (state: RootState) =>
+  state.metrics.debtInterestSummary.governmentTotals;
+
+export const selectDebtToGdpTimeline = (state: RootState) =>
+  state.metrics.debtToGdpTimeline;
+
+export const selectDebtToGdpTimelineItems = (state: RootState) =>
+  state.metrics.debtToGdpTimeline.items;
+
+export const selectDebtToGdpTimelinePoints = (state: RootState) =>
+  selectDebtToGdpTimelineItems(state).map((item) => ({
+    yearLabel: item.yearLabel,
+    numericValue: item.numericValue,
+    formattedValue: item.formattedValue,
+    governmentLabel: item.governmentLabel,
+  }));
+
+export const selectDebtToGdpGovernmentBands = (state: RootState) =>
+  buildGovernmentBands(selectDebtToGdpTimelineItems(state), selectGovernmentPeriods(state));
+
+export const selectG7DebtToGdpComparison = (state: RootState) =>
+  state.metrics.g7DebtToGdpComparison;
+
+function formatPercentage(value: number): string {
+  return `${value.toFixed(1)}%`;
+}
+
+function formatDifference(value: number): string {
+  const sign = value > 0 ? "+" : value < 0 ? "-" : "";
+  return `${sign}${Math.abs(value).toFixed(1)}pp`;
+}
+
+export const selectCanonicalUkG7DebtToGdp = (state: RootState) => {
+  const metric = selectCanonicalDebtToGdpMetric(state);
+
+  return {
+    countryCode: "GBR",
+    countryLabel: "United Kingdom",
+    numericValue: metric.numericValue,
+    formattedValue: metric.formattedValue,
+    rank: 0,
+  };
+};
+
+export const selectG7DebtToGdpCountries = (state: RootState) => {
+  const comparison = selectG7DebtToGdpComparison(state);
+  const uk = selectCanonicalUkG7DebtToGdp(state);
+  const nonUkCountries = comparison.g7.filter((country) => country.countryCode !== "GBR");
+
+  // The displayed UK figure intentionally comes from the canonical ONS debt-to-GDP
+  // metric so the headline card and the G7 panel always show the same number.
+  return [...nonUkCountries, uk]
+    .sort((left, right) => right.numericValue - left.numericValue)
+    .map((country, index) => ({
+      ...country,
+      rank: index + 1,
+    }));
+};
+
+export const selectCurrentUkG7DebtToGdp = (state: RootState) =>
+  selectG7DebtToGdpCountries(state).find((country) => country.countryCode === "GBR")!;
+
+export const selectUkRankInG7 = (state: RootState) =>
+  selectCurrentUkG7DebtToGdp(state).rank;
+
+export const selectG7AverageDebtToGdp = (state: RootState) => {
+  const countries = selectG7DebtToGdpCountries(state);
+  const numericValue =
+    countries.reduce((sum, country) => sum + country.numericValue, 0) / countries.length;
+
+  return {
+    numericValue,
+    formattedValue: formatPercentage(numericValue),
+  };
+};
+
+export const selectDebtToGdpDifferenceFromG7Average = (state: RootState) => {
+  const uk = selectCurrentUkG7DebtToGdp(state);
+  const average = selectG7AverageDebtToGdp(state);
+  const numericValue = uk.numericValue - average.numericValue;
+
+  return {
+    numericValue,
+    formattedValue: formatDifference(numericValue),
+  };
+};
+
+export const selectHighestG7DebtToGdpCountry = (state: RootState) =>
+  selectG7DebtToGdpCountries(state)[0]!;
+
+export const selectLowestG7DebtToGdpCountry = (state: RootState) => {
+  const countries = selectG7DebtToGdpCountries(state);
+  return countries[countries.length - 1]!;
+};

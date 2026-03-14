@@ -1,3 +1,6 @@
+import DebtToGdpSectionContainer from "@/containers/debtToGdpContainers/DebtToGdpSectionContainer";
+import DebtInterestSectionContainer from "@/containers/debtInterestContainers/DebtInterestSectionContainer";
+import BorrowingTimelineSectionContainer from "@/containers/borrowingContainers/BorrowingTimelineSectionContainer";
 import BudgetComparisonSectionContainer from "@/containers/budgetContainers/BudgetComparisonSectionContainer";
 import HeroIntroCardContainer from "@/containers/heroContainers/HeroIntroCardContainer";
 import TenYearGiltYieldCircleContainer from "@/containers/heroContainers/TenYearGiltYieldCircleContainer";
@@ -23,6 +26,9 @@ export default function Home() {
         <SecondMetricRowContainer />
       </div>
       <BudgetComparisonSectionContainer />
+      <BorrowingTimelineSectionContainer />
+      <DebtToGdpSectionContainer />
+      <DebtInterestSectionContainer />
     </section>
   );
 }
