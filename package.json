@@ -6,6 +6,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "clean:website": "node -e \"const fs=require('fs'); fs.rmSync('static/website',{recursive:true,force:true}); fs.rmSync('out',{recursive:true,force:true});\"",
+    "build:embeds": "node scripts/buildEmbeds.mjs",
+    "build:website": "node scripts/buildWebsite.mjs",
+    "deploy:website": "node --loader ts-node/esm scripts/deployWebsite.ts",
+    "deploy:embeds": "node --loader ts-node/esm scripts/deployEmbeds.ts",
+    "preview:website": "node scripts/previewWebsite.mjs",
     "start": "next start",
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
@@ -22,8 +28,10 @@
     "update:lending": "ts-node scripts/updateAnnualLending.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1009.0",
     "@reduxjs/toolkit": "^2.11.2",
     "chart.js": "^4.5.1",
+    "http-server": "^14.1.1",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-chartjs-2": "^5.3.1",

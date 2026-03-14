@@ -3,6 +3,8 @@
   --foreground: #171717;
   --surface: #ffffff;
   --border: #e5e7eb;
+  --font-geist-sans: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  --font-geist-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
 html,
@@ -14,7 +16,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -44,6 +46,12 @@ a {
 
 .site-main {
   flex: 1;
+}
+
+.embed-route-main {
+  min-height: 100vh;
+  padding: 0.65rem;
+  background: #f5f7fb;
 }
 
 .site-container {
