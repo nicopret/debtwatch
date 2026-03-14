@@ -15,12 +15,12 @@ import { Line } from "react-chartjs-2";
 import {
   createGovernmentBandsPlugin,
   type ChartGovernmentBand,
-} from "./governmentBandsPlugin";
-import styles from "./annualBorrowingLineChartCard.module.css";
+} from "../annualBorrowingLineChartCardComponent/governmentBandsPlugin";
+import styles from "./debtToGdpLineChartCard.module.css";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Filler);
 
-export interface AnnualBorrowingPoint {
+export interface DebtToGdpPoint {
   yearLabel: string;
   numericValue: number;
   formattedValue: string;
@@ -29,36 +29,32 @@ export interface AnnualBorrowingPoint {
 
 export type GovernmentBand = ChartGovernmentBand;
 
-export interface AnnualBorrowingLineChartCardProps {
+export interface DebtToGdpLineChartCardProps {
   title: string;
   subtitle: string;
-  points: AnnualBorrowingPoint[];
+  points: DebtToGdpPoint[];
   governmentBands: GovernmentBand[];
   className?: string;
 }
 
-function formatBillions(value: number): string {
-  const billions = value / 1_000_000_000;
-  const fractionDigits = Number.isInteger(billions) || Math.abs(billions) >= 100 ? 0 : 1;
-  return `\u00A3${billions.toFixed(fractionDigits)}B`;
+function formatRatio(value: number): string {
+  return `${value.toFixed(1)}%`;
 }
 
-export default function AnnualBorrowingLineChartCard({
+export default function DebtToGdpLineChartCard({
   title,
   subtitle,
   points,
   governmentBands,
   className,
-}: AnnualBorrowingLineChartCardProps) {
-  const governmentBandPlugin = createGovernmentBandsPlugin(governmentBands);
-
+}: DebtToGdpLineChartCardProps) {
   const chartData: ChartData<"line"> = {
     labels: points.map((point) => point.yearLabel),
     datasets: [
       {
         data: points.map((point) => point.numericValue),
-        borderColor: "#1d3e77",
-        backgroundColor: "rgba(29, 62, 119, 0.12)",
+        borderColor: "#17315f",
+        backgroundColor: "rgba(23, 49, 95, 0.12)",
         borderWidth: 3,
         tension: 0.22,
         pointRadius: 0,
@@ -86,7 +82,7 @@ export default function AnnualBorrowingLineChartCard({
             const point = points[context.dataIndex];
             const numericValue =
               typeof context.parsed.y === "number" ? context.parsed.y : 0;
-            return `Borrowing: ${point?.formattedValue ?? formatBillions(numericValue)}`;
+            return `Debt / GDP: ${point?.formattedValue ?? formatRatio(numericValue)}`;
           },
           afterLabel: (context) => {
             const point = points[context.dataIndex];
@@ -110,7 +106,7 @@ export default function AnnualBorrowingLineChartCard({
       y: {
         ticks: {
           color: "#556274",
-          callback: (value) => formatBillions(Number(value)),
+          callback: (value) => formatRatio(Number(value)),
         },
         grid: {
           color: "#e6ebf2",
@@ -132,7 +128,7 @@ export default function AnnualBorrowingLineChartCard({
         <Line
           data={chartData}
           options={chartOptions}
-          plugins={[governmentBandPlugin]}
+          plugins={[createGovernmentBandsPlugin(governmentBands)]}
           aria-label={title}
         />
       </div>

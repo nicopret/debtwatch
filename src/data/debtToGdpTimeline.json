@@ -1,0 +1,212 @@
+{
+  "title": "Debt vs GDP",
+  "subtitle": "UK debt burden over time",
+  "dateValue": "2025",
+  "timestamp": "2026-03-14T07:36:41.183Z",
+  "source": "Office for National Statistics",
+  "items": [
+    {
+      "yearLabel": "1997",
+      "numericValue": 37.2,
+      "formattedValue": "37.2%",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "1998",
+      "numericValue": 35.6,
+      "formattedValue": "35.6%",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "1999",
+      "numericValue": 34.2,
+      "formattedValue": "34.2%",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2000",
+      "numericValue": 29.5,
+      "formattedValue": "29.5%",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2001",
+      "numericValue": 28.7,
+      "formattedValue": "28.7%",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2002",
+      "numericValue": 30.1,
+      "formattedValue": "30.1%",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2003",
+      "numericValue": 31.2,
+      "formattedValue": "31.2%",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2004",
+      "numericValue": 34,
+      "formattedValue": "34.0%",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2005",
+      "numericValue": 34.9,
+      "formattedValue": "34.9%",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2006",
+      "numericValue": 35.7,
+      "formattedValue": "35.7%",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2007",
+      "numericValue": 36.1,
+      "formattedValue": "36.1%",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2008",
+      "numericValue": 47.6,
+      "formattedValue": "47.6%",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2009",
+      "numericValue": 60.6,
+      "formattedValue": "60.6%",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2010",
+      "numericValue": 70.1,
+      "formattedValue": "70.1%",
+      "governmentKey": "coalition_2010",
+      "governmentLabel": "Coalition (2010-2015)"
+    },
+    {
+      "yearLabel": "2011",
+      "numericValue": 73.8,
+      "formattedValue": "73.8%",
+      "governmentKey": "coalition_2010",
+      "governmentLabel": "Coalition (2010-2015)"
+    },
+    {
+      "yearLabel": "2012",
+      "numericValue": 77.3,
+      "formattedValue": "77.3%",
+      "governmentKey": "coalition_2010",
+      "governmentLabel": "Coalition (2010-2015)"
+    },
+    {
+      "yearLabel": "2013",
+      "numericValue": 79.2,
+      "formattedValue": "79.2%",
+      "governmentKey": "coalition_2010",
+      "governmentLabel": "Coalition (2010-2015)"
+    },
+    {
+      "yearLabel": "2014",
+      "numericValue": 81.5,
+      "formattedValue": "81.5%",
+      "governmentKey": "coalition_2010",
+      "governmentLabel": "Coalition (2010-2015)"
+    },
+    {
+      "yearLabel": "2015",
+      "numericValue": 81.7,
+      "formattedValue": "81.7%",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2016",
+      "numericValue": 82.5,
+      "formattedValue": "82.5%",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2017",
+      "numericValue": 81.7,
+      "formattedValue": "81.7%",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2018",
+      "numericValue": 81.3,
+      "formattedValue": "81.3%",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2019",
+      "numericValue": 84.2,
+      "formattedValue": "84.2%",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2020",
+      "numericValue": 97.6,
+      "formattedValue": "97.6%",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2021",
+      "numericValue": 96.2,
+      "formattedValue": "96.2%",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2022",
+      "numericValue": 93.1,
+      "formattedValue": "93.1%",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2023",
+      "numericValue": 95.6,
+      "formattedValue": "95.6%",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2024",
+      "numericValue": 94.6,
+      "formattedValue": "94.6%",
+      "governmentKey": "labour_2024",
+      "governmentLabel": "Labour (2024-)"
+    },
+    {
+      "yearLabel": "2025",
+      "numericValue": 95,
+      "formattedValue": "95.0%",
+      "governmentKey": "labour_2024",
+      "governmentLabel": "Labour (2024-)"
+    }
+  ]
+}

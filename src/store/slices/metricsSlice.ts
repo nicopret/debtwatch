@@ -5,7 +5,9 @@ import annualBorrowingTimelineData from "@/data/annualBorrowingTimeline.json";
 import annualLendingData from "@/data/annualLendingMetric.json";
 import budgetDeficitData from "@/data/budgetDeficitMetric.json";
 import borrowingByGovernmentSummaryData from "@/data/borrowingByGovernmentSummary.json";
+import debtToGdpTimelineData from "@/data/debtToGdpTimeline.json";
 import debtToGdpData from "@/data/debtToGdpMetrics.json";
+import g7DebtToGdpComparisonData from "@/data/g7DebtToGdpComparison.json";
 import governmentIncomeBreakdownData from "@/data/governmentIncomeBreakdown.json";
 import governmentSpendingBreakdownData from "@/data/governmentSpendingBreakdown.json";
 import monthlyInterestPayableData from "@/data/monthlyInterestPayableMetric.json";
@@ -79,6 +81,46 @@ export interface DebtToGdpState {
   formattedValue: string;
   timestamp: string;
   dateValue: string;
+}
+
+export interface DebtToGdpTimelineItemState {
+  yearLabel: string;
+  numericValue: number;
+  formattedValue: string;
+  governmentKey: string;
+  governmentLabel: string;
+}
+
+export interface DebtToGdpTimelineState {
+  title: string;
+  subtitle: string;
+  dateValue: string;
+  timestamp: string;
+  source: string;
+  items: DebtToGdpTimelineItemState[];
+}
+
+export interface G7DebtToGdpCountryState {
+  countryCode: string;
+  countryLabel: string;
+  numericValue: number;
+  formattedValue: string;
+  rank: number;
+}
+
+export interface G7DebtToGdpComparisonState {
+  timestamp: string;
+  dateValue: string;
+  source: string;
+  uk: G7DebtToGdpCountryState;
+  g7: G7DebtToGdpCountryState[];
+  ukRankInG7: number;
+  g7AverageNumericValue: number;
+  g7AverageFormattedValue: string;
+  differenceFromG7AverageNumericValue: number;
+  differenceFromG7AverageFormattedValue: string;
+  highestCountry: G7DebtToGdpCountryState;
+  lowestCountry: G7DebtToGdpCountryState;
 }
 
 export interface MonthlyInterestPayableState {
@@ -160,6 +202,8 @@ export interface MetricsState {
   budgetDeficitMetric: BudgetDeficitMetricState;
   borrowingByGovernmentSummary: BorrowingByGovernmentSummaryState;
   debtToGdpMetric: DebtToGdpState;
+  debtToGdpTimeline: DebtToGdpTimelineState;
+  g7DebtToGdpComparison: G7DebtToGdpComparisonState;
   governmentPeriods: GovernmentPeriod[];
   governmentIncomeBreakdown: BudgetBreakdownState;
   governmentSpendingBreakdown: BudgetBreakdownState;
@@ -178,6 +222,8 @@ const budgetDeficitMetric: BudgetDeficitMetricState = budgetDeficitData;
 const borrowingByGovernmentSummary: BorrowingByGovernmentSummaryState =
   borrowingByGovernmentSummaryData;
 const debtToGdpMetric: DebtToGdpState = debtToGdpData;
+const debtToGdpTimeline: DebtToGdpTimelineState = debtToGdpTimelineData;
+const g7DebtToGdpComparison: G7DebtToGdpComparisonState = g7DebtToGdpComparisonData;
 const governmentPeriods: GovernmentPeriod[] = GOVERNMENT_PERIODS;
 const governmentIncomeBreakdown: BudgetBreakdownState = governmentIncomeBreakdownData;
 const governmentSpendingBreakdown: BudgetBreakdownState = governmentSpendingBreakdownData;
@@ -195,6 +241,8 @@ const initialState: MetricsState = {
   budgetDeficitMetric,
   borrowingByGovernmentSummary,
   debtToGdpMetric,
+  debtToGdpTimeline,
+  g7DebtToGdpComparison,
   governmentPeriods,
   governmentIncomeBreakdown,
   governmentSpendingBreakdown,

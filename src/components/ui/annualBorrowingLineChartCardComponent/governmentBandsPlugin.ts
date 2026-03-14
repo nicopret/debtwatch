@@ -1,6 +1,12 @@
 import type { Chart, Plugin } from "chart.js";
 
-import type { GovernmentBand } from "./AnnualBorrowingLineChartCard";
+export interface ChartGovernmentBand {
+  governmentKey: string;
+  label: string;
+  color: string;
+  startIndex: number;
+  endIndex: number;
+}
 
 function getBandStartPixel(chart: Chart<"line">, startIndex: number): number {
   if (startIndex <= 0) {
@@ -47,7 +53,7 @@ function drawBandLabel(
 // Translate government periods into clipped chart-area bands so the tint sits
 // behind gridlines and the borrowing line, while remaining aligned to year labels.
 export function createGovernmentBandsPlugin(
-  governmentBands: GovernmentBand[],
+  governmentBands: ChartGovernmentBand[],
 ): Plugin<"line"> {
   return {
     id: "governmentBandPlugin",

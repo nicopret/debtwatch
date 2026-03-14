@@ -1,0 +1,82 @@
+{
+  "timestamp": "2026-03-14T07:36:54.049Z",
+  "dateValue": "2025",
+  "source": "IMF World Economic Outlook Database, October 2025",
+  "uk": {
+    "countryCode": "GBR",
+    "countryLabel": "United Kingdom",
+    "numericValue": 103.361,
+    "formattedValue": "103.4%",
+    "rank": 6
+  },
+  "g7": [
+    {
+      "countryCode": "JPN",
+      "countryLabel": "Japan",
+      "numericValue": 229.572,
+      "formattedValue": "229.6%",
+      "rank": 1
+    },
+    {
+      "countryCode": "ITA",
+      "countryLabel": "Italy",
+      "numericValue": 136.837,
+      "formattedValue": "136.8%",
+      "rank": 2
+    },
+    {
+      "countryCode": "USA",
+      "countryLabel": "United States",
+      "numericValue": 125.05,
+      "formattedValue": "125.0%",
+      "rank": 3
+    },
+    {
+      "countryCode": "FRA",
+      "countryLabel": "France",
+      "numericValue": 116.505,
+      "formattedValue": "116.5%",
+      "rank": 4
+    },
+    {
+      "countryCode": "CAN",
+      "countryLabel": "Canada",
+      "numericValue": 113.937,
+      "formattedValue": "113.9%",
+      "rank": 5
+    },
+    {
+      "countryCode": "GBR",
+      "countryLabel": "United Kingdom",
+      "numericValue": 103.361,
+      "formattedValue": "103.4%",
+      "rank": 6
+    },
+    {
+      "countryCode": "DEU",
+      "countryLabel": "Germany",
+      "numericValue": 64.421,
+      "formattedValue": "64.4%",
+      "rank": 7
+    }
+  ],
+  "ukRankInG7": 6,
+  "g7AverageNumericValue": 127.09757142857143,
+  "g7AverageFormattedValue": "127.1%",
+  "differenceFromG7AverageNumericValue": -23.736571428571423,
+  "differenceFromG7AverageFormattedValue": "-23.7pp",
+  "highestCountry": {
+    "countryCode": "JPN",
+    "countryLabel": "Japan",
+    "numericValue": 229.572,
+    "formattedValue": "229.6%",
+    "rank": 1
+  },
+  "lowestCountry": {
+    "countryCode": "DEU",
+    "countryLabel": "Germany",
+    "numericValue": 64.421,
+    "formattedValue": "64.4%",
+    "rank": 7
+  }
+}
