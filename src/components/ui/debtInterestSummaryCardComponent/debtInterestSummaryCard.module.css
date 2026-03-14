@@ -1,0 +1,102 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 1.25rem;
+  min-height: 420px;
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  gap: 1rem;
+}
+
+.header {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.subtitle,
+.heroLabel,
+.statLabel {
+  color: #6b7280;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  color: #17315f;
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.heroBlock {
+  border: 1px solid #f0d2d0;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fff6f5 0%, #ffffff 100%);
+  padding: 1rem;
+}
+
+.heroValue {
+  margin-top: 0.3rem;
+  color: #c75b5b;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.heroMeta,
+.statMeta,
+.totalMeta {
+  margin-top: 0.3rem;
+  color: #5c6778;
+  font-size: 0.9rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.stat {
+  padding: 0.85rem;
+  border: 1px solid #eef2f7;
+  border-radius: 16px;
+}
+
+.statValue,
+.totalValue {
+  margin-top: 0.3rem;
+  color: #17315f;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.totalsList {
+  display: grid;
+  gap: 0.7rem;
+  align-content: start;
+}
+
+.totalRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.totalLabel {
+  color: #17315f;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .card {
+    min-height: auto;
+  }
+}

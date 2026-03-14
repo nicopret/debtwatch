@@ -13,6 +13,7 @@
     "update:borrowing-timeline": "node --loader ts-node/esm scripts/updateAnnualBorrowingTimeline.ts",
     "update:budget-breakdown": "node --loader ts-node/esm scripts/updateBudgetBreakdown.ts",
     "update:debt-gdp": "node --loader ts-node/esm scripts/updateDebtToGdpSection.ts",
+    "update:debt-interest-timeline": "node --loader ts-node/esm scripts/updateDebtInterestTimeline.ts",
     "update:other-breakdowns": "node --loader ts-node/esm scripts/updateOtherBudgetBreakdowns.ts",
     "update:debt": "ts-node scripts/updateTotalDebt.ts",
     "update:interest": "ts-node scripts/updateAnnualInterestPayable.ts",

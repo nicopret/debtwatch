@@ -1,0 +1,212 @@
+{
+  "title": "Debt interest over time",
+  "subtitle": "Annual cost of servicing government debt",
+  "dateValue": "2025",
+  "timestamp": "2026-03-14T08:06:21.047Z",
+  "source": "Office for National Statistics",
+  "items": [
+    {
+      "yearLabel": "1997",
+      "numericValue": 22347000000,
+      "formattedValue": "£22.3B",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "1998",
+      "numericValue": 30109000000,
+      "formattedValue": "£30.1B",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "1999",
+      "numericValue": 26577000000,
+      "formattedValue": "£26.6B",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2000",
+      "numericValue": 26615000000,
+      "formattedValue": "£26.6B",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2001",
+      "numericValue": 24106000000,
+      "formattedValue": "£24.1B",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2002",
+      "numericValue": 21907000000,
+      "formattedValue": "£21.9B",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2003",
+      "numericValue": 22996000000,
+      "formattedValue": "£23.0B",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2004",
+      "numericValue": 24697000000,
+      "formattedValue": "£24.7B",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2005",
+      "numericValue": 27721000000,
+      "formattedValue": "£27.7B",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2006",
+      "numericValue": 29413000000,
+      "formattedValue": "£29.4B",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2007",
+      "numericValue": 33944000000,
+      "formattedValue": "£33.9B",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2008",
+      "numericValue": 34990000000,
+      "formattedValue": "£35.0B",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2009",
+      "numericValue": 29793000000,
+      "formattedValue": "£29.8B",
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)"
+    },
+    {
+      "yearLabel": "2010",
+      "numericValue": 46883000000,
+      "formattedValue": "£46.9B",
+      "governmentKey": "coalition_2010",
+      "governmentLabel": "Coalition (2010-2015)"
+    },
+    {
+      "yearLabel": "2011",
+      "numericValue": 53587000000,
+      "formattedValue": "£53.6B",
+      "governmentKey": "coalition_2010",
+      "governmentLabel": "Coalition (2010-2015)"
+    },
+    {
+      "yearLabel": "2012",
+      "numericValue": 49824000000,
+      "formattedValue": "£49.8B",
+      "governmentKey": "coalition_2010",
+      "governmentLabel": "Coalition (2010-2015)"
+    },
+    {
+      "yearLabel": "2013",
+      "numericValue": 50827000000,
+      "formattedValue": "£50.8B",
+      "governmentKey": "coalition_2010",
+      "governmentLabel": "Coalition (2010-2015)"
+    },
+    {
+      "yearLabel": "2014",
+      "numericValue": 49760000000,
+      "formattedValue": "£49.8B",
+      "governmentKey": "coalition_2010",
+      "governmentLabel": "Coalition (2010-2015)"
+    },
+    {
+      "yearLabel": "2015",
+      "numericValue": 44529000000,
+      "formattedValue": "£44.5B",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2016",
+      "numericValue": 48612000000,
+      "formattedValue": "£48.6B",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2017",
+      "numericValue": 55835000000,
+      "formattedValue": "£55.8B",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2018",
+      "numericValue": 53208000000,
+      "formattedValue": "£53.2B",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2019",
+      "numericValue": 48572000000,
+      "formattedValue": "£48.6B",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2020",
+      "numericValue": 41836000000,
+      "formattedValue": "£41.8B",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2021",
+      "numericValue": 62175000000,
+      "formattedValue": "£62.2B",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2022",
+      "numericValue": 107845000000,
+      "formattedValue": "£108B",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2023",
+      "numericValue": 86281000000,
+      "formattedValue": "£86.3B",
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)"
+    },
+    {
+      "yearLabel": "2024",
+      "numericValue": 81920000000,
+      "formattedValue": "£81.9B",
+      "governmentKey": "labour_2024",
+      "governmentLabel": "Labour (2024-)"
+    },
+    {
+      "yearLabel": "2025",
+      "numericValue": 98410000000,
+      "formattedValue": "£98.4B",
+      "governmentKey": "labour_2024",
+      "governmentLabel": "Labour (2024-)"
+    }
+  ]
+}
