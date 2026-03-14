@@ -10,6 +10,8 @@
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "update:budget-breakdown": "node --loader ts-node/esm scripts/updateBudgetBreakdown.ts",
+    "update:other-breakdowns": "node --loader ts-node/esm scripts/updateOtherBudgetBreakdowns.ts",
     "update:debt": "ts-node scripts/updateTotalDebt.ts",
     "update:interest": "ts-node scripts/updateAnnualInterestPayable.ts",
     "update:gdp": "ts-node scripts/updateGDP.ts",
@@ -23,7 +25,8 @@
     "react": "19.2.3",
     "react-chartjs-2": "^5.3.1",
     "react-dom": "19.2.3",
-    "react-redux": "^9.2.0"
+    "react-redux": "^9.2.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^10.2.17",

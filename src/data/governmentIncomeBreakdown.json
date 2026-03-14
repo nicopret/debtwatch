@@ -1,0 +1,49 @@
+{
+  "totalNumericValue": 1231.518013630808,
+  "totalFormattedValue": "£1.232T",
+  "dateValue": "2025-26",
+  "timestamp": "2026-03-13T23:44:27.886Z",
+  "source": "Office for Budget Responsibility",
+  "items": [
+    {
+      "label": "Income Tax",
+      "numericValue": 328.96120265559273,
+      "formattedValue": "£329bn",
+      "percentageValue": 26.71184660025694,
+      "formattedPercentage": "27%",
+      "color": "#f4bf1a"
+    },
+    {
+      "label": "National Insurance",
+      "numericValue": 205.36409234425267,
+      "formattedValue": "£205bn",
+      "percentageValue": 16.67568724705784,
+      "formattedPercentage": "17%",
+      "color": "#f6d768"
+    },
+    {
+      "label": "VAT",
+      "numericValue": 179.61063138962973,
+      "formattedValue": "£180bn",
+      "percentageValue": 14.5844907992937,
+      "formattedPercentage": "15%",
+      "color": "#f7e499"
+    },
+    {
+      "label": "Corporation Tax",
+      "numericValue": 103.27791017447765,
+      "formattedValue": "£103bn",
+      "percentageValue": 8.386228137255566,
+      "formattedPercentage": "8%",
+      "color": "#e7eef5"
+    },
+    {
+      "label": "Other",
+      "numericValue": 414.3041770668552,
+      "formattedValue": "£414bn",
+      "percentageValue": 33.64174721613596,
+      "formattedPercentage": "34%",
+      "color": "#9eb5c8"
+    }
+  ]
+}

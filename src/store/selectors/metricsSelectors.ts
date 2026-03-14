@@ -58,3 +58,18 @@ export const selectTenYearGiltYieldSource = (state: RootState) =>
 
 export const selectTenYearGiltYieldHelperText = (state: RootState) =>
   `${selectTenYearGiltYieldSource(state)} | ${selectTenYearGiltYieldDateValue(state)}`;
+
+export const selectGovernmentIncomeBreakdown = (state: RootState) =>
+  state.metrics.governmentIncomeBreakdown;
+
+export const selectGovernmentSpendingBreakdown = (state: RootState) =>
+  state.metrics.governmentSpendingBreakdown;
+
+export const selectBudgetDeficitMetric = (state: RootState) =>
+  state.metrics.budgetDeficitMetric;
+
+export const selectOtherIncomeBreakdown = (state: RootState) =>
+  state.metrics.otherIncomeBreakdown;
+
+export const selectOtherSpendingBreakdown = (state: RootState) =>
+  state.metrics.otherSpendingBreakdown;

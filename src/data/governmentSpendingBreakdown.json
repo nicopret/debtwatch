@@ -1,0 +1,65 @@
+{
+  "totalNumericValue": 1369.7880458714735,
+  "totalFormattedValue": "£1.370T",
+  "dateValue": "2025-26",
+  "timestamp": "2026-03-13T23:44:27.886Z",
+  "source": "Office for Budget Responsibility",
+  "items": [
+    {
+      "label": "Welfare & pensions",
+      "numericValue": 333,
+      "formattedValue": "£333bn",
+      "percentageValue": 24.310330419633786,
+      "formattedPercentage": "24%",
+      "color": "#203b73"
+    },
+    {
+      "label": "Health",
+      "numericValue": 202,
+      "formattedValue": "£202bn",
+      "percentageValue": 14.746807041339412,
+      "formattedPercentage": "15%",
+      "color": "#3f5f96"
+    },
+    {
+      "label": "Education",
+      "numericValue": 95,
+      "formattedValue": "£95bn",
+      "percentageValue": 6.935379549144774,
+      "formattedPercentage": "7%",
+      "color": "#6e8bb6"
+    },
+    {
+      "label": "Defence",
+      "numericValue": 39,
+      "formattedValue": "£39bn",
+      "percentageValue": 2.847155814912065,
+      "formattedPercentage": "3%",
+      "color": "#a9b9d6"
+    },
+    {
+      "label": "Debt interest",
+      "numericValue": 114,
+      "formattedValue": "£114bn",
+      "percentageValue": 8.322455458973728,
+      "formattedPercentage": "8%",
+      "color": "#c75b5b"
+    },
+    {
+      "label": "Infrastructure",
+      "numericValue": 159,
+      "formattedValue": "£159bn",
+      "percentageValue": 11.607635245410727,
+      "formattedPercentage": "12%",
+      "color": "#f0b768"
+    },
+    {
+      "label": "Other services",
+      "numericValue": 427.7880458714735,
+      "formattedValue": "£428bn",
+      "percentageValue": 31.23023647058551,
+      "formattedPercentage": "31%",
+      "color": "#d8e0ea"
+    }
+  ]
+}
