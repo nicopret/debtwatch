@@ -1,3 +1,4 @@
+import BudgetComparisonSectionContainer from "@/containers/budgetContainers/BudgetComparisonSectionContainer";
 import HeroIntroCardContainer from "@/containers/heroContainers/HeroIntroCardContainer";
 import TenYearGiltYieldCircleContainer from "@/containers/heroContainers/TenYearGiltYieldCircleContainer";
 import FirstMetricRowContainer from "@/containers/rowContainers/FirstMetricRowContainer";
@@ -21,6 +22,7 @@ export default function Home() {
         <FirstMetricRowContainer />
         <SecondMetricRowContainer />
       </div>
+      <BudgetComparisonSectionContainer />
     </section>
   );
 }

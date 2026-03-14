@@ -1,0 +1,59 @@
+{
+  "title": "What's inside \"Other\" income",
+  "subtitle": "Residual receipts, forecast 2025-26",
+  "dateValue": "2025-26",
+  "timestamp": "2026-03-14T06:23:55.706Z",
+  "source": "Office for Budget Responsibility",
+  "totalNumericValue": 414.3041770668552,
+  "totalFormattedValue": "£414bn",
+  "items": [
+    {
+      "label": "Fuel duty",
+      "numericValue": 23.97904459527011,
+      "formattedValue": "£24bn",
+      "percentageValue": 5.787787312460689,
+      "formattedPercentage": "6%",
+      "color": "#f1c453"
+    },
+    {
+      "label": "Property taxes",
+      "numericValue": 20.867653884799857,
+      "formattedValue": "£21bn",
+      "percentageValue": 5.036795436757689,
+      "formattedPercentage": "5%",
+      "color": "#f5d98d"
+    },
+    {
+      "label": "Excise duties",
+      "numericValue": 42.98516237251992,
+      "formattedValue": "£43bn",
+      "percentageValue": 10.375266471325855,
+      "formattedPercentage": "10%",
+      "color": "#d2ddec"
+    },
+    {
+      "label": "Capital taxes",
+      "numericValue": 28.924574434140887,
+      "formattedValue": "£29bn",
+      "percentageValue": 6.9814826968238375,
+      "formattedPercentage": "7%",
+      "color": "#9fb4cb"
+    },
+    {
+      "label": "Council tax / business rates",
+      "numericValue": 118.8784590397101,
+      "formattedValue": "£119bn",
+      "percentageValue": 28.693521721487976,
+      "formattedPercentage": "29%",
+      "color": "#6f8eaf"
+    },
+    {
+      "label": "Other receipts",
+      "numericValue": 178.6692827404143,
+      "formattedValue": "£179bn",
+      "percentageValue": 43.125146361143955,
+      "formattedPercentage": "43%",
+      "color": "#415f84"
+    }
+  ]
+}

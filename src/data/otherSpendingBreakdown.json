@@ -1,0 +1,67 @@
+{
+  "title": "What's inside \"Other\" spending",
+  "subtitle": "Residual services, forecast 2025-26",
+  "dateValue": "2025-26",
+  "timestamp": "2026-03-14T06:23:55.706Z",
+  "source": "Office for Budget Responsibility (derived residual split)",
+  "totalNumericValue": 428,
+  "totalFormattedValue": "£428bn",
+  "items": [
+    {
+      "label": "Public order & safety",
+      "numericValue": 77.03999999999999,
+      "formattedValue": "£77bn",
+      "percentageValue": 18,
+      "formattedPercentage": "18%",
+      "color": "#203b73"
+    },
+    {
+      "label": "Local government",
+      "numericValue": 111.28,
+      "formattedValue": "£111bn",
+      "percentageValue": 26,
+      "formattedPercentage": "26%",
+      "color": "#3b5e90"
+    },
+    {
+      "label": "Overseas aid",
+      "numericValue": 17.12,
+      "formattedValue": "£17bn",
+      "percentageValue": 4,
+      "formattedPercentage": "4%",
+      "color": "#5d79a8"
+    },
+    {
+      "label": "Environment",
+      "numericValue": 29.960000000000004,
+      "formattedValue": "£30bn",
+      "percentageValue": 7.000000000000001,
+      "formattedPercentage": "7%",
+      "color": "#7aa27b"
+    },
+    {
+      "label": "Administration",
+      "numericValue": 64.2,
+      "formattedValue": "£64bn",
+      "percentageValue": 15,
+      "formattedPercentage": "15%",
+      "color": "#8fa8c9"
+    },
+    {
+      "label": "Culture / communities",
+      "numericValue": 42.800000000000004,
+      "formattedValue": "£43bn",
+      "percentageValue": 10,
+      "formattedPercentage": "10%",
+      "color": "#d2a765"
+    },
+    {
+      "label": "Other",
+      "numericValue": 85.59999999999997,
+      "formattedValue": "£86bn",
+      "percentageValue": 19.999999999999993,
+      "formattedPercentage": "20%",
+      "color": "#d8e0ea"
+    }
+  ]
+}
