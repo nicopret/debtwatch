@@ -73,3 +73,56 @@ export const selectOtherIncomeBreakdown = (state: RootState) =>
 
 export const selectOtherSpendingBreakdown = (state: RootState) =>
   state.metrics.otherSpendingBreakdown;
+
+export const selectAnnualBorrowingTimeline = (state: RootState) =>
+  state.metrics.annualBorrowingTimeline;
+
+export const selectAnnualBorrowingTimelineItems = (state: RootState) =>
+  state.metrics.annualBorrowingTimeline.items;
+
+export const selectBorrowingByGovernmentSummary = (state: RootState) =>
+  state.metrics.borrowingByGovernmentSummary;
+
+export const selectBorrowingGovernmentSummaries = (state: RootState) =>
+  state.metrics.borrowingByGovernmentSummary.governments;
+
+export const selectBorrowingOverallPeak = (state: RootState) =>
+  state.metrics.borrowingByGovernmentSummary.overallPeak;
+
+export const selectGovernmentPeriods = (state: RootState) =>
+  state.metrics.governmentPeriods;
+
+export const selectAnnualBorrowingTimelinePoints = (state: RootState) =>
+  selectAnnualBorrowingTimelineItems(state).map((item) => ({
+    yearLabel: item.yearLabel,
+    numericValue: item.numericValue,
+    formattedValue: item.formattedValue,
+    governmentLabel: item.governmentLabel,
+  }));
+
+export const selectBorrowingGovernmentBands = (state: RootState) => {
+  const points = selectAnnualBorrowingTimelineItems(state);
+
+  return selectGovernmentPeriods(state)
+    .map((period) => {
+      const startIndex = points.findIndex(
+        (point) => point.governmentKey === period.governmentKey,
+      );
+      const reverseIndex = [...points]
+        .reverse()
+        .findIndex((point) => point.governmentKey === period.governmentKey);
+
+      if (startIndex === -1 || reverseIndex === -1) {
+        return null;
+      }
+
+      return {
+        governmentKey: period.governmentKey,
+        label: period.shortLabel ?? period.governmentLabel,
+        color: period.bandColor,
+        startIndex,
+        endIndex: points.length - 1 - reverseIndex,
+      };
+    })
+    .filter((band): band is NonNullable<typeof band> => band !== null);
+};

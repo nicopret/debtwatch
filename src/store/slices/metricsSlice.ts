@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import annualInterestPaymentData from "@/data/annualInterestPayableMetric.json";
+import annualBorrowingTimelineData from "@/data/annualBorrowingTimeline.json";
 import annualLendingData from "@/data/annualLendingMetric.json";
 import budgetDeficitData from "@/data/budgetDeficitMetric.json";
+import borrowingByGovernmentSummaryData from "@/data/borrowingByGovernmentSummary.json";
 import debtToGdpData from "@/data/debtToGdpMetrics.json";
 import governmentIncomeBreakdownData from "@/data/governmentIncomeBreakdown.json";
 import governmentSpendingBreakdownData from "@/data/governmentSpendingBreakdown.json";
@@ -12,6 +14,7 @@ import otherSpendingBreakdownData from "@/data/otherSpendingBreakdown.json";
 import tenYearGiltYieldData from "@/data/tenYearGiltYieldMetric.json";
 import taxpayerDebtData from "@/data/taxpayerDebt.json";
 import totalDebtMetricData from "@/data/totalDebtMetrics.json";
+import { GOVERNMENT_PERIODS, type GovernmentPeriod } from "@/lib/governmentPeriods";
 
 export interface AnnualInterestPaymentState {
   numericValue: number;
@@ -27,6 +30,48 @@ export interface AnnualLendingtState {
   currencySymbol: string;
   timestamp: string;
   dateValue: string;
+}
+
+export interface AnnualBorrowingTimelineItemState {
+  yearLabel: string;
+  numericValue: number;
+  formattedValue: string;
+  governmentKey: string;
+  governmentLabel: string;
+}
+
+export interface AnnualBorrowingTimelineState {
+  title: string;
+  subtitle: string;
+  dateValue: string;
+  timestamp: string;
+  source: string;
+  items: AnnualBorrowingTimelineItemState[];
+}
+
+export interface BorrowingGovernmentSummaryEntryState {
+  governmentKey: string;
+  governmentLabel: string;
+  startYear: number;
+  endYear: number | null;
+  totalBorrowingNumericValue: number;
+  totalBorrowingFormattedValue: string;
+  peakYear: string;
+  peakYearBorrowingNumericValue: number;
+  peakYearBorrowingFormattedValue: string;
+}
+
+export interface BorrowingByGovernmentSummaryState {
+  timestamp: string;
+  source: string;
+  governments: BorrowingGovernmentSummaryEntryState[];
+  overallPeak: {
+    year: string;
+    governmentKey: string;
+    governmentLabel: string;
+    numericValue: number;
+    formattedValue: string;
+  };
 }
 
 export interface DebtToGdpState {
@@ -110,9 +155,12 @@ export interface BudgetDeficitMetricState {
 
 export interface MetricsState {
   annualInterestPaymentMetric: AnnualInterestPaymentState;
+  annualBorrowingTimeline: AnnualBorrowingTimelineState;
   annualLendingMetric: AnnualLendingtState;
   budgetDeficitMetric: BudgetDeficitMetricState;
+  borrowingByGovernmentSummary: BorrowingByGovernmentSummaryState;
   debtToGdpMetric: DebtToGdpState;
+  governmentPeriods: GovernmentPeriod[];
   governmentIncomeBreakdown: BudgetBreakdownState;
   governmentSpendingBreakdown: BudgetBreakdownState;
   monthlyInterestPayableMetric: MonthlyInterestPayableState;
@@ -124,9 +172,13 @@ export interface MetricsState {
 }
 
 const annualInterestPaymentMetric: AnnualInterestPaymentState = annualInterestPaymentData;
+const annualBorrowingTimeline: AnnualBorrowingTimelineState = annualBorrowingTimelineData;
 const annualLendingMetric: AnnualLendingtState = annualLendingData;
 const budgetDeficitMetric: BudgetDeficitMetricState = budgetDeficitData;
+const borrowingByGovernmentSummary: BorrowingByGovernmentSummaryState =
+  borrowingByGovernmentSummaryData;
 const debtToGdpMetric: DebtToGdpState = debtToGdpData;
+const governmentPeriods: GovernmentPeriod[] = GOVERNMENT_PERIODS;
 const governmentIncomeBreakdown: BudgetBreakdownState = governmentIncomeBreakdownData;
 const governmentSpendingBreakdown: BudgetBreakdownState = governmentSpendingBreakdownData;
 const monthlyInterestPayableMetric: MonthlyInterestPayableState = monthlyInterestPayableData;
@@ -138,9 +190,12 @@ const totalDebtMetric: TotalDebtMetricState = totalDebtMetricData;
 
 const initialState: MetricsState = {
   annualInterestPaymentMetric,
+  annualBorrowingTimeline,
   annualLendingMetric,
   budgetDeficitMetric,
+  borrowingByGovernmentSummary,
   debtToGdpMetric,
+  governmentPeriods,
   governmentIncomeBreakdown,
   governmentSpendingBreakdown,
   monthlyInterestPayableMetric,

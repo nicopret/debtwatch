@@ -10,6 +10,7 @@
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "update:borrowing-timeline": "node --loader ts-node/esm scripts/updateAnnualBorrowingTimeline.ts",
     "update:budget-breakdown": "node --loader ts-node/esm scripts/updateBudgetBreakdown.ts",
     "update:other-breakdowns": "node --loader ts-node/esm scripts/updateOtherBudgetBreakdowns.ts",
     "update:debt": "ts-node scripts/updateTotalDebt.ts",

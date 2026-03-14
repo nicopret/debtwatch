@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-03-14T07:04:24.639Z",
+  "source": "Office for National Statistics",
+  "governments": [
+    {
+      "governmentKey": "labour_1997",
+      "governmentLabel": "Labour (1997-2010)",
+      "startYear": 1997,
+      "endYear": 2009,
+      "totalBorrowingNumericValue": 500109000000,
+      "totalBorrowingFormattedValue": "£500B",
+      "peakYear": "2009",
+      "peakYearBorrowingNumericValue": 161020000000,
+      "peakYearBorrowingFormattedValue": "£161B"
+    },
+    {
+      "governmentKey": "coalition_2010",
+      "governmentLabel": "Coalition (2010-2015)",
+      "startYear": 2010,
+      "endYear": 2014,
+      "totalBorrowingNumericValue": 608906000000,
+      "totalBorrowingFormattedValue": "£609B",
+      "peakYear": "2010",
+      "peakYearBorrowingNumericValue": 148622000000,
+      "peakYearBorrowingFormattedValue": "£149B"
+    },
+    {
+      "governmentKey": "conservative_2015",
+      "governmentLabel": "Conservative (2015-2024)",
+      "startYear": 2015,
+      "endYear": 2023,
+      "totalBorrowingNumericValue": 991099000000,
+      "totalBorrowingFormattedValue": "£991B",
+      "peakYear": "2020",
+      "peakYearBorrowingNumericValue": 269956000000,
+      "peakYearBorrowingFormattedValue": "£270B"
+    },
+    {
+      "governmentKey": "labour_2024",
+      "governmentLabel": "Labour (2024-)",
+      "startYear": 2024,
+      "endYear": null,
+      "totalBorrowingNumericValue": 306479000000,
+      "totalBorrowingFormattedValue": "£306B",
+      "peakYear": "2025",
+      "peakYearBorrowingNumericValue": 154053000000,
+      "peakYearBorrowingFormattedValue": "£154B"
+    }
+  ],
+  "overallPeak": {
+    "year": "2020",
+    "governmentKey": "conservative_2015",
+    "governmentLabel": "Conservative (2015-2024)",
+    "numericValue": 269956000000,
+    "formattedValue": "£270B"
+  }
+}
