@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
 import styles from "./embedPageTemplate.module.css";
 
 export interface EmbedPageTemplateProps {
@@ -31,11 +30,15 @@ export default function EmbedPageTemplate({
 
       <footer className={styles.footer}>
         <p className={styles.source}>{sourceNote}</p>
-        <Link className={styles.link} href={sourceHref}>
-          Source: DebtWatch.uk
-        </Link>
+        <a
+          className={styles.link}
+          href={sourceHref}
+          rel="noreferrer"
+          target="_blank"
+        >
+          debtwatch.uk
+        </a>
       </footer>
     </article>
   );
 }
-

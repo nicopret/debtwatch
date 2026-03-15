@@ -49,11 +49,24 @@ a {
 }
 
 .embed-route-main {
-  min-height: 100vh;
-  padding: 0.65rem;
+  min-height: auto;
+  padding: 0.5rem;
   background: #f5f7fb;
 }
 
+.embed-route-main .chart-card {
+  min-height: auto;
+  padding: 0.9rem;
+  gap: 0.7rem;
+}
+
+.embed-route-main .chart-card-title {
+  font-size: 1.2rem;
+}
+
+.embed-route-main .chart-card-plot {
+  min-height: 220px;
+}
 .site-container {
   width: min(1100px, 100% - 2rem);
   margin-inline: auto;

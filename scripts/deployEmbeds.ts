@@ -4,13 +4,9 @@ import { join, relative } from "node:path";
 
 import {
   HeadBucketCommand,
-  ListObjectsV2Command,
   PutObjectCommand,
   S3Client,
 } from "@aws-sdk/client-s3";
-
-import { isDatedVersion } from "../src/lib/versioning.js";
-
 const SOURCE_DIRECTORY = join(process.cwd(), "static", "embeds");
 const BUCKET_NAME = "debt-watch-website";
 const BUCKET_PREFIX = "embeds";
@@ -83,38 +79,6 @@ async function ensureBucketExists(client: S3Client) {
     throw new Error(`Unable to access S3 bucket '${BUCKET_NAME}'. ${message}`);
   }
 }
-
-async function ensurePrefixIsEmpty(client: S3Client, prefix: string) {
-  const response = await client.send(
-    new ListObjectsV2Command({
-      Bucket: BUCKET_NAME,
-      Prefix: prefix,
-      MaxKeys: 1,
-    }),
-  );
-
-  if ((response.KeyCount ?? 0) > 0) {
-    throw new Error(
-      `Embed deployment path 's3://${BUCKET_NAME}/${prefix}' already exists. Refusing to overwrite an immutable dated embed snapshot.`,
-    );
-  }
-}
-
-function getImmutablePrefixes(filePaths: string[]): string[] {
-  const prefixes = new Set<string>();
-
-  for (const filePath of filePaths) {
-    const relativePath = relative(SOURCE_DIRECTORY, filePath).replace(/\\/g, "/");
-    const [contextSlug, version] = relativePath.split("/");
-
-    if (contextSlug && version && isDatedVersion(version)) {
-      prefixes.add(`${BUCKET_PREFIX}/${contextSlug}/${version}/`);
-    }
-  }
-
-  return [...prefixes].sort();
-}
-
 async function uploadFile(client: S3Client, filePath: string) {
   const relativePath = relative(SOURCE_DIRECTORY, filePath).replace(/\\/g, "/");
   const key = `${BUCKET_PREFIX}/${relativePath}`;
@@ -141,18 +105,13 @@ async function main() {
     }
 
     const client = new S3Client({});
-    const immutablePrefixes = getImmutablePrefixes(files);
 
     await ensureBucketExists(client);
-
-    for (const prefix of immutablePrefixes) {
-      await ensurePrefixIsEmpty(client, prefix);
-    }
 
     console.log(`Uploading ${files.length} embed files from ${SOURCE_DIRECTORY}`);
     console.log(`Bucket: ${BUCKET_NAME}`);
     console.log(`Target prefix: s3://${BUCKET_NAME}/${BUCKET_PREFIX}/`);
-    console.log(`Immutable dated prefixes: ${immutablePrefixes.join(", ")}`);
+    console.log("Existing objects under matching keys will be overwritten.");
 
     for (const file of files) {
       const key = await uploadFile(client, file);
