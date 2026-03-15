@@ -45,13 +45,15 @@
 }
 
 .description,
-.optionText {
+.optionText,
+.sectionText {
   color: #475467;
   line-height: 1.55;
 }
 
 .closeButton,
-.copyButton {
+.copyButton,
+.secondaryButton {
   border: 1px solid #d7dfeb;
   border-radius: 999px;
   background: #ffffff;
@@ -59,6 +61,7 @@
   padding: 0.6rem 0.95rem;
   font-weight: 600;
   cursor: pointer;
+  text-align: center;
 }
 
 .options {
@@ -90,6 +93,23 @@
   font-weight: 700;
 }
 
+.section {
+  display: grid;
+  gap: 0.85rem;
+  border-top: 1px solid #e7edf5;
+  padding-top: 1rem;
+}
+
+.sectionHeader {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.sectionTitle {
+  color: #17315f;
+  font-size: 1.05rem;
+}
+
 .codeSection {
   display: grid;
   gap: 1rem;
@@ -116,9 +136,44 @@
   justify-content: flex-end;
 }
 
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.assetFormatBlock {
+  display: grid;
+  gap: 0.75rem;
+  border: 1px solid #e7edf5;
+  border-radius: 18px;
+  background: #fbfdff;
+  padding: 0.95rem;
+}
+
+.assetFormatHeader {
+  display: grid;
+  gap: 0.12rem;
+}
+
+.assetFormatTitle {
+  color: #17315f;
+  font-size: 1rem;
+}
+
+.assetFormatHint {
+  color: #667085;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
 @media (max-width: 640px) {
   .options {
     grid-template-columns: 1fr;
   }
-}
 
+  .actionRow,
+  .footer {
+    justify-content: flex-start;
+  }
+}

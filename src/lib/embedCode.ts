@@ -28,7 +28,7 @@ export function buildEmbedCode({
     `  src="${embedUrl}"`,
     `  width="${width}"`,
     `  height="${height}"`,
-    "  style={{ border: 0 }}",
+    '  style={{ border: 0 }}',
     '  loading="lazy"',
     `  title="${title}"`,
     "/>",

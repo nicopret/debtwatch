@@ -1,0 +1,58 @@
+import type { ReactNode } from "react";
+import styles from "./shareCardFrame.module.css";
+
+export interface ShareCardFrameProps {
+  badgeLabel: string;
+  title: string;
+  sourceNote: string;
+  sourceHref: string;
+  versionLabel: string;
+  visual: ReactNode;
+  className?: string;
+  pinnedFooter?: boolean;
+}
+
+export default function ShareCardFrame({
+  badgeLabel,
+  title,
+  sourceNote,
+  sourceHref,
+  versionLabel,
+  visual,
+  className,
+  pinnedFooter = false,
+}: ShareCardFrameProps) {
+  return (
+    <article
+      className={[
+        styles.card,
+        pinnedFooter ? styles.cardPinnedFooter : "",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      <header className={styles.header}>
+        <div>
+          <p className={styles.badge}>{badgeLabel}</p>
+          <h1 className={styles.title}>{title}</h1>
+        </div>
+        <span className={styles.version}>{versionLabel}</span>
+      </header>
+
+      <div className={styles.visual}>{visual}</div>
+
+      <footer className={styles.footer}>
+        <p className={styles.source}>{sourceNote}</p>
+        <a
+          className={styles.link}
+          href={sourceHref}
+          rel="noreferrer"
+          target="_blank"
+        >
+          debtwatch.uk
+        </a>
+      </footer>
+    </article>
+  );
+}

@@ -1,0 +1,4 @@
+.card {
+  min-height: auto;
+  grid-template-rows: auto auto auto;
+}

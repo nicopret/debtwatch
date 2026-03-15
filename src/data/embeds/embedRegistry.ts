@@ -1,7 +1,8 @@
 export type EmbedRendererKey =
   | "monthlyDebtInterestMetric"
   | "debtInterestTimeline"
-  | "debtToGdpTimeline";
+  | "debtToGdpTimeline"
+  | "annualBorrowingTimeline";
 
 export interface EmbedDefinition {
   contextSlug: string;
@@ -13,6 +14,14 @@ export interface EmbedDefinition {
 }
 
 export const embedRegistry: EmbedDefinition[] = [
+  {
+    contextSlug: "borrowing-over-time",
+    embedSlug: "borrowing-over-time",
+    title: "Borrowing over time",
+    sourceNote: "Annual UK borrowing history from ONS",
+    sourcePath: "/",
+    rendererKey: "annualBorrowingTimeline",
+  },
   {
     contextSlug: "debt-interest-explained",
     embedSlug: "monthly-debt-interest",
