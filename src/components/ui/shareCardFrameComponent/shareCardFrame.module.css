@@ -1,0 +1,79 @@
+.card {
+  width: 100%;
+  min-height: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 0.85rem;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 0.75rem;
+}
+
+.cardPinnedFooter {
+  position: relative;
+  padding-bottom: 3.4rem;
+}
+
+.cardPinnedFooter .footer {
+  position: absolute;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: 0.85rem;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.badge,
+.version {
+  color: #6b7280;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-top: 0.25rem;
+  color: #17315f;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  line-height: 1.15;
+}
+
+.version {
+  padding: 0.28rem 0.45rem;
+  border: 1px solid #dbe3ef;
+  border-radius: 999px;
+  background: #f8fafc;
+}
+
+.visual {
+  min-width: 0;
+  min-height: 0;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: end;
+}
+
+.source {
+  color: #5c6778;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.link {
+  color: #1d4f91;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: right;
+  justify-self: end;
+}

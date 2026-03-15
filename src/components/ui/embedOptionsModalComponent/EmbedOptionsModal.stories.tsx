@@ -11,6 +11,7 @@ const meta = {
     contextSlug: "debt-interest-explained",
     embedSlug: "debt-interest-over-time",
     snapshotDate: "20260314",
+    assetSlug: "debt-interest-over-time",
   },
 } satisfies Meta<typeof EmbedOptionsModal>;
 

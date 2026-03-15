@@ -9,6 +9,7 @@ export interface ChartEmbedActionProps {
   contextSlug: string;
   embedSlug: string;
   snapshotDate: string;
+  assetSlug?: string;
 }
 
 export default function ChartEmbedAction({
@@ -16,6 +17,7 @@ export default function ChartEmbedAction({
   contextSlug,
   embedSlug,
   snapshotDate,
+  assetSlug,
 }: ChartEmbedActionProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [modalKey, setModalKey] = useState(0);
@@ -36,6 +38,7 @@ export default function ChartEmbedAction({
         contextSlug={contextSlug}
         embedSlug={embedSlug}
         snapshotDate={snapshotDate}
+        assetSlug={assetSlug ?? embedSlug}
       />
     </>
   );

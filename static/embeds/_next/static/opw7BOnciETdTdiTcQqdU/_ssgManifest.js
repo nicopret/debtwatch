@@ -1,1 +1,0 @@
-self.__SSG_MANIFEST=new Set(["\u002F[contextSlug]\u002F[version]\u002F[embedSlug]","\u002Farticles\u002F[slug]","\u002Fembed\u002F[contextSlug]\u002F[version]\u002F[embedSlug]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()

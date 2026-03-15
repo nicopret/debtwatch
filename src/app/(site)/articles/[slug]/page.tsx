@@ -9,6 +9,8 @@ interface ArticlePageProps {
   }>;
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return getAllArticles().map((article) => ({
     slug: article.slug,
@@ -47,4 +49,3 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     </section>
   );
 }
-

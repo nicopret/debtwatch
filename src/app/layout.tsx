@@ -6,9 +6,9 @@ export const metadata: Metadata = {
   title: "DebtWatch",
   description: "UK debt, borrowing and public finance explained.",
   icons: {
-    icon: "/assets/debtwatch-logo.png",
-    shortcut: "/assets/debtwatch-logo.png",
-    apple: "/assets/debtwatch-logo.png",
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
 };
 

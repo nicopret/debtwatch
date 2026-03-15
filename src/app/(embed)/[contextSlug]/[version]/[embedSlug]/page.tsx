@@ -12,6 +12,8 @@ interface EmbedPageProps {
   }>;
 }
 
+export const dynamicParams = false;
+
 function isSupportedVersion(version: string): boolean {
   return getSupportedEmbedVersions().includes(version);
 }
@@ -56,4 +58,3 @@ export default async function EmbedPage({ params }: EmbedPageProps) {
 
   return <EmbedPageContainer embed={embed} version={version} />;
 }
-
