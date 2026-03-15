@@ -1,6 +1,7 @@
 "use client";
 
 import AnnualBorrowingLineChartCard from "@/components/ui/annualBorrowingLineChartCardComponent/AnnualBorrowingLineChartCard";
+import { getUtcDateFolderName } from "@/lib/versioning";
 import { useAppSelector } from "@/store/hooks";
 import {
   selectAnnualBorrowingTimelinePoints,
@@ -10,6 +11,7 @@ import {
 export default function AnnualBorrowingLineChartContainer() {
   const points = useAppSelector(selectAnnualBorrowingTimelinePoints);
   const governmentBands = useAppSelector(selectBorrowingGovernmentBands);
+  const snapshotDate = getUtcDateFolderName(new Date());
 
   return (
     <AnnualBorrowingLineChartCard
@@ -17,6 +19,12 @@ export default function AnnualBorrowingLineChartContainer() {
       subtitle="Annual UK borrowing with government periods"
       points={points}
       governmentBands={governmentBands}
+      embedAction={{
+        chartTitle: "Borrowing over time",
+        contextSlug: "borrowing-over-time",
+        embedSlug: "borrowing-over-time",
+        snapshotDate,
+      }}
     />
   );
 }

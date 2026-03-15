@@ -1,0 +1,29 @@
+.button {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d7dfeb;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #17315f;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.button:hover {
+  background: #f8fafc;
+  border-color: #c9d6e8;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.18);
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+}
+
