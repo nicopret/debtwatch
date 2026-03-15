@@ -12,6 +12,9 @@ import {
   type ChartOptions,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import ChartEmbedAction, {
+  type ChartEmbedActionProps,
+} from "@/components/ui/chartEmbedActionComponent/ChartEmbedAction";
 import {
   createGovernmentBandsPlugin,
   type ChartGovernmentBand,
@@ -34,6 +37,7 @@ export interface DebtInterestLineChartCardProps {
   subtitle: string;
   points: DebtInterestPoint[];
   governmentBands: GovernmentBand[];
+  embedAction?: ChartEmbedActionProps;
   className?: string;
 }
 
@@ -48,6 +52,7 @@ export default function DebtInterestLineChartCard({
   subtitle,
   points,
   governmentBands,
+  embedAction,
   className,
 }: DebtInterestLineChartCardProps) {
   const chartData: ChartData<"line"> = {
@@ -117,16 +122,19 @@ export default function DebtInterestLineChartCard({
     },
   };
 
-  const cardClassName = [styles.card, className].filter(Boolean).join(" ");
+  const cardClassName = [styles.card, "chart-card", className].filter(Boolean).join(" ");
 
   return (
     <article className={cardClassName}>
       <header className={styles.header}>
-        <p className={styles.subtitle}>{subtitle}</p>
-        <h3 className={styles.title}>{title}</h3>
+        <div>
+          <p className={styles.subtitle}>{subtitle}</p>
+          <h3 className={`${styles.title} chart-card-title`}>{title}</h3>
+        </div>
+        {embedAction ? <ChartEmbedAction {...embedAction} /> : null}
       </header>
 
-      <div className={styles.chartWrap}>
+      <div className={`${styles.chartWrap} chart-card-plot`}>
         <Line
           data={chartData}
           options={chartOptions}

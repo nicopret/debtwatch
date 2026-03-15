@@ -10,6 +10,9 @@ const nextBuildDir = path.join(repoRoot, ".next");
 const exportDir = path.join(repoRoot, "out");
 const embedExportDir = path.join(exportDir, "embed");
 const embedOutputDir = path.join(repoRoot, "static", "embeds");
+const sharedAssetsDir = path.join(exportDir, "_next");
+const publicAssetsDir = path.join(exportDir, "assets");
+const faviconPath = path.join(exportDir, "favicon.ico");
 const nodeCommand = process.execPath;
 const nextScript = path.join(repoRoot, "node_modules", "next", "dist", "bin", "next");
 
@@ -77,7 +80,7 @@ async function collectVersions(directoryPath) {
   const contextEntries = await readdir(directoryPath, { withFileTypes: true });
 
   for (const contextEntry of contextEntries) {
-    if (!contextEntry.isDirectory()) {
+    if (!contextEntry.isDirectory() || contextEntry.name.startsWith("_")) {
       continue;
     }
 
@@ -107,6 +110,18 @@ async function main() {
   }
 
   await copyDirectoryContents(embedExportDir, embedOutputDir);
+
+  if (await pathExists(sharedAssetsDir)) {
+    await cp(sharedAssetsDir, path.join(embedOutputDir, "_next"), { recursive: true });
+  }
+
+  if (await pathExists(publicAssetsDir)) {
+    await cp(publicAssetsDir, path.join(embedOutputDir, "assets"), { recursive: true });
+  }
+
+  if (await pathExists(faviconPath)) {
+    await cp(faviconPath, path.join(embedOutputDir, "favicon.ico"));
+  }
 
   const htmlFiles = await collectHtmlFiles(embedOutputDir);
   const versions = await collectVersions(embedOutputDir);
