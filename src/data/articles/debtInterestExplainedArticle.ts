@@ -4,11 +4,15 @@ export const debtInterestExplainedArticle: ArticleData = {
   slug: "debt-interest-explained",
   header: "Debt interest explained",
   tagline: "Why servicing the national debt suddenly costs much more",
+  date: "15 Mar 2026",
+  author: "DebtWatch Research Desk",
+  authorBioUrl: "https://debtwatch.uk/methodology/",
   description:
     "Debt interest is the annual cost of servicing the government's debt stock. It rises when inflation-linked bonds reprice and when new borrowing happens at higher market rates.",
   keyTakeaway:
     "Debt interest does not measure the size of debt itself. It measures the yearly bill created by that debt, and that bill can jump quickly when rates move.",
   heroVisual: "debt-interest-hero",
+  featuredGraphicKey: "debtInterestTimeline",
   metricStrip: [
     {
       kind: "store",
@@ -91,4 +95,3 @@ export const debtInterestExplainedArticle: ArticleData = {
     "borrowing-over-time",
   ],
 };
-

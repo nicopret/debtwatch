@@ -7,9 +7,18 @@ const meta = {
   component: ArticleSection,
   args: {
     heading: "Why the bill jumped",
-    body: [
-      "The UK has a meaningful stock of index-linked bonds, so inflation can feed directly into debt-interest costs.",
-      "Higher gilt yields also make new borrowing more expensive as existing bonds mature and are replaced.",
+    blocks: [
+      <div className="article-section-text-block" key="story-text">
+        <p>
+          The UK has a meaningful stock of <b>index-linked bonds</b>, so inflation can feed directly into debt-interest costs.
+        </p>
+        <p>
+          Higher gilt yields also make new borrowing more expensive as existing bonds mature and are replaced.{" "}
+          <a href="https://debtwatch.uk/sources/" target="_blank" rel="noreferrer">
+            See sources
+          </a>.
+        </p>
+      </div>,
     ],
     layout: "split",
     visual: (
@@ -52,3 +61,8 @@ export const StackedLayout: Story = {
   },
 };
 
+export const SplitVisualLeft: Story = {
+  args: {
+    layout: "split-reverse",
+  },
+};

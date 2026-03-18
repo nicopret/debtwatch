@@ -4,11 +4,15 @@ export const governmentSpendingExplainedArticle: ArticleData = {
   slug: "where-government-money-goes",
   header: "Where government money goes",
   tagline: "The spending side of the budget in one view",
+  date: "15 Mar 2026",
+  author: "DebtWatch Research Desk",
+  authorBioUrl: "https://debtwatch.uk/methodology/",
   description:
     "Public spending is concentrated in a few very large areas: welfare, health, education and the wider day-to-day running of the state.",
   keyTakeaway:
     "Small percentage shifts in big budgets can move the headline deficit a long way.",
   heroVisual: "budget-breakdown-hero",
+  featuredGraphicKey: "budgetComparison",
   metricStrip: [
     {
       kind: "static",
@@ -68,4 +72,3 @@ export const governmentSpendingExplainedArticle: ArticleData = {
     "why-gilt-yields-matter",
   ],
 };
-

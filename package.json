@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "node scripts/startDev.mjs",
     "build": "next build",
     "clean:website": "node -e \"const fs=require('fs'); fs.rmSync('static/website',{recursive:true,force:true}); fs.rmSync('out',{recursive:true,force:true});\"",
     "build:assets": "node --experimental-specifier-resolution=node --loader ts-node/esm scripts/buildAssets.ts",
@@ -22,6 +22,8 @@
     "update:budget-breakdown": "node --loader ts-node/esm scripts/updateBudgetBreakdown.ts",
     "update:debt-gdp": "node --loader ts-node/esm scripts/updateDebtToGdpSection.ts",
     "update:debt-interest-timeline": "node --loader ts-node/esm scripts/updateDebtInterestTimeline.ts",
+    "update:debt-sustainability": "node --loader ts-node/esm scripts/updateDebtSustainabilityTimeline.ts",
+    "update:debt-ownership": "node --loader ts-node/esm scripts/updateDebtOwnershipBreakdown.ts",
     "update:other-breakdowns": "node --loader ts-node/esm scripts/updateOtherBudgetBreakdowns.ts",
     "update:debt": "ts-node scripts/updateTotalDebt.ts",
     "update:interest": "ts-node scripts/updateAnnualInterestPayable.ts",

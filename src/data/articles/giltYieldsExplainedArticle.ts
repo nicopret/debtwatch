@@ -4,6 +4,9 @@ export const giltYieldsExplainedArticle: ArticleData = {
   slug: "why-gilt-yields-matter",
   header: "Why gilt yields matter",
   tagline: "The market price of government borrowing",
+  date: "15 Mar 2026",
+  author: "DebtWatch Research Desk",
+  authorBioUrl: "https://debtwatch.uk/methodology/",
   description:
     "Gilt yields show the interest rate investors demand to lend to the UK government. They are a market signal, not a fiscal ratio.",
   keyTakeaway:
@@ -64,4 +67,3 @@ export const giltYieldsExplainedArticle: ArticleData = {
     "where-government-money-goes",
   ],
 };
-

@@ -4,7 +4,8 @@ export type NumericMetricKey =
   | "annualInterest"
   | "monthlyDebtPayment"
   | "debtToGdp"
-  | "borrowingThisYear";
+  | "borrowingThisYear"
+  | "totalDebt";
 
 export const selectCanonicalDebtToGdpMetric = (state: RootState) =>
   state.metrics.debtToGdpMetric;
@@ -50,6 +51,15 @@ export const taxYear = (state: RootState) =>
 export const selectTenYearGiltYieldMetric = (state: RootState) =>
   state.metrics.tenYearGiltYieldMetric;
 
+export const selectFiveYearGiltYieldMetric = (state: RootState) =>
+  state.metrics.fiveYearGiltYieldMetric;
+
+export const selectTwentyYearGiltYieldMetric = (state: RootState) =>
+  state.metrics.twentyYearGiltYieldMetric;
+
+export const selectFiveYearGiltYieldFormattedValue = (state: RootState) =>
+  state.metrics.fiveYearGiltYieldMetric.formattedValue;
+
 export const selectTenYearGiltYieldNumericValue = (state: RootState) =>
   state.metrics.tenYearGiltYieldMetric.numericValue;
 
@@ -62,7 +72,13 @@ export const selectTenYearGiltYieldDateValue = (state: RootState) =>
 export const selectTenYearGiltYieldSource = (state: RootState) =>
   state.metrics.tenYearGiltYieldMetric.source;
 
+export const selectTwentyYearGiltYieldFormattedValue = (state: RootState) =>
+  state.metrics.twentyYearGiltYieldMetric.formattedValue;
+
 export const selectTenYearGiltYieldHelperText = (state: RootState) =>
+  `${selectTenYearGiltYieldSource(state)} | ${selectTenYearGiltYieldDateValue(state)}`;
+
+export const selectGiltYieldRatesHelperText = (state: RootState) =>
   `${selectTenYearGiltYieldSource(state)} | ${selectTenYearGiltYieldDateValue(state)}`;
 
 export const selectGovernmentIncomeBreakdown = (state: RootState) =>
@@ -146,6 +162,12 @@ export const selectDebtInterestTimeline = (state: RootState) =>
 export const selectDebtInterestTimelineItems = (state: RootState) =>
   state.metrics.debtInterestTimeline.items;
 
+export const selectDebtSustainabilityTimeline = (state: RootState) =>
+  state.metrics.debtSustainabilityTimeline;
+
+export const selectDebtSustainabilityTimelineItems = (state: RootState) =>
+  state.metrics.debtSustainabilityTimeline.items;
+
 export const selectDebtInterestTimelinePoints = (state: RootState) =>
   selectDebtInterestTimelineItems(state).map((item) => ({
     yearLabel: item.yearLabel,
@@ -159,6 +181,12 @@ export const selectDebtInterestGovernmentBands = (state: RootState) =>
 
 export const selectDebtInterestSummary = (state: RootState) =>
   state.metrics.debtInterestSummary;
+
+export const selectDebtOwnershipBreakdown = (state: RootState) =>
+  state.metrics.debtOwnershipBreakdown;
+
+export const selectDebtOwnershipBreakdownItems = (state: RootState) =>
+  state.metrics.debtOwnershipBreakdown.items;
 
 export const selectLatestAnnualDebtInterest = (state: RootState) => {
   const metric = selectCanonicalAnnualDebtInterestMetric(state);

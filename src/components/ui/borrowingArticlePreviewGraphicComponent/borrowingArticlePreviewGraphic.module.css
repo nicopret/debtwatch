@@ -1,0 +1,84 @@
+.graphic {
+  width: min(100%, 320px);
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 1rem;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+  text-align: left;
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.05);
+}
+
+.title {
+  color: #17315f;
+  font-size: 1.2rem;
+  line-height: 1.1;
+}
+
+.bars {
+  width: 100%;
+  min-height: 74px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end;
+  gap: 0.7rem;
+  padding-top: 0.1rem;
+}
+
+.householdBar,
+.governmentBar {
+  border-radius: 16px 16px 10px 10px;
+}
+
+.householdBar {
+  width: 100%;
+  height: 44px;
+  background: #17315f;
+}
+
+.governmentBar {
+  width: 100%;
+  height: 76px;
+  background: #b86a1f;
+}
+
+.legend {
+  width: 100%;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.legendRow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.swatch {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  flex: 0 0 auto;
+}
+
+.householdSwatch {
+  background: #17315f;
+}
+
+.governmentSwatch {
+  background: #b86a1f;
+}
+
+.legendLabel {
+  color: #24324a;
+  font-size: 0.93rem;
+  font-weight: 600;
+}
+
+.caption {
+  color: #556274;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}

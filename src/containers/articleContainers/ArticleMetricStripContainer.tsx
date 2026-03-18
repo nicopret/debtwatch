@@ -9,6 +9,7 @@ import {
   annualLendingValue,
   debtToGdpValue,
   monthlyInterestPayableValue,
+  selectTotalDebtFormattedValue,
   selectTenYearGiltYieldFormattedValue,
 } from "@/store/selectors/metricsSelectors";
 
@@ -19,7 +20,12 @@ export interface ArticleMetricStripContainerProps {
 function resolveMetricValue(
   metric: ArticleMetricReference,
   metricValues: Record<
-    "annualInterestPayment" | "monthlyInterestPayable" | "annualBorrowing" | "debtToGdp" | "tenYearGiltYield",
+    | "annualInterestPayment"
+    | "monthlyInterestPayable"
+    | "annualBorrowing"
+    | "debtToGdp"
+    | "totalDebt"
+    | "tenYearGiltYield",
     string
   >,
 ): ArticleMetricStripItem {
@@ -39,6 +45,7 @@ function resolveMetricValue(
     metric.metricKey === "monthlyInterestPayable" ? metricValues.monthlyInterestPayable :
     metric.metricKey === "annualBorrowing" ? metricValues.annualBorrowing :
     metric.metricKey === "debtToGdp" ? metricValues.debtToGdp :
+    metric.metricKey === "totalDebt" ? metricValues.totalDebt :
     metricValues.tenYearGiltYield;
 
   return {
@@ -59,6 +66,7 @@ export default function ArticleMetricStripContainer({
     monthlyInterestPayable: useAppSelector(monthlyInterestPayableValue),
     annualBorrowing: useAppSelector(annualLendingValue),
     debtToGdp: useAppSelector(debtToGdpValue),
+    totalDebt: useAppSelector(selectTotalDebtFormattedValue),
     tenYearGiltYield: useAppSelector(selectTenYearGiltYieldFormattedValue),
   };
   const metrics = article.metricStrip.map((metric) => resolveMetricValue(metric, metricValues));

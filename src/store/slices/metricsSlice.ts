@@ -7,8 +7,10 @@ import budgetDeficitData from "@/data/budgetDeficitMetric.json";
 import borrowingByGovernmentSummaryData from "@/data/borrowingByGovernmentSummary.json";
 import debtInterestSummaryData from "@/data/debtInterestSummary.json";
 import debtInterestTimelineData from "@/data/debtInterestTimeline.json";
+import debtSustainabilityTimelineData from "@/data/debtSustainabilityTimeline.json";
 import debtToGdpTimelineData from "@/data/debtToGdpTimeline.json";
 import debtToGdpData from "@/data/debtToGdpMetrics.json";
+import fiveYearGiltYieldData from "@/data/fiveYearGiltYieldMetric.json";
 import g7DebtToGdpComparisonData from "@/data/g7DebtToGdpComparison.json";
 import governmentIncomeBreakdownData from "@/data/governmentIncomeBreakdown.json";
 import governmentSpendingBreakdownData from "@/data/governmentSpendingBreakdown.json";
@@ -18,6 +20,8 @@ import otherSpendingBreakdownData from "@/data/otherSpendingBreakdown.json";
 import tenYearGiltYieldData from "@/data/tenYearGiltYieldMetric.json";
 import taxpayerDebtData from "@/data/taxpayerDebt.json";
 import totalDebtMetricData from "@/data/totalDebtMetrics.json";
+import twentyYearGiltYieldData from "@/data/twentyYearGiltYieldMetric.json";
+import ukDebtOwnershipBreakdownData from "@/data/ukDebtOwnershipBreakdown.json";
 import { GOVERNMENT_PERIODS, type GovernmentPeriod } from "@/lib/governmentPeriods";
 
 export interface AnnualInterestPaymentState {
@@ -93,6 +97,25 @@ export interface DebtInterestTimelineState {
   timestamp: string;
   source: string;
   items: DebtInterestTimelineItemState[];
+}
+
+export interface DebtSustainabilityTimelineItemState {
+  yearLabel: string;
+  debtToGdpPct: number;
+  nominalGdpGrowthPct: number;
+  realGdpGrowthPct: number;
+  borrowingCostPct: number;
+}
+
+export interface DebtSustainabilityTimelineState {
+  title: string;
+  subtitle: string;
+  unit: string;
+  xKey: string;
+  dateValue: string;
+  timestamp: string;
+  source: string;
+  items: DebtSustainabilityTimelineItemState[];
 }
 
 export interface DebtInterestSummaryGovernmentTotalState {
@@ -215,7 +238,7 @@ export interface TotalDebtMetricState {
   dateValue: string;
 }
 
-export interface TenYearGiltYieldMetricState {
+export interface GiltYieldMetricState {
   numericValue: number;
   formattedValue: string;
   timestamp: string;
@@ -255,6 +278,25 @@ export interface BudgetDeficitMetricState {
   descriptiveText?: string;
 }
 
+export interface DebtOwnershipBreakdownItemState {
+  key:
+    | "international_investors"
+    | "local_investors"
+    | "governments"
+    | "central_bank";
+  label: string;
+  value: number;
+}
+
+export interface DebtOwnershipBreakdownState {
+  title: string;
+  unit: string;
+  dateValue: string;
+  timestamp: string;
+  source: string;
+  items: DebtOwnershipBreakdownItemState[];
+}
+
 export interface MetricsState {
   annualInterestPaymentMetric: AnnualInterestPaymentState;
   annualBorrowingTimeline: AnnualBorrowingTimelineState;
@@ -263,8 +305,11 @@ export interface MetricsState {
   borrowingByGovernmentSummary: BorrowingByGovernmentSummaryState;
   debtInterestSummary: DebtInterestSummaryState;
   debtInterestTimeline: DebtInterestTimelineState;
+  debtSustainabilityTimeline: DebtSustainabilityTimelineState;
+  debtOwnershipBreakdown: DebtOwnershipBreakdownState;
   debtToGdpMetric: DebtToGdpState;
   debtToGdpTimeline: DebtToGdpTimelineState;
+  fiveYearGiltYieldMetric: GiltYieldMetricState;
   g7DebtToGdpComparison: G7DebtToGdpComparisonState;
   governmentPeriods: GovernmentPeriod[];
   governmentIncomeBreakdown: BudgetBreakdownState;
@@ -272,9 +317,10 @@ export interface MetricsState {
   monthlyInterestPayableMetric: MonthlyInterestPayableState;
   otherIncomeBreakdown: DonutBreakdownState;
   otherSpendingBreakdown: DonutBreakdownState;
-  tenYearGiltYieldMetric: TenYearGiltYieldMetricState;
+  tenYearGiltYieldMetric: GiltYieldMetricState;
   taxpayerDebtMetric: TaxpayerDebtState;
   totalDebtMetric: TotalDebtMetricState;
+  twentyYearGiltYieldMetric: GiltYieldMetricState;
 }
 
 const annualInterestPaymentMetric: AnnualInterestPaymentState = annualInterestPaymentData;
@@ -285,8 +331,13 @@ const borrowingByGovernmentSummary: BorrowingByGovernmentSummaryState =
   borrowingByGovernmentSummaryData;
 const debtInterestSummary: DebtInterestSummaryState = debtInterestSummaryData;
 const debtInterestTimeline: DebtInterestTimelineState = debtInterestTimelineData;
+const debtSustainabilityTimeline: DebtSustainabilityTimelineState =
+  debtSustainabilityTimelineData;
+const debtOwnershipBreakdown =
+  ukDebtOwnershipBreakdownData as DebtOwnershipBreakdownState;
 const debtToGdpMetric: DebtToGdpState = debtToGdpData;
 const debtToGdpTimeline: DebtToGdpTimelineState = debtToGdpTimelineData;
+const fiveYearGiltYieldMetric: GiltYieldMetricState = fiveYearGiltYieldData;
 const g7DebtToGdpComparison: G7DebtToGdpComparisonState = g7DebtToGdpComparisonData;
 const governmentPeriods: GovernmentPeriod[] = GOVERNMENT_PERIODS;
 const governmentIncomeBreakdown: BudgetBreakdownState = governmentIncomeBreakdownData;
@@ -294,9 +345,10 @@ const governmentSpendingBreakdown: BudgetBreakdownState = governmentSpendingBrea
 const monthlyInterestPayableMetric: MonthlyInterestPayableState = monthlyInterestPayableData;
 const otherIncomeBreakdown: DonutBreakdownState = otherIncomeBreakdownData;
 const otherSpendingBreakdown: DonutBreakdownState = otherSpendingBreakdownData;
-const tenYearGiltYieldMetric: TenYearGiltYieldMetricState = tenYearGiltYieldData;
+const tenYearGiltYieldMetric: GiltYieldMetricState = tenYearGiltYieldData;
 const taxpayerDebtMetric: TaxpayerDebtState = taxpayerDebtData;
 const totalDebtMetric: TotalDebtMetricState = totalDebtMetricData;
+const twentyYearGiltYieldMetric: GiltYieldMetricState = twentyYearGiltYieldData;
 
 const initialState: MetricsState = {
   annualInterestPaymentMetric,
@@ -306,8 +358,11 @@ const initialState: MetricsState = {
   borrowingByGovernmentSummary,
   debtInterestSummary,
   debtInterestTimeline,
+  debtSustainabilityTimeline,
+  debtOwnershipBreakdown,
   debtToGdpMetric,
   debtToGdpTimeline,
+  fiveYearGiltYieldMetric,
   g7DebtToGdpComparison,
   governmentPeriods,
   governmentIncomeBreakdown,
@@ -318,6 +373,7 @@ const initialState: MetricsState = {
   tenYearGiltYieldMetric,
   taxpayerDebtMetric,
   totalDebtMetric,
+  twentyYearGiltYieldMetric,
 };
 
 const metricsSlice = createSlice({

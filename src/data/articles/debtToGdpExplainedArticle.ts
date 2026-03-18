@@ -4,11 +4,15 @@ export const debtToGdpExplainedArticle: ArticleData = {
   slug: "how-debt-to-gdp-works",
   header: "How debt-to-GDP works",
   tagline: "The ratio that tries to put debt in context",
+  date: "15 Mar 2026",
+  author: "DebtWatch Research Desk",
+  authorBioUrl: "https://debtwatch.uk/methodology/",
   description:
     "Debt-to-GDP compares the size of public debt with the size of the economy. It is widely used because it shows the burden of debt relative to national income.",
   keyTakeaway:
     "A country can carry more debt if its economy is larger, richer and trusted by investors. The ratio matters more than the debt number on its own.",
   heroVisual: "debt-to-gdp-hero",
+  featuredGraphicKey: "debtToGdpSection",
   metricStrip: [
     {
       kind: "store",
@@ -46,8 +50,21 @@ export const debtToGdpExplainedArticle: ArticleData = {
     {
       id: "why-country-comparisons",
       heading: "Why G7 comparisons help",
-      body: [
-        "Comparing the UK with the G7 puts the number in a peer-group context. Advanced economies have more similar debt markets, institutions and fiscal capacity than a global catch-all league table.",
+      body: [],
+      entities: [
+        {
+          type: "text",
+          body: [
+            "Comparing the UK with the G7 puts the number in a peer-group context. Advanced economies have more similar debt markets, institutions and fiscal capacity than a global catch-all league table.",
+            "A longer-run sustainability view comes from comparing the debt ratio with the economy's nominal growth rate and the government's borrowing cost. When growth runs ahead of borrowing costs, debt dynamics are usually easier to stabilise.",
+          ],
+        },
+        {
+          type: "text",
+          body: [
+            "The chart works best as a relationship check rather than a single-rule model. If debt is high while borrowing costs rise above nominal growth for a long stretch, the path is usually harder to stabilise than in periods when growth stays comfortably ahead.",
+          ],
+        },
       ],
     },
   ],
@@ -68,4 +85,3 @@ export const debtToGdpExplainedArticle: ArticleData = {
     "where-government-money-goes",
   ],
 };
-

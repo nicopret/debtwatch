@@ -1,5 +1,12 @@
 import ArticleVisualPanel from "@/components/ui/articleVisualPanelComponent/ArticleVisualPanel";
-import type { ArticleCallout, ArticleVisualKey } from "@/data/articles/articleTypes";
+import type {
+  ArticleCallout,
+  ArticleGraphKey,
+  ArticleVisualKey,
+} from "@/data/articles/articleTypes";
+import BorrowingYieldRatesVisual from "./BorrowingYieldRatesVisual";
+import DebtOwnershipBreakdownVisual from "./DebtOwnershipBreakdownVisual";
+import DebtSustainabilityChartBlock from "./DebtSustainabilityChartBlock";
 
 export function renderArticleVisual(visualKey: ArticleVisualKey) {
   switch (visualKey) {
@@ -111,16 +118,50 @@ export function renderArticleVisual(visualKey: ArticleVisualKey) {
     case "borrowing-hero":
       return (
         <ArticleVisualPanel
-          eyebrow="Annual flow"
-          title="Borrowing spikes when shocks hit the budget"
-          value="Flow into debt"
-          helperText="Borrowing responds quickly to recessions, crisis spending and weaker receipts. Debt changes more slowly because it accumulates those flows."
+          eyebrow="Debt overview"
+          value="Comparing debt"
+          helperText="Two debt stories shape the UK economy: what households owe, and what the state owes. Side by side, the comparison shows how private borrowing and public debt place very different burdens on each taxpayer."
           items={[
-            { label: "Recession", value: "Receipts fall" },
-            { label: "Crisis support", value: "Spending rises" },
-            { label: "Borrowing", value: "Gap widens", tone: "accent" },
+            { kind: "spacer", label: "debt-overview-gap" },
+            { kind: "heading", label: "Debt per taxpayer:" },
+            {
+              label: "Mortgages",
+              value: "~£50,000",
+              preserveCase: true,
+              labelTone: "navy",
+              valueTone: "navy",
+            },
+            {
+              label: "Personal loans",
+              value: "~£6,000",
+              preserveCase: true,
+              labelTone: "navy",
+              valueTone: "navy",
+            },
+            {
+              label: "Car finance",
+              value: "~£2,500",
+              preserveCase: true,
+              labelTone: "navy",
+              valueTone: "navy",
+            },
+            {
+              label: "Credit cards",
+              value: "~£2,000",
+              preserveCase: true,
+              labelTone: "navy",
+              valueTone: "navy",
+            },
+            {
+              label: "Government debt",
+              value: "~£73,335",
+              preserveCase: true,
+              labelTone: "amber",
+              valueTone: "amber",
+            },
           ]}
           accentColor="#b45309"
+          valueColor="#17315f"
         />
       );
     case "borrowing-shocks":
@@ -138,6 +179,10 @@ export function renderArticleVisual(visualKey: ArticleVisualKey) {
           accentColor="#b45309"
         />
       );
+    case "borrowing-yield-rates":
+      return <BorrowingYieldRatesVisual />;
+    case "debt-ownership-breakdown":
+      return <DebtOwnershipBreakdownVisual />;
     case "gilt-yield-hero":
       return (
         <ArticleVisualPanel
@@ -186,3 +231,15 @@ export function renderArticleCallout(callout: ArticleCallout) {
   );
 }
 
+export function renderArticleGraphBlock(
+  graphKey: ArticleGraphKey,
+  caption?: string,
+  key?: string,
+) {
+  switch (graphKey) {
+    case "uk-debt-growth-borrowing-costs":
+      return <DebtSustainabilityChartBlock key={key} caption={caption} />;
+    default:
+      return null;
+  }
+}

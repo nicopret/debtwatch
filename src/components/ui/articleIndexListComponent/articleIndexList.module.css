@@ -45,7 +45,23 @@
   border-radius: 24px;
   padding: 1.25rem;
   display: grid;
+  grid-template-columns: minmax(320px, 1.2fr) minmax(0, 2fr);
+  gap: 0;
+  align-items: start;
+}
+
+.mediaColumn {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.contentColumn {
+  min-width: 0;
+  display: grid;
   gap: 0.6rem;
+  padding-left: 1.25rem;
 }
 
 .title {
@@ -56,4 +72,10 @@
 
 .link {
   color: #1d4f91;
+}
+
+@media (max-width: 720px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
 }

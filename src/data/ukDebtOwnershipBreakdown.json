@@ -1,0 +1,29 @@
+{
+  "title": "Who owns UK government debt?",
+  "unit": "percent",
+  "dateValue": "Q2 2025",
+  "timestamp": "2026-03-16T00:00:00.000Z",
+  "source": "UK Debt Management Office / Office for National Statistics",
+  "items": [
+    {
+      "key": "international_investors",
+      "label": "International investors",
+      "value": 33
+    },
+    {
+      "key": "local_investors",
+      "label": "Local investors",
+      "value": 46.7
+    },
+    {
+      "key": "governments",
+      "label": "Governments",
+      "value": 0
+    },
+    {
+      "key": "central_bank",
+      "label": "Central bank",
+      "value": 20.3
+    }
+  ]
+}

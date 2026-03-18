@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import styles from "./articleIndexList.module.css";
 
@@ -6,6 +7,7 @@ export interface ArticleIndexItem {
   header: string;
   tagline: string;
   description: string;
+  previewGraphic?: ReactNode;
 }
 
 export interface ArticleIndexListProps {
@@ -25,14 +27,18 @@ export default function ArticleIndexList({ items }: ArticleIndexListProps) {
       <div className={styles.list}>
         {items.map((item) => (
           <Link className={styles.card} href={`/articles/${item.slug}`} key={item.slug}>
-            <p className={styles.tagline}>{item.tagline}</p>
-            <h2 className={styles.title}>{item.header}</h2>
-            <p className={styles.copy}>{item.description}</p>
-            <span className={styles.link}>Read full article</span>
+            {item.previewGraphic ? (
+              <div className={styles.mediaColumn}>{item.previewGraphic}</div>
+            ) : null}
+            <div className={styles.contentColumn}>
+              <p className={styles.tagline}>{item.tagline}</p>
+              <h2 className={styles.title}>{item.header}</h2>
+              <p className={styles.copy}>{item.description}</p>
+              <span className={styles.link}>Read full article</span>
+            </div>
           </Link>
         ))}
       </div>
     </section>
   );
 }
-
