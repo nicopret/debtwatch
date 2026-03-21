@@ -19,7 +19,7 @@ export const borrowingExplainedArticle: ArticleData = {
       kind: "store",
       metricKey: "annualBorrowing",
       label: "Annual borrowing",
-      helperText: "Borrowing the last 12 months",
+      helperText: "Latest annual net borrowing",
       tone: "navyblue",
     },
     {

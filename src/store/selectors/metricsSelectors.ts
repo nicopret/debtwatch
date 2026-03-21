@@ -1,4 +1,9 @@
 import type { RootState } from "../index";
+import {
+  parseArticlePublicationMonth,
+  parseDataMonth,
+  comparePublicationMonths,
+} from "@/lib/articlePublicationDate";
 
 export type NumericMetricKey =
   | "annualInterest"
@@ -7,8 +12,24 @@ export type NumericMetricKey =
   | "borrowingThisYear"
   | "totalDebt";
 
+export const selectLatestDebtToGdpTimelinePoint = (state: RootState) => {
+  const items = state.metrics.debtToGdpTimeline.items;
+  const latestItem = items[items.length - 1];
+
+  if (!latestItem) {
+    return state.metrics.debtToGdpMetric;
+  }
+
+  return {
+    dateValue: latestItem.yearLabel,
+    formattedValue: latestItem.formattedValue,
+    numericValue: latestItem.numericValue,
+    timestamp: state.metrics.debtToGdpTimeline.timestamp,
+  };
+};
+
 export const selectCanonicalDebtToGdpMetric = (state: RootState) =>
-  state.metrics.debtToGdpMetric;
+  selectLatestDebtToGdpTimelinePoint(state);
 
 export const selectCanonicalAnnualDebtInterestMetric = (state: RootState) =>
   state.metrics.annualInterestPaymentMetric;
@@ -51,6 +72,9 @@ export const taxYear = (state: RootState) =>
 export const selectTenYearGiltYieldMetric = (state: RootState) =>
   state.metrics.tenYearGiltYieldMetric;
 
+export const selectGiltYieldTimeline = (state: RootState) =>
+  state.metrics.giltYieldTimeline;
+
 export const selectFiveYearGiltYieldMetric = (state: RootState) =>
   state.metrics.fiveYearGiltYieldMetric;
 
@@ -81,6 +105,46 @@ export const selectTenYearGiltYieldHelperText = (state: RootState) =>
 export const selectGiltYieldRatesHelperText = (state: RootState) =>
   `${selectTenYearGiltYieldSource(state)} | ${selectTenYearGiltYieldDateValue(state)}`;
 
+export function selectArticleGiltYieldRates(
+  state: RootState,
+  articleDate: string,
+) {
+  const publicationMonth = parseArticlePublicationMonth(articleDate);
+  const timeline = selectGiltYieldTimeline(state);
+
+  const matchingPoint =
+    timeline.items
+      .filter((item) => {
+        if (!publicationMonth) {
+          return true;
+        }
+
+        const itemMonth = parseDataMonth(item.dateLabel);
+        return itemMonth
+          ? comparePublicationMonths(itemMonth, publicationMonth) <= 0
+          : true;
+      })
+      .at(-1) ?? null;
+
+  if (!matchingPoint) {
+    return {
+      fiveYearFormattedValue: state.metrics.fiveYearGiltYieldMetric.formattedValue,
+      tenYearFormattedValue: state.metrics.tenYearGiltYieldMetric.formattedValue,
+      twentyYearFormattedValue: state.metrics.twentyYearGiltYieldMetric.formattedValue,
+      helperText: selectGiltYieldRatesHelperText(state),
+    };
+  }
+
+  const formatPercent = (value: number) => `${value.toFixed(1)}%`;
+
+  return {
+    fiveYearFormattedValue: formatPercent(matchingPoint.fiveYearGiltYieldPct),
+    tenYearFormattedValue: formatPercent(matchingPoint.tenYearGiltYieldPct),
+    twentyYearFormattedValue: formatPercent(matchingPoint.twentyYearGiltYieldPct),
+    helperText: `${timeline.source} | ${matchingPoint.dateLabel}`,
+  };
+}
+
 export const selectGovernmentIncomeBreakdown = (state: RootState) =>
   state.metrics.governmentIncomeBreakdown;
 
@@ -101,6 +165,19 @@ export const selectAnnualBorrowingTimeline = (state: RootState) =>
 
 export const selectAnnualBorrowingTimelineItems = (state: RootState) =>
   state.metrics.annualBorrowingTimeline.items;
+
+export const selectLatestAnnualBorrowingTimelineItem = (state: RootState) => {
+  const items = selectAnnualBorrowingTimelineItems(state);
+  return items[items.length - 1] ?? null;
+};
+
+export const selectLatestAnnualBorrowingFormattedValue = (state: RootState) =>
+  selectLatestAnnualBorrowingTimelineItem(state)?.formattedValue ??
+  state.metrics.annualLendingMetric.formattedValue;
+
+export const selectLatestAnnualBorrowingDateValue = (state: RootState) =>
+  selectLatestAnnualBorrowingTimelineItem(state)?.yearLabel ??
+  state.metrics.annualLendingMetric.dateValue;
 
 export const selectBorrowingByGovernmentSummary = (state: RootState) =>
   state.metrics.borrowingByGovernmentSummary;
@@ -182,6 +259,9 @@ export const selectDebtInterestGovernmentBands = (state: RootState) =>
 export const selectDebtInterestSummary = (state: RootState) =>
   state.metrics.debtInterestSummary;
 
+export const selectDebtInterestVsPublicServicePay = (state: RootState) =>
+  state.metrics.debtInterestVsPublicServicePay;
+
 export const selectDebtOwnershipBreakdown = (state: RootState) =>
   state.metrics.debtOwnershipBreakdown;
 
@@ -250,6 +330,12 @@ export const selectDebtToGdpGovernmentBands = (state: RootState) =>
 
 export const selectG7DebtToGdpComparison = (state: RootState) =>
   state.metrics.g7DebtToGdpComparison;
+
+export const selectG7YieldComparison = (state: RootState) =>
+  state.metrics.g7YieldComparison;
+
+export const selectG7YieldRateTimeline = (state: RootState) =>
+  state.metrics.g7YieldRateTimeline;
 
 function formatPercentage(value: number): string {
   return `${value.toFixed(1)}%`;

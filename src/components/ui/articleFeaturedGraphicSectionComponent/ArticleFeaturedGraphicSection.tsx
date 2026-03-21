@@ -12,14 +12,16 @@ export default function ArticleFeaturedGraphicSection({
   subheading,
   children,
 }: ArticleFeaturedGraphicSectionProps) {
+  if (!heading && !subheading) {
+    return <div className={styles.content}>{children}</div>;
+  }
+
   return (
     <section className={styles.section}>
-      {(heading || subheading) && (
-        <header className={styles.header}>
-          {heading ? <h2 className={styles.heading}>{heading}</h2> : null}
-          {subheading ? <p className={styles.subheading}>{subheading}</p> : null}
-        </header>
-      )}
+      <header className={styles.header}>
+        {heading ? <h2 className={styles.heading}>{heading}</h2> : null}
+        {subheading ? <p className={styles.subheading}>{subheading}</p> : null}
+      </header>
       <div className={styles.content}>{children}</div>
     </section>
   );

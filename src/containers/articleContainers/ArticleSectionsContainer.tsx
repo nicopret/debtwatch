@@ -69,7 +69,9 @@ export default function ArticleSectionsContainer({
             )
           }
           layout={section.layout}
-          visual={section.visualKey ? renderArticleVisual(section.visualKey) : undefined}
+          visual={
+            section.visualKey ? renderArticleVisual(section.visualKey, article) : undefined
+          }
           callout={section.callout ? renderArticleCallout(section.callout) : undefined}
         />
       ))}

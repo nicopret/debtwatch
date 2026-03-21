@@ -92,7 +92,10 @@ function parseBoEDate(value: string): Date | null {
     return null;
   }
 
-  return new Date(Date.UTC(2000 + Number(match[3]), month, Number(match[1])));
+  const twoDigitYear = Number(match[3]);
+  const fullYear = twoDigitYear >= 90 ? 1900 + twoDigitYear : 2000 + twoDigitYear;
+
+  return new Date(Date.UTC(fullYear, month, Number(match[1])));
 }
 
 function parseBoEHtml(html: string): Array<{ date: Date; value: number }> {

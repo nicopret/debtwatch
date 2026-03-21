@@ -9,30 +9,49 @@ type GiltYieldMetric = {
   source: string;
 };
 
+type GiltYieldTimeline = {
+  title: string;
+  unit: "percent";
+  xKey: "date";
+  dateValue: string;
+  timestamp: string;
+  source: string;
+  items: Array<{
+    dateLabel: string;
+    fiveYearGiltYieldPct: number;
+    tenYearGiltYieldPct: number;
+    twentyYearGiltYieldPct: number;
+  }>;
+};
+
 type SeriesDefinition = {
   label: string;
   seriesCode: string;
   outputPath: string;
+  outputKey: "fiveYearGiltYieldPct" | "tenYearGiltYieldPct" | "twentyYearGiltYieldPct";
 };
+
+const MIN_YEAR = 1990;
+const TIMELINE_OUTPUT_PATH = join(process.cwd(), "src", "data", "giltYieldTimeline.json");
 
 const SERIES_DEFINITIONS: SeriesDefinition[] = [
   {
     label: "5-year nominal par yield",
-    // Bank of England database series IUDSNPY = "Yield from British Government Securities, 5 year Nominal Par Yield".
     seriesCode: "IUDSNPY",
     outputPath: join(process.cwd(), "src", "data", "fiveYearGiltYieldMetric.json"),
+    outputKey: "fiveYearGiltYieldPct",
   },
   {
     label: "10-year nominal par yield",
-    // Bank of England database series IUDMNPY = "Yield from British Government Securities, 10 year Nominal Par Yield".
     seriesCode: "IUDMNPY",
     outputPath: join(process.cwd(), "src", "data", "tenYearGiltYieldMetric.json"),
+    outputKey: "tenYearGiltYieldPct",
   },
   {
     label: "20-year nominal par yield",
-    // Bank of England database series IUDLNPY = "Yield from British Government Securities, 20 year Nominal Par Yield".
     seriesCode: "IUDLNPY",
     outputPath: join(process.cwd(), "src", "data", "twentyYearGiltYieldMetric.json"),
+    outputKey: "twentyYearGiltYieldPct",
   },
 ];
 
@@ -72,11 +91,9 @@ function formatPercentage(value: number): string {
 }
 
 function getBoEYieldUrl(seriesCode: string): string {
-  const currentYear = new Date().getUTCFullYear();
-  const fromYear = currentYear - 1;
   const params = new URLSearchParams({
     "html.x": "yes",
-    Datefrom: `01/Jan/${fromYear}`,
+    Datefrom: `01/Jan/${MIN_YEAR}`,
     Dateto: "now",
     SeriesCodes: seriesCode,
     UsingCodes: "Y",
@@ -94,7 +111,8 @@ function parseBoEDate(value: string): Date | null {
 
   const day = Number(match[1]);
   const month = MONTH_MAP[match[2].toLowerCase()];
-  const year = 2000 + Number(match[3]);
+  const twoDigitYear = Number(match[3]);
+  const year = twoDigitYear >= 90 ? 1900 + twoDigitYear : 2000 + twoDigitYear;
 
   if (month === undefined) {
     return null;
@@ -123,7 +141,23 @@ function parseBoEHtml(html: string): Array<{ date: Date; value: number }> {
     .sort((left, right) => left.date.getTime() - right.date.getTime());
 }
 
-async function fetchLatestObservation(series: SeriesDefinition) {
+function buildMonthlySeries(observations: Array<{ date: Date; value: number }>): Map<string, number> {
+  const latestByMonth = new Map<string, number>();
+
+  for (const observation of observations) {
+    const year = observation.date.getUTCFullYear();
+    if (year < MIN_YEAR) {
+      continue;
+    }
+
+    const period = `${year}-${String(observation.date.getUTCMonth() + 1).padStart(2, "0")}`;
+    latestByMonth.set(period, observation.value);
+  }
+
+  return new Map([...latestByMonth.entries()].sort(([left], [right]) => left.localeCompare(right)));
+}
+
+async function fetchSeriesObservations(series: SeriesDefinition) {
   const response = await fetch(getBoEYieldUrl(series.seriesCode), {
     headers: {
       Accept: "text/html,application/xhtml+xml",
@@ -143,38 +177,89 @@ async function fetchLatestObservation(series: SeriesDefinition) {
     throw new Error(`Bank of England response did not contain any observations for ${series.seriesCode}.`);
   }
 
-  return observations[observations.length - 1]!;
+  return observations;
 }
 
-async function writeMetric(outputPath: string, metric: GiltYieldMetric) {
+async function writeJson(outputPath: string, value: unknown) {
   await mkdir(dirname(outputPath), { recursive: true });
-  await writeFile(outputPath, `${JSON.stringify(metric, null, 2)}\n`, "utf8");
+  await writeFile(outputPath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
 
 async function main() {
   try {
     const timestamp = new Date().toISOString();
+    const seriesResults = await Promise.all(
+      SERIES_DEFINITIONS.map(async (series) => ({
+        series,
+        observations: await fetchSeriesObservations(series),
+      })),
+    );
 
-    for (const series of SERIES_DEFINITIONS) {
-      const latestObservation = await fetchLatestObservation(series);
-      const roundedValue = Number(latestObservation.value.toFixed(1));
+    const monthlySeriesEntries = seriesResults.map(({ series, observations }) => ({
+      series,
+      monthlySeries: buildMonthlySeries(observations),
+      latestObservation: observations[observations.length - 1]!,
+    }));
+
+    for (const entry of monthlySeriesEntries) {
+      const roundedValue = Number(entry.latestObservation.value.toFixed(1));
 
       const metric: GiltYieldMetric = {
         numericValue: roundedValue,
         formattedValue: formatPercentage(roundedValue),
         timestamp,
-        dateValue: formatMonthYear(latestObservation.date),
+        dateValue: formatMonthYear(entry.latestObservation.date),
         source: "Bank of England",
       };
 
-      await writeMetric(series.outputPath, metric);
-
-      console.log(`Updated ${series.label}`);
-      console.log(`Series: ${series.seriesCode}`);
-      console.log(`Raw value: ${latestObservation.value}`);
-      console.log(`Formatted: ${metric.formattedValue}`);
-      console.log(`Saved to ${series.outputPath}`);
+      await writeJson(entry.series.outputPath, metric);
     }
+
+    const commonPeriods = [...monthlySeriesEntries[0]!.monthlySeries.keys()].filter((period) =>
+      monthlySeriesEntries.every((entry) => entry.monthlySeries.has(period)),
+    );
+
+    if (commonPeriods.length === 0) {
+      throw new Error("Could not build a common monthly gilt-yield history.");
+    }
+
+    const timeline: GiltYieldTimeline = {
+      title: "UK gilt yield curve",
+      unit: "percent",
+      xKey: "date",
+      dateValue: commonPeriods[commonPeriods.length - 1]!,
+      timestamp,
+      source: "Bank of England",
+      items: commonPeriods.map((period) => ({
+        dateLabel: period,
+        fiveYearGiltYieldPct: Number(
+          monthlySeriesEntries.find((entry) => entry.series.outputKey === "fiveYearGiltYieldPct")!
+            .monthlySeries.get(period)!
+            .toFixed(1),
+        ),
+        tenYearGiltYieldPct: Number(
+          monthlySeriesEntries.find((entry) => entry.series.outputKey === "tenYearGiltYieldPct")!
+            .monthlySeries.get(period)!
+            .toFixed(1),
+        ),
+        twentyYearGiltYieldPct: Number(
+          monthlySeriesEntries.find((entry) => entry.series.outputKey === "twentyYearGiltYieldPct")!
+            .monthlySeries.get(period)!
+            .toFixed(1),
+        ),
+      })),
+    };
+
+    await writeJson(TIMELINE_OUTPUT_PATH, timeline);
+
+    for (const entry of monthlySeriesEntries) {
+      console.log(`Updated ${entry.series.label}`);
+      console.log(`Series: ${entry.series.seriesCode}`);
+      console.log(`Formatted: ${formatPercentage(Number(entry.latestObservation.value.toFixed(1)))}`);
+      console.log(`Saved to ${entry.series.outputPath}`);
+    }
+
+    console.log(`Saved monthly gilt-yield timeline to ${TIMELINE_OUTPUT_PATH}`);
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown error";
     console.error("Failed to update gilt yield metrics.");

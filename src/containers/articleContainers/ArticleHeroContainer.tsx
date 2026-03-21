@@ -16,7 +16,7 @@ export default function ArticleHeroContainer({ article }: ArticleHeroContainerPr
       authorBioUrl={article.authorBioUrl}
       description={article.description}
       keyTakeaway={article.keyTakeaway}
-      visual={renderArticleVisual(article.heroVisual)}
+      visual={renderArticleVisual(article.heroVisual, article)}
     />
   );
 }

@@ -1,14 +1,21 @@
 import ArticleVisualPanel from "@/components/ui/articleVisualPanelComponent/ArticleVisualPanel";
 import type {
   ArticleCallout,
+  ArticleData,
   ArticleGraphKey,
   ArticleVisualKey,
 } from "@/data/articles/articleTypes";
 import BorrowingYieldRatesVisual from "./BorrowingYieldRatesVisual";
 import DebtOwnershipBreakdownVisual from "./DebtOwnershipBreakdownVisual";
 import DebtSustainabilityChartBlock from "./DebtSustainabilityChartBlock";
+import DebtInterestVsPublicServicePayVisual from "./DebtInterestVsPublicServicePayVisual";
+import G7YieldRateChartBlock from "./G7YieldRateChartBlock";
+import G7YieldComparisonVisual from "./G7YieldComparisonVisual";
 
-export function renderArticleVisual(visualKey: ArticleVisualKey) {
+export function renderArticleVisual(
+  visualKey: ArticleVisualKey,
+  article?: ArticleData,
+) {
   switch (visualKey) {
     case "debt-interest-hero":
       return (
@@ -55,6 +62,10 @@ export function renderArticleVisual(visualKey: ArticleVisualKey) {
           accentColor="#cf6b6b"
         />
       );
+    case "debt-interest-vs-public-service-pay":
+      return <DebtInterestVsPublicServicePayVisual />;
+    case "debt-interest-g7-yields":
+      return <G7YieldComparisonVisual />;
     case "debt-to-gdp-hero":
       return (
         <ArticleVisualPanel
@@ -180,7 +191,7 @@ export function renderArticleVisual(visualKey: ArticleVisualKey) {
         />
       );
     case "borrowing-yield-rates":
-      return <BorrowingYieldRatesVisual />;
+      return <BorrowingYieldRatesVisual publicationDate={article?.date} />;
     case "debt-ownership-breakdown":
       return <DebtOwnershipBreakdownVisual />;
     case "gilt-yield-hero":
@@ -239,6 +250,8 @@ export function renderArticleGraphBlock(
   switch (graphKey) {
     case "uk-debt-growth-borrowing-costs":
       return <DebtSustainabilityChartBlock key={key} caption={caption} />;
+    case "uk-gilt-g7-bank-rate":
+      return <G7YieldRateChartBlock key={key} caption={caption} />;
     default:
       return null;
   }

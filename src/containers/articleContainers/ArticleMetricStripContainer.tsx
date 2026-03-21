@@ -6,9 +6,9 @@ import type { ArticleData, ArticleMetricReference } from "@/data/articles/articl
 import { useAppSelector } from "@/store/hooks";
 import {
   annualInterestPaymentValue,
-  annualLendingValue,
   debtToGdpValue,
   monthlyInterestPayableValue,
+  selectLatestAnnualBorrowingFormattedValue,
   selectTotalDebtFormattedValue,
   selectTenYearGiltYieldFormattedValue,
 } from "@/store/selectors/metricsSelectors";
@@ -64,7 +64,7 @@ export default function ArticleMetricStripContainer({
   const metricValues = {
     annualInterestPayment: useAppSelector(annualInterestPaymentValue),
     monthlyInterestPayable: useAppSelector(monthlyInterestPayableValue),
-    annualBorrowing: useAppSelector(annualLendingValue),
+    annualBorrowing: useAppSelector(selectLatestAnnualBorrowingFormattedValue),
     debtToGdp: useAppSelector(debtToGdpValue),
     totalDebt: useAppSelector(selectTotalDebtFormattedValue),
     tenYearGiltYield: useAppSelector(selectTenYearGiltYieldFormattedValue),

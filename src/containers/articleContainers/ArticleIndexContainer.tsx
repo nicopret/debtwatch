@@ -8,7 +8,7 @@ export default function ArticleIndexContainer() {
     header: article.header,
     tagline: article.tagline,
     description: article.description,
-    previewGraphic: renderArticlePreviewGraphic(article.previewGraphicKey),
+    previewGraphic: renderArticlePreviewGraphic(article.previewGraphicKey, article.date),
   }));
 
   return <ArticleIndexList items={items} />;

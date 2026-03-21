@@ -11,12 +11,6 @@ export interface DebtInterestSummaryCardProps {
   title: string;
   latestValue: string;
   latestYear: string;
-  peakYear: string;
-  peakAmount: string;
-  peakGovernment: string;
-  averageValue: string;
-  latestVsAverage: string;
-  latestVsAveragePercent: string;
   governmentTotals: DebtInterestGovernmentTotal[];
   className?: string;
 }
@@ -25,12 +19,6 @@ export default function DebtInterestSummaryCard({
   title,
   latestValue,
   latestYear,
-  peakYear,
-  peakAmount,
-  peakGovernment,
-  averageValue,
-  latestVsAverage,
-  latestVsAveragePercent,
   governmentTotals,
   className,
 }: DebtInterestSummaryCardProps) {
@@ -47,27 +35,6 @@ export default function DebtInterestSummaryCard({
         <p className={styles.heroLabel}>Latest annual debt interest</p>
         <p className={styles.heroValue}>{latestValue}</p>
         <p className={styles.heroMeta}>{latestYear}</p>
-      </section>
-
-      <section className={styles.statsGrid}>
-        <div className={styles.stat}>
-          <p className={styles.statLabel}>Peak year</p>
-          <p className={styles.statValue}>{peakYear}</p>
-          <p className={styles.statMeta}>{peakAmount}</p>
-        </div>
-        <div className={styles.stat}>
-          <p className={styles.statLabel}>Peak government</p>
-          <p className={styles.statValue}>{peakGovernment}</p>
-        </div>
-        <div className={styles.stat}>
-          <p className={styles.statLabel}>Average annual</p>
-          <p className={styles.statValue}>{averageValue}</p>
-        </div>
-        <div className={styles.stat}>
-          <p className={styles.statLabel}>Latest vs average</p>
-          <p className={styles.statValue}>{latestVsAverage}</p>
-          <p className={styles.statMeta}>{latestVsAveragePercent}</p>
-        </div>
       </section>
 
       <div className={styles.totalsList}>

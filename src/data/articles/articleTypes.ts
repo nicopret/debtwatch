@@ -4,6 +4,8 @@ export type ArticleVisualKey =
   | "debt-interest-hero"
   | "debt-interest-history"
   | "debt-interest-budget-share"
+  | "debt-interest-vs-public-service-pay"
+  | "debt-interest-g7-yields"
   | "debt-to-gdp-hero"
   | "debt-to-gdp-g7"
   | "budget-breakdown-hero"
@@ -15,9 +17,13 @@ export type ArticleVisualKey =
   | "gilt-yield-hero"
   | "gilt-yield-costs";
 
-export type ArticleGraphKey = "uk-debt-growth-borrowing-costs";
+export type ArticleGraphKey =
+  | "uk-debt-growth-borrowing-costs"
+  | "uk-gilt-g7-bank-rate";
 
-export type ArticlePreviewGraphicKey = "borrowing-debt-overview";
+export type ArticlePreviewGraphicKey =
+  | "borrowing-debt-overview"
+  | "debt-interest-yield-trend";
 
 export interface ArticleGraphBlock {
   type: "graph";

@@ -391,7 +391,7 @@ async function main() {
       timestamp,
       source: "Office for Budget Responsibility",
       descriptiveText:
-        "Spending exceeds income. The gap is financed through new borrowing and added to debt.",
+        "Spending exceeds income. This gap is public sector net borrowing and adds to debt; refinancing maturing debt happens separately through gilt issuance.",
     };
 
     await Promise.all([
