@@ -6,6 +6,7 @@ export type ArticleVisualKey =
   | "debt-interest-budget-share"
   | "debt-interest-vs-public-service-pay"
   | "debt-interest-g7-yields"
+  | "gilt-yield-inflation-linked-debt"
   | "debt-to-gdp-hero"
   | "debt-to-gdp-g7"
   | "budget-breakdown-hero"
@@ -23,7 +24,8 @@ export type ArticleGraphKey =
 
 export type ArticlePreviewGraphicKey =
   | "borrowing-debt-overview"
-  | "debt-interest-yield-trend";
+  | "debt-interest-yield-trend"
+  | "gilt-yield-peer-trend";
 
 export interface ArticleGraphBlock {
   type: "graph";
@@ -42,7 +44,8 @@ export type ArticleFeaturedGraphicKey =
   | "borrowingTimeline"
   | "debtToGdpSection"
   | "debtInterestTimeline"
-  | "budgetComparison";
+  | "budgetComparison"
+  | "giltYieldPeers";
 
 export type ArticleMetricReference =
   | {

@@ -1,0 +1,44 @@
+{
+  "title": "Inflation-linked debt exposure",
+  "subtitle": "How RPI linkage increases the UK's debt burden",
+  "period": "December 2025",
+  "timestamp": "2026-03-21T00:00:00.000Z",
+  "source": "Office for National Statistics / UK Debt Management Office",
+  "inflationDefinition": "Office for National Statistics December 2025 annual inflation rates: CPI all-items (D7G7) and RPI all-items (CZBH).",
+  "debtDefinition": "UK Debt Management Office stock of index-linked debt at end-December 2025, as reported in the Debt and Reserves Management Report 2026-27.",
+  "calculationNote": "Extra debt from RPI linkage = index-linked debt stock x (RPI - CPI), using the December 2025 annual inflation-rate gap expressed as a decimal.",
+  "items": [
+    {
+      "key": "cpi",
+      "label": "CPI",
+      "value": 3.4,
+      "unit": "percent",
+      "color": "neutral",
+      "highlight": false
+    },
+    {
+      "key": "rpi",
+      "label": "RPI",
+      "value": 4.2,
+      "unit": "percent",
+      "color": "neutral",
+      "highlight": false
+    },
+    {
+      "key": "index_linked_debt",
+      "label": "Index-linked debt",
+      "value": 688.5,
+      "unit": "gbp_billions",
+      "color": "amber",
+      "highlight": true
+    },
+    {
+      "key": "extra_debt_from_rpi_linkage",
+      "label": "Extra debt from RPI linkage",
+      "value": 5.5,
+      "unit": "gbp_billions",
+      "color": "amber",
+      "highlight": true
+    }
+  ]
+}

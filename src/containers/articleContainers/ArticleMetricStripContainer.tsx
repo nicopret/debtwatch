@@ -5,12 +5,12 @@ import type { ArticleMetricStripItem } from "@/components/ui/articleMetricStripC
 import type { ArticleData, ArticleMetricReference } from "@/data/articles/articleTypes";
 import { useAppSelector } from "@/store/hooks";
 import {
-  annualInterestPaymentValue,
-  debtToGdpValue,
-  monthlyInterestPayableValue,
+  selectArticleAnnualDebtInterestMetric,
+  selectArticleDebtToGdpMetric,
+  selectArticleMonthlyInterestPayableMetric,
+  selectArticleGiltYieldRates,
   selectLatestAnnualBorrowingFormattedValue,
   selectTotalDebtFormattedValue,
-  selectTenYearGiltYieldFormattedValue,
 } from "@/store/selectors/metricsSelectors";
 
 export interface ArticleMetricStripContainerProps {
@@ -61,13 +61,27 @@ function resolveMetricValue(
 export default function ArticleMetricStripContainer({
   article,
 }: ArticleMetricStripContainerProps) {
+  const liveAnnualBorrowing = useAppSelector(selectLatestAnnualBorrowingFormattedValue);
+  const liveTotalDebt = useAppSelector(selectTotalDebtFormattedValue);
+  const articleAnnualInterestMetric = useAppSelector((state) =>
+    selectArticleAnnualDebtInterestMetric(state, article.date),
+  );
+  const articleMonthlyInterestMetric = useAppSelector((state) =>
+    selectArticleMonthlyInterestPayableMetric(state, article.date),
+  );
+  const articleDebtToGdpMetric = useAppSelector((state) =>
+    selectArticleDebtToGdpMetric(state, article.date),
+  );
+  const articleGiltRates = useAppSelector((state) =>
+    selectArticleGiltYieldRates(state, article.date),
+  );
   const metricValues = {
-    annualInterestPayment: useAppSelector(annualInterestPaymentValue),
-    monthlyInterestPayable: useAppSelector(monthlyInterestPayableValue),
-    annualBorrowing: useAppSelector(selectLatestAnnualBorrowingFormattedValue),
-    debtToGdp: useAppSelector(debtToGdpValue),
-    totalDebt: useAppSelector(selectTotalDebtFormattedValue),
-    tenYearGiltYield: useAppSelector(selectTenYearGiltYieldFormattedValue),
+    annualInterestPayment: articleAnnualInterestMetric.formattedValue,
+    monthlyInterestPayable: articleMonthlyInterestMetric.formattedValue,
+    annualBorrowing: liveAnnualBorrowing,
+    debtToGdp: articleDebtToGdpMetric.formattedValue,
+    totalDebt: liveTotalDebt,
+    tenYearGiltYield: articleGiltRates.tenYearFormattedValue,
   };
   const metrics = article.metricStrip.map((metric) => resolveMetricValue(metric, metricValues));
 

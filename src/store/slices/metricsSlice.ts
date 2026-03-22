@@ -15,9 +15,11 @@ import fiveYearGiltYieldData from "@/data/fiveYearGiltYieldMetric.json";
 import g7DebtToGdpComparisonData from "@/data/g7DebtToGdpComparison.json";
 import g7YieldRateTimelineData from "@/data/g7YieldRateTimeline.json";
 import giltYieldTimelineData from "@/data/giltYieldTimeline.json";
+import giltYieldPeerTimelineData from "@/data/giltYieldPeerTimeline.json";
 import governmentIncomeBreakdownData from "@/data/governmentIncomeBreakdown.json";
 import governmentSpendingBreakdownData from "@/data/governmentSpendingBreakdown.json";
 import g7YieldComparisonData from "@/data/g7YieldComparison.json";
+import inflationLinkedDebtExposureData from "@/data/inflationLinkedDebtExposure.json";
 import monthlyInterestPayableData from "@/data/monthlyInterestPayableMetric.json";
 import otherIncomeBreakdownData from "@/data/otherIncomeBreakdown.json";
 import otherSpendingBreakdownData from "@/data/otherSpendingBreakdown.json";
@@ -284,6 +286,31 @@ export interface G7YieldRateTimelineState {
   items: G7YieldRateTimelineItemState[];
 }
 
+export interface InflationLinkedDebtExposureItemState {
+  key:
+    | "cpi"
+    | "rpi"
+    | "index_linked_debt"
+    | "extra_debt_from_rpi_linkage";
+  label: string;
+  value: number;
+  unit: "percent" | "gbp_billions";
+  color: "neutral" | "amber";
+  highlight: boolean;
+}
+
+export interface InflationLinkedDebtExposureState {
+  title: string;
+  subtitle: string;
+  period: string;
+  timestamp: string;
+  source: string;
+  inflationDefinition: string;
+  debtDefinition: string;
+  calculationNote: string;
+  items: InflationLinkedDebtExposureItemState[];
+}
+
 export interface MonthlyInterestPayableState {
   currencySymbol: string;
   dateValue: string;
@@ -339,6 +366,23 @@ export interface GiltYieldTimelineState {
   timestamp: string;
   source: string;
   items: GiltYieldTimelineItemState[];
+}
+
+export interface GiltYieldPeerTimelineItemState {
+  dateLabel: string;
+  uk10yGiltYieldPct: number;
+  g7Average10yYieldPct: number;
+}
+
+export interface GiltYieldPeerTimelineState {
+  title: string;
+  subtitle: string;
+  unit: "percent";
+  xKey: "date";
+  dateValue: string;
+  timestamp: string;
+  source: string;
+  items: GiltYieldPeerTimelineItemState[];
 }
 
 export interface BudgetBreakdownItemState {
@@ -410,6 +454,8 @@ export interface MetricsState {
   g7YieldComparison: G7YieldComparisonState;
   g7YieldRateTimeline: G7YieldRateTimelineState;
   giltYieldTimeline: GiltYieldTimelineState;
+  giltYieldPeerTimeline: GiltYieldPeerTimelineState;
+  inflationLinkedDebtExposure: InflationLinkedDebtExposureState;
   governmentPeriods: GovernmentPeriod[];
   governmentIncomeBreakdown: BudgetBreakdownState;
   governmentSpendingBreakdown: BudgetBreakdownState;
@@ -446,6 +492,10 @@ const g7YieldRateTimeline: G7YieldRateTimelineState =
   g7YieldRateTimelineData as G7YieldRateTimelineState;
 const giltYieldTimeline: GiltYieldTimelineState =
   giltYieldTimelineData as GiltYieldTimelineState;
+const giltYieldPeerTimeline: GiltYieldPeerTimelineState =
+  giltYieldPeerTimelineData as GiltYieldPeerTimelineState;
+const inflationLinkedDebtExposure: InflationLinkedDebtExposureState =
+  inflationLinkedDebtExposureData as InflationLinkedDebtExposureState;
 const governmentPeriods: GovernmentPeriod[] = GOVERNMENT_PERIODS;
 const governmentIncomeBreakdown: BudgetBreakdownState = governmentIncomeBreakdownData;
 const governmentSpendingBreakdown: BudgetBreakdownState = governmentSpendingBreakdownData;
@@ -475,6 +525,8 @@ const initialState: MetricsState = {
   g7YieldComparison,
   g7YieldRateTimeline,
   giltYieldTimeline,
+  giltYieldPeerTimeline,
+  inflationLinkedDebtExposure,
   governmentPeriods,
   governmentIncomeBreakdown,
   governmentSpendingBreakdown,

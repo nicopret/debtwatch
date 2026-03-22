@@ -4,6 +4,7 @@ import BorrowingTimelineSectionContainer from "@/containers/borrowingContainers/
 import BudgetComparisonSectionContainer from "@/containers/budgetContainers/BudgetComparisonSectionContainer";
 import DebtInterestSectionContainer from "@/containers/debtInterestContainers/DebtInterestSectionContainer";
 import DebtToGdpSectionContainer from "@/containers/debtToGdpContainers/DebtToGdpSectionContainer";
+import GiltYieldPeerFeaturedGraphicContainer from "./GiltYieldPeerFeaturedGraphicContainer";
 
 export interface ArticleFeaturedGraphicDefinition {
   heading?: string;
@@ -26,5 +27,8 @@ export const articleFeaturedGraphicRegistry: Record<
   },
   budgetComparison: {
     render: () => <BudgetComparisonSectionContainer />,
+  },
+  giltYieldPeers: {
+    render: () => <GiltYieldPeerFeaturedGraphicContainer />,
   },
 };

@@ -11,6 +11,8 @@ import DebtSustainabilityChartBlock from "./DebtSustainabilityChartBlock";
 import DebtInterestVsPublicServicePayVisual from "./DebtInterestVsPublicServicePayVisual";
 import G7YieldRateChartBlock from "./G7YieldRateChartBlock";
 import G7YieldComparisonVisual from "./G7YieldComparisonVisual";
+import GiltYieldRatesHeroVisual from "./GiltYieldRatesHeroVisual";
+import InflationLinkedDebtExposureVisual from "./InflationLinkedDebtExposureVisual";
 
 export function renderArticleVisual(
   visualKey: ArticleVisualKey,
@@ -66,6 +68,8 @@ export function renderArticleVisual(
       return <DebtInterestVsPublicServicePayVisual />;
     case "debt-interest-g7-yields":
       return <G7YieldComparisonVisual />;
+    case "gilt-yield-inflation-linked-debt":
+      return <InflationLinkedDebtExposureVisual />;
     case "debt-to-gdp-hero":
       return (
         <ArticleVisualPanel
@@ -195,20 +199,7 @@ export function renderArticleVisual(
     case "debt-ownership-breakdown":
       return <DebtOwnershipBreakdownVisual />;
     case "gilt-yield-hero":
-      return (
-        <ArticleVisualPanel
-          eyebrow="Market rate"
-          title="The 10-year gilt yield is the market's price for lending to the UK"
-          value="Signal, not budget bill"
-          helperText="It is a clean benchmark for borrowing conditions, but it is not the same thing as the current annual debt-interest payment."
-          items={[
-            { label: "Gilt yield", value: "Market rate", tone: "accent" },
-            { label: "Debt interest", value: "Budget outturn" },
-            { label: "Debt / GDP", value: "Balance-sheet context" },
-          ]}
-          accentColor="#c75b5b"
-        />
-      );
+      return <GiltYieldRatesHeroVisual publicationDate={article?.date} />;
     case "gilt-yield-costs":
       return (
         <ArticleVisualPanel
@@ -246,12 +237,19 @@ export function renderArticleGraphBlock(
   graphKey: ArticleGraphKey,
   caption?: string,
   key?: string,
+  article?: ArticleData,
 ) {
   switch (graphKey) {
     case "uk-debt-growth-borrowing-costs":
       return <DebtSustainabilityChartBlock key={key} caption={caption} />;
     case "uk-gilt-g7-bank-rate":
-      return <G7YieldRateChartBlock key={key} caption={caption} />;
+      return (
+        <G7YieldRateChartBlock
+          key={key}
+          caption={caption}
+          publicationDate={article?.date}
+        />
+      );
     default:
       return null;
   }

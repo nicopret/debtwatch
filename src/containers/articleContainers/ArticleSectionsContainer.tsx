@@ -35,6 +35,7 @@ function renderSectionBlocks(
   heading: string,
   blocks: ArticleContentBlock[] | undefined,
   sectionId: string,
+  article: ArticleData,
 ) {
   return blocks?.map((block, index) => {
     if (block.type === "text") {
@@ -42,7 +43,12 @@ function renderSectionBlocks(
     }
 
     if (block.type === "graph") {
-      return renderArticleGraphBlock(block.graphKey, block.caption, `${sectionId}-graph-${index}`);
+      return renderArticleGraphBlock(
+        block.graphKey,
+        block.caption,
+        `${sectionId}-graph-${index}`,
+        article,
+      );
     }
 
     return null;
@@ -66,6 +72,7 @@ export default function ArticleSectionsContainer({
                 ...(section.blocks ?? []),
               ],
               section.id,
+              article,
             )
           }
           layout={section.layout}
