@@ -4,7 +4,7 @@ export const borrowingExplainedArticle: ArticleData = {
   slug: "borrowing-over-time",
   header: "Borrowing over time",
   tagline: "Prosperity comes from growth, not borrowing — and the balance has shifted too far.",
-  date: "15 Mar 2026",
+  date: "15 Jan 2026",
   author: "DebtWatch Research Desk",
   authorBioUrl: "https://debtwatch.uk/methodology/",
   description:

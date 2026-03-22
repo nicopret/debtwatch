@@ -241,7 +241,13 @@ export function renderArticleGraphBlock(
 ) {
   switch (graphKey) {
     case "uk-debt-growth-borrowing-costs":
-      return <DebtSustainabilityChartBlock key={key} caption={caption} />;
+      return (
+        <DebtSustainabilityChartBlock
+          key={key}
+          caption={caption}
+          publicationDate={article?.date}
+        />
+      );
     case "uk-gilt-g7-bank-rate":
       return (
         <G7YieldRateChartBlock

@@ -2,16 +2,20 @@
 
 import DebtSustainabilityLineChartCard from "@/components/ui/debtSustainabilityLineChartCardComponent/DebtSustainabilityLineChartCard";
 import { useAppSelector } from "@/store/hooks";
-import { selectDebtSustainabilityTimeline } from "@/store/selectors/metricsSelectors";
+import { selectArticleDebtSustainabilityTimeline } from "@/store/selectors/metricsSelectors";
 
 export interface DebtSustainabilityChartBlockProps {
   caption?: string;
+  publicationDate?: string;
 }
 
 export default function DebtSustainabilityChartBlock({
   caption,
+  publicationDate,
 }: DebtSustainabilityChartBlockProps) {
-  const timeline = useAppSelector(selectDebtSustainabilityTimeline);
+  const timeline = useAppSelector((state) =>
+    selectArticleDebtSustainabilityTimeline(state, publicationDate ?? ""),
+  );
 
   return (
     <DebtSustainabilityLineChartCard
