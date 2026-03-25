@@ -1,0 +1,12 @@
+{
+  "dateValue": "Feb 2026",
+  "timestamp": "2026-02-28T00:00:00.000Z",
+  "source": "Office for Budget Responsibility / UK Debt Management Office / Office for National Statistics",
+  "values": {
+    "debt_rollover": "≈£220bn / year",
+    "new_borrowing": "≈£138bn / year",
+    "inflation_linked_uplift": "≈£35bn / year",
+    "interest_payments": "≈£95bn / year",
+    "total_debt": "≈£173bn / year"
+  }
+}

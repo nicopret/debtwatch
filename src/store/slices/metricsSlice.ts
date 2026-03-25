@@ -4,6 +4,7 @@ import annualInterestPaymentData from "@/data/annualInterestPayableMetric.json";
 import annualBorrowingTimelineData from "@/data/annualBorrowingTimeline.json";
 import annualLendingData from "@/data/annualLendingMetric.json";
 import budgetDeficitData from "@/data/budgetDeficitMetric.json";
+import budgetReceiptsSpendingTimelineData from "@/data/budgetReceiptsSpendingTimeline.json";
 import borrowingByGovernmentSummaryData from "@/data/borrowingByGovernmentSummary.json";
 import debtInterestSummaryData from "@/data/debtInterestSummary.json";
 import debtInterestTimelineData from "@/data/debtInterestTimeline.json";
@@ -18,13 +19,16 @@ import giltYieldTimelineData from "@/data/giltYieldTimeline.json";
 import giltYieldPeerTimelineData from "@/data/giltYieldPeerTimeline.json";
 import governmentIncomeBreakdownData from "@/data/governmentIncomeBreakdown.json";
 import governmentSpendingBreakdownData from "@/data/governmentSpendingBreakdown.json";
+import governmentSpendingTopCategoriesData from "@/data/governmentSpendingTopCategories.json";
 import g7YieldComparisonData from "@/data/g7YieldComparison.json";
 import inflationLinkedDebtExposureData from "@/data/inflationLinkedDebtExposure.json";
 import monthlyInterestPayableData from "@/data/monthlyInterestPayableMetric.json";
+import nhsSpendingBreakdownData from "@/data/nhsSpendingBreakdown.json";
 import otherIncomeBreakdownData from "@/data/otherIncomeBreakdown.json";
 import otherSpendingBreakdownData from "@/data/otherSpendingBreakdown.json";
 import tenYearGiltYieldData from "@/data/tenYearGiltYieldMetric.json";
 import taxpayerDebtData from "@/data/taxpayerDebt.json";
+import structuralDebtFlowData from "@/data/structuralDebtFlow.json";
 import totalDebtMetricData from "@/data/totalDebtMetrics.json";
 import twentyYearGiltYieldData from "@/data/twentyYearGiltYieldMetric.json";
 import ukDebtOwnershipBreakdownData from "@/data/ukDebtOwnershipBreakdown.json";
@@ -61,6 +65,27 @@ export interface AnnualBorrowingTimelineState {
   timestamp: string;
   source: string;
   items: AnnualBorrowingTimelineItemState[];
+}
+
+export interface BudgetReceiptsSpendingTimelinePointState {
+  yearLabel: string;
+  receipts: number;
+  spending: number;
+  gap: number;
+  receiptsFormatted: string;
+  spendingFormatted: string;
+  gapFormatted: string;
+}
+
+export interface BudgetReceiptsSpendingTimelineState {
+  title: string;
+  subtitle: string;
+  unit: "gbp_billions";
+  basis: "fiscal_year";
+  dateValue: string;
+  timestamp: string;
+  source: string;
+  items: BudgetReceiptsSpendingTimelinePointState[];
 }
 
 export interface BorrowingGovernmentSummaryEntryState {
@@ -343,6 +368,38 @@ export interface TotalDebtMetricState {
   dateValue: string;
 }
 
+export interface StructuralDebtFlowNodeState {
+  key:
+    | "debt_rollover"
+    | "new_borrowing"
+    | "inflation_linked_uplift"
+    | "interest_payments"
+    | "total_debt";
+  label: string;
+  subtitle: string;
+  value?: string;
+  tone: "default" | "muted" | "emphasis";
+}
+
+export interface StructuralDebtFlowEdgeState {
+  from:
+    | "debt_rollover"
+    | "new_borrowing"
+    | "inflation_linked_uplift"
+    | "interest_payments";
+  to: "total_debt" | "outflow";
+}
+
+export interface StructuralDebtFlowState {
+  title: string;
+  subtitle: string;
+  dateValue: string;
+  timestamp: string;
+  source: string;
+  nodes: StructuralDebtFlowNodeState[];
+  edges: StructuralDebtFlowEdgeState[];
+}
+
 export interface GiltYieldMetricState {
   numericValue: number;
   formattedValue: string;
@@ -403,6 +460,24 @@ export interface BudgetBreakdownState {
   items: BudgetBreakdownItemState[];
 }
 
+export interface GovernmentSpendingTopCategoryItemState {
+  key: string;
+  label: string;
+  numericValue: number;
+  formattedValue: string;
+  color: "navy" | "red";
+}
+
+export interface GovernmentSpendingTopCategoriesState {
+  title: string;
+  subtitle: string;
+  unit: "gbp_billions";
+  dateValue: string;
+  timestamp: string;
+  source: string;
+  items: GovernmentSpendingTopCategoryItemState[];
+}
+
 export interface DonutBreakdownState extends BudgetBreakdownState {
   title: string;
   subtitle: string;
@@ -441,6 +516,7 @@ export interface MetricsState {
   annualBorrowingTimeline: AnnualBorrowingTimelineState;
   annualLendingMetric: AnnualLendingtState;
   budgetDeficitMetric: BudgetDeficitMetricState;
+  budgetReceiptsSpendingTimeline: BudgetReceiptsSpendingTimelineState;
   borrowingByGovernmentSummary: BorrowingByGovernmentSummaryState;
   debtInterestSummary: DebtInterestSummaryState;
   debtInterestTimeline: DebtInterestTimelineState;
@@ -459,9 +535,12 @@ export interface MetricsState {
   governmentPeriods: GovernmentPeriod[];
   governmentIncomeBreakdown: BudgetBreakdownState;
   governmentSpendingBreakdown: BudgetBreakdownState;
+  governmentSpendingTopCategories: GovernmentSpendingTopCategoriesState;
+  nhsSpendingBreakdown: DonutBreakdownState;
   monthlyInterestPayableMetric: MonthlyInterestPayableState;
   otherIncomeBreakdown: DonutBreakdownState;
   otherSpendingBreakdown: DonutBreakdownState;
+  structuralDebtFlow: StructuralDebtFlowState;
   tenYearGiltYieldMetric: GiltYieldMetricState;
   taxpayerDebtMetric: TaxpayerDebtState;
   totalDebtMetric: TotalDebtMetricState;
@@ -472,6 +551,8 @@ const annualInterestPaymentMetric: AnnualInterestPaymentState = annualInterestPa
 const annualBorrowingTimeline: AnnualBorrowingTimelineState = annualBorrowingTimelineData;
 const annualLendingMetric: AnnualLendingtState = annualLendingData;
 const budgetDeficitMetric: BudgetDeficitMetricState = budgetDeficitData;
+const budgetReceiptsSpendingTimeline: BudgetReceiptsSpendingTimelineState =
+  budgetReceiptsSpendingTimelineData as BudgetReceiptsSpendingTimelineState;
 const borrowingByGovernmentSummary: BorrowingByGovernmentSummaryState =
   borrowingByGovernmentSummaryData;
 const debtInterestSummary: DebtInterestSummaryState = debtInterestSummaryData;
@@ -499,9 +580,14 @@ const inflationLinkedDebtExposure: InflationLinkedDebtExposureState =
 const governmentPeriods: GovernmentPeriod[] = GOVERNMENT_PERIODS;
 const governmentIncomeBreakdown: BudgetBreakdownState = governmentIncomeBreakdownData;
 const governmentSpendingBreakdown: BudgetBreakdownState = governmentSpendingBreakdownData;
+const governmentSpendingTopCategories: GovernmentSpendingTopCategoriesState =
+  governmentSpendingTopCategoriesData as GovernmentSpendingTopCategoriesState;
+const nhsSpendingBreakdown: DonutBreakdownState = nhsSpendingBreakdownData;
 const monthlyInterestPayableMetric: MonthlyInterestPayableState = monthlyInterestPayableData;
 const otherIncomeBreakdown: DonutBreakdownState = otherIncomeBreakdownData;
 const otherSpendingBreakdown: DonutBreakdownState = otherSpendingBreakdownData;
+const structuralDebtFlow: StructuralDebtFlowState =
+  structuralDebtFlowData as StructuralDebtFlowState;
 const tenYearGiltYieldMetric: GiltYieldMetricState = tenYearGiltYieldData;
 const taxpayerDebtMetric: TaxpayerDebtState = taxpayerDebtData;
 const totalDebtMetric: TotalDebtMetricState = totalDebtMetricData;
@@ -512,6 +598,7 @@ const initialState: MetricsState = {
   annualBorrowingTimeline,
   annualLendingMetric,
   budgetDeficitMetric,
+  budgetReceiptsSpendingTimeline,
   borrowingByGovernmentSummary,
   debtInterestSummary,
   debtInterestTimeline,
@@ -530,9 +617,12 @@ const initialState: MetricsState = {
   governmentPeriods,
   governmentIncomeBreakdown,
   governmentSpendingBreakdown,
+  governmentSpendingTopCategories,
+  nhsSpendingBreakdown,
   monthlyInterestPayableMetric,
   otherIncomeBreakdown,
   otherSpendingBreakdown,
+  structuralDebtFlow,
   tenYearGiltYieldMetric,
   taxpayerDebtMetric,
   totalDebtMetric,

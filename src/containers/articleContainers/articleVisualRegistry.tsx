@@ -13,6 +13,10 @@ import G7YieldRateChartBlock from "./G7YieldRateChartBlock";
 import G7YieldComparisonVisual from "./G7YieldComparisonVisual";
 import GiltYieldRatesHeroVisual from "./GiltYieldRatesHeroVisual";
 import InflationLinkedDebtExposureVisual from "./InflationLinkedDebtExposureVisual";
+import NhsSpendingBreakdownContainer from "@/containers/budgetContainers/NhsSpendingBreakdownContainer";
+import StructuralDebtFlowDiagramContainer from "@/containers/budgetContainers/StructuralDebtFlowDiagramContainer";
+import BudgetIncomeSpendingTotalsContainer from "@/containers/budgetContainers/BudgetIncomeSpendingTotalsContainer";
+import BudgetReceiptsSpendingHeroContainer from "@/containers/budgetContainers/BudgetReceiptsSpendingHeroContainer";
 
 export function renderArticleVisual(
   visualKey: ArticleVisualKey,
@@ -101,35 +105,13 @@ export function renderArticleVisual(
         />
       );
     case "budget-breakdown-hero":
-      return (
-        <ArticleVisualPanel
-          eyebrow="Budget anatomy"
-          title="A few giant blocks dominate the state"
-          value="Receipts vs spending"
-          helperText="The OBR totals make the overall budget easier to read: how much comes in, how much goes out and what gap is left to borrow."
-          items={[
-            { label: "Receipts", value: "Taxes and contributions" },
-            { label: "Spending", value: "Services and transfers" },
-            { label: "Gap", value: "Borrowed", tone: "accent" },
-          ]}
-          accentColor="#0f766e"
-        />
-      );
+      return <BudgetReceiptsSpendingHeroContainer />;
     case "budget-deficit-gap":
-      return (
-        <ArticleVisualPanel
-          eyebrow="Deficit logic"
-          title="The budget gap is simply spending above receipts"
-          value="Borrowing fills it"
-          helperText="Once the annual gap opens, the government has to finance it. That turns a fiscal shortfall into additional borrowing."
-          items={[
-            { label: "Receipts", value: "Lower bar" },
-            { label: "Spending", value: "Higher bar" },
-            { label: "Deficit", value: "Difference", tone: "accent" },
-          ]}
-          accentColor="#b45309"
-        />
-      );
+      return <BudgetIncomeSpendingTotalsContainer />;
+    case "nhs-spending-breakdown":
+      return <NhsSpendingBreakdownContainer />;
+    case "structural-debt-flow":
+      return <StructuralDebtFlowDiagramContainer />;
     case "borrowing-hero":
       return (
         <ArticleVisualPanel

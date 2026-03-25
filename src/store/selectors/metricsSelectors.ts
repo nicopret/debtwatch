@@ -322,8 +322,20 @@ export const selectGovernmentIncomeBreakdown = (state: RootState) =>
 export const selectGovernmentSpendingBreakdown = (state: RootState) =>
   state.metrics.governmentSpendingBreakdown;
 
+export const selectGovernmentSpendingTopCategories = (state: RootState) =>
+  state.metrics.governmentSpendingTopCategories;
+
+export const selectNhsSpendingBreakdown = (state: RootState) =>
+  state.metrics.nhsSpendingBreakdown;
+
+export const selectStructuralDebtFlow = (state: RootState) =>
+  state.metrics.structuralDebtFlow;
+
 export const selectBudgetDeficitMetric = (state: RootState) =>
   state.metrics.budgetDeficitMetric;
+
+export const selectBudgetReceiptsSpendingTimeline = (state: RootState) =>
+  state.metrics.budgetReceiptsSpendingTimeline;
 
 export const selectOtherIncomeBreakdown = (state: RootState) =>
   state.metrics.otherIncomeBreakdown;

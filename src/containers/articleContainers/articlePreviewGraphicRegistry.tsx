@@ -2,8 +2,10 @@ import type { ArticlePreviewGraphicKey } from "@/data/articles/articleTypes";
 import BorrowingArticlePreviewGraphic from "@/components/ui/borrowingArticlePreviewGraphicComponent/BorrowingArticlePreviewGraphic";
 import DebtInterestArticlePreviewGraphic from "@/components/ui/debtInterestArticlePreviewGraphicComponent/DebtInterestArticlePreviewGraphic";
 import GiltYieldsArticlePreviewGraphic from "@/components/ui/giltYieldsArticlePreviewGraphicComponent/GiltYieldsArticlePreviewGraphic";
+import GovernmentSpendingArticlePreviewGraphic from "@/components/ui/governmentSpendingArticlePreviewGraphicComponent/GovernmentSpendingArticlePreviewGraphic";
 import giltYieldTimelineData from "@/data/giltYieldTimeline.json";
 import giltYieldPeerTimelineData from "@/data/giltYieldPeerTimeline.json";
+import budgetReceiptsSpendingTimelineData from "@/data/budgetReceiptsSpendingTimeline.json";
 import { isOnOrBeforePublicationMonth } from "@/lib/articlePublicationDate";
 
 export function renderArticlePreviewGraphic(
@@ -72,6 +74,27 @@ export function renderArticlePreviewGraphic(
           points={recentPoints.map((item) => item.uk10yGiltYieldPct)}
           comparisonPoints={recentPoints.map((item) => item.g7Average10yYieldPct)}
           dateLabel={formatDate(latestPoint.dateLabel)}
+        />
+      );
+    }
+    case "budget-gap-trend": {
+      const sourceItems = budgetReceiptsSpendingTimelineData.items.filter(() =>
+        articleDate ? isOnOrBeforePublicationMonth(budgetReceiptsSpendingTimelineData.dateValue, articleDate) : true,
+      );
+      const previewItems =
+        sourceItems.length > 0 ? sourceItems : budgetReceiptsSpendingTimelineData.items;
+      const latestPoint = previewItems[previewItems.length - 1];
+
+      if (!latestPoint) {
+        return null;
+      }
+
+      return (
+        <GovernmentSpendingArticlePreviewGraphic
+          latestGap={latestPoint.gapFormatted}
+          dateLabel={latestPoint.yearLabel}
+          receiptsPoints={previewItems.map((item) => item.receipts)}
+          spendingPoints={previewItems.map((item) => item.spending)}
         />
       );
     }

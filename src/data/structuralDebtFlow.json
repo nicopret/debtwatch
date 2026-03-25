@@ -1,0 +1,61 @@
+{
+  "title": "How the debt keeps growing",
+  "subtitle": "Debt status over the last 12 months",
+  "dateValue": "Feb 2026",
+  "timestamp": "2026-02-28T00:00:00.000Z",
+  "source": "Office for Budget Responsibility / UK Debt Management Office / Office for National Statistics",
+  "nodes": [
+    {
+      "key": "debt_rollover",
+      "label": "Debt rolled over",
+      "subtitle": "Maturing gilts refinanced",
+      "value": "≈£220bn / year",
+      "tone": "default"
+    },
+    {
+      "key": "new_borrowing",
+      "label": "New borrowing",
+      "subtitle": "Spending exceeds tax",
+      "value": "≈£138bn / year",
+      "tone": "default"
+    },
+    {
+      "key": "inflation_linked_uplift",
+      "label": "Inflation-linked uplift",
+      "subtitle": "Index-linked debt increases principal",
+      "value": "≈£35bn / year",
+      "tone": "default"
+    },
+    {
+      "key": "interest_payments",
+      "label": "Interest payments",
+      "subtitle": "Paid from tax revenue",
+      "value": "≈£95bn / year",
+      "tone": "muted"
+    },
+    {
+      "key": "total_debt",
+      "label": "Total debt increases",
+      "subtitle": "≈£173bn / year",
+      "tone": "emphasis"
+    }
+  ],
+  "edges": [
+    {
+      "from": "debt_rollover",
+      "to": "total_debt"
+    },
+    {
+      "from": "new_borrowing",
+      "to": "total_debt"
+    },
+    {
+      "from": "inflation_linked_uplift",
+      "to": "total_debt"
+    },
+    {
+      "from": "interest_payments",
+      "to": "outflow"
+    }
+  ]
+}

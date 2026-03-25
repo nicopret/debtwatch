@@ -1,0 +1,90 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.header {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  color: #17315f;
+  font-size: 1.55rem;
+  line-height: 1.1;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.column {
+  display: grid;
+  grid-template-rows: auto 240px minmax(2.6rem, auto);
+  gap: 0.65rem;
+  align-items: end;
+  height: 100%;
+}
+
+.label {
+  color: #17315f;
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.barTrack {
+  height: 240px;
+  border-radius: 18px;
+  background: #ecf1f6;
+  overflow: hidden;
+  display: flex;
+  align-items: end;
+}
+
+.bar {
+  width: 100%;
+  border-radius: 18px 18px 0 0;
+}
+
+.navyBar {
+  background: #203b73;
+}
+
+.redBar {
+  background: #c75b5b;
+}
+
+.value {
+  color: #17315f;
+  font-size: 0.9rem;
+  font-weight: 800;
+  white-space: nowrap;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .columns {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .column {
+    grid-template-rows: auto 180px minmax(2.6rem, auto);
+  }
+}

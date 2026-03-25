@@ -1,0 +1,87 @@
+{
+  "title": "Where government money goes",
+  "subtitle": "Top expenditure categories | OBR February 2026 forecast",
+  "unit": "gbp_billions",
+  "dateValue": "Feb 2026",
+  "timestamp": "2026-03-13T23:44:27.886Z",
+  "source": "Office for Budget Responsibility / Office for Budget Responsibility (derived residual split)",
+  "items": [
+    {
+      "key": "welfare_and_pensions",
+      "label": "Welfare & pensions",
+      "numericValue": 333,
+      "formattedValue": "£333bn",
+      "color": "navy"
+    },
+    {
+      "key": "health",
+      "label": "Health",
+      "numericValue": 202,
+      "formattedValue": "£202bn",
+      "color": "navy"
+    },
+    {
+      "key": "infrastructure",
+      "label": "Infrastructure",
+      "numericValue": 159,
+      "formattedValue": "£159bn",
+      "color": "navy"
+    },
+    {
+      "key": "debt_interest",
+      "label": "Debt interest",
+      "numericValue": 114,
+      "formattedValue": "£114bn",
+      "color": "red"
+    },
+    {
+      "key": "local_government",
+      "label": "Local government",
+      "numericValue": 111.28,
+      "formattedValue": "£111bn",
+      "color": "navy"
+    },
+    {
+      "key": "education",
+      "label": "Education",
+      "numericValue": 95,
+      "formattedValue": "£95bn",
+      "color": "navy"
+    },
+    {
+      "key": "public_order_and_safety",
+      "label": "Public order & safety",
+      "numericValue": 77.03999999999999,
+      "formattedValue": "£77bn",
+      "color": "navy"
+    },
+    {
+      "key": "administration",
+      "label": "Administration",
+      "numericValue": 64.2,
+      "formattedValue": "£64bn",
+      "color": "navy"
+    },
+    {
+      "key": "culture_communities",
+      "label": "Culture / communities",
+      "numericValue": 42.800000000000004,
+      "formattedValue": "£43bn",
+      "color": "navy"
+    },
+    {
+      "key": "defence",
+      "label": "Defence",
+      "numericValue": 39,
+      "formattedValue": "£39bn",
+      "color": "navy"
+    },
+    {
+      "key": "other",
+      "label": "Other",
+      "numericValue": 132.67999999999998,
+      "formattedValue": "£133bn",
+      "color": "navy"
+    }
+  ]
+}

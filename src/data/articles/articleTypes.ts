@@ -11,6 +11,8 @@ export type ArticleVisualKey =
   | "debt-to-gdp-g7"
   | "budget-breakdown-hero"
   | "budget-deficit-gap"
+  | "nhs-spending-breakdown"
+  | "structural-debt-flow"
   | "borrowing-hero"
   | "borrowing-shocks"
   | "borrowing-yield-rates"
@@ -25,7 +27,8 @@ export type ArticleGraphKey =
 export type ArticlePreviewGraphicKey =
   | "borrowing-debt-overview"
   | "debt-interest-yield-trend"
-  | "gilt-yield-peer-trend";
+  | "gilt-yield-peer-trend"
+  | "budget-gap-trend";
 
 export interface ArticleGraphBlock {
   type: "graph";
