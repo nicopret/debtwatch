@@ -3,36 +3,30 @@
 import DebtInterestSummaryCard from "@/components/ui/debtInterestSummaryCardComponent/DebtInterestSummaryCard";
 import { useAppSelector } from "@/store/hooks";
 import {
-  selectAverageAnnualDebtInterest,
+  selectArticleDebtInterestSummary,
   selectDebtInterestGovernmentTotals,
-  selectDebtInterestLatestVsAverage,
-  selectDebtInterestPeakAmount,
-  selectDebtInterestPeakGovernment,
-  selectDebtInterestPeakYear,
   selectLatestAnnualDebtInterest,
 } from "@/store/selectors/metricsSelectors";
 
-export default function DebtInterestSummaryContainer() {
+export interface DebtInterestSummaryContainerProps {
+  publicationDate?: string;
+}
+
+export default function DebtInterestSummaryContainer({
+  publicationDate,
+}: DebtInterestSummaryContainerProps) {
+  const articleSummary = useAppSelector((state) =>
+    publicationDate ? selectArticleDebtInterestSummary(state, publicationDate) : null,
+  );
   const latest = useAppSelector(selectLatestAnnualDebtInterest);
-  const peakYear = useAppSelector(selectDebtInterestPeakYear);
-  const peakAmount = useAppSelector(selectDebtInterestPeakAmount);
-  const peakGovernment = useAppSelector(selectDebtInterestPeakGovernment);
-  const average = useAppSelector(selectAverageAnnualDebtInterest);
-  const latestVsAverage = useAppSelector(selectDebtInterestLatestVsAverage);
   const governmentTotals = useAppSelector(selectDebtInterestGovernmentTotals);
 
   return (
     <DebtInterestSummaryCard
       title="Debt interest summary"
-      latestValue={latest.formattedValue}
-      latestYear={latest.year}
-      peakYear={peakYear}
-      peakAmount={peakAmount.formattedValue}
-      peakGovernment={peakGovernment.governmentLabel}
-      averageValue={average.formattedValue}
-      latestVsAverage={latestVsAverage.formattedDifference}
-      latestVsAveragePercent={latestVsAverage.formattedPercentageDifference}
-      governmentTotals={governmentTotals}
+      latestValue={articleSummary?.latestValue ?? latest.formattedValue}
+      latestYear={articleSummary?.latestYear ?? latest.year}
+      governmentTotals={articleSummary?.governmentTotals ?? governmentTotals}
     />
   );
 }

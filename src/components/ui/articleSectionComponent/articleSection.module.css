@@ -12,6 +12,20 @@
   align-items: start;
 }
 
+.sectionSplitReverse {
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.3fr);
+  align-items: start;
+}
+
+.sectionSplitReverse .copy {
+  grid-column: 2;
+}
+
+.sectionSplitReverse .visual {
+  grid-column: 1;
+  grid-row: 1;
+}
+
 .copy {
   min-width: 0;
   display: grid;
@@ -32,6 +46,41 @@
   line-height: 1.75;
 }
 
+.blocks {
+  display: grid;
+  gap: 1rem;
+}
+
+.blocks :global(.article-section-text-block) {
+  display: grid;
+  gap: 0.9rem;
+  color: #24324a;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.blocks :global(.article-section-text-block a) {
+  color: #17315f;
+  font-weight: 700;
+}
+
+.blocks :global(.article-section-text-block b),
+.blocks :global(.article-section-text-block strong) {
+  color: #17315f;
+  font-weight: 800;
+}
+
+.body a {
+  color: #17315f;
+  font-weight: 700;
+}
+
+.body b,
+.body strong {
+  color: #17315f;
+  font-weight: 800;
+}
+
 .visual {
   min-width: 0;
   display: flex;
@@ -49,8 +98,8 @@
 }
 
 @media (max-width: 900px) {
-  .sectionSplit {
+  .sectionSplit,
+  .sectionSplitReverse {
     grid-template-columns: 1fr;
   }
 }
-

@@ -8,12 +8,6 @@ const meta = {
     title: "Debt interest summary",
     latestValue: "\u00A3108.9B",
     latestYear: "2025",
-    peakYear: "2023",
-    peakAmount: "\u00A3113.9B",
-    peakGovernment: "Conservative (2015-2024)",
-    averageValue: "\u00A346.5B",
-    latestVsAverage: "+\u00A362.4B",
-    latestVsAveragePercent: "+134.2%",
     governmentTotals: [
       {
         governmentKey: "labour_1997",

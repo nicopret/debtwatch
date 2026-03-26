@@ -1,0 +1,147 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.header {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  color: #17315f;
+  font-size: 1.55rem;
+  line-height: 1.1;
+}
+
+.diagram {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 1rem;
+  align-items: center;
+}
+
+.inputs {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.inputRow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.arrow {
+  color: #8fa0b8;
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.node {
+  border-radius: 20px;
+  border: 1px solid #d9e1eb;
+  background: #f8fbff;
+  padding: 0.9rem 1rem;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.node[data-tone="muted"] {
+  background: #fff7f6;
+  border-color: #f0d1ce;
+}
+
+.node[data-tone="emphasis"] {
+  background: #17315f;
+  border-color: #17315f;
+}
+
+.nodeLabel {
+  color: #17315f;
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.nodeSubtitle {
+  color: #516178;
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.nodeValue {
+  color: #17315f;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.totalWrap {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  min-width: 0;
+}
+
+.totalNode {
+  width: 100%;
+  min-height: 160px;
+  align-content: center;
+}
+
+.totalNode .nodeLabel,
+.totalNode .nodeSubtitle {
+  color: #ffffff;
+}
+
+.outflow {
+  grid-column: 1 / span 2;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto auto;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.outflowNode .nodeLabel {
+  color: #8d4747;
+}
+
+.outflowArrow {
+  color: #c75b5b;
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.outflowNote {
+  color: #7a4750;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .diagram {
+    grid-template-columns: 1fr;
+  }
+
+  .totalWrap {
+    justify-content: stretch;
+  }
+
+  .outflow {
+    grid-column: 1;
+    grid-template-columns: 1fr;
+  }
+}

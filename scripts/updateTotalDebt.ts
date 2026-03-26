@@ -1,14 +1,23 @@
 import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
-import gdpData from "../src/data/gdpMetric.json" with { type: "json" };
+import debtToGdpTimelineData from "../src/data/debtToGdpTimeline.json" with { type: "json" };
 
 type DebtToGdp = {
   numericValue: number;
   formattedValue: string;
   timestamp: string;
   dateValue: string;
-}
+};
+
+type DebtToGdpTimelineData = {
+  items: Array<{
+    yearLabel: string;
+    numericValue: number;
+    formattedValue: string;
+  }>;
+  timestamp: string;
+};
 
 type OnsObservation = {
   date?: string;
@@ -174,7 +183,15 @@ async function main() {
     const data = (await response.json()) as OnsResponse;
     const latest = getLatestObservation(data);
     const numericValue = toPounds(latest.value, data.description?.unit);
-    const debtToGdp = (numericValue / gdpData.numericValue) * 100
+    const latestDebtToGdpPoint =
+      (debtToGdpTimelineData as DebtToGdpTimelineData).items[
+        (debtToGdpTimelineData as DebtToGdpTimelineData).items.length - 1
+      ];
+
+    if (!latestDebtToGdpPoint) {
+      throw new Error("Debt-to-GDP timeline does not contain a latest annual point.");
+    }
+
     const metric: TotalDebtMetric = {
       numericValue,
       formattedValue: formatCompactPounds(numericValue),
@@ -192,17 +209,16 @@ async function main() {
     }
 
     const debtToGdpMetric: DebtToGdp = {
-      dateValue: formatMonthYear(latest.date),
-      formattedValue: `${debtToGdp.toFixed(1)}%`,
-      numericValue: debtToGdp,
-      timestamp: new Date().toISOString()
-    }
+      dateValue: latestDebtToGdpPoint.yearLabel,
+      formattedValue: latestDebtToGdpPoint.formattedValue,
+      numericValue: latestDebtToGdpPoint.numericValue,
+      timestamp: (debtToGdpTimelineData as DebtToGdpTimelineData).timestamp,
+    };
 
     await writeFile(OUTPUT_PATH, `${JSON.stringify(metric, null, 2)}\n`, "utf8");
     await writeFile(TAXPAYER_OUTPUT_PATH, `${JSON.stringify(taxpayerDebtMetric, null, 2)}\n`, 'utf8');
     await writeFile(DEBT_TO_GDP_OUTPUT_PATH, `${JSON.stringify(debtToGdpMetric, null, 2)}\n`, "utf8");
 
-    console.log(`Total GDP: ${gdpData.numericValue}`);
     console.log("Updated Total UK Debt metric");
     console.log(`Raw value: ${metric.numericValue}`);
     console.log(`Formatted: ${metric.formattedValue}`);

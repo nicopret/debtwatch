@@ -1,0 +1,55 @@
+{
+  "title": "Debt interest vs public service pay",
+  "subtitle": "Comparing the annual cost of servicing government debt with the biggest public-service pay bills",
+  "unit": "gbp_billions",
+  "basis": "calendar_year",
+  "dateValue": "2023",
+  "timestamp": "2026-03-26T10:10:14.626Z",
+  "source": "Office for National Statistics",
+  "debtInterestDefinition": "Public sector debt interest payments, built from ONS NMFX monthly outturns and summed to completed calendar years.",
+  "publicServicePayDefinition": "General government compensation of employees from ONS ESA Table 11, using the six largest top-level COFOG functions reported in annual current-price values.",
+  "items": [
+    {
+      "key": "debt_interest",
+      "label": "Debt interest",
+      "value": 86.3,
+      "color": "amber"
+    },
+    {
+      "key": "health_pay",
+      "label": "Health pay",
+      "value": 104.7,
+      "color": "darkNavy"
+    },
+    {
+      "key": "education_pay",
+      "label": "Education pay",
+      "value": 59.1,
+      "color": "darkNavy"
+    },
+    {
+      "key": "public_order_pay",
+      "label": "Public order pay",
+      "value": 28.6,
+      "color": "darkNavy"
+    },
+    {
+      "key": "general_public_services_pay",
+      "label": "Government admin pay",
+      "value": 17.2,
+      "color": "darkNavy"
+    },
+    {
+      "key": "defence_pay",
+      "label": "Defence pay",
+      "value": 16.6,
+      "color": "darkNavy"
+    },
+    {
+      "key": "social_protection_pay",
+      "label": "Social protection pay",
+      "value": 16.2,
+      "color": "darkNavy"
+    }
+  ]
+}

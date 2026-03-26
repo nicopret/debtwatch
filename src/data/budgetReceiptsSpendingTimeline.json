@@ -1,0 +1,56 @@
+{
+  "title": "Receipts vs spending",
+  "subtitle": "The gap is funded by borrowing",
+  "unit": "gbp_billions",
+  "basis": "fiscal_year",
+  "dateValue": "Feb 2026",
+  "timestamp": "2026-03-24T23:46:29.234Z",
+  "source": "Office for Budget Responsibility",
+  "items": [
+    {
+      "yearLabel": "2021-22",
+      "receipts": 920.575,
+      "spending": 1040.865,
+      "gap": 120.28999999999996,
+      "receiptsFormatted": "£921bn",
+      "spendingFormatted": "£1,041bn",
+      "gapFormatted": "£120bn"
+    },
+    {
+      "yearLabel": "2022-23",
+      "receipts": 1033.479,
+      "spending": 1160.628,
+      "gap": 127.14899999999989,
+      "receiptsFormatted": "£1,033bn",
+      "spendingFormatted": "£1,161bn",
+      "gapFormatted": "£127bn"
+    },
+    {
+      "yearLabel": "2023-24",
+      "receipts": 1096.033,
+      "spending": 1230.772,
+      "gap": 134.73900000000003,
+      "receiptsFormatted": "£1,096bn",
+      "spendingFormatted": "£1,231bn",
+      "gapFormatted": "£135bn"
+    },
+    {
+      "yearLabel": "2024-25",
+      "receipts": 1139.044,
+      "spending": 1291.786,
+      "gap": 152.74199999999996,
+      "receiptsFormatted": "£1,139bn",
+      "spendingFormatted": "£1,292bn",
+      "gapFormatted": "£153bn"
+    },
+    {
+      "yearLabel": "2025-26",
+      "receipts": 1231.518013630808,
+      "spending": 1369.7880458714735,
+      "gap": 138.2700322406656,
+      "receiptsFormatted": "£1,232bn",
+      "spendingFormatted": "£1,370bn",
+      "gapFormatted": "£138bn"
+    }
+  ]
+}

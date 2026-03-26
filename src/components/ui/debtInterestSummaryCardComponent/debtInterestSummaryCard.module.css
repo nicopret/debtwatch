@@ -5,7 +5,7 @@
   padding: 1.25rem;
   min-height: 420px;
   display: grid;
-  grid-template-rows: auto auto auto 1fr;
+  grid-template-rows: auto auto 1fr;
   gap: 1rem;
 }
 
@@ -15,8 +15,7 @@
 }
 
 .subtitle,
-.heroLabel,
-.statLabel {
+.heroLabel {
   color: #6b7280;
   font-size: 0.8rem;
   font-weight: 700;
@@ -46,26 +45,11 @@
 }
 
 .heroMeta,
-.statMeta,
 .totalMeta {
   margin-top: 0.3rem;
   color: #5c6778;
   font-size: 0.9rem;
 }
-
-.statsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
-}
-
-.stat {
-  padding: 0.85rem;
-  border: 1px solid #eef2f7;
-  border-radius: 16px;
-}
-
-.statValue,
 .totalValue {
   margin-top: 0.3rem;
   color: #17315f;

@@ -1,16 +1,164 @@
 import type { RootState } from "../index";
+import {
+  parseArticlePublicationMonth,
+  parseDataMonth,
+  comparePublicationMonths,
+} from "@/lib/articlePublicationDate";
 
 export type NumericMetricKey =
   | "annualInterest"
   | "monthlyDebtPayment"
   | "debtToGdp"
-  | "borrowingThisYear";
+  | "borrowingThisYear"
+  | "totalDebt";
+
+function isOnOrBeforeArticleDate(
+  dataValue: string | undefined,
+  articleDate: string,
+): boolean {
+  if (!dataValue) {
+    return true;
+  }
+
+  const publicationMonth = parseArticlePublicationMonth(articleDate);
+  const dataMonth = parseDataMonth(dataValue);
+
+  if (!publicationMonth || !dataMonth) {
+    return true;
+  }
+
+  return comparePublicationMonths(dataMonth, publicationMonth) <= 0;
+}
+
+function filterItemsToArticleDate<T>(
+  items: T[],
+  articleDate: string,
+  getDateValue: (item: T) => string,
+) {
+  const publicationMonth = parseArticlePublicationMonth(articleDate);
+
+  return items.filter((item) => {
+    if (!publicationMonth) {
+      return true;
+    }
+
+    const itemMonth = parseDataMonth(getDateValue(item));
+    return itemMonth
+      ? comparePublicationMonths(itemMonth, publicationMonth) <= 0
+      : true;
+  });
+}
+
+function formatBillions(value: number): string {
+  return value >= 1_000
+    ? `\u00A3${(value / 1_000).toFixed(1)}T`
+    : `\u00A3${value.toFixed(value >= 100 ? 0 : 1)}bn`;
+}
+
+export const selectLatestDebtToGdpTimelinePoint = (state: RootState) => {
+  const items = state.metrics.debtToGdpTimeline.items;
+  const latestItem = items[items.length - 1];
+
+  if (!latestItem) {
+    return state.metrics.debtToGdpMetric;
+  }
+
+  return {
+    dateValue: latestItem.yearLabel,
+    formattedValue: latestItem.formattedValue,
+    numericValue: latestItem.numericValue,
+    timestamp: state.metrics.debtToGdpTimeline.timestamp,
+  };
+};
 
 export const selectCanonicalDebtToGdpMetric = (state: RootState) =>
-  state.metrics.debtToGdpMetric;
+  selectLatestDebtToGdpTimelinePoint(state);
+
+export function selectArticleDebtToGdpMetric(
+  state: RootState,
+  articleDate: string,
+) {
+  const publicationMonth = parseArticlePublicationMonth(articleDate);
+  const timeline = selectDebtToGdpTimeline(state);
+
+  const matchingPoint =
+    timeline.items
+      .filter((item) => {
+        if (!publicationMonth) {
+          return true;
+        }
+
+        const itemMonth = parseDataMonth(item.yearLabel);
+        return itemMonth
+          ? comparePublicationMonths(itemMonth, publicationMonth) <= 0
+          : true;
+      })
+      .at(-1) ?? null;
+
+  if (!matchingPoint) {
+    return selectCanonicalDebtToGdpMetric(state);
+  }
+
+  return {
+    dateValue: matchingPoint.yearLabel,
+    formattedValue: matchingPoint.formattedValue,
+    numericValue: matchingPoint.numericValue,
+    timestamp: timeline.timestamp,
+  };
+}
 
 export const selectCanonicalAnnualDebtInterestMetric = (state: RootState) =>
   state.metrics.annualInterestPaymentMetric;
+
+export function selectArticleAnnualDebtInterestMetric(
+  state: RootState,
+  articleDate: string,
+) {
+  const publicationMonth = parseArticlePublicationMonth(articleDate);
+  const timeline = selectDebtInterestTimeline(state);
+
+  const matchingPoint =
+    timeline.items
+      .filter((item) => {
+        if (!publicationMonth) {
+          return true;
+        }
+
+        const itemMonth = parseDataMonth(item.yearLabel);
+        return itemMonth
+          ? comparePublicationMonths(itemMonth, publicationMonth) <= 0
+          : true;
+      })
+      .at(-1) ?? null;
+
+  if (!matchingPoint) {
+    return selectCanonicalAnnualDebtInterestMetric(state);
+  }
+
+  return {
+    numericValue: matchingPoint.numericValue,
+    formattedValue: matchingPoint.formattedValue,
+    currencySymbol: state.metrics.annualInterestPaymentMetric.currencySymbol,
+    timestamp: timeline.timestamp,
+    dateValue: matchingPoint.yearLabel,
+  };
+}
+
+export function selectArticleMonthlyInterestPayableMetric(
+  state: RootState,
+  articleDate: string,
+) {
+  const annualMetric = selectArticleAnnualDebtInterestMetric(state, articleDate);
+  const taxpayersMetric = state.metrics.monthlyInterestPayableMetric;
+  const monthlyNumericValue = Number((annualMetric.numericValue / taxpayersMetric.taxpayers / 12).toFixed(0));
+
+  return {
+    ...taxpayersMetric,
+    dateValue: annualMetric.dateValue,
+    numericValue: annualMetric.numericValue,
+    formattedValue: `\u00A3${monthlyNumericValue.toLocaleString("en-GB")}`,
+  };
+}
 
 export const annualInterestPaymentValue = (state: RootState) =>
   selectCanonicalAnnualDebtInterestMetric(state).formattedValue;
@@ -50,6 +198,18 @@ export const taxYear = (state: RootState) =>
 export const selectTenYearGiltYieldMetric = (state: RootState) =>
   state.metrics.tenYearGiltYieldMetric;
 
+export const selectGiltYieldTimeline = (state: RootState) =>
+  state.metrics.giltYieldTimeline;
+
+export const selectFiveYearGiltYieldMetric = (state: RootState) =>
+  state.metrics.fiveYearGiltYieldMetric;
+
+export const selectTwentyYearGiltYieldMetric = (state: RootState) =>
+  state.metrics.twentyYearGiltYieldMetric;
+
+export const selectFiveYearGiltYieldFormattedValue = (state: RootState) =>
+  state.metrics.fiveYearGiltYieldMetric.formattedValue;
+
 export const selectTenYearGiltYieldNumericValue = (state: RootState) =>
   state.metrics.tenYearGiltYieldMetric.numericValue;
 
@@ -62,8 +222,158 @@ export const selectTenYearGiltYieldDateValue = (state: RootState) =>
 export const selectTenYearGiltYieldSource = (state: RootState) =>
   state.metrics.tenYearGiltYieldMetric.source;
 
+export const selectTwentyYearGiltYieldFormattedValue = (state: RootState) =>
+  state.metrics.twentyYearGiltYieldMetric.formattedValue;
+
 export const selectTenYearGiltYieldHelperText = (state: RootState) =>
   `${selectTenYearGiltYieldSource(state)} | ${selectTenYearGiltYieldDateValue(state)}`;
+
+export const selectGiltYieldRatesHelperText = (state: RootState) =>
+  `${selectTenYearGiltYieldSource(state)} | ${selectTenYearGiltYieldDateValue(state)}`;
+
+export function selectArticleGiltYieldRates(
+  state: RootState,
+  articleDate: string,
+) {
+  const publicationMonth = parseArticlePublicationMonth(articleDate);
+  const timeline = selectGiltYieldTimeline(state);
+
+  const matchingPoint =
+    timeline.items
+      .filter((item) => {
+        if (!publicationMonth) {
+          return true;
+        }
+
+        const itemMonth = parseDataMonth(item.dateLabel);
+        return itemMonth
+          ? comparePublicationMonths(itemMonth, publicationMonth) <= 0
+          : true;
+      })
+      .at(-1) ?? null;
+
+  if (!matchingPoint) {
+    return {
+      fiveYearFormattedValue: state.metrics.fiveYearGiltYieldMetric.formattedValue,
+      tenYearFormattedValue: state.metrics.tenYearGiltYieldMetric.formattedValue,
+      twentyYearFormattedValue: state.metrics.twentyYearGiltYieldMetric.formattedValue,
+      helperText: selectGiltYieldRatesHelperText(state),
+    };
+  }
+
+  const formatPercent = (value: number) => `${value.toFixed(1)}%`;
+
+  return {
+    fiveYearFormattedValue: formatPercent(matchingPoint.fiveYearGiltYieldPct),
+    tenYearFormattedValue: formatPercent(matchingPoint.tenYearGiltYieldPct),
+    twentyYearFormattedValue: formatPercent(matchingPoint.twentyYearGiltYieldPct),
+    helperText: `${timeline.source} | ${matchingPoint.dateLabel}`,
+  };
+}
+
+export function selectArticleGiltYieldComparisonRates(
+  state: RootState,
+  articleDate: string,
+) {
+  const publicationMonth = parseArticlePublicationMonth(articleDate);
+  const timeline = selectG7YieldRateTimeline(state);
+
+  const matchingPoint =
+    timeline.items
+      .filter((item) => {
+        if (!publicationMonth) {
+          return true;
+        }
+
+        const itemMonth = parseDataMonth(item.dateLabel);
+        return itemMonth
+          ? comparePublicationMonths(itemMonth, publicationMonth) <= 0
+          : true;
+      })
+      .at(-1) ?? null;
+
+  if (!matchingPoint) {
+    return {
+      ukFormattedValue: "—",
+      g7FormattedValue: "—",
+      bankRateFormattedValue: "—",
+      helperText: "Latest data: unavailable",
+    };
+  }
+
+  const formatPercent = (value: number) => `${value.toFixed(1)}%`;
+  const formattedDate = (() => {
+    const parsed = parseDataMonth(matchingPoint.dateLabel);
+    if (!parsed) {
+      return matchingPoint.dateLabel;
+    }
+
+    const monthNames = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    return `${monthNames[parsed.month - 1]} ${parsed.year}`;
+  })();
+
+  return {
+    ukFormattedValue: formatPercent(matchingPoint.uk10yGiltYieldPct),
+    g7FormattedValue: formatPercent(matchingPoint.g7Average10yYieldPct),
+    bankRateFormattedValue: formatPercent(matchingPoint.bankRatePct),
+    helperText: `Latest data: ${formattedDate}`,
+  };
+}
+
+export function selectArticleG7YieldRateTimeline(
+  state: RootState,
+  articleDate: string,
+) {
+  const publicationMonth = parseArticlePublicationMonth(articleDate);
+  const timeline = selectG7YieldRateTimeline(state);
+
+  const filteredItems = timeline.items.filter((item) => {
+    if (!publicationMonth) {
+      return true;
+    }
+
+    const itemMonth = parseDataMonth(item.dateLabel);
+    return itemMonth
+      ? comparePublicationMonths(itemMonth, publicationMonth) <= 0
+      : true;
+  });
+
+  return {
+    ...timeline,
+    dateValue: filteredItems.at(-1)?.dateLabel ?? timeline.dateValue,
+    items: filteredItems,
+  };
+}
+
+export function selectArticleBudgetReceiptsSpendingTimeline(
+  state: RootState,
+  articleDate: string,
+) {
+  const timeline = selectBudgetReceiptsSpendingTimeline(state);
+
+  if (!isOnOrBeforeArticleDate(timeline.dateValue, articleDate)) {
+    return null;
+  }
+
+  return {
+    ...timeline,
+    items: timeline.items.slice(-5),
+  };
+}
 
 export const selectGovernmentIncomeBreakdown = (state: RootState) =>
   state.metrics.governmentIncomeBreakdown;
@@ -71,8 +381,20 @@ export const selectGovernmentIncomeBreakdown = (state: RootState) =>
 export const selectGovernmentSpendingBreakdown = (state: RootState) =>
   state.metrics.governmentSpendingBreakdown;
 
+export const selectGovernmentSpendingTopCategories = (state: RootState) =>
+  state.metrics.governmentSpendingTopCategories;
+
+export const selectNhsSpendingBreakdown = (state: RootState) =>
+  state.metrics.nhsSpendingBreakdown;
+
+export const selectStructuralDebtFlow = (state: RootState) =>
+  state.metrics.structuralDebtFlow;
+
 export const selectBudgetDeficitMetric = (state: RootState) =>
   state.metrics.budgetDeficitMetric;
+
+export const selectBudgetReceiptsSpendingTimeline = (state: RootState) =>
+  state.metrics.budgetReceiptsSpendingTimeline;
 
 export const selectOtherIncomeBreakdown = (state: RootState) =>
   state.metrics.otherIncomeBreakdown;
@@ -85,6 +407,97 @@ export const selectAnnualBorrowingTimeline = (state: RootState) =>
 
 export const selectAnnualBorrowingTimelineItems = (state: RootState) =>
   state.metrics.annualBorrowingTimeline.items;
+
+export const selectLatestAnnualBorrowingTimelineItem = (state: RootState) => {
+  const items = selectAnnualBorrowingTimelineItems(state);
+  return items[items.length - 1] ?? null;
+};
+
+export const selectLatestAnnualBorrowingFormattedValue = (state: RootState) =>
+  selectLatestAnnualBorrowingTimelineItem(state)?.formattedValue ??
+  state.metrics.annualLendingMetric.formattedValue;
+
+export const selectLatestAnnualBorrowingDateValue = (state: RootState) =>
+  selectLatestAnnualBorrowingTimelineItem(state)?.yearLabel ??
+  state.metrics.annualLendingMetric.dateValue;
+
+export function selectArticleAnnualBorrowingMetric(
+  state: RootState,
+  articleDate: string,
+) {
+  const publicationMonth = parseArticlePublicationMonth(articleDate);
+  const timeline = selectAnnualBorrowingTimeline(state);
+
+  const matchingPoint =
+    timeline.items
+      .filter((item) => {
+        if (!publicationMonth) {
+          return true;
+        }
+
+        const itemMonth = parseDataMonth(item.yearLabel);
+        return itemMonth
+          ? comparePublicationMonths(itemMonth, publicationMonth) <= 0
+          : true;
+      })
+      .at(-1) ?? null;
+
+  if (!matchingPoint) {
+    const latest = selectLatestAnnualBorrowingTimelineItem(state);
+
+    return {
+      dateValue: latest?.yearLabel ?? state.metrics.annualLendingMetric.dateValue,
+      formattedValue:
+        latest?.formattedValue ?? state.metrics.annualLendingMetric.formattedValue,
+      numericValue:
+        latest?.numericValue ?? state.metrics.annualLendingMetric.numericValue,
+      timestamp: timeline.timestamp,
+    };
+  }
+
+  return {
+    dateValue: matchingPoint.yearLabel,
+    formattedValue: matchingPoint.formattedValue,
+    numericValue: matchingPoint.numericValue,
+    timestamp: timeline.timestamp,
+  };
+}
+
+export function selectArticleTotalDebtMetric(
+  state: RootState,
+  articleDate: string,
+) {
+  const publicationMonth = parseArticlePublicationMonth(articleDate);
+  const metric = selectTotalDebtMetric(state);
+
+  if (!publicationMonth) {
+    return metric;
+  }
+
+  const metricMonth = parseDataMonth(metric.dateValue);
+  if (!metricMonth || comparePublicationMonths(metricMonth, publicationMonth) <= 0) {
+    return metric;
+  }
+
+  const debtToGdpMetric = selectArticleDebtToGdpMetric(state, articleDate);
+  const annualBorrowingMetric = selectArticleAnnualBorrowingMetric(state, articleDate);
+  const fallbackNumericValue = Math.max(
+    metric.numericValue - annualBorrowingMetric.numericValue,
+    0,
+  );
+
+  const formattedValue =
+    fallbackNumericValue >= 1_000_000_000_000
+      ? `\u00A3${(fallbackNumericValue / 1_000_000_000_000).toFixed(1)}T`
+      : `\u00A3${(fallbackNumericValue / 1_000_000_000).toFixed(0)}B`;
+
+  return {
+    ...metric,
+    numericValue: fallbackNumericValue,
+    formattedValue,
+    dateValue: debtToGdpMetric.dateValue,
+  };
+}
 
 export const selectBorrowingByGovernmentSummary = (state: RootState) =>
   state.metrics.borrowingByGovernmentSummary;
@@ -140,11 +553,124 @@ export const selectBorrowingGovernmentBands = (state: RootState) => {
   return buildGovernmentBands(points, selectGovernmentPeriods(state));
 };
 
+export function selectArticleAnnualBorrowingTimelinePoints(
+  state: RootState,
+  articleDate: string,
+) {
+  return filterItemsToArticleDate(
+    selectAnnualBorrowingTimelineItems(state),
+    articleDate,
+    (item) => item.yearLabel,
+  ).map((item) => ({
+    yearLabel: item.yearLabel,
+    numericValue: item.numericValue,
+    formattedValue: item.formattedValue,
+    governmentLabel: item.governmentLabel,
+  }));
+}
+
+export function selectArticleBorrowingGovernmentBands(
+  state: RootState,
+  articleDate: string,
+) {
+  const filteredItems = filterItemsToArticleDate(
+    selectAnnualBorrowingTimelineItems(state),
+    articleDate,
+    (item) => item.yearLabel,
+  );
+
+  return buildGovernmentBands(filteredItems, selectGovernmentPeriods(state));
+}
+
+export function selectArticleBorrowingByGovernmentSummary(
+  state: RootState,
+  articleDate: string,
+) {
+  const filteredItems = filterItemsToArticleDate(
+    selectAnnualBorrowingTimelineItems(state),
+    articleDate,
+    (item) => item.yearLabel,
+  );
+
+  const grouped = selectGovernmentPeriods(state)
+    .map((period) => {
+      const periodItems = filteredItems.filter(
+        (item) => item.governmentKey === period.governmentKey,
+      );
+
+      if (periodItems.length === 0) {
+        return null;
+      }
+
+      const total = periodItems.reduce((sum, item) => sum + item.numericValue, 0);
+      const peak = [...periodItems].sort((left, right) => right.numericValue - left.numericValue)[0]!;
+
+      return {
+        governmentKey: period.governmentKey,
+        governmentLabel: period.governmentLabel,
+        totalBorrowingFormattedValue: formatBillions(total),
+        peakYear: peak.yearLabel,
+        peakYearBorrowingFormattedValue: peak.formattedValue,
+      };
+    })
+    .filter((item): item is NonNullable<typeof item> => item !== null);
+
+  const overallPeakSource = [...filteredItems].sort(
+    (left, right) => right.numericValue - left.numericValue,
+  )[0];
+
+  return {
+    governments: grouped,
+    overallPeak: overallPeakSource
+      ? {
+          year: overallPeakSource.yearLabel,
+          formattedValue: overallPeakSource.formattedValue,
+          governmentLabel: overallPeakSource.governmentLabel,
+        }
+      : {
+          year: "—",
+          formattedValue: "—",
+          governmentLabel: "—",
+        },
+  };
+}
+
 export const selectDebtInterestTimeline = (state: RootState) =>
   state.metrics.debtInterestTimeline;
 
 export const selectDebtInterestTimelineItems = (state: RootState) =>
   state.metrics.debtInterestTimeline.items;
+
+export const selectDebtSustainabilityTimeline = (state: RootState) =>
+  state.metrics.debtSustainabilityTimeline;
+
+export const selectDebtSustainabilityTimelineItems = (state: RootState) =>
+  state.metrics.debtSustainabilityTimeline.items;
+
+export function selectArticleDebtSustainabilityTimeline(
+  state: RootState,
+  articleDate: string,
+) {
+  const publicationMonth = parseArticlePublicationMonth(articleDate);
+  const timeline = selectDebtSustainabilityTimeline(state);
+
+  const filteredItems = timeline.items.filter((item) => {
+    if (!publicationMonth) {
+      return true;
+    }
+
+    const itemMonth = parseDataMonth(item.yearLabel);
+    return itemMonth
+      ? comparePublicationMonths(itemMonth, publicationMonth) <= 0
+      : true;
+  });
+
+  return {
+    ...timeline,
+    dateValue: filteredItems.at(-1)?.yearLabel ?? timeline.dateValue,
+    items: filteredItems,
+  };
+}
 
 export const selectDebtInterestTimelinePoints = (state: RootState) =>
   selectDebtInterestTimelineItems(state).map((item) => ({
@@ -157,8 +683,62 @@ export const selectDebtInterestTimelinePoints = (state: RootState) =>
 export const selectDebtInterestGovernmentBands = (state: RootState) =>
   buildGovernmentBands(selectDebtInterestTimelineItems(state), selectGovernmentPeriods(state));
 
+export function selectArticleDebtInterestTimelinePoints(
+  state: RootState,
+  articleDate: string,
+) {
+  return filterItemsToArticleDate(
+    selectDebtInterestTimelineItems(state),
+    articleDate,
+    (item) => item.yearLabel,
+  ).map((item) => ({
+    yearLabel: item.yearLabel,
+    numericValue: item.numericValue,
+    formattedValue: item.formattedValue,
+    governmentLabel: item.governmentLabel,
+  }));
+}
+
+export function selectArticleDebtInterestGovernmentBands(
+  state: RootState,
+  articleDate: string,
+) {
+  const filteredItems = filterItemsToArticleDate(
+    selectDebtInterestTimelineItems(state),
+    articleDate,
+    (item) => item.yearLabel,
+  );
+
+  return buildGovernmentBands(filteredItems, selectGovernmentPeriods(state));
+}
+
 export const selectDebtInterestSummary = (state: RootState) =>
   state.metrics.debtInterestSummary;
+
+export const selectDebtInterestVsPublicServicePay = (state: RootState) =>
+  state.metrics.debtInterestVsPublicServicePay;
+
+export function selectArticleDebtInterestVsPublicServicePay(
+  state: RootState,
+  articleDate: string,
+) {
+  const comparison = selectDebtInterestVsPublicServicePay(state);
+  return isOnOrBeforeArticleDate(comparison.dateValue, articleDate) ? comparison : null;
+}
+
+export const selectDebtOwnershipBreakdown = (state: RootState) =>
+  state.metrics.debtOwnershipBreakdown;
+
+export function selectArticleDebtOwnershipBreakdown(
+  state: RootState,
+  articleDate: string,
+) {
+  const breakdown = selectDebtOwnershipBreakdown(state);
+  return isOnOrBeforeArticleDate(breakdown.dateValue, articleDate) ? breakdown : null;
+}
+
+export const selectDebtOwnershipBreakdownItems = (state: RootState) =>
+  state.metrics.debtOwnershipBreakdown.items;
 
 export const selectLatestAnnualDebtInterest = (state: RootState) => {
   const metric = selectCanonicalAnnualDebtInterestMetric(state);
@@ -169,6 +749,46 @@ export const selectLatestAnnualDebtInterest = (state: RootState) => {
     formattedValue: metric.formattedValue,
   };
 };
+
+export function selectArticleDebtInterestSummary(
+  state: RootState,
+  articleDate: string,
+) {
+  const filteredItems = filterItemsToArticleDate(
+    selectDebtInterestTimelineItems(state),
+    articleDate,
+    (item) => item.yearLabel,
+  );
+
+  const latest = filteredItems.at(-1);
+  const governmentTotals = selectGovernmentPeriods(state)
+    .map((period) => {
+      const periodItems = filteredItems.filter(
+        (item) => item.governmentKey === period.governmentKey,
+      );
+
+      if (periodItems.length === 0) {
+        return null;
+      }
+
+      const total = periodItems.reduce((sum, item) => sum + item.numericValue, 0);
+      const average = total / periodItems.length;
+
+      return {
+        governmentKey: period.governmentKey,
+        governmentLabel: period.governmentLabel,
+        totalFormattedValue: formatBillions(total),
+        averageAnnualFormattedValue: formatBillions(average),
+      };
+    })
+    .filter((item): item is NonNullable<typeof item> => item !== null);
+
+  return {
+    latestValue: latest?.formattedValue ?? state.metrics.debtInterestSummary.latestAnnualInterest.formattedValue,
+    latestYear: latest?.yearLabel ?? state.metrics.debtInterestSummary.latestAnnualInterest.year,
+    governmentTotals,
+  };
+}
 
 export const selectDebtInterestPeakYear = (state: RootState) =>
   state.metrics.debtInterestSummary.peakYear;
@@ -220,8 +840,115 @@ export const selectDebtToGdpTimelinePoints = (state: RootState) =>
 export const selectDebtToGdpGovernmentBands = (state: RootState) =>
   buildGovernmentBands(selectDebtToGdpTimelineItems(state), selectGovernmentPeriods(state));
 
+export function selectArticleDebtToGdpTimelinePoints(
+  state: RootState,
+  articleDate: string,
+) {
+  return filterItemsToArticleDate(
+    selectDebtToGdpTimelineItems(state),
+    articleDate,
+    (item) => item.yearLabel,
+  ).map((item) => ({
+    yearLabel: item.yearLabel,
+    numericValue: item.numericValue,
+    formattedValue: item.formattedValue,
+    governmentLabel: item.governmentLabel,
+  }));
+}
+
+export function selectArticleDebtToGdpGovernmentBands(
+  state: RootState,
+  articleDate: string,
+) {
+  const filteredItems = filterItemsToArticleDate(
+    selectDebtToGdpTimelineItems(state),
+    articleDate,
+    (item) => item.yearLabel,
+  );
+
+  return buildGovernmentBands(filteredItems, selectGovernmentPeriods(state));
+}
+
 export const selectG7DebtToGdpComparison = (state: RootState) =>
   state.metrics.g7DebtToGdpComparison;
+
+export function selectArticleG7DebtToGdpComparison(
+  state: RootState,
+  articleDate: string,
+) {
+  const comparison = selectG7DebtToGdpComparison(state);
+  return isOnOrBeforeArticleDate(comparison.dateValue, articleDate) ? comparison : null;
+}
+
+export const selectG7YieldComparison = (state: RootState) =>
+  state.metrics.g7YieldComparison;
+
+export function selectArticleG7YieldComparison(
+  state: RootState,
+  articleDate: string,
+) {
+  const comparison = selectG7YieldComparison(state);
+  return isOnOrBeforeArticleDate(comparison.dateValue, articleDate) ? comparison : null;
+}
+
+export const selectG7YieldRateTimeline = (state: RootState) =>
+  state.metrics.g7YieldRateTimeline;
+
+export const selectGiltYieldPeerTimeline = (state: RootState) =>
+  state.metrics.giltYieldPeerTimeline;
+
+export function selectArticleGiltYieldPeerTimeline(
+  state: RootState,
+  articleDate: string,
+) {
+  const timeline = selectGiltYieldPeerTimeline(state);
+  const filteredItems = filterItemsToArticleDate(
+    timeline.items,
+    articleDate,
+    (item) => item.dateLabel,
+  );
+
+  return {
+    ...timeline,
+    dateValue: filteredItems.at(-1)?.dateLabel ?? timeline.dateValue,
+    items: filteredItems,
+  };
+}
+
+export const selectInflationLinkedDebtExposure = (state: RootState) =>
+  state.metrics.inflationLinkedDebtExposure;
+
+export function selectArticleInflationLinkedDebtExposure(
+  state: RootState,
+  articleDate: string,
+) {
+  const exposure = selectInflationLinkedDebtExposure(state);
+  return isOnOrBeforeArticleDate(exposure.period, articleDate) ? exposure : null;
+}
+
+export function selectArticleGovernmentSpendingTopCategories(
+  state: RootState,
+  articleDate: string,
+) {
+  const chart = selectGovernmentSpendingTopCategories(state);
+  return isOnOrBeforeArticleDate(chart.dateValue, articleDate) ? chart : null;
+}
+
+export function selectArticleNhsSpendingBreakdown(
+  state: RootState,
+  articleDate: string,
+) {
+  const breakdown = selectNhsSpendingBreakdown(state);
+  return isOnOrBeforeArticleDate(breakdown.dateValue, articleDate) ? breakdown : null;
+}
+
+export function selectArticleStructuralDebtFlow(
+  state: RootState,
+  articleDate: string,
+) {
+  const diagram = selectStructuralDebtFlow(state);
+  return isOnOrBeforeArticleDate(diagram.dateValue, articleDate) ? diagram : null;
+}
 
 function formatPercentage(value: number): string {
   return `${value.toFixed(1)}%`;

@@ -11,10 +11,12 @@ export default function ArticleHeroContainer({ article }: ArticleHeroContainerPr
     <ArticleHero
       header={article.header}
       tagline={article.tagline}
+      date={article.date}
+      author={article.author}
+      authorBioUrl={article.authorBioUrl}
       description={article.description}
       keyTakeaway={article.keyTakeaway}
-      visual={renderArticleVisual(article.heroVisual)}
+      visual={renderArticleVisual(article.heroVisual, article)}
     />
   );
 }
-

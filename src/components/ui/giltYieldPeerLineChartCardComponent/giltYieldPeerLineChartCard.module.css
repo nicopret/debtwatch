@@ -1,0 +1,31 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.header {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  color: #17315f;
+  font-size: 1.55rem;
+  line-height: 1.1;
+}
+
+.chartWrap {
+  height: 360px;
+}

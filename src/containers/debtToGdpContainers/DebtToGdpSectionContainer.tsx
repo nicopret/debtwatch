@@ -4,11 +4,17 @@ import DebtToGdpSection from "@/components/ui/debtToGdpSectionComponent/DebtToGd
 import DebtToGdpLineChartContainer from "./DebtToGdpLineChartContainer";
 import G7DebtComparisonContainer from "./G7DebtComparisonContainer";
 
-export default function DebtToGdpSectionContainer() {
+export interface DebtToGdpSectionContainerProps {
+  publicationDate?: string;
+}
+
+export default function DebtToGdpSectionContainer({
+  publicationDate,
+}: DebtToGdpSectionContainerProps) {
   return (
     <DebtToGdpSection
-      leftCard={<DebtToGdpLineChartContainer />}
-      rightCard={<G7DebtComparisonContainer />}
+      leftCard={<DebtToGdpLineChartContainer publicationDate={publicationDate} />}
+      rightCard={<G7DebtComparisonContainer publicationDate={publicationDate} />}
     />
   );
 }

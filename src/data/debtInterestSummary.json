@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-03-14T08:06:21.050Z",
+  "timestamp": "2026-03-26T10:10:12.433Z",
   "dateValue": "2025",
   "source": "Office for National Statistics",
   "latestAnnualInterest": {
     "year": "2025",
-    "numericValue": 98410000000,
-    "formattedValue": "£98.4B"
+    "numericValue": 97788000000,
+    "formattedValue": "£97.8B"
   },
   "peakYear": "2022",
   "peakYearAmount": {
@@ -17,14 +17,14 @@
     "governmentLabel": "Conservative (2015-2024)"
   },
   "averageAnnualInterest": {
-    "numericValue": 46045482758.62069,
+    "numericValue": 46024034482.75862,
     "formattedValue": "£46.0B"
   },
   "latestVsAverage": {
-    "numericDifference": 52364517241.37931,
-    "formattedDifference": "+£52.4B",
-    "percentageDifference": 113.72346233371951,
-    "formattedPercentageDifference": "+113.7%"
+    "numericDifference": 51763965517.24138,
+    "formattedDifference": "+£51.8B",
+    "percentageDifference": 112.47159467654456,
+    "formattedPercentageDifference": "+112.5%"
   },
   "governmentTotals": [
     {
@@ -62,10 +62,10 @@
       "governmentLabel": "Labour (2024-)",
       "startYear": 2024,
       "endYear": null,
-      "totalNumericValue": 180330000000,
+      "totalNumericValue": 179708000000,
       "totalFormattedValue": "£180B",
-      "averageAnnualNumericValue": 90165000000,
-      "averageAnnualFormattedValue": "£90.2B"
+      "averageAnnualNumericValue": 89854000000,
+      "averageAnnualFormattedValue": "£89.9B"
     }
   ]
 }

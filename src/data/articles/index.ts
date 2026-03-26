@@ -4,6 +4,7 @@ import { debtToGdpExplainedArticle } from "./debtToGdpExplainedArticle";
 import { giltYieldsExplainedArticle } from "./giltYieldsExplainedArticle";
 import { governmentSpendingExplainedArticle } from "./governmentSpendingExplainedArticle";
 import type { ArticleData } from "./articleTypes";
+import { parseArticlePublicationMonth } from "../../lib/articlePublicationDate";
 
 export const articles: ArticleData[] = [
   debtInterestExplainedArticle,
@@ -14,7 +15,27 @@ export const articles: ArticleData[] = [
 ];
 
 export function getAllArticles(): ArticleData[] {
-  return articles;
+  return [...articles].sort((left, right) => {
+    const leftDate = new Date(left.date);
+    const rightDate = new Date(right.date);
+
+    if (!Number.isNaN(leftDate.getTime()) && !Number.isNaN(rightDate.getTime())) {
+      return rightDate.getTime() - leftDate.getTime();
+    }
+
+    const leftMonth = parseArticlePublicationMonth(left.date);
+    const rightMonth = parseArticlePublicationMonth(right.date);
+
+    if (!leftMonth || !rightMonth) {
+      return 0;
+    }
+
+    if (leftMonth.year !== rightMonth.year) {
+      return rightMonth.year - leftMonth.year;
+    }
+
+    return rightMonth.month - leftMonth.month;
+  });
 }
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {

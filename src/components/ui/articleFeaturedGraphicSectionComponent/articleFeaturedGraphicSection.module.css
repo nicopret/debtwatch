@@ -1,0 +1,23 @@
+.section {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.header {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.heading {
+  color: #17315f;
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+}
+
+.subheading {
+  color: #556274;
+  line-height: 1.6;
+}
+
+.content {
+  min-width: 0;
+}

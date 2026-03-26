@@ -15,7 +15,7 @@ export default function ArticleSources({ items }: ArticleSourcesProps) {
     <section className={styles.section}>
       <header className={styles.header}>
         <p className={styles.eyebrow}>Documentation</p>
-        <h2 className={styles.heading}>Sources &amp; methodology</h2>
+        <h2 className={styles.heading}>Sources</h2>
       </header>
       <div className={styles.list}>
         {items.map((item) => (

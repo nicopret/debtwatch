@@ -4,11 +4,17 @@ import BorrowingTimelineSection from "@/components/ui/borrowingTimelineSectionCo
 import AnnualBorrowingLineChartContainer from "./AnnualBorrowingLineChartContainer";
 import BorrowingGovernmentSummaryContainer from "./BorrowingGovernmentSummaryContainer";
 
-export default function BorrowingTimelineSectionContainer() {
+export interface BorrowingTimelineSectionContainerProps {
+  publicationDate?: string;
+}
+
+export default function BorrowingTimelineSectionContainer({
+  publicationDate,
+}: BorrowingTimelineSectionContainerProps) {
   return (
     <BorrowingTimelineSection
-      leftCard={<AnnualBorrowingLineChartContainer />}
-      rightCard={<BorrowingGovernmentSummaryContainer />}
+      leftCard={<AnnualBorrowingLineChartContainer publicationDate={publicationDate} />}
+      rightCard={<BorrowingGovernmentSummaryContainer publicationDate={publicationDate} />}
     />
   );
 }

@@ -1,0 +1,67 @@
+{
+  "title": "How the NHS spends its budget",
+  "subtitle": "Major NHS spending categories | latest full-year mix available by Feb 2026",
+  "dateValue": "2024-25",
+  "timestamp": "2026-02-28T00:00:00.000Z",
+  "source": "NHS England annual report and accounts / Department of Health and Social Care",
+  "totalNumericValue": 196,
+  "totalFormattedValue": "£196bn",
+  "items": [
+    {
+      "label": "Staff costs",
+      "numericValue": 101,
+      "formattedValue": "£101bn",
+      "percentageValue": 51.53061224489795,
+      "formattedPercentage": "52%",
+      "color": "#203b73"
+    },
+    {
+      "label": "Procurement",
+      "numericValue": 24.8,
+      "formattedValue": "£25bn",
+      "percentageValue": 12.653061224489795,
+      "formattedPercentage": "13%",
+      "color": "#3b5e90"
+    },
+    {
+      "label": "Medicine",
+      "numericValue": 20.7,
+      "formattedValue": "£21bn",
+      "percentageValue": 10.561224489795917,
+      "formattedPercentage": "11%",
+      "color": "#5d79a8"
+    },
+    {
+      "label": "Primary care",
+      "numericValue": 18.5,
+      "formattedValue": "£19bn",
+      "percentageValue": 9.438775510204081,
+      "formattedPercentage": "9%",
+      "color": "#8fa8c9"
+    },
+    {
+      "label": "Infrastructure",
+      "numericValue": 9.8,
+      "formattedValue": "£10bn",
+      "percentageValue": 5,
+      "formattedPercentage": "5%",
+      "color": "#d2a765"
+    },
+    {
+      "label": "Legal costs",
+      "numericValue": 4.1,
+      "formattedValue": "£4bn",
+      "percentageValue": 2.091836734693877,
+      "formattedPercentage": "2%",
+      "color": "#c75b5b"
+    },
+    {
+      "label": "Other",
+      "numericValue": 17.1,
+      "formattedValue": "£17bn",
+      "percentageValue": 8.724489795918368,
+      "formattedPercentage": "9%",
+      "color": "#d8e0ea"
+    }
+  ]
+}

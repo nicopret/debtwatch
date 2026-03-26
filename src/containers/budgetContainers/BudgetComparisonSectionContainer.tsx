@@ -11,12 +11,12 @@ export default function BudgetComparisonSectionContainer() {
   return (
     <BudgetComparisonSection
       heading="Government income vs spending"
-      subheading="Two stacked bars tell the budget story at a glance."
+      subheading="The UK's budget is shaped by where money comes from, where it goes, and the gap that has to be borrowed."
       leftCard={<GovernmentIncomeBreakdownContainer />}
+      rightCard={<GovernmentSpendingBreakdownContainer />}
       centerCard={<BudgetDeficitCalloutContainer />}
       lowerLeftCard={<OtherIncomeBreakdownContainer />}
       lowerRightCard={<OtherSpendingBreakdownContainer />}
-      rightCard={<GovernmentSpendingBreakdownContainer />}
     />
   );
 }

@@ -1,0 +1,17 @@
+{
+  "title": "Gilt holdings by sector",
+  "unit": "gbp_millions_market_value",
+  "dateValue": "Q2 2025",
+  "timestamp": "2026-03-16T00:00:00.000Z",
+  "source": "UK Debt Management Office / Office for National Statistics",
+  "sourceUrl": "https://www.dmo.gov.uk/media/oykbuhke/jul-sep25.pdf",
+  "items": [
+    { "label": "Insurance companies and pension funds", "value": 449571 },
+    { "label": "Overseas", "value": 696258 },
+    { "label": "Bank of England (Asset Purchase Facility)", "value": 427066 },
+    { "label": "Other financial institutions and private non-financial corporations", "value": 330549 },
+    { "label": "Monetary financial institutions", "value": 201125 },
+    { "label": "Households and non-profit institutions serving households", "value": 2995 },
+    { "label": "Local authorities and public corporations", "value": 998 }
+  ]
+}

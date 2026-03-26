@@ -4,11 +4,17 @@ import DebtInterestSection from "@/components/ui/debtInterestSectionComponent/De
 import DebtInterestLineChartContainer from "./DebtInterestLineChartContainer";
 import DebtInterestSummaryContainer from "./DebtInterestSummaryContainer";
 
-export default function DebtInterestSectionContainer() {
+export interface DebtInterestSectionContainerProps {
+  publicationDate?: string;
+}
+
+export default function DebtInterestSectionContainer({
+  publicationDate,
+}: DebtInterestSectionContainerProps) {
   return (
     <DebtInterestSection
-      leftCard={<DebtInterestLineChartContainer />}
-      rightCard={<DebtInterestSummaryContainer />}
+      leftCard={<DebtInterestLineChartContainer publicationDate={publicationDate} />}
+      rightCard={<DebtInterestSummaryContainer publicationDate={publicationDate} />}
     />
   );
 }

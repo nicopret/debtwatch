@@ -1,0 +1,81 @@
+{
+  "title": "G7 borrowing costs",
+  "subtitle": "10-year government bond yields",
+  "unit": "percent",
+  "dateValue": "2025 annual average",
+  "period": "2025 annual average",
+  "timestamp": "2026-03-26T10:10:18.783Z",
+  "source": "OECD long-term interest rates",
+  "items": [
+    {
+      "key": "united_kingdom",
+      "countryCode": "GBR",
+      "label": "United Kingdom",
+      "value": 4.6,
+      "formattedValue": "4.6%",
+      "color": "amber",
+      "highlight": true,
+      "rank": 1
+    },
+    {
+      "key": "united_states",
+      "countryCode": "USA",
+      "label": "United States",
+      "value": 4.3,
+      "formattedValue": "4.3%",
+      "color": "neutral",
+      "highlight": false,
+      "rank": 2
+    },
+    {
+      "key": "italy",
+      "countryCode": "ITA",
+      "label": "Italy",
+      "value": 3.6,
+      "formattedValue": "3.6%",
+      "color": "neutral",
+      "highlight": false,
+      "rank": 3
+    },
+    {
+      "key": "france",
+      "countryCode": "FRA",
+      "label": "France",
+      "value": 3.4,
+      "formattedValue": "3.4%",
+      "color": "neutral",
+      "highlight": false,
+      "rank": 4
+    },
+    {
+      "key": "canada",
+      "countryCode": "CAN",
+      "label": "Canada",
+      "value": 3.2,
+      "formattedValue": "3.2%",
+      "color": "neutral",
+      "highlight": false,
+      "rank": 5
+    },
+    {
+      "key": "germany",
+      "countryCode": "DEU",
+      "label": "Germany",
+      "value": 2.6,
+      "formattedValue": "2.6%",
+      "color": "neutral",
+      "highlight": false,
+      "rank": 6
+    },
+    {
+      "key": "japan",
+      "countryCode": "JPN",
+      "label": "Japan",
+      "value": 1.6,
+      "formattedValue": "1.6%",
+      "color": "neutral",
+      "highlight": false,
+      "rank": 7
+    }
+  ]
+}

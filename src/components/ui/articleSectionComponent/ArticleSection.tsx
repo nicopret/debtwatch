@@ -3,15 +3,15 @@ import styles from "./articleSection.module.css";
 
 export interface ArticleSectionProps {
   heading: string;
-  body: string[];
+  blocks?: ReactNode[];
   visual?: ReactNode;
   callout?: ReactNode;
-  layout?: "stacked" | "split";
+  layout?: "stacked" | "split" | "split-reverse";
 }
 
 export default function ArticleSection({
   heading,
-  body,
+  blocks,
   visual,
   callout,
   layout = "stacked",
@@ -19,6 +19,7 @@ export default function ArticleSection({
   const sectionClassName = [
     styles.section,
     layout === "split" && visual ? styles.sectionSplit : "",
+    layout === "split-reverse" && visual ? styles.sectionSplitReverse : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -27,15 +28,10 @@ export default function ArticleSection({
     <section className={sectionClassName}>
       <div className={styles.copy}>
         <h2 className={styles.heading}>{heading}</h2>
-        <div className={styles.body}>
-          {body.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
+        {blocks?.length ? <div className={styles.blocks}>{blocks}</div> : null}
         {callout ? <div className={styles.callout}>{callout}</div> : null}
       </div>
       {visual ? <div className={styles.visual}>{visual}</div> : null}
     </section>
   );
 }
-

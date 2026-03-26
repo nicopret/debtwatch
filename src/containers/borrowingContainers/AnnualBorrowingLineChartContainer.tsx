@@ -4,13 +4,29 @@ import AnnualBorrowingLineChartCard from "@/components/ui/annualBorrowingLineCha
 import { getUtcDateFolderName } from "@/lib/versioning";
 import { useAppSelector } from "@/store/hooks";
 import {
+  selectArticleAnnualBorrowingTimelinePoints,
+  selectArticleBorrowingGovernmentBands,
   selectAnnualBorrowingTimelinePoints,
   selectBorrowingGovernmentBands,
 } from "@/store/selectors/metricsSelectors";
 
-export default function AnnualBorrowingLineChartContainer() {
-  const points = useAppSelector(selectAnnualBorrowingTimelinePoints);
-  const governmentBands = useAppSelector(selectBorrowingGovernmentBands);
+export interface AnnualBorrowingLineChartContainerProps {
+  publicationDate?: string;
+}
+
+export default function AnnualBorrowingLineChartContainer({
+  publicationDate,
+}: AnnualBorrowingLineChartContainerProps) {
+  const points = useAppSelector((state) =>
+    publicationDate
+      ? selectArticleAnnualBorrowingTimelinePoints(state, publicationDate)
+      : selectAnnualBorrowingTimelinePoints(state),
+  );
+  const governmentBands = useAppSelector((state) =>
+    publicationDate
+      ? selectArticleBorrowingGovernmentBands(state, publicationDate)
+      : selectBorrowingGovernmentBands(state),
+  );
   const snapshotDate = getUtcDateFolderName(new Date());
 
   return (

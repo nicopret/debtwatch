@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import styles from "./relatedArticles.module.css";
 
@@ -5,7 +6,7 @@ export interface RelatedArticleItem {
   slug: string;
   title: string;
   tagline: string;
-  description: string;
+  previewGraphic?: ReactNode;
 }
 
 export interface RelatedArticlesProps {
@@ -24,7 +25,9 @@ export default function RelatedArticles({ items }: RelatedArticlesProps) {
           <Link className={styles.card} href={`/articles/${item.slug}`} key={item.slug}>
             <p className={styles.tagline}>{item.tagline}</p>
             <h3 className={styles.title}>{item.title}</h3>
-            <p className={styles.description}>{item.description}</p>
+            {item.previewGraphic ? (
+              <div className={styles.mediaWrap}>{item.previewGraphic}</div>
+            ) : null}
             <span className={styles.link}>Read article</span>
           </Link>
         ))}
@@ -32,4 +35,3 @@ export default function RelatedArticles({ items }: RelatedArticlesProps) {
     </section>
   );
 }
-

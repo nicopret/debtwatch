@@ -1,0 +1,207 @@
+{
+  "title": "UK debt, growth and borrowing costs over time",
+  "subtitle": "Debt is compared with nominal growth because debt is measured in pounds, while real growth shows inflation-adjusted economic output.",
+  "unit": "percent",
+  "xKey": "year",
+  "dateValue": "2025",
+  "timestamp": "2026-03-26T10:10:39.523Z",
+  "source": "Office for National Statistics / IMF World Economic Outlook / Bank of England",
+  "items": [
+    {
+      "yearLabel": "1998",
+      "debtToGdpPct": 35.6,
+      "nominalGdpGrowthPct": 4.7,
+      "realGdpGrowthPct": 3.4,
+      "borrowingCostPct": 5.5
+    },
+    {
+      "yearLabel": "1999",
+      "debtToGdpPct": 34.2,
+      "nominalGdpGrowthPct": 4.5,
+      "realGdpGrowthPct": 3.1,
+      "borrowingCostPct": 5.1
+    },
+    {
+      "yearLabel": "2000",
+      "debtToGdpPct": 29.5,
+      "nominalGdpGrowthPct": 5.5,
+      "realGdpGrowthPct": 4.3,
+      "borrowingCostPct": 5.3
+    },
+    {
+      "yearLabel": "2001",
+      "debtToGdpPct": 28.7,
+      "nominalGdpGrowthPct": 4.1,
+      "realGdpGrowthPct": 2.6,
+      "borrowingCostPct": 4.9
+    },
+    {
+      "yearLabel": "2002",
+      "debtToGdpPct": 30.1,
+      "nominalGdpGrowthPct": 4,
+      "realGdpGrowthPct": 1.8,
+      "borrowingCostPct": 4.9
+    },
+    {
+      "yearLabel": "2003",
+      "debtToGdpPct": 31.2,
+      "nominalGdpGrowthPct": 5.6,
+      "realGdpGrowthPct": 3.2,
+      "borrowingCostPct": 4.5
+    },
+    {
+      "yearLabel": "2004",
+      "debtToGdpPct": 34,
+      "nominalGdpGrowthPct": 5.1,
+      "realGdpGrowthPct": 2.5,
+      "borrowingCostPct": 4.9
+    },
+    {
+      "yearLabel": "2005",
+      "debtToGdpPct": 34.9,
+      "nominalGdpGrowthPct": 5.8,
+      "realGdpGrowthPct": 2.7,
+      "borrowingCostPct": 4.4
+    },
+    {
+      "yearLabel": "2006",
+      "debtToGdpPct": 35.7,
+      "nominalGdpGrowthPct": 5.2,
+      "realGdpGrowthPct": 2.4,
+      "borrowingCostPct": 4.5
+    },
+    {
+      "yearLabel": "2007",
+      "debtToGdpPct": 36.1,
+      "nominalGdpGrowthPct": 4.9,
+      "realGdpGrowthPct": 2.6,
+      "borrowingCostPct": 5
+    },
+    {
+      "yearLabel": "2008",
+      "debtToGdpPct": 47.6,
+      "nominalGdpGrowthPct": 3.2,
+      "realGdpGrowthPct": -0.2,
+      "borrowingCostPct": 4.6
+    },
+    {
+      "yearLabel": "2009",
+      "debtToGdpPct": 60.6,
+      "nominalGdpGrowthPct": -2.8,
+      "realGdpGrowthPct": -4.6,
+      "borrowingCostPct": 3.6
+    },
+    {
+      "yearLabel": "2010",
+      "debtToGdpPct": 70.1,
+      "nominalGdpGrowthPct": 3.9,
+      "realGdpGrowthPct": 2.2,
+      "borrowingCostPct": 3.6
+    },
+    {
+      "yearLabel": "2011",
+      "debtToGdpPct": 73.8,
+      "nominalGdpGrowthPct": 3.4,
+      "realGdpGrowthPct": 1.1,
+      "borrowingCostPct": 3.1
+    },
+    {
+      "yearLabel": "2012",
+      "debtToGdpPct": 77.3,
+      "nominalGdpGrowthPct": 3.1,
+      "realGdpGrowthPct": 1.5,
+      "borrowingCostPct": 1.9
+    },
+    {
+      "yearLabel": "2013",
+      "debtToGdpPct": 79.2,
+      "nominalGdpGrowthPct": 3.9,
+      "realGdpGrowthPct": 1.8,
+      "borrowingCostPct": 2.4
+    },
+    {
+      "yearLabel": "2014",
+      "debtToGdpPct": 81.5,
+      "nominalGdpGrowthPct": 4.6,
+      "realGdpGrowthPct": 3.2,
+      "borrowingCostPct": 2.6
+    },
+    {
+      "yearLabel": "2015",
+      "debtToGdpPct": 81.7,
+      "nominalGdpGrowthPct": 2.9,
+      "realGdpGrowthPct": 2.2,
+      "borrowingCostPct": 1.9
+    },
+    {
+      "yearLabel": "2016",
+      "debtToGdpPct": 82.5,
+      "nominalGdpGrowthPct": 3.9,
+      "realGdpGrowthPct": 1.9,
+      "borrowingCostPct": 1.3
+    },
+    {
+      "yearLabel": "2017",
+      "debtToGdpPct": 81.7,
+      "nominalGdpGrowthPct": 4.6,
+      "realGdpGrowthPct": 2.7,
+      "borrowingCostPct": 1.2
+    },
+    {
+      "yearLabel": "2018",
+      "debtToGdpPct": 81.3,
+      "nominalGdpGrowthPct": 3.4,
+      "realGdpGrowthPct": 1.4,
+      "borrowingCostPct": 1.5
+    },
+    {
+      "yearLabel": "2019",
+      "debtToGdpPct": 84.2,
+      "nominalGdpGrowthPct": 3.8,
+      "realGdpGrowthPct": 1.6,
+      "borrowingCostPct": 0.9
+    },
+    {
+      "yearLabel": "2020",
+      "debtToGdpPct": 97.6,
+      "nominalGdpGrowthPct": -5.8,
+      "realGdpGrowthPct": -10.3,
+      "borrowingCostPct": 0.4
+    },
+    {
+      "yearLabel": "2021",
+      "debtToGdpPct": 96.2,
+      "nominalGdpGrowthPct": 8.6,
+      "realGdpGrowthPct": 8.6,
+      "borrowingCostPct": 0.8
+    },
+    {
+      "yearLabel": "2022",
+      "debtToGdpPct": 93.1,
+      "nominalGdpGrowthPct": 10.5,
+      "realGdpGrowthPct": 4.8,
+      "borrowingCostPct": 2.5
+    },
+    {
+      "yearLabel": "2023",
+      "debtToGdpPct": 95.6,
+      "nominalGdpGrowthPct": 7.3,
+      "realGdpGrowthPct": 0.4,
+      "borrowingCostPct": 4.1
+    },
+    {
+      "yearLabel": "2024",
+      "debtToGdpPct": 94.7,
+      "nominalGdpGrowthPct": 5.2,
+      "realGdpGrowthPct": 1.1,
+      "borrowingCostPct": 4.1
+    },
+    {
+      "yearLabel": "2025",
+      "debtToGdpPct": 95.1,
+      "nominalGdpGrowthPct": 4.9,
+      "realGdpGrowthPct": 1.3,
+      "borrowingCostPct": 4.6
+    }
+  ]
+}
