@@ -196,9 +196,12 @@ export function renderArticleCallout(callout: ArticleCallout) {
       <p style={{ color: "#6b7280", fontSize: "0.78rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>
         {callout.label}
       </p>
-      <p style={{ color: "#17315f", marginTop: "0.35rem", lineHeight: 1.6, fontWeight: 600 }}>
-        {callout.text}
-      </p>
+      <p
+        style={{ color: "#17315f", marginTop: "0.35rem", lineHeight: 1.6, fontWeight: 600 }}
+        // Callout copy comes from trusted local article config, so inline markup like
+        // <b> and <a> can be rendered without a separate rich-text layer.
+        dangerouslySetInnerHTML={{ __html: callout.text }}
+      />
     </div>
   );
 }

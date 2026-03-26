@@ -40,6 +40,8 @@ export default function AnnualBorrowingLineChartContainer({
         contextSlug: "borrowing-over-time",
         embedSlug: "borrowing-over-time",
         snapshotDate,
+        articleUrl: "https://debtwatch.uk/articles/borrowing-over-time",
+        shareText: "Borrowing is the gap between what the government spends and what it raises.",
       }}
     />
   );

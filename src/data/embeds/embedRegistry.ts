@@ -1,8 +1,15 @@
+import type { ArticleVisualKey } from "@/data/articles/articleTypes";
+import {
+  articleVisualEmbedRegistry,
+  type ArticleVisualEmbedDefinition,
+} from "./articleVisualEmbedRegistry";
+
 export type EmbedRendererKey =
   | "monthlyDebtInterestMetric"
   | "debtInterestTimeline"
   | "debtToGdpTimeline"
-  | "annualBorrowingTimeline";
+  | "annualBorrowingTimeline"
+  | "articleVisual";
 
 export interface EmbedDefinition {
   contextSlug: string;
@@ -11,6 +18,23 @@ export interface EmbedDefinition {
   sourceNote: string;
   sourcePath: string;
   rendererKey: EmbedRendererKey;
+  articleSlug?: string;
+  articleVisualKey?: ArticleVisualKey;
+}
+
+function toArticleVisualEmbedDefinition(
+  definition: ArticleVisualEmbedDefinition,
+): EmbedDefinition {
+  return {
+    contextSlug: definition.articleSlug,
+    embedSlug: definition.embedSlug,
+    title: definition.title,
+    sourceNote: definition.sourceNote,
+    sourcePath: `/articles/${definition.articleSlug}`,
+    rendererKey: "articleVisual",
+    articleSlug: definition.articleSlug,
+    articleVisualKey: definition.visualKey,
+  };
 }
 
 export const embedRegistry: EmbedDefinition[] = [
@@ -46,6 +70,7 @@ export const embedRegistry: EmbedDefinition[] = [
     sourcePath: "/articles/how-debt-to-gdp-works",
     rendererKey: "debtToGdpTimeline",
   },
+  ...articleVisualEmbedRegistry.map(toArticleVisualEmbedDefinition),
 ];
 
 export function getEmbedDefinition(

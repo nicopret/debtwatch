@@ -6,10 +6,12 @@ import EmbedOptionsModal from "@/components/ui/embedOptionsModalComponent/EmbedO
 
 export interface ChartEmbedActionProps {
   chartTitle: string;
-  contextSlug: string;
-  embedSlug: string;
-  snapshotDate: string;
+  contextSlug?: string;
+  embedSlug?: string;
+  snapshotDate?: string;
   assetSlug?: string;
+  articleUrl?: string;
+  shareText?: string;
 }
 
 export default function ChartEmbedAction({
@@ -18,6 +20,8 @@ export default function ChartEmbedAction({
   embedSlug,
   snapshotDate,
   assetSlug,
+  articleUrl,
+  shareText,
 }: ChartEmbedActionProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [modalKey, setModalKey] = useState(0);
@@ -39,6 +43,8 @@ export default function ChartEmbedAction({
         embedSlug={embedSlug}
         snapshotDate={snapshotDate}
         assetSlug={assetSlug ?? embedSlug}
+        articleUrl={articleUrl}
+        shareText={shareText}
       />
     </>
   );

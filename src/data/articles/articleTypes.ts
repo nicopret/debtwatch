@@ -97,6 +97,12 @@ export interface ArticleSectionData {
   entities?: ArticleContentBlock[];
   body: string[];
   visualKey?: ArticleVisualKey;
+  visualShareTitle?: string;
+  visualShareText?: string;
+  shareContextSlug?: string;
+  shareEmbedSlug?: string;
+  shareAssetSlug?: string;
+  shareSnapshotDate?: string;
   blocks?: ArticleContentBlock[];
   callout?: ArticleCallout;
   layout?: "stacked" | "split" | "split-reverse";
@@ -110,6 +116,7 @@ export interface ArticleData {
   author: string;
   authorBioUrl: string;
   description: string;
+  shareText?: string;
   keyTakeaway: string;
   heroVisual: ArticleVisualKey;
   previewGraphicKey?: ArticlePreviewGraphicKey;

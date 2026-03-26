@@ -1,0 +1,23 @@
+.frame {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.actionRow {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  display: flex;
+}
+
+.content {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+}
+
+.content > * {
+  flex: 1;
+}

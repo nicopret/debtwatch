@@ -40,6 +40,8 @@ export default function DebtInterestLineChartContainer({
         contextSlug: "debt-interest-explained",
         embedSlug: "debt-interest-over-time",
         snapshotDate,
+        articleUrl: "https://debtwatch.uk/articles/debt-interest-explained",
+        shareText: "Annual cost of servicing government debt,\n\nDebt interest over time",
       }}
     />
   );

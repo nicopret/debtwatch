@@ -74,6 +74,15 @@
   color: #1d4f91;
   font-size: 0.82rem;
   font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   text-align: right;
   justify-self: end;
+}
+
+.linkIcon {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: 0 0 auto;
 }

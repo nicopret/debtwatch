@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { buildAssetUrl, type AssetFormat } from "@/lib/assetUrl";
+import { buildSocialShareLinks } from "@/lib/articleVisualShare";
 import { buildEmbedCode } from "@/lib/embedCode";
 import styles from "./embedOptionsModal.module.css";
 
@@ -9,10 +10,12 @@ export interface EmbedOptionsModalProps {
   isOpen: boolean;
   onClose: () => void;
   chartTitle: string;
-  contextSlug: string;
-  embedSlug: string;
-  snapshotDate: string;
-  assetSlug: string;
+  contextSlug?: string;
+  embedSlug?: string;
+  snapshotDate?: string;
+  assetSlug?: string;
+  articleUrl?: string;
+  shareText?: string;
 }
 
 type EmbedVersionSelection = "latest" | "snapshot";
@@ -25,6 +28,8 @@ export default function EmbedOptionsModal({
   embedSlug,
   snapshotDate,
   assetSlug,
+  articleUrl,
+  shareText,
 }: EmbedOptionsModalProps) {
   const [selectedVersion, setSelectedVersion] = useState<EmbedVersionSelection>("latest");
   const [embedCopyStatus, setEmbedCopyStatus] = useState("Copy iFrame");
@@ -52,29 +57,52 @@ export default function EmbedOptionsModal({
     return null;
   }
 
-  const resolvedVersion = selectedVersion === "latest" ? "latest" : snapshotDate;
-  const { embedUrl, iframeCode } = buildEmbedCode({
-    contextSlug,
-    embedSlug,
-    version: resolvedVersion,
-    title: chartTitle,
-  });
-  const pngAssetUrl = buildAssetUrl({
-    contextSlug,
-    assetSlug,
-    version: resolvedVersion,
-    format: "png",
-  });
-  const svgAssetUrl = buildAssetUrl({
-    contextSlug,
-    assetSlug,
-    version: resolvedVersion,
-    format: "svg",
-  });
+  const canExport =
+    typeof contextSlug === "string" &&
+    typeof embedSlug === "string" &&
+    typeof snapshotDate === "string" &&
+    typeof assetSlug === "string";
+  const resolvedVersion = canExport
+    ? (selectedVersion === "latest" ? "latest" : snapshotDate)
+    : undefined;
+  const socialShareLinks = articleUrl
+    ? buildSocialShareLinks({
+        articleUrl,
+        shareText: shareText ?? chartTitle,
+      })
+    : null;
+  const embedCodeResult = canExport && resolvedVersion
+    ? buildEmbedCode({
+        contextSlug,
+        embedSlug,
+        version: resolvedVersion,
+        title: chartTitle,
+      })
+    : null;
+  const pngAssetUrl = canExport && resolvedVersion
+    ? buildAssetUrl({
+        contextSlug,
+        assetSlug,
+        version: resolvedVersion,
+        format: "png",
+      })
+    : null;
+  const svgAssetUrl = canExport && resolvedVersion
+    ? buildAssetUrl({
+        contextSlug,
+        assetSlug,
+        version: resolvedVersion,
+        format: "svg",
+      })
+    : null;
 
   async function handleEmbedCopy() {
     try {
-      await navigator.clipboard.writeText(iframeCode);
+      if (!embedCodeResult) {
+        return;
+      }
+
+      await navigator.clipboard.writeText(embedCodeResult.iframeCode);
       setEmbedCopyStatus("Copied");
       window.setTimeout(() => setEmbedCopyStatus("Copy iFrame"), 1500);
     } catch {
@@ -127,8 +155,8 @@ export default function EmbedOptionsModal({
       >
         <header className={styles.header}>
           <div>
-            <p className={styles.eyebrow}>Embed</p>
-            <h2 className={styles.title}>Embed this chart</h2>
+            <p className={styles.eyebrow}>Share</p>
+            <h2 className={styles.title}>Share this visual</h2>
           </div>
           <button
             type="button"
@@ -139,38 +167,80 @@ export default function EmbedOptionsModal({
           </button>
         </header>
 
-        <p className={styles.description}>
-          Choose whether you want an always-updating share link or a fixed published
-          snapshot.
-        </p>
+        {socialShareLinks ? (
+          <section className={styles.section}>
+            <div className={styles.sectionHeader}>
+              <h3 className={styles.sectionTitle}>Share this article</h3>
+              <p className={styles.sectionText}>
+                Social sharing uses this article link, with visual-specific share copy where available.
+              </p>
+            </div>
+            <div className={styles.actionRow}>
+              <a
+                className={styles.copyButton}
+                href={socialShareLinks.x}
+                rel="noreferrer"
+                target="_blank"
+              >
+                Share on X
+              </a>
+              <a
+                className={styles.secondaryButton}
+                href={socialShareLinks.facebook}
+                rel="noreferrer"
+                target="_blank"
+              >
+                Share on Facebook
+              </a>
+              <a
+                className={styles.secondaryButton}
+                href={socialShareLinks.linkedin}
+                rel="noreferrer"
+                target="_blank"
+              >
+                Share on LinkedIn
+              </a>
+            </div>
+          </section>
+        ) : null}
 
-        <div className={styles.options}>
-          <button
-            type="button"
-            className={`${styles.optionCard} ${
-              selectedVersion === "latest" ? styles.optionCardSelected : ""
-            }`}
-            onClick={() => setSelectedVersion("latest")}
-          >
-            <span className={styles.optionTitle}>Latest version</span>
-            <span className={styles.optionText}>
-              Updates automatically when DebtWatch data changes.
-            </span>
-          </button>
-          <button
-            type="button"
-            className={`${styles.optionCard} ${
-              selectedVersion === "snapshot" ? styles.optionCardSelected : ""
-            }`}
-            onClick={() => setSelectedVersion("snapshot")}
-          >
-            <span className={styles.optionTitle}>Snapshot version</span>
-            <span className={styles.optionText}>
-              Fixed to version {snapshotDate} and will not change.
-            </span>
-          </button>
-        </div>
+        {canExport ? (
+          <>
+            <p className={styles.description}>
+              Choose whether you want an always-updating share link or a fixed published
+              snapshot.
+            </p>
 
+            <div className={styles.options}>
+              <button
+                type="button"
+                className={`${styles.optionCard} ${
+                  selectedVersion === "latest" ? styles.optionCardSelected : ""
+                }`}
+                onClick={() => setSelectedVersion("latest")}
+              >
+                <span className={styles.optionTitle}>Latest version</span>
+                <span className={styles.optionText}>
+                  Updates automatically when DebtWatch data changes.
+                </span>
+              </button>
+              <button
+                type="button"
+                className={`${styles.optionCard} ${
+                  selectedVersion === "snapshot" ? styles.optionCardSelected : ""
+                }`}
+                onClick={() => setSelectedVersion("snapshot")}
+              >
+                <span className={styles.optionTitle}>Snapshot version</span>
+                <span className={styles.optionText}>
+                  Fixed to version {snapshotDate} and will not change.
+                </span>
+              </button>
+            </div>
+          </>
+        ) : null}
+
+        {embedCodeResult ? (
         <section className={styles.section}>
           <div className={styles.sectionHeader}>
             <h3 className={styles.sectionTitle}>Embed this chart</h3>
@@ -182,13 +252,13 @@ export default function EmbedOptionsModal({
           <div className={styles.codeSection}>
             <div>
               <p className={styles.label}>Embed URL</p>
-              <code className={styles.singleLineCode}>{embedUrl}</code>
+              <code className={styles.singleLineCode}>{embedCodeResult.embedUrl}</code>
             </div>
 
             <div>
               <p className={styles.label}>iFrame code</p>
               <pre className={styles.codeBlock}>
-                <code>{iframeCode}</code>
+                <code>{embedCodeResult.iframeCode}</code>
               </pre>
             </div>
           </div>
@@ -203,7 +273,9 @@ export default function EmbedOptionsModal({
             </button>
           </div>
         </section>
+        ) : null}
 
+        {pngAssetUrl && svgAssetUrl ? (
         <section className={styles.section}>
           <div className={styles.sectionHeader}>
             <h3 className={styles.sectionTitle}>Download image</h3>
@@ -287,6 +359,7 @@ export default function EmbedOptionsModal({
             </div>
           </div>
         </section>
+        ) : null}
       </div>
     </div>
   );

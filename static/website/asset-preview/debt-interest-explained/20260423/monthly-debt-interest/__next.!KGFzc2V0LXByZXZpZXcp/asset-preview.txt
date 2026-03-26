@@ -1,4 +1,4 @@
 1:"$Sreact.fragment"
 2:I[39756,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
 3:I[37457,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
-0:{"buildId":"2bJcCokq3rxaQewaXam6R","rsc":["$","$1","c",{"children":[null,["$","main",null,{"className":"asset-preview-route-main","children":[["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}],["$","span",null,{"className":"asset-preview-watermark","children":"debtwatch.uk"}]]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"G72e0d1UI8goCh5b6hDgv","rsc":["$","$1","c",{"children":[null,["$","main",null,{"className":"asset-preview-route-main","children":[["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}],["$","span",null,{"className":"asset-preview-watermark","children":"debtwatch.uk"}]]}]]}],"loading":null,"isPartial":false}

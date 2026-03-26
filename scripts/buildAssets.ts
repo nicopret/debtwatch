@@ -208,7 +208,11 @@ async function main() {
 
         await mkdir(outputDirectory, { recursive: true });
         await screenshotPage(browserPath, assetUrl, pngOutputPath);
-        await writeFile(svgOutputPath, await buildAssetSvg(repoRoot, asset, version), "utf8");
+        await writeFile(
+          svgOutputPath,
+          await buildAssetSvg(repoRoot, asset, version, pngOutputPath),
+          "utf8",
+        );
         pngCount += 1;
         svgCount += 1;
       }

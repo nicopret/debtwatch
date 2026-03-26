@@ -40,6 +40,8 @@ export default function DebtToGdpLineChartContainer({
         contextSlug: "how-debt-to-gdp-works",
         embedSlug: "debt-to-gdp-over-time",
         snapshotDate,
+        articleUrl: "https://debtwatch.uk/articles/how-debt-to-gdp-works",
+        shareText: "Debt-to-GDP shows the burden of debt relative to the size of the economy.",
       }}
     />
   );

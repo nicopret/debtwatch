@@ -1,5 +1,9 @@
+import ArticleVisualShareFrame from "@/components/ui/articleVisualShareFrameComponent/ArticleVisualShareFrame";
 import ArticleSection from "@/components/ui/articleSectionComponent/ArticleSection";
+import { getArticleVisualEmbedDefinition } from "@/data/embeds/articleVisualEmbedRegistry";
 import type { ArticleContentBlock, ArticleData } from "@/data/articles/articleTypes";
+import { buildArticleVisualShareConfig } from "@/lib/articleVisualShare";
+import { getUtcDateFolderName } from "@/lib/versioning";
 import {
   renderArticleCallout,
   renderArticleGraphBlock,
@@ -58,30 +62,60 @@ function renderSectionBlocks(
 export default function ArticleSectionsContainer({
   article,
 }: ArticleSectionsContainerProps) {
+  const snapshotDate = getUtcDateFolderName(new Date());
+
   return (
     <>
-      {article.sections.map((section) => (
-        <ArticleSection
-          key={section.id}
-          heading={section.heading}
-          blocks={
-            renderSectionBlocks(
-              section.heading,
-              section.entities ?? [
-                { type: "text", body: section.body },
-                ...(section.blocks ?? []),
-              ],
-              section.id,
-              article,
-            )
-          }
-          layout={section.layout}
-          visual={
-            section.visualKey ? renderArticleVisual(section.visualKey, article) : undefined
-          }
-          callout={section.callout ? renderArticleCallout(section.callout) : undefined}
-        />
-      ))}
+      {article.sections.map((section) => {
+        const shareConfig = buildArticleVisualShareConfig(article, section);
+        const exportDefinition = section.visualKey
+          ? getArticleVisualEmbedDefinition(article.slug, section.visualKey)
+          : undefined;
+        const renderedVisual = section.visualKey
+          ? renderArticleVisual(section.visualKey, article)
+          : undefined;
+
+        return (
+          <ArticleSection
+            key={section.id}
+            heading={section.heading}
+            blocks={
+              renderSectionBlocks(
+                section.heading,
+                section.entities ?? [
+                  { type: "text", body: section.body },
+                  ...(section.blocks ?? []),
+                ],
+                section.id,
+                article,
+              )
+            }
+            layout={section.layout}
+            visual={
+              renderedVisual ? (
+                <ArticleVisualShareFrame
+                  shareAction={
+                    shareConfig
+                      ? {
+                          chartTitle: exportDefinition?.title ?? shareConfig.shareTitle,
+                          articleUrl: shareConfig.articleUrl,
+                          shareText: exportDefinition?.shareText ?? shareConfig.shareText,
+                          contextSlug: exportDefinition?.articleSlug ?? shareConfig.contextSlug,
+                          embedSlug: exportDefinition?.embedSlug ?? shareConfig.embedSlug,
+                          assetSlug: exportDefinition?.embedSlug ?? shareConfig.assetSlug,
+                          snapshotDate: shareConfig.snapshotDate ?? snapshotDate,
+                        }
+                      : null
+                  }
+                >
+                  {renderedVisual}
+                </ArticleVisualShareFrame>
+              ) : undefined
+            }
+            callout={section.callout ? renderArticleCallout(section.callout) : undefined}
+          />
+        );
+      })}
     </>
   );
 }

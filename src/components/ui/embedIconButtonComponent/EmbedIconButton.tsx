@@ -21,16 +21,18 @@ export default function EmbedIconButton({
         className={styles.icon}
         viewBox="0 0 24 24"
       >
+        <circle cx="5" cy="12" r="2.3" fill="#ffffff" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="18" cy="4.8" r="2.3" fill="#ffffff" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="18" cy="19.2" r="2.3" fill="#ffffff" stroke="currentColor" strokeWidth="1.8" />
         <path
-          d="M15 5h4v4M10 14 19 5M19 14v4h-4M5 10V6h4M5 19h4v-4"
+          d="M7 10.9 15.8 5.9M7 13.1l8.8 5"
           fill="none"
           stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="1.8"
+          strokeWidth="1.9"
         />
       </svg>
     </button>
   );
 }
-

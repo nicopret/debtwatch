@@ -257,7 +257,39 @@ export async function buildAssetSvg(
   repoRoot: string,
   asset: AssetDefinition,
   version: string,
+  pngOutputPath?: string,
 ): Promise<string> {
+  if (asset.rendererKey === "articleVisual") {
+    if (!pngOutputPath) {
+      throw new Error(`PNG output path is required for article visual asset '${asset.assetSlug}'.`);
+    }
+
+    const pngBuffer = await readFile(pngOutputPath);
+    const pngBase64 = pngBuffer.toString("base64");
+
+    const body = `
+      <clipPath id="asset-clip">
+        <rect x="${PANEL_X}" y="${PANEL_Y}" width="${PANEL_WIDTH}" height="${PANEL_HEIGHT}" rx="${CARD_RADIUS}" ry="${CARD_RADIUS}" />
+      </clipPath>
+      <image
+        x="${PANEL_X}"
+        y="${PANEL_Y}"
+        width="${PANEL_WIDTH}"
+        height="${PANEL_HEIGHT}"
+        preserveAspectRatio="xMidYMid meet"
+        clip-path="url(#asset-clip)"
+        href="data:image/png;base64,${pngBase64}"
+      />
+    `;
+
+    return buildBaseSvg({
+      title: asset.title,
+      sourceNote: asset.sourceNote,
+      version,
+      body,
+    });
+  }
+
   if (asset.rendererKey === "monthlyDebtInterestMetric") {
     const metricData = await readJson<MetricData>(
       repoRoot,
