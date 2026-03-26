@@ -23,7 +23,7 @@ export default function ArticleFeaturedGraphicContainer({
       heading={graphic.heading}
       subheading={graphic.subheading}
     >
-      {graphic.render()}
+      {graphic.render(article)}
     </ArticleFeaturedGraphicSection>
   );
 }

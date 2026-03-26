@@ -70,11 +70,11 @@ export function renderArticleVisual(
         />
       );
     case "debt-interest-vs-public-service-pay":
-      return <DebtInterestVsPublicServicePayVisual />;
+      return <DebtInterestVsPublicServicePayVisual publicationDate={article?.date} />;
     case "debt-interest-g7-yields":
-      return <G7YieldComparisonVisual />;
+      return <G7YieldComparisonVisual publicationDate={article?.date} />;
     case "gilt-yield-inflation-linked-debt":
-      return <InflationLinkedDebtExposureVisual />;
+      return <InflationLinkedDebtExposureVisual publicationDate={article?.date} />;
     case "debt-to-gdp-hero":
       return <DebtToGdpHeroVisual publicationDate={article?.date} />;
     case "debt-to-gdp-g7":
@@ -93,13 +93,13 @@ export function renderArticleVisual(
         />
       );
     case "budget-breakdown-hero":
-      return <BudgetReceiptsSpendingHeroContainer />;
+      return <BudgetReceiptsSpendingHeroContainer publicationDate={article?.date} />;
     case "budget-deficit-gap":
       return <BudgetIncomeSpendingTotalsContainer />;
     case "nhs-spending-breakdown":
-      return <NhsSpendingBreakdownContainer />;
+      return <NhsSpendingBreakdownContainer publicationDate={article?.date} />;
     case "structural-debt-flow":
-      return <StructuralDebtFlowDiagramContainer />;
+      return <StructuralDebtFlowDiagramContainer publicationDate={article?.date} />;
     case "borrowing-hero":
       return (
         <ArticleVisualPanel
@@ -167,7 +167,7 @@ export function renderArticleVisual(
     case "borrowing-yield-rates":
       return <BorrowingYieldRatesVisual publicationDate={article?.date} />;
     case "debt-ownership-breakdown":
-      return <DebtOwnershipBreakdownVisual />;
+      return <DebtOwnershipBreakdownVisual publicationDate={article?.date} />;
     case "gilt-yield-hero":
       return <GiltYieldRatesHeroVisual publicationDate={article?.date} />;
     case "gilt-yield-costs":

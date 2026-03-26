@@ -51,6 +51,7 @@ export type ArticleFeaturedGraphicKey =
   | "debtToGdpSection"
   | "debtInterestTimeline"
   | "budgetComparison"
+  | "governmentSpendingTopCategories"
   | "giltYieldPeers";
 
 export type ArticleMetricReference =

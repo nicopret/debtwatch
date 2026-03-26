@@ -10,7 +10,7 @@ import SecondMetricRowContainer from "@/containers/rowContainers/SecondMetricRow
 
 export default function Home() {
   return (
-    <section className="site-container metrics-section">
+    <section className="site-container metrics-section home-dashboard">
       <div className="hero-section">
         <RowContainer
           gap="0.5rem"
@@ -32,4 +32,3 @@ export default function Home() {
     </section>
   );
 }
-

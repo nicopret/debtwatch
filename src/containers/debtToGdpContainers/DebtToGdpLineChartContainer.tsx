@@ -4,13 +4,29 @@ import DebtToGdpLineChartCard from "@/components/ui/debtToGdpLineChartCardCompon
 import { getUtcDateFolderName } from "@/lib/versioning";
 import { useAppSelector } from "@/store/hooks";
 import {
+  selectArticleDebtToGdpGovernmentBands,
+  selectArticleDebtToGdpTimelinePoints,
   selectDebtToGdpGovernmentBands,
   selectDebtToGdpTimelinePoints,
 } from "@/store/selectors/metricsSelectors";
 
-export default function DebtToGdpLineChartContainer() {
-  const points = useAppSelector(selectDebtToGdpTimelinePoints);
-  const governmentBands = useAppSelector(selectDebtToGdpGovernmentBands);
+export interface DebtToGdpLineChartContainerProps {
+  publicationDate?: string;
+}
+
+export default function DebtToGdpLineChartContainer({
+  publicationDate,
+}: DebtToGdpLineChartContainerProps) {
+  const points = useAppSelector((state) =>
+    publicationDate
+      ? selectArticleDebtToGdpTimelinePoints(state, publicationDate)
+      : selectDebtToGdpTimelinePoints(state),
+  );
+  const governmentBands = useAppSelector((state) =>
+    publicationDate
+      ? selectArticleDebtToGdpGovernmentBands(state, publicationDate)
+      : selectDebtToGdpGovernmentBands(state),
+  );
   const snapshotDate = getUtcDateFolderName(new Date());
 
   return (

@@ -2,14 +2,28 @@
 
 import ArticleVisualPanel from "@/components/ui/articleVisualPanelComponent/ArticleVisualPanel";
 import { useAppSelector } from "@/store/hooks";
-import type { RootState } from "@/store";
+import { selectArticleDebtOwnershipBreakdown, selectDebtOwnershipBreakdown } from "@/store/selectors/metricsSelectors";
 
 function formatPercent(value: number): string {
   return `${value.toFixed(value % 1 === 0 ? 0 : 1)}%`;
 }
 
-export default function DebtOwnershipBreakdownVisual() {
-  const breakdown = useAppSelector((state: RootState) => state.metrics.debtOwnershipBreakdown);
+export interface DebtOwnershipBreakdownVisualProps {
+  publicationDate?: string;
+}
+
+export default function DebtOwnershipBreakdownVisual({
+  publicationDate,
+}: DebtOwnershipBreakdownVisualProps) {
+  const breakdown = useAppSelector((state) =>
+    publicationDate
+      ? selectArticleDebtOwnershipBreakdown(state, publicationDate)
+      : selectDebtOwnershipBreakdown(state),
+  );
+
+  if (!breakdown) {
+    return null;
+  }
 
   return (
     <ArticleVisualPanel

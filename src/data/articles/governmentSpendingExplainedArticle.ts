@@ -13,7 +13,7 @@ export const governmentSpendingExplainedArticle: ArticleData = {
     "Small percentage shifts in big budgets can move the headline deficit a long way.",
   heroVisual: "budget-breakdown-hero",
   previewGraphicKey: "budget-gap-trend",
-  featuredGraphicKey: "budgetComparison",
+  featuredGraphicKey: "governmentSpendingTopCategories",
   metricStrip: [
     {
       kind: "static",

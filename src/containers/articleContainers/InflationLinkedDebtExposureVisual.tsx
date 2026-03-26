@@ -2,7 +2,10 @@
 
 import ArticleVisualPanel from "@/components/ui/articleVisualPanelComponent/ArticleVisualPanel";
 import { useAppSelector } from "@/store/hooks";
-import { selectInflationLinkedDebtExposure } from "@/store/selectors/metricsSelectors";
+import {
+  selectArticleInflationLinkedDebtExposure,
+  selectInflationLinkedDebtExposure,
+} from "@/store/selectors/metricsSelectors";
 
 function formatItemValue(value: number, unit: "percent" | "gbp_billions"): string {
   if (unit === "percent") {
@@ -12,8 +15,22 @@ function formatItemValue(value: number, unit: "percent" | "gbp_billions"): strin
   return `\u00A3${value.toFixed(1)}bn`;
 }
 
-export default function InflationLinkedDebtExposureVisual() {
-  const exposure = useAppSelector(selectInflationLinkedDebtExposure);
+export interface InflationLinkedDebtExposureVisualProps {
+  publicationDate?: string;
+}
+
+export default function InflationLinkedDebtExposureVisual({
+  publicationDate,
+}: InflationLinkedDebtExposureVisualProps) {
+  const exposure = useAppSelector((state) =>
+    publicationDate
+      ? selectArticleInflationLinkedDebtExposure(state, publicationDate)
+      : selectInflationLinkedDebtExposure(state),
+  );
+
+  if (!exposure) {
+    return null;
+  }
 
   return (
     <ArticleVisualPanel

@@ -4,13 +4,29 @@ import DebtInterestLineChartCard from "@/components/ui/debtInterestLineChartCard
 import { getUtcDateFolderName } from "@/lib/versioning";
 import { useAppSelector } from "@/store/hooks";
 import {
+  selectArticleDebtInterestGovernmentBands,
+  selectArticleDebtInterestTimelinePoints,
   selectDebtInterestGovernmentBands,
   selectDebtInterestTimelinePoints,
 } from "@/store/selectors/metricsSelectors";
 
-export default function DebtInterestLineChartContainer() {
-  const points = useAppSelector(selectDebtInterestTimelinePoints);
-  const governmentBands = useAppSelector(selectDebtInterestGovernmentBands);
+export interface DebtInterestLineChartContainerProps {
+  publicationDate?: string;
+}
+
+export default function DebtInterestLineChartContainer({
+  publicationDate,
+}: DebtInterestLineChartContainerProps) {
+  const points = useAppSelector((state) =>
+    publicationDate
+      ? selectArticleDebtInterestTimelinePoints(state, publicationDate)
+      : selectDebtInterestTimelinePoints(state),
+  );
+  const governmentBands = useAppSelector((state) =>
+    publicationDate
+      ? selectArticleDebtInterestGovernmentBands(state, publicationDate)
+      : selectDebtInterestGovernmentBands(state),
+  );
   const snapshotDate = getUtcDateFolderName(new Date());
 
   return (

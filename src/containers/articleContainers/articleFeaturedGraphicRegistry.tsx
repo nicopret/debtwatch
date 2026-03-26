@@ -1,15 +1,19 @@
 import type { ReactNode } from "react";
-import type { ArticleFeaturedGraphicKey } from "@/data/articles/articleTypes";
+import type {
+  ArticleData,
+  ArticleFeaturedGraphicKey,
+} from "@/data/articles/articleTypes";
 import BorrowingTimelineSectionContainer from "@/containers/borrowingContainers/BorrowingTimelineSectionContainer";
 import BudgetComparisonSectionContainer from "@/containers/budgetContainers/BudgetComparisonSectionContainer";
 import DebtInterestSectionContainer from "@/containers/debtInterestContainers/DebtInterestSectionContainer";
 import DebtToGdpSectionContainer from "@/containers/debtToGdpContainers/DebtToGdpSectionContainer";
 import GiltYieldPeerFeaturedGraphicContainer from "./GiltYieldPeerFeaturedGraphicContainer";
+import GovernmentSpendingTopCategoriesFeaturedGraphicContainer from "./GovernmentSpendingTopCategoriesFeaturedGraphicContainer";
 
 export interface ArticleFeaturedGraphicDefinition {
   heading?: string;
   subheading?: string;
-  render: () => ReactNode;
+  render: (article?: ArticleData) => ReactNode;
 }
 
 export const articleFeaturedGraphicRegistry: Record<
@@ -17,18 +21,23 @@ export const articleFeaturedGraphicRegistry: Record<
   ArticleFeaturedGraphicDefinition
 > = {
   borrowingTimeline: {
-    render: () => <BorrowingTimelineSectionContainer />,
+    render: (article) => <BorrowingTimelineSectionContainer publicationDate={article?.date} />,
   },
   debtToGdpSection: {
-    render: () => <DebtToGdpSectionContainer />,
+    render: (article) => <DebtToGdpSectionContainer publicationDate={article?.date} />,
   },
   debtInterestTimeline: {
-    render: () => <DebtInterestSectionContainer />,
+    render: (article) => <DebtInterestSectionContainer publicationDate={article?.date} />,
   },
   budgetComparison: {
     render: () => <BudgetComparisonSectionContainer />,
   },
+  governmentSpendingTopCategories: {
+    render: (article) => (
+      <GovernmentSpendingTopCategoriesFeaturedGraphicContainer publicationDate={article?.date} />
+    ),
+  },
   giltYieldPeers: {
-    render: () => <GiltYieldPeerFeaturedGraphicContainer />,
+    render: (article) => <GiltYieldPeerFeaturedGraphicContainer publicationDate={article?.date} />,
   },
 };

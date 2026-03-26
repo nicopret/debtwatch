@@ -186,6 +186,19 @@ a {
   gap: 1rem;
 }
 
+.home-dashboard {
+  display: grid;
+  gap: 1rem;
+}
+
+.home-dashboard > * {
+  margin-top: 0 !important;
+}
+
+.home-dashboard .metrics-rows {
+  margin-top: 0;
+}
+
 .hero-section {
   margin-top: 0;
 }

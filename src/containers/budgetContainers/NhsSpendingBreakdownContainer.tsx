@@ -2,10 +2,27 @@
 
 import DonutBreakdownCard from "@/components/ui/donutBreakdownCardComponent/DonutBreakdownCard";
 import { useAppSelector } from "@/store/hooks";
-import { selectNhsSpendingBreakdown } from "@/store/selectors/metricsSelectors";
+import {
+  selectArticleNhsSpendingBreakdown,
+  selectNhsSpendingBreakdown,
+} from "@/store/selectors/metricsSelectors";
 
-export default function NhsSpendingBreakdownContainer() {
-  const breakdown = useAppSelector(selectNhsSpendingBreakdown);
+export interface NhsSpendingBreakdownContainerProps {
+  publicationDate?: string;
+}
+
+export default function NhsSpendingBreakdownContainer({
+  publicationDate,
+}: NhsSpendingBreakdownContainerProps) {
+  const breakdown = useAppSelector((state) =>
+    publicationDate
+      ? selectArticleNhsSpendingBreakdown(state, publicationDate)
+      : selectNhsSpendingBreakdown(state),
+  );
+
+  if (!breakdown) {
+    return null;
+  }
 
   return (
     <DonutBreakdownCard

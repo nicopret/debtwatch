@@ -2,10 +2,27 @@
 
 import GovernmentSpendingTopCategoriesCard from "@/components/ui/governmentSpendingTopCategoriesCardComponent/GovernmentSpendingTopCategoriesCard";
 import { useAppSelector } from "@/store/hooks";
-import { selectGovernmentSpendingTopCategories } from "@/store/selectors/metricsSelectors";
+import {
+  selectArticleGovernmentSpendingTopCategories,
+  selectGovernmentSpendingTopCategories,
+} from "@/store/selectors/metricsSelectors";
 
-export default function GovernmentSpendingTopCategoriesContainer() {
-  const chart = useAppSelector(selectGovernmentSpendingTopCategories);
+export interface GovernmentSpendingTopCategoriesContainerProps {
+  publicationDate?: string;
+}
+
+export default function GovernmentSpendingTopCategoriesContainer({
+  publicationDate,
+}: GovernmentSpendingTopCategoriesContainerProps) {
+  const chart = useAppSelector((state) =>
+    publicationDate
+      ? selectArticleGovernmentSpendingTopCategories(state, publicationDate)
+      : selectGovernmentSpendingTopCategories(state),
+  );
+
+  if (!chart) {
+    return null;
+  }
 
   return (
     <GovernmentSpendingTopCategoriesCard

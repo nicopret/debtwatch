@@ -2,10 +2,27 @@
 
 import ArticleVisualPanel from "@/components/ui/articleVisualPanelComponent/ArticleVisualPanel";
 import { useAppSelector } from "@/store/hooks";
-import { selectG7YieldComparison } from "@/store/selectors/metricsSelectors";
+import {
+  selectArticleG7YieldComparison,
+  selectG7YieldComparison,
+} from "@/store/selectors/metricsSelectors";
 
-export default function G7YieldComparisonVisual() {
-  const comparison = useAppSelector(selectG7YieldComparison);
+export interface G7YieldComparisonVisualProps {
+  publicationDate?: string;
+}
+
+export default function G7YieldComparisonVisual({
+  publicationDate,
+}: G7YieldComparisonVisualProps) {
+  const comparison = useAppSelector((state) =>
+    publicationDate
+      ? selectArticleG7YieldComparison(state, publicationDate)
+      : selectG7YieldComparison(state),
+  );
+
+  if (!comparison) {
+    return null;
+  }
 
   return (
     <ArticleVisualPanel
