@@ -28,7 +28,10 @@ export type ArticlePreviewGraphicKey =
   | "borrowing-debt-overview"
   | "debt-interest-yield-trend"
   | "gilt-yield-peer-trend"
-  | "budget-gap-trend";
+  | "budget-gap-trend"
+  | "debt-to-gdp-ratio";
+
+export type ArticlePreviewGraphicPosition = "left" | "right";
 
 export interface ArticleGraphBlock {
   type: "graph";
@@ -109,6 +112,7 @@ export interface ArticleData {
   keyTakeaway: string;
   heroVisual: ArticleVisualKey;
   previewGraphicKey?: ArticlePreviewGraphicKey;
+  previewGraphicPosition?: ArticlePreviewGraphicPosition;
   metricStrip: ArticleMetricReference[];
   featuredGraphicKey?: ArticleFeaturedGraphicKey;
   sections: ArticleSectionData[];

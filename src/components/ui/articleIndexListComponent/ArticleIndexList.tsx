@@ -8,6 +8,7 @@ export interface ArticleIndexItem {
   tagline: string;
   description: string;
   previewGraphic?: ReactNode;
+  previewGraphicPosition?: "left" | "right";
 }
 
 export interface ArticleIndexListProps {
@@ -27,15 +28,24 @@ export default function ArticleIndexList({ items }: ArticleIndexListProps) {
       <div className={styles.list}>
         {items.map((item) => (
           <Link className={styles.card} href={`/articles/${item.slug}`} key={item.slug}>
-            {item.previewGraphic ? (
+            {item.previewGraphic && item.previewGraphicPosition === "right" ? null : item.previewGraphic ? (
               <div className={styles.mediaColumn}>{item.previewGraphic}</div>
             ) : null}
-            <div className={styles.contentColumn}>
+            <div
+              className={
+                item.previewGraphicPosition === "right"
+                  ? `${styles.contentColumn} ${styles.contentColumnRightVisual}`
+                  : styles.contentColumn
+              }
+            >
               <p className={styles.tagline}>{item.tagline}</p>
               <h2 className={styles.title}>{item.header}</h2>
               <p className={styles.copy}>{item.description}</p>
               <span className={styles.link}>Read full article</span>
             </div>
+            {item.previewGraphic && item.previewGraphicPosition === "right" ? (
+              <div className={styles.mediaColumn}>{item.previewGraphic}</div>
+            ) : null}
           </Link>
         ))}
       </div>

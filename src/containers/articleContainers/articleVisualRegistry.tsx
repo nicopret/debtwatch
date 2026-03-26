@@ -8,6 +8,7 @@ import type {
 import BorrowingYieldRatesVisual from "./BorrowingYieldRatesVisual";
 import DebtOwnershipBreakdownVisual from "./DebtOwnershipBreakdownVisual";
 import DebtSustainabilityChartBlock from "./DebtSustainabilityChartBlock";
+import DebtToGdpHeroVisual from "./DebtToGdpHeroVisual";
 import DebtInterestVsPublicServicePayVisual from "./DebtInterestVsPublicServicePayVisual";
 import G7YieldRateChartBlock from "./G7YieldRateChartBlock";
 import G7YieldComparisonVisual from "./G7YieldComparisonVisual";
@@ -75,20 +76,7 @@ export function renderArticleVisual(
     case "gilt-yield-inflation-linked-debt":
       return <InflationLinkedDebtExposureVisual />;
     case "debt-to-gdp-hero":
-      return (
-        <ArticleVisualPanel
-          eyebrow="Debt burden"
-          title="Debt is easier to judge against the size of the economy"
-          value="Ratio, not raw cash"
-          helperText="The debt stock looks different when set against national income. That is why analysts use debt-to-GDP as a default framing tool."
-          items={[
-            { label: "Debt stock", value: "Cash amount" },
-            { label: "GDP", value: "Economic base" },
-            { label: "Debt / GDP", value: "Burden signal", tone: "accent" },
-          ]}
-          accentColor="#1d4f91"
-        />
-      );
+      return <DebtToGdpHeroVisual publicationDate={article?.date} />;
     case "debt-to-gdp-g7":
       return (
         <ArticleVisualPanel

@@ -64,6 +64,11 @@
   padding-left: 1.25rem;
 }
 
+.contentColumnRightVisual {
+  padding-left: 0;
+  padding-right: 1.25rem;
+}
+
 .title {
   color: #17315f;
   font-size: 1.4rem;

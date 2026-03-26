@@ -3,7 +3,7 @@
   "unit": "percent",
   "xKey": "date",
   "dateValue": "2026-03",
-  "timestamp": "2026-03-21T08:12:48.710Z",
+  "timestamp": "2026-03-26T10:09:46.272Z",
   "source": "Bank of England",
   "items": [
     {
@@ -1892,9 +1892,9 @@
     },
     {
       "dateLabel": "2026-03",
-      "fiveYearGiltYieldPct": 4.2,
-      "tenYearGiltYieldPct": 4.7,
-      "twentyYearGiltYieldPct": 5.2
+      "fiveYearGiltYieldPct": 4.4,
+      "tenYearGiltYieldPct": 4.9,
+      "twentyYearGiltYieldPct": 5.3
     }
   ]
 }

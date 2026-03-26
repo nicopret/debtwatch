@@ -4,7 +4,7 @@
   "unit": "gbp_billions",
   "basis": "calendar_year",
   "dateValue": "2023",
-  "timestamp": "2026-03-19T22:55:33.264Z",
+  "timestamp": "2026-03-26T10:10:14.626Z",
   "source": "Office for National Statistics",
   "debtInterestDefinition": "Public sector debt interest payments, built from ONS NMFX monthly outturns and summed to completed calendar years.",
   "publicServicePayDefinition": "General government compensation of employees from ONS ESA Table 11, using the six largest top-level COFOG functions reported in annual current-price values.",

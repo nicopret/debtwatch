@@ -2,7 +2,7 @@
   "title": "Debt vs GDP",
   "subtitle": "UK debt burden over time",
   "dateValue": "2025",
-  "timestamp": "2026-03-14T07:36:41.183Z",
+  "timestamp": "2026-03-26T10:09:57.216Z",
   "source": "Office for National Statistics",
   "items": [
     {
@@ -196,15 +196,15 @@
     },
     {
       "yearLabel": "2024",
-      "numericValue": 94.6,
-      "formattedValue": "94.6%",
+      "numericValue": 94.7,
+      "formattedValue": "94.7%",
       "governmentKey": "labour_2024",
       "governmentLabel": "Labour (2024-)"
     },
     {
       "yearLabel": "2025",
-      "numericValue": 95,
-      "formattedValue": "95.0%",
+      "numericValue": 95.1,
+      "formattedValue": "95.1%",
       "governmentKey": "labour_2024",
       "governmentLabel": "Labour (2024-)"
     }

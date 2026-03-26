@@ -2,7 +2,7 @@
   "title": "Borrowing over time",
   "subtitle": "Annual UK borrowing with government periods",
   "dateValue": "2025",
-  "timestamp": "2026-03-14T07:04:24.639Z",
+  "timestamp": "2026-03-26T10:09:55.247Z",
   "source": "Office for National Statistics",
   "items": [
     {
@@ -161,50 +161,50 @@
     },
     {
       "yearLabel": "2019",
-      "numericValue": 49621000000,
+      "numericValue": 49618000000,
       "formattedValue": "£49.6B",
       "governmentKey": "conservative_2015",
       "governmentLabel": "Conservative (2015-2024)"
     },
     {
       "yearLabel": "2020",
-      "numericValue": 269956000000,
+      "numericValue": 269991000000,
       "formattedValue": "£270B",
       "governmentKey": "conservative_2015",
       "governmentLabel": "Conservative (2015-2024)"
     },
     {
       "yearLabel": "2021",
-      "numericValue": 161176000000,
+      "numericValue": 161116000000,
       "formattedValue": "£161B",
       "governmentKey": "conservative_2015",
       "governmentLabel": "Conservative (2015-2024)"
     },
     {
       "yearLabel": "2022",
-      "numericValue": 107940000000,
+      "numericValue": 108118000000,
       "formattedValue": "£108B",
       "governmentKey": "conservative_2015",
       "governmentLabel": "Conservative (2015-2024)"
     },
     {
       "yearLabel": "2023",
-      "numericValue": 143325000000,
-      "formattedValue": "£143B",
+      "numericValue": 143548000000,
+      "formattedValue": "£144B",
       "governmentKey": "conservative_2015",
       "governmentLabel": "Conservative (2015-2024)"
     },
     {
       "yearLabel": "2024",
-      "numericValue": 152426000000,
-      "formattedValue": "£152B",
+      "numericValue": 151455000000,
+      "formattedValue": "£151B",
       "governmentKey": "labour_2024",
       "governmentLabel": "Labour (2024-)"
     },
     {
       "yearLabel": "2025",
-      "numericValue": 154053000000,
-      "formattedValue": "£154B",
+      "numericValue": 155024000000,
+      "formattedValue": "£155B",
       "governmentKey": "labour_2024",
       "governmentLabel": "Labour (2024-)"
     }

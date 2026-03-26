@@ -1,8 +1,11 @@
 import type { ArticlePreviewGraphicKey } from "@/data/articles/articleTypes";
 import BorrowingArticlePreviewGraphic from "@/components/ui/borrowingArticlePreviewGraphicComponent/BorrowingArticlePreviewGraphic";
 import DebtInterestArticlePreviewGraphic from "@/components/ui/debtInterestArticlePreviewGraphicComponent/DebtInterestArticlePreviewGraphic";
+import DebtToGdpArticlePreviewGraphic from "@/components/ui/debtToGdpArticlePreviewGraphicComponent/DebtToGdpArticlePreviewGraphic";
 import GiltYieldsArticlePreviewGraphic from "@/components/ui/giltYieldsArticlePreviewGraphicComponent/GiltYieldsArticlePreviewGraphic";
 import GovernmentSpendingArticlePreviewGraphic from "@/components/ui/governmentSpendingArticlePreviewGraphicComponent/GovernmentSpendingArticlePreviewGraphic";
+import debtToGdpMetricsData from "@/data/debtToGdpMetrics.json";
+import debtToGdpTimelineData from "@/data/debtToGdpTimeline.json";
 import giltYieldTimelineData from "@/data/giltYieldTimeline.json";
 import giltYieldPeerTimelineData from "@/data/giltYieldPeerTimeline.json";
 import budgetReceiptsSpendingTimelineData from "@/data/budgetReceiptsSpendingTimeline.json";
@@ -95,6 +98,26 @@ export function renderArticlePreviewGraphic(
           dateLabel={latestPoint.yearLabel}
           receiptsPoints={previewItems.map((item) => item.receipts)}
           spendingPoints={previewItems.map((item) => item.spending)}
+        />
+      );
+    }
+    case "debt-to-gdp-ratio": {
+      const cappedItems = debtToGdpTimelineData.items.filter((item) =>
+        articleDate ? isOnOrBeforePublicationMonth(item.yearLabel, articleDate) : true,
+      );
+      const sourceItems = cappedItems.length > 0 ? cappedItems : debtToGdpTimelineData.items;
+      const recentPoints = sourceItems.slice(-12).map((item) => item.numericValue);
+      const latestPoint = sourceItems[sourceItems.length - 1];
+
+      if (!latestPoint) {
+        return null;
+      }
+
+      return (
+        <DebtToGdpArticlePreviewGraphic
+          currentValue={latestPoint.formattedValue ?? debtToGdpMetricsData.formattedValue}
+          points={recentPoints}
+          dateLabel={latestPoint.yearLabel}
         />
       );
     }

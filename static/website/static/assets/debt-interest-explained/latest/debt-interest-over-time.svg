@@ -71,7 +71,7 @@
       
         <text x="1366.0" y="530" fill="#556274" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">2025</text>
       
-    <path d="M 82.0 447.1 L 127.9 431.8 L 173.7 438.8 L 219.6 438.7 L 265.4 443.6 L 311.3 448.0 L 357.1 445.8 L 403.0 442.5 L 448.9 436.5 L 494.7 433.2 L 540.6 424.3 L 586.4 422.2 L 632.3 432.4 L 678.1 398.8 L 724.0 385.7 L 769.9 393.1 L 815.7 391.1 L 861.6 393.2 L 907.4 403.5 L 953.3 395.4 L 999.1 381.2 L 1045.0 386.4 L 1090.9 395.5 L 1136.7 408.8 L 1182.6 368.8 L 1228.4 279.0 L 1274.3 321.4 L 1320.1 329.9 L 1366.0 297.5" fill="none" stroke="#c75b5b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 82.0 447.1 L 127.9 431.8 L 173.7 438.8 L 219.6 438.7 L 265.4 443.6 L 311.3 448.0 L 357.1 445.8 L 403.0 442.5 L 448.9 436.5 L 494.7 433.2 L 540.6 424.3 L 586.4 422.2 L 632.3 432.4 L 678.1 398.8 L 724.0 385.7 L 769.9 393.1 L 815.7 391.1 L 861.6 393.2 L 907.4 403.5 L 953.3 395.4 L 999.1 381.2 L 1045.0 386.4 L 1090.9 395.5 L 1136.7 408.8 L 1182.6 368.8 L 1228.4 279.0 L 1274.3 321.4 L 1320.1 329.9 L 1366.0 298.7" fill="none" stroke="#c75b5b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
   
   <text x="16" y="700" fill="#5c6778" font-family="Segoe UI, Arial, sans-serif" font-size="14">Annual debt-interest history from ONS</text>
   <text x="1384" y="700" fill="#1d4f91" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="end">debtwatch.uk</text>

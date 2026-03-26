@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-14T07:04:24.639Z",
+  "timestamp": "2026-03-26T10:09:55.247Z",
   "source": "Office for National Statistics",
   "governments": [
     {
@@ -29,10 +29,10 @@
       "governmentLabel": "Conservative (2015-2024)",
       "startYear": 2015,
       "endYear": 2023,
-      "totalBorrowingNumericValue": 991099000000,
+      "totalBorrowingNumericValue": 991472000000,
       "totalBorrowingFormattedValue": "£991B",
       "peakYear": "2020",
-      "peakYearBorrowingNumericValue": 269956000000,
+      "peakYearBorrowingNumericValue": 269991000000,
       "peakYearBorrowingFormattedValue": "£270B"
     },
     {
@@ -43,15 +43,15 @@
       "totalBorrowingNumericValue": 306479000000,
       "totalBorrowingFormattedValue": "£306B",
       "peakYear": "2025",
-      "peakYearBorrowingNumericValue": 154053000000,
-      "peakYearBorrowingFormattedValue": "£154B"
+      "peakYearBorrowingNumericValue": 155024000000,
+      "peakYearBorrowingFormattedValue": "£155B"
     }
   ],
   "overallPeak": {
     "year": "2020",
     "governmentKey": "conservative_2015",
     "governmentLabel": "Conservative (2015-2024)",
-    "numericValue": 269956000000,
+    "numericValue": 269991000000,
     "formattedValue": "£270B"
   }
 }

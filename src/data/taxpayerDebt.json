@@ -1,11 +1,11 @@
 {
   "currencySymbol": "£",
-  "dateValue": "Jan 2026",
-  "formattedValue": "£73,335",
-  "numericValue": 2867400000000,
+  "dateValue": "Feb 2026",
+  "formattedValue": "£73,645",
+  "numericValue": 2879500000000,
   "taxpayers": 39100000,
   "taxpayersFormatted": "39m",
   "source": "HMRC Income Tax Liabilities Statistics",
   "taxYear": "2025-2026",
-  "timestamp": "2026-03-13T15:53:47.330Z"
+  "timestamp": "2026-03-26T10:09:43.040Z"
 }
