@@ -32,6 +32,7 @@ const latestPoint = timeline.items
   .at(-1);
 
 assert.equal(giltYieldsExplainedArticle.date, "15 Dec 2025");
+assert.equal(giltYieldsExplainedArticle.publishedSnapshotVersion, "20251215");
 assert.equal(giltYieldsExplainedArticle.heroVisual, "gilt-yield-hero");
 assert.equal(latestPoint?.dateLabel, "2025-12");
 assert.ok(typeof latestPoint?.uk10yGiltYieldPct === "number");

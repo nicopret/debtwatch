@@ -6,8 +6,14 @@ import { fileURLToPath } from "node:url";
 import { spawn } from "node:child_process";
 
 import { assetRegistry } from "../src/data/assets/assetRegistry";
-import { getSupportedEmbedVersions } from "../src/lib/versioning";
+import { getSupportedEmbedVersions, isDatedVersion } from "../src/lib/versioning";
 import { buildAssetSvg } from "./lib/buildAssetSvg";
+import {
+  collectRelativeFiles,
+  ensureRequiredFilesExist,
+  getExpectedAssetFiles,
+  writeExportManifest,
+} from "./lib/exportPublishing.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -184,6 +190,13 @@ async function main() {
   await rm(exportDir, { recursive: true, force: true });
   await rm(nextBuildDir, { recursive: true, force: true });
 
+  const versions = getSupportedEmbedVersions();
+  const bootstrapVersion = versions.find(isDatedVersion);
+  if (!bootstrapVersion) {
+    throw new Error("Asset build could not determine a dated export version.");
+  }
+
+  process.env.DEBTWATCH_EXPORT_BOOTSTRAP_VERSION = bootstrapVersion;
   await run(process.execPath, [nextScript, "build"]);
   await ensurePathExists(
     path.join(exportDir, "asset-preview"),
@@ -191,7 +204,6 @@ async function main() {
   );
 
   const browserPath = findBrowserExecutable();
-  const versions = getSupportedEmbedVersions();
   const { server, origin } = await startStaticServer(exportDir);
 
   try {
@@ -218,8 +230,24 @@ async function main() {
       }
     }
 
+    const requiredFiles = getExpectedAssetFiles(versions);
+    await ensureRequiredFilesExist(
+      assetOutputDir,
+      requiredFiles,
+      "Asset build",
+    );
+    const generatedFiles = await collectRelativeFiles(assetOutputDir);
+    await writeExportManifest(assetOutputDir, "asset-manifest.json", {
+      kind: "assets",
+      generatedAt: new Date().toISOString(),
+      versions,
+      requiredFiles,
+      generatedFiles,
+    });
+
     console.log(`Generated ${pngCount} PNG assets`);
     console.log(`Generated ${svgCount} SVG assets`);
+    console.log(`Verified ${requiredFiles.length} required asset files`);
     console.log(`Versions: ${versions.join(", ")}`);
     console.log(`Asset output written to ${assetOutputDir}`);
   } finally {

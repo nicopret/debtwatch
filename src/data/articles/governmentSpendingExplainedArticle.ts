@@ -6,7 +6,7 @@ export const governmentSpendingExplainedArticle: ArticleData = {
   tagline: "The spending side of the budget in one view",
   date: "15 Feb 2026",
   author: "DebtWatch Research Desk",
-  authorBioUrl: "https://debtwatch.uk/methodology/",
+  authorBioUrl: "https://debtwatch.uk/sources/",
   description:
     "Public spending is concentrated in a few very large areas: welfare, health, education and the wider day-to-day running of the state.",
   keyTakeaway:

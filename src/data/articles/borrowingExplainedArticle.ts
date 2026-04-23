@@ -6,7 +6,7 @@ export const borrowingExplainedArticle: ArticleData = {
   tagline: "Prosperity comes from growth, not borrowing — and the balance has shifted too far.",
   date: "15 Jan 2026",
   author: "DebtWatch Research Desk",
-  authorBioUrl: "https://debtwatch.uk/methodology/",
+  authorBioUrl: "https://debtwatch.uk/sources/",
   description:
     "Borrowing is the yearly gap between what the government spends and what it raises. It rises in recessions, crises and when policy choices widen the budget gap. Over time, these shortfalls accumulate into a growing national debt — one that shapes the economy, influences policy decisions, and raises questions about long-term sustainability",
   keyTakeaway:

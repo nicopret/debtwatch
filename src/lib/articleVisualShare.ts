@@ -4,6 +4,7 @@ const SITE_HOST = "https://debtwatch.uk";
 
 export interface ArticleVisualShareConfig {
   articleUrl: string;
+  socialUrl: string;
   shareTitle: string;
   shareText: string;
   contextSlug?: string;
@@ -20,6 +21,32 @@ export interface SocialShareLinks {
 
 export function buildArticleUrl(slug: string): string {
   return `${SITE_HOST}/articles/${slug}`;
+}
+
+export function buildAssetPreviewUrl(
+  contextSlug: string,
+  version: string,
+  assetSlug: string,
+): string {
+  return `${SITE_HOST}/asset-preview/${contextSlug}/${version}/${assetSlug}`;
+}
+
+export function resolveArticleVisualSocialUrl({
+  articleSlug,
+  contextSlug,
+  assetSlug,
+  snapshotDate,
+}: {
+  articleSlug: string;
+  contextSlug?: string;
+  assetSlug?: string;
+  snapshotDate?: string;
+}): string {
+  if (contextSlug && assetSlug && snapshotDate) {
+    return buildAssetPreviewUrl(contextSlug, snapshotDate, assetSlug);
+  }
+
+  return buildArticleUrl(articleSlug);
 }
 
 export function resolveArticleVisualShareText(
@@ -52,6 +79,12 @@ export function buildArticleVisualShareConfig(
 
   return {
     articleUrl: buildArticleUrl(article.slug),
+    socialUrl: resolveArticleVisualSocialUrl({
+      articleSlug: article.slug,
+      contextSlug: section.shareContextSlug,
+      assetSlug: section.shareAssetSlug,
+      snapshotDate: section.shareSnapshotDate,
+    }),
     shareTitle: resolveArticleVisualShareTitle(article, section),
     shareText: resolveArticleVisualShareText(article, section),
     contextSlug: section.shareContextSlug,
@@ -62,14 +95,14 @@ export function buildArticleVisualShareConfig(
 }
 
 export function buildSocialShareLinks({
-  articleUrl,
+  socialUrl,
   shareText,
-}: Pick<ArticleVisualShareConfig, "articleUrl" | "shareText">): SocialShareLinks {
-  const encodedUrl = encodeURIComponent(articleUrl);
+}: Pick<ArticleVisualShareConfig, "socialUrl" | "shareText">): SocialShareLinks {
+  const encodedUrl = encodeURIComponent(socialUrl);
   const encodedText = encodeURIComponent(shareText);
 
   return {
-    x: `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`,
+    x: `https://x.com/intent/post?text=${encodedText}&url=${encodedUrl}`,
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
   };

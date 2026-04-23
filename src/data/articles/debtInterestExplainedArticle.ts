@@ -6,7 +6,7 @@ export const debtInterestExplainedArticle: ArticleData = {
   tagline: "Why servicing the national debt suddenly costs much more",
   date: "15 Mar 2026",
   author: "DebtWatch Research Desk",
-  authorBioUrl: "https://debtwatch.uk/methodology/",
+  authorBioUrl: "https://debtwatch.uk/sources/",
   description:
     "Gilt yields show the interest rate investors demand to lend to the UK government - and they have risen sharply in recent years. As yields move, they signal how markets view inflation, growth, and the credibility of the UK's finances. They are not set by government, but by investors deciding what it is worth to lend.",
   keyTakeaway:

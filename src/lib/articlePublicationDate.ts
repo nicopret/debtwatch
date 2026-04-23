@@ -38,6 +38,19 @@ export function parseArticlePublicationMonth(value: string): PublicationMonth | 
   return null;
 }
 
+export function parseCalendarDate(value: string): Date | null {
+  const direct = /^(\d{1,2})\s+([A-Za-z]{3})\s+(\d{4})$/.exec(value.trim());
+  if (direct) {
+    const month = MONTH_LOOKUP[direct[2]!.toLowerCase()];
+    if (month) {
+      return new Date(Date.UTC(Number(direct[3]), month - 1, Number(direct[1])));
+    }
+  }
+
+  const parsed = new Date(value);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+}
+
 export function parseDataMonth(value: string): PublicationMonth | null {
   const trimmed = value.trim();
 
@@ -100,4 +113,22 @@ export function isOnOrBeforePublicationMonth(
   }
 
   return comparePublicationMonths(dataMonth, publicationMonth) <= 0;
+}
+
+export function isOnOrBeforeArticleDate(
+  releaseDate: string | undefined,
+  articleDate: string,
+): boolean {
+  if (!releaseDate) {
+    return true;
+  }
+
+  const parsedReleaseDate = parseCalendarDate(releaseDate);
+  const parsedArticleDate = parseCalendarDate(articleDate);
+
+  if (!parsedReleaseDate || !parsedArticleDate) {
+    return true;
+  }
+
+  return parsedReleaseDate.getTime() <= parsedArticleDate.getTime();
 }

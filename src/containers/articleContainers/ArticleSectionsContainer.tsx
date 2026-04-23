@@ -3,7 +3,7 @@ import ArticleSection from "@/components/ui/articleSectionComponent/ArticleSecti
 import { getArticleVisualEmbedDefinition } from "@/data/embeds/articleVisualEmbedRegistry";
 import type { ArticleContentBlock, ArticleData } from "@/data/articles/articleTypes";
 import { buildArticleVisualShareConfig } from "@/lib/articleVisualShare";
-import { getUtcDateFolderName } from "@/lib/versioning";
+import { resolveVisualSnapshotVersion } from "@/lib/publishedVisualVersion";
 import {
   renderArticleCallout,
   renderArticleGraphBlock,
@@ -62,8 +62,6 @@ function renderSectionBlocks(
 export default function ArticleSectionsContainer({
   article,
 }: ArticleSectionsContainerProps) {
-  const snapshotDate = getUtcDateFolderName(new Date());
-
   return (
     <>
       {article.sections.map((section) => {
@@ -74,6 +72,16 @@ export default function ArticleSectionsContainer({
         const renderedVisual = section.visualKey
           ? renderArticleVisual(section.visualKey, article)
           : undefined;
+        const resolvedSnapshotDate =
+          section.shareSnapshotDate ??
+          article.publishedSnapshotVersion ??
+          (exportDefinition?.articleSlug && exportDefinition.embedSlug
+            ? resolveVisualSnapshotVersion({
+                contextSlug: exportDefinition.articleSlug,
+                assetSlug: exportDefinition.embedSlug,
+                embedSlug: exportDefinition.embedSlug,
+              })
+            : undefined);
 
         return (
           <ArticleSection
@@ -99,11 +107,12 @@ export default function ArticleSectionsContainer({
                       ? {
                           chartTitle: exportDefinition?.title ?? shareConfig.shareTitle,
                           articleUrl: shareConfig.articleUrl,
+                          socialUrl: shareConfig.socialUrl,
                           shareText: exportDefinition?.shareText ?? shareConfig.shareText,
                           contextSlug: exportDefinition?.articleSlug ?? shareConfig.contextSlug,
                           embedSlug: exportDefinition?.embedSlug ?? shareConfig.embedSlug,
                           assetSlug: exportDefinition?.embedSlug ?? shareConfig.assetSlug,
-                          snapshotDate: shareConfig.snapshotDate ?? snapshotDate,
+                          snapshotDate: resolvedSnapshotDate,
                         }
                       : null
                   }

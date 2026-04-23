@@ -14,16 +14,21 @@ import G7YieldRateChartBlock from "./G7YieldRateChartBlock";
 import G7YieldComparisonVisual from "./G7YieldComparisonVisual";
 import GiltYieldRatesHeroVisual from "./GiltYieldRatesHeroVisual";
 import InflationLinkedDebtExposureVisual from "./InflationLinkedDebtExposureVisual";
+import WelfareIncomeTaxHeroVisual from "./WelfareIncomeTaxHeroVisual";
+import WelfareSpendingBreakdownVisual from "./WelfareSpendingBreakdownVisual";
 import NhsSpendingBreakdownContainer from "@/containers/budgetContainers/NhsSpendingBreakdownContainer";
 import StructuralDebtFlowDiagramContainer from "@/containers/budgetContainers/StructuralDebtFlowDiagramContainer";
 import BudgetIncomeSpendingTotalsContainer from "@/containers/budgetContainers/BudgetIncomeSpendingTotalsContainer";
 import BudgetReceiptsSpendingHeroContainer from "@/containers/budgetContainers/BudgetReceiptsSpendingHeroContainer";
+import GiltYieldPeerFeaturedGraphicContainer from "./GiltYieldPeerFeaturedGraphicContainer";
 
 export function renderArticleVisual(
   visualKey: ArticleVisualKey,
   article?: ArticleData,
 ) {
   switch (visualKey) {
+    case "welfare-income-tax-hero":
+      return <WelfareIncomeTaxHeroVisual publicationDate={article?.date} />;
     case "debt-interest-hero":
       return (
         <ArticleVisualPanel
@@ -168,8 +173,12 @@ export function renderArticleVisual(
       return <BorrowingYieldRatesVisual publicationDate={article?.date} />;
     case "debt-ownership-breakdown":
       return <DebtOwnershipBreakdownVisual publicationDate={article?.date} />;
+    case "welfare-spending-breakdown":
+      return <WelfareSpendingBreakdownVisual />;
     case "gilt-yield-hero":
       return <GiltYieldRatesHeroVisual publicationDate={article?.date} />;
+    case "gilt-yield-peers":
+      return <GiltYieldPeerFeaturedGraphicContainer publicationDate={article?.date} />;
     case "gilt-yield-costs":
       return (
         <ArticleVisualPanel

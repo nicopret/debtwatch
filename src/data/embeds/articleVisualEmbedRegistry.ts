@@ -1,4 +1,4 @@
-import type { ArticleVisualKey } from "@/data/articles/articleTypes";
+import type { ArticleVisualKey } from "../articles/articleTypes";
 
 export interface ArticleVisualEmbedDefinition {
   articleSlug: string;
@@ -101,6 +101,14 @@ export const articleVisualEmbedRegistry: ArticleVisualEmbedDefinition[] = [
     embedSlug: "inflation-linked-debt-exposure",
     title: "Inflation-linked debt exposure",
     sourceNote: "ONS inflation and DMO debt exposure data via DebtWatch",
+  },
+  {
+    articleSlug: "why-gilt-yields-matter",
+    visualKey: "gilt-yield-peers",
+    embedSlug: "gilt-yield-peers",
+    title: "Gilt Yields",
+    shareText: "Gilt Yields",
+    sourceNote: "OECD long-term interest rates via DebtWatch",
   },
 ];
 

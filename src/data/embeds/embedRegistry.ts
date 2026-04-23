@@ -1,4 +1,4 @@
-import type { ArticleVisualKey } from "@/data/articles/articleTypes";
+import type { ArticleVisualKey } from "../articles/articleTypes";
 import {
   articleVisualEmbedRegistry,
   type ArticleVisualEmbedDefinition,

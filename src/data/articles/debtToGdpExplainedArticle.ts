@@ -6,7 +6,7 @@ export const debtToGdpExplainedArticle: ArticleData = {
   tagline: "The ratio that tries to put debt in context",
   date: "25 Mar 2026",
   author: "DebtWatch Research Desk",
-  authorBioUrl: "https://debtwatch.uk/methodology/",
+  authorBioUrl: "https://debtwatch.uk/sources/",
   description:
     "Debt-to-GDP compares the size of public debt with the size of the economy. It is widely used because it shows the burden of debt relative to national income.",
   keyTakeaway:

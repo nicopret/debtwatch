@@ -11,12 +11,6 @@ import {
 const publicationMonth = parseArticlePublicationMonth(borrowingExplainedArticle.date);
 assert.ok(publicationMonth);
 
-const totalDebtMetric = JSON.parse(
-  readFileSync(new URL("../../data/totalDebtMetrics.json", import.meta.url), "utf8"),
-) as {
-  dateValue: string;
-};
-
 const debtSustainabilityTimeline = JSON.parse(
   readFileSync(new URL("../../data/debtSustainabilityTimeline.json", import.meta.url), "utf8"),
 ) as {
@@ -48,7 +42,6 @@ const latestEligibleGiltYieldPoint = giltYieldTimeline.items
   .at(-1);
 
 assert.equal(borrowingExplainedArticle.date, "15 Jan 2026");
-assert.equal(totalDebtMetric.dateValue, "Jan 2026");
 assert.equal(latestEligibleDebtSustainabilityPoint?.yearLabel, "2025");
 assert.equal(latestEligibleGiltYieldPoint?.dateLabel, "2026-01");
 

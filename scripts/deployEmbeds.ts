@@ -3,13 +3,20 @@ import { readdir, stat } from "node:fs/promises";
 import { join, relative } from "node:path";
 
 import {
+  HeadObjectCommand,
   HeadBucketCommand,
   PutObjectCommand,
   S3Client,
 } from "@aws-sdk/client-s3";
+import {
+  EMBED_S3_PREFIX,
+  buildS3ObjectKey,
+  ensureRequiredFilesExist,
+  getExpectedEmbedEntryFiles,
+} from "./lib/exportPublishing.js";
+import { getEmbedExportManifest } from "../src/lib/publishedVisualVersion.js";
 const SOURCE_DIRECTORY = join(process.cwd(), "static", "embeds");
 const BUCKET_NAME = "debt-watch-website";
-const BUCKET_PREFIX = "embeds";
 
 const CONTENT_TYPES: Record<string, string> = {
   ".css": "text/css; charset=utf-8",
@@ -81,7 +88,7 @@ async function ensureBucketExists(client: S3Client) {
 }
 async function uploadFile(client: S3Client, filePath: string) {
   const relativePath = relative(SOURCE_DIRECTORY, filePath).replace(/\\/g, "/");
-  const key = `${BUCKET_PREFIX}/${relativePath}`;
+  const key = buildS3ObjectKey(EMBED_S3_PREFIX, relativePath);
 
   await client.send(
     new PutObjectCommand({
@@ -95,9 +102,24 @@ async function uploadFile(client: S3Client, filePath: string) {
   return key;
 }
 
+async function verifyUploadedObject(client: S3Client, key: string) {
+  await client.send(
+    new HeadObjectCommand({
+      Bucket: BUCKET_NAME,
+      Key: key,
+    }),
+  );
+}
+
 async function main() {
   try {
     await ensureSourceDirectoryExists(SOURCE_DIRECTORY);
+    const embedManifest = getEmbedExportManifest();
+    await ensureRequiredFilesExist(
+      SOURCE_DIRECTORY,
+      embedManifest.requiredFiles.length > 0 ? embedManifest.requiredFiles : getExpectedEmbedEntryFiles(),
+      "Embed deploy",
+    );
 
     const files = await collectFiles(SOURCE_DIRECTORY);
     if (files.length === 0) {
@@ -110,17 +132,24 @@ async function main() {
 
     console.log(`Uploading ${files.length} embed files from ${SOURCE_DIRECTORY}`);
     console.log(`Bucket: ${BUCKET_NAME}`);
-    console.log(`Target prefix: s3://${BUCKET_NAME}/${BUCKET_PREFIX}/`);
+    console.log(
+      `Target prefix: s3://${BUCKET_NAME}/${EMBED_S3_PREFIX || "(bucket root)"}`,
+    );
     console.log("Existing objects under matching keys will be overwritten.");
 
     for (const file of files) {
       const key = await uploadFile(client, file);
+      await verifyUploadedObject(client, key);
       console.log(`Uploaded ${key}`);
+    }
+
+    for (const relativePath of embedManifest.generatedFiles) {
+      await verifyUploadedObject(client, buildS3ObjectKey(EMBED_S3_PREFIX, relativePath));
     }
 
     console.log("Embed deployment completed successfully");
     console.log(`Bucket: ${BUCKET_NAME}`);
-    console.log(`Path: s3://${BUCKET_NAME}/${BUCKET_PREFIX}/`);
+    console.log(`Path: s3://${BUCKET_NAME}/${EMBED_S3_PREFIX || ""}`);
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown deployment error";
     console.error("Failed to deploy embeds.");

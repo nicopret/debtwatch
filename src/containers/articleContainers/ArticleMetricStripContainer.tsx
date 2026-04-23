@@ -61,6 +61,9 @@ function resolveMetricValue(
 export default function ArticleMetricStripContainer({
   article,
 }: ArticleMetricStripContainerProps) {
+  // Article strips intentionally use article-safe selectors. Landing-page cards can use the
+  // latest canonical store metrics, but article metrics must stay capped to what was
+  // available on or before the article publication date.
   const articleAnnualInterestMetric = useAppSelector((state) =>
     selectArticleAnnualDebtInterestMetric(state, article.date),
   );

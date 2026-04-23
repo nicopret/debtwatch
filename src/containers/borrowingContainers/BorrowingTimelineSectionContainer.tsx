@@ -6,14 +6,21 @@ import BorrowingGovernmentSummaryContainer from "./BorrowingGovernmentSummaryCon
 
 export interface BorrowingTimelineSectionContainerProps {
   publicationDate?: string;
+  snapshotDate: string;
 }
 
 export default function BorrowingTimelineSectionContainer({
   publicationDate,
+  snapshotDate,
 }: BorrowingTimelineSectionContainerProps) {
   return (
     <BorrowingTimelineSection
-      leftCard={<AnnualBorrowingLineChartContainer publicationDate={publicationDate} />}
+      leftCard={
+        <AnnualBorrowingLineChartContainer
+          publicationDate={publicationDate}
+          snapshotDate={snapshotDate}
+        />
+      }
       rightCard={<BorrowingGovernmentSummaryContainer publicationDate={publicationDate} />}
     />
   );

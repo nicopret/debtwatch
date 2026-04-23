@@ -10,10 +10,13 @@ type OnsObservation = {
   date?: string;
   year?: string;
   value?: string;
+  month?: string;
+  updateDate?: string;
 };
 
 type OnsResponse = {
   years?: OnsObservation[];
+  months?: OnsObservation[];
   description?: {
     title?: string;
     unit?: string;
@@ -35,6 +38,19 @@ type AnnualBorrowingTimeline = {
   timestamp: string;
   source: string;
   items: AnnualBorrowingTimelineItem[];
+};
+
+type AnnualBorrowingMetric = {
+  numericValue: number;
+  formattedValue: string;
+  timestamp: string;
+  dateValue: string;
+  source: string;
+  releaseDate?: string;
+  previousDateValue?: string;
+  previousNumericValue?: number;
+  previousFormattedValue?: string;
+  previousReleaseDate?: string;
 };
 
 type BorrowingGovernmentSummaryEntry = {
@@ -64,10 +80,27 @@ type BorrowingByGovernmentSummary = {
 
 const ONS_URL =
   "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/dzls/pusf/data";
+const ONS_CURRENT_BORROWING_URL =
+  "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/j5ii/pusf/data";
 const MIN_YEAR = 1997;
 const OUTPUT_PATHS = {
   timeline: join(process.cwd(), "src", "data", "annualBorrowingTimeline.json"),
   summary: join(process.cwd(), "src", "data", "borrowingByGovernmentSummary.json"),
+  metric: join(process.cwd(), "src", "data", "annualBorrowingMetric.json"),
+};
+const MONTH_MAP: Record<string, number> = {
+  jan: 0,
+  feb: 1,
+  mar: 2,
+  apr: 3,
+  may: 4,
+  jun: 5,
+  jul: 6,
+  aug: 7,
+  sep: 8,
+  oct: 9,
+  nov: 10,
+  dec: 11,
 };
 
 function toNumber(value: string | undefined): number | null {
@@ -108,6 +141,106 @@ function parseYearLabel(observation: OnsObservation): string | null {
   return null;
 }
 
+function normalizeMonthDate(rawDate: string | undefined): Date | null {
+  if (!rawDate) {
+    return null;
+  }
+
+  const trimmed = rawDate.trim();
+  const onsMonthMatch = /^(\d{4})\s+([A-Za-z]{3})$/i.exec(trimmed);
+  if (onsMonthMatch) {
+    const year = Number(onsMonthMatch[1]);
+    const monthIndex = MONTH_MAP[onsMonthMatch[2]!.toLowerCase()];
+    if (monthIndex !== undefined) {
+      return new Date(Date.UTC(year, monthIndex, 1));
+    }
+  }
+
+  const parsed = new Date(trimmed);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+}
+
+function formatMonthYear(date: Date): string {
+  return new Intl.DateTimeFormat("en-GB", {
+    month: "short",
+    year: "numeric",
+  }).format(date);
+}
+
+function formatReleaseDate(rawDate: string | undefined): string | undefined {
+  if (!rawDate) {
+    return undefined;
+  }
+
+  const parsed = new Date(rawDate);
+  if (Number.isNaN(parsed.getTime())) {
+    return undefined;
+  }
+
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(parsed);
+}
+
+function buildCurrentAnnualBorrowingMetric(data: OnsResponse): AnnualBorrowingMetric {
+  const observations = (data.months ?? [])
+    .map((observation) => ({
+      date: normalizeMonthDate(
+        observation.date ?? `${observation.year ?? ""} ${observation.month ?? ""}`.trim(),
+      ),
+      numericValue: toNumber(observation.value),
+      updateDate: observation.updateDate,
+    }))
+    .filter(
+      (
+        observation,
+      ): observation is { date: Date; numericValue: number; updateDate: string | undefined } =>
+        observation.date instanceof Date && observation.numericValue !== null,
+    )
+    .sort((left, right) => left.date.getTime() - right.date.getTime());
+
+  if (observations.length < 13) {
+    throw new Error(
+      `Expected at least 13 monthly borrowing observations, found ${observations.length}.`,
+    );
+  }
+
+  const toRollingPoint = (startIndex: number) => {
+    const window = observations.slice(startIndex, startIndex + 12);
+    const latest = window.at(-1);
+
+    if (!latest || window.length !== 12) {
+      throw new Error("Could not build a complete rolling borrowing window.");
+    }
+
+    const rollingBorrowingPounds = Math.round(
+      window.reduce((sum, observation) => sum + observation.numericValue, 0) * -1_000_000,
+    );
+
+    return {
+      numericValue: rollingBorrowingPounds,
+      formattedValue: formatBorrowingCompact(rollingBorrowingPounds),
+      dateValue: formatMonthYear(latest.date),
+      releaseDate: formatReleaseDate(latest.updateDate),
+    };
+  };
+
+  const currentPoint = toRollingPoint(observations.length - 12);
+  const previousPoint = toRollingPoint(observations.length - 13);
+
+  return {
+    ...currentPoint,
+    timestamp: new Date().toISOString(),
+    source: "Office for National Statistics",
+    previousDateValue: previousPoint.dateValue,
+    previousNumericValue: previousPoint.numericValue,
+    previousFormattedValue: previousPoint.formattedValue,
+    previousReleaseDate: previousPoint.releaseDate,
+  };
+}
+
 async function writeJsonFile(path: string, value: unknown) {
   await mkdir(dirname(path), { recursive: true });
   await writeFile(path, `${JSON.stringify(value, null, 2)}\n`, "utf8");
@@ -115,17 +248,32 @@ async function writeJsonFile(path: string, value: unknown) {
 
 async function main() {
   try {
-    const response = await fetch(ONS_URL, {
-      headers: {
-        Accept: "application/json",
-      },
-    });
+    const [timelineResponse, currentMetricResponse] = await Promise.all([
+      fetch(ONS_URL, {
+        headers: {
+          Accept: "application/json",
+        },
+      }),
+      fetch(ONS_CURRENT_BORROWING_URL, {
+        headers: {
+          Accept: "application/json",
+        },
+      }),
+    ]);
 
-    if (!response.ok) {
-      throw new Error(`ONS request failed with status ${response.status}.`);
+    if (!timelineResponse.ok) {
+      throw new Error(`ONS request failed with status ${timelineResponse.status}.`);
     }
 
-    const data = (await response.json()) as OnsResponse;
+    if (!currentMetricResponse.ok) {
+      throw new Error(
+        `ONS current borrowing request failed with status ${currentMetricResponse.status}.`,
+      );
+    }
+
+    const data = (await timelineResponse.json()) as OnsResponse;
+    const currentBorrowingData = (await currentMetricResponse.json()) as OnsResponse;
+    const currentMetric = buildCurrentAnnualBorrowingMetric(currentBorrowingData);
     const yearObservations = data.years ?? [];
 
     if (yearObservations.length === 0) {
@@ -237,9 +385,11 @@ async function main() {
     await Promise.all([
       writeJsonFile(OUTPUT_PATHS.timeline, timeline),
       writeJsonFile(OUTPUT_PATHS.summary, summary),
+      writeJsonFile(OUTPUT_PATHS.metric, currentMetric),
     ]);
 
     console.log("Updated annual borrowing timeline from ONS.");
+    console.log(`Current FYE borrowing: ${currentMetric.formattedValue} | ${currentMetric.dateValue}`);
     console.log(`Years processed: ${timeline.items.length}`);
     console.log(`Governments summarised: ${summary.governments.length}`);
     console.log(
@@ -247,6 +397,7 @@ async function main() {
     );
     console.log(`Saved: ${OUTPUT_PATHS.timeline}`);
     console.log(`Saved: ${OUTPUT_PATHS.summary}`);
+    console.log(`Saved: ${OUTPUT_PATHS.metric}`);
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown error";
     console.error("Failed to update annual borrowing timeline.");

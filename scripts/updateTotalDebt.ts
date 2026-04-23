@@ -1,22 +1,16 @@
 import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
-import debtToGdpTimelineData from "../src/data/debtToGdpTimeline.json" with { type: "json" };
-
 type DebtToGdp = {
   numericValue: number;
   formattedValue: string;
   timestamp: string;
   dateValue: string;
-};
-
-type DebtToGdpTimelineData = {
-  items: Array<{
-    yearLabel: string;
-    numericValue: number;
-    formattedValue: string;
-  }>;
-  timestamp: string;
+  releaseDate?: string;
+  previousDateValue?: string;
+  previousNumericValue?: number;
+  previousFormattedValue?: string;
+  previousReleaseDate?: string;
 };
 
 type OnsObservation = {
@@ -24,6 +18,7 @@ type OnsObservation = {
   year?: string;
   month?: string;
   value?: string;
+  updateDate?: string;
 };
 
 type OnsResponse = {
@@ -42,6 +37,11 @@ type TotalDebtMetric = {
   currencySymbol: string;
   timestamp: string;
   dateValue: string;
+  releaseDate?: string;
+  previousDateValue?: string;
+  previousNumericValue?: number;
+  previousFormattedValue?: string;
+  previousReleaseDate?: string;
 };
 
 type TaxpayerDebtMetric = {
@@ -58,6 +58,8 @@ type TaxpayerDebtMetric = {
 
 const ONS_URL =
   "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6w/pusf/data";
+const ONS_DEBT_TO_GDP_URL =
+  "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6x/pusf/data";
 const OUTPUT_PATH = join(process.cwd(), "src", "data", "totalDebtMetrics.json");
 const DEBT_TO_GDP_OUTPUT_PATH = join(process.cwd(), "src", "data", "debtToGdpMetrics.json");
 const MONTH_MAP: Record<string, number> = {
@@ -145,7 +147,9 @@ function formatMonthYear(date: Date): string {
   }).format(date);
 }
 
-function getLatestObservation(data: OnsResponse): { value: number; date: Date } {
+function getLatestTwoObservations(
+  data: OnsResponse,
+): Array<{ value: number; date: Date; updateDate?: string }> {
   const candidates = data.months ?? data.quarters ?? data.years ?? [];
   if (!Array.isArray(candidates) || candidates.length === 0) {
     throw new Error("No observations returned by ONS dataset.");
@@ -155,64 +159,103 @@ function getLatestObservation(data: OnsResponse): { value: number; date: Date } 
     .map((entry) => ({
       value: toNumber(entry.value),
       date: normalizeDate(entry.date ?? `${entry.year ?? ""} ${entry.month ?? ""}`.trim()),
+      updateDate: entry.updateDate,
     }))
-    .filter((entry): entry is { value: number; date: Date } => {
+    .filter((entry): entry is { value: number; date: Date; updateDate: string | undefined } => {
       return entry.value !== null && entry.date instanceof Date;
     })
     .sort((a, b) => a.date.getTime() - b.date.getTime());
 
-  if (parsed.length === 0) {
-    throw new Error("ONS response did not contain a valid latest observation.");
+  if (parsed.length < 2) {
+    throw new Error("ONS response did not contain enough observations for latest and prior values.");
   }
 
-  return parsed[parsed.length - 1];
+  return parsed.slice(-2);
+}
+
+function formatReleaseDate(rawDate: string | undefined): string | undefined {
+  if (!rawDate) {
+    return undefined;
+  }
+
+  const parsed = new Date(rawDate);
+  if (Number.isNaN(parsed.getTime())) {
+    return undefined;
+  }
+
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(parsed);
 }
 
 async function main() {
   try {
-    const response = await fetch(ONS_URL, {
-      headers: {
-        Accept: "application/json",
-      },
-    });
+    const [totalDebtResponse, debtToGdpResponse] = await Promise.all([
+      fetch(ONS_URL, {
+        headers: {
+          Accept: "application/json",
+        },
+      }),
+      fetch(ONS_DEBT_TO_GDP_URL, {
+        headers: {
+          Accept: "application/json",
+        },
+      }),
+    ]);
 
-    if (!response.ok) {
-      throw new Error(`ONS request failed with status ${response.status}.`);
+    if (!totalDebtResponse.ok) {
+      throw new Error(`ONS total-debt request failed with status ${totalDebtResponse.status}.`);
     }
 
-    const data = (await response.json()) as OnsResponse;
-    const latest = getLatestObservation(data);
-    const numericValue = toPounds(latest.value, data.description?.unit);
-    const latestDebtToGdpPoint =
-      (debtToGdpTimelineData as DebtToGdpTimelineData).items[
-        (debtToGdpTimelineData as DebtToGdpTimelineData).items.length - 1
-      ];
-
-    if (!latestDebtToGdpPoint) {
-      throw new Error("Debt-to-GDP timeline does not contain a latest annual point.");
+    if (!debtToGdpResponse.ok) {
+      throw new Error(`ONS debt-to-GDP request failed with status ${debtToGdpResponse.status}.`);
     }
+
+    const totalDebtData = (await totalDebtResponse.json()) as OnsResponse;
+    const debtToGdpData = (await debtToGdpResponse.json()) as OnsResponse;
+    const [previousDebtObservation, latestDebtObservation] =
+      getLatestTwoObservations(totalDebtData);
+    const [previousDebtToGdpObservation, latestDebtToGdpObservation] =
+      getLatestTwoObservations(debtToGdpData);
+    const numericValue = toPounds(latestDebtObservation.value, totalDebtData.description?.unit);
+    const previousNumericValue = toPounds(
+      previousDebtObservation.value,
+      totalDebtData.description?.unit,
+    );
 
     const metric: TotalDebtMetric = {
       numericValue,
       formattedValue: formatCompactPounds(numericValue),
       currencySymbol: "\u00A3",
       timestamp: new Date().toISOString(),
-      dateValue: formatMonthYear(latest.date),
+      dateValue: formatMonthYear(latestDebtObservation.date),
+      releaseDate: formatReleaseDate(latestDebtObservation.updateDate),
+      previousDateValue: formatMonthYear(previousDebtObservation.date),
+      previousNumericValue,
+      previousFormattedValue: formatCompactPounds(previousNumericValue),
+      previousReleaseDate: formatReleaseDate(previousDebtObservation.updateDate),
     };
 
     const taxpayerDebtMetric: TaxpayerDebtMetric = {
       currencySymbol: "\u00A3",
-      dateValue: formatMonthYear(latest.date),
+      dateValue: formatMonthYear(latestDebtObservation.date),
       formattedValue: formatCompactPounds(Number((numericValue / TAXPAYERS.taxpayers).toFixed(0))),
       numericValue, ...TAXPAYERS,
       timestamp: new Date().toISOString()
     }
 
     const debtToGdpMetric: DebtToGdp = {
-      dateValue: latestDebtToGdpPoint.yearLabel,
-      formattedValue: latestDebtToGdpPoint.formattedValue,
-      numericValue: latestDebtToGdpPoint.numericValue,
-      timestamp: (debtToGdpTimelineData as DebtToGdpTimelineData).timestamp,
+      dateValue: formatMonthYear(latestDebtToGdpObservation.date),
+      formattedValue: `${latestDebtToGdpObservation.value.toFixed(1)}%`,
+      numericValue: latestDebtToGdpObservation.value,
+      timestamp: new Date().toISOString(),
+      releaseDate: formatReleaseDate(latestDebtToGdpObservation.updateDate),
+      previousDateValue: formatMonthYear(previousDebtToGdpObservation.date),
+      previousNumericValue: previousDebtToGdpObservation.value,
+      previousFormattedValue: `${previousDebtToGdpObservation.value.toFixed(1)}%`,
+      previousReleaseDate: formatReleaseDate(previousDebtToGdpObservation.updateDate),
     };
 
     await writeFile(OUTPUT_PATH, `${JSON.stringify(metric, null, 2)}\n`, "utf8");

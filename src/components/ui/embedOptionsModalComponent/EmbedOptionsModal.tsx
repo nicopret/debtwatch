@@ -15,6 +15,7 @@ export interface EmbedOptionsModalProps {
   snapshotDate?: string;
   assetSlug?: string;
   articleUrl?: string;
+  socialUrl?: string;
   shareText?: string;
 }
 
@@ -28,10 +29,10 @@ export default function EmbedOptionsModal({
   embedSlug,
   snapshotDate,
   assetSlug,
-  articleUrl,
+  socialUrl,
   shareText,
 }: EmbedOptionsModalProps) {
-  const [selectedVersion, setSelectedVersion] = useState<EmbedVersionSelection>("latest");
+  const [selectedVersion, setSelectedVersion] = useState<EmbedVersionSelection>("snapshot");
   const [embedCopyStatus, setEmbedCopyStatus] = useState("Copy iFrame");
   const [assetCopyStatus, setAssetCopyStatus] = useState<Record<AssetFormat, string>>({
     png: "Copy PNG URL",
@@ -65,9 +66,9 @@ export default function EmbedOptionsModal({
   const resolvedVersion = canExport
     ? (selectedVersion === "latest" ? "latest" : snapshotDate)
     : undefined;
-  const socialShareLinks = articleUrl
+  const socialShareLinks = socialUrl
     ? buildSocialShareLinks({
-        articleUrl,
+        socialUrl,
         shareText: shareText ?? chartTitle,
       })
     : null;
@@ -170,9 +171,9 @@ export default function EmbedOptionsModal({
         {socialShareLinks ? (
           <section className={styles.section}>
             <div className={styles.sectionHeader}>
-              <h3 className={styles.sectionTitle}>Share this article</h3>
+              <h3 className={styles.sectionTitle}>Share this visual</h3>
               <p className={styles.sectionText}>
-                Social sharing uses this article link, with visual-specific share copy where available.
+                Social sharing uses a visual-specific preview link when available, so the shared card can show the selected chart image.
               </p>
             </div>
             <div className={styles.actionRow}>

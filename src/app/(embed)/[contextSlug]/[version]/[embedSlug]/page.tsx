@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import EmbedPageContainer from "@/containers/embedContainers/EmbedPageContainer";
 import { embedRegistry, getEmbedDefinition } from "@/data/embeds/embedRegistry";
-import { getSupportedEmbedVersions } from "@/lib/versioning";
+import { getPublishedEmbedVersions } from "@/lib/publishedVisualVersion";
 
 interface EmbedPageProps {
   params: Promise<{
@@ -15,11 +15,11 @@ interface EmbedPageProps {
 export const dynamicParams = false;
 
 function isSupportedVersion(version: string): boolean {
-  return getSupportedEmbedVersions().includes(version);
+  return getPublishedEmbedVersions().includes(version);
 }
 
 export async function generateStaticParams() {
-  const versions = getSupportedEmbedVersions();
+  const versions = getPublishedEmbedVersions();
 
   return embedRegistry.flatMap((embed) =>
     versions.map((version) => ({

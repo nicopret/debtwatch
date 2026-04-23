@@ -11,6 +11,7 @@ export interface ChartEmbedActionProps {
   snapshotDate?: string;
   assetSlug?: string;
   articleUrl?: string;
+  socialUrl?: string;
   shareText?: string;
 }
 
@@ -21,6 +22,7 @@ export default function ChartEmbedAction({
   snapshotDate,
   assetSlug,
   articleUrl,
+  socialUrl,
   shareText,
 }: ChartEmbedActionProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,6 +46,7 @@ export default function ChartEmbedAction({
         snapshotDate={snapshotDate}
         assetSlug={assetSlug ?? embedSlug}
         articleUrl={articleUrl}
+        socialUrl={socialUrl}
         shareText={shareText}
       />
     </>

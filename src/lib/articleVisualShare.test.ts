@@ -14,7 +14,7 @@ const article: ArticleData = {
   tagline: "Example tagline",
   date: "26 Mar 2026",
   author: "DebtWatch",
-  authorBioUrl: "https://debtwatch.uk/methodology/",
+  authorBioUrl: "https://debtwatch.uk/sources/",
   description: "Example description",
   shareText: "Article-level share copy",
   keyTakeaway: "Example takeaway",
@@ -32,6 +32,9 @@ const sectionWithVisualText: ArticleSectionData = {
   visualKey: "borrowing-yield-rates",
   visualShareTitle: "Section visual title",
   visualShareText: "Visual-specific share copy",
+  shareContextSlug: "example-article",
+  shareAssetSlug: "example-visual",
+  shareSnapshotDate: "20251215",
 };
 
 const sectionWithoutVisualText: ArticleSectionData = {
@@ -59,12 +62,16 @@ assert.equal(
 const config = buildArticleVisualShareConfig(article, sectionWithVisualText);
 assert.ok(config);
 assert.equal(config?.articleUrl, "https://debtwatch.uk/articles/example-article");
+assert.equal(
+  config?.socialUrl,
+  "https://debtwatch.uk/asset-preview/example-article/20251215/example-visual",
+);
 assert.equal(config?.shareTitle, "Section visual title");
 assert.equal(config?.shareText, "Visual-specific share copy");
 assert.equal(buildArticleVisualShareConfig(article, sectionWithoutVisual), null);
 
 const links = buildSocialShareLinks({
-  articleUrl: config!.articleUrl,
+  socialUrl: config!.socialUrl,
   shareText: config!.shareText,
 });
 
@@ -84,12 +91,21 @@ assert.ok(heroExportDefinition);
 assert.equal(heroExportDefinition?.embedSlug, "debt-to-gdp-hero");
 assert.equal(heroExportDefinition?.articleSlug, "how-debt-to-gdp-works");
 
-assert.match(links.x, /twitter\.com\/intent\/tweet/);
+assert.match(links.x, /x\.com\/intent\/post/);
 assert.match(links.x, /Visual-specific%20share%20copy/);
-assert.match(links.x, /https%3A%2F%2Fdebtwatch\.uk%2Farticles%2Fexample-article/);
+assert.match(
+  links.x,
+  /https%3A%2F%2Fdebtwatch\.uk%2Fasset-preview%2Fexample-article%2F20251215%2Fexample-visual/,
+);
 assert.match(links.facebook, /facebook\.com\/sharer/);
 assert.match(links.linkedin, /linkedin\.com\/sharing\/share-offsite/);
-assert.match(links.facebook, /https%3A%2F%2Fdebtwatch\.uk%2Farticles%2Fexample-article/);
-assert.match(links.linkedin, /https%3A%2F%2Fdebtwatch\.uk%2Farticles%2Fexample-article/);
+assert.match(
+  links.facebook,
+  /https%3A%2F%2Fdebtwatch\.uk%2Fasset-preview%2Fexample-article%2F20251215%2Fexample-visual/,
+);
+assert.match(
+  links.linkedin,
+  /https%3A%2F%2Fdebtwatch\.uk%2Fasset-preview%2Fexample-article%2F20251215%2Fexample-visual/,
+);
 
 console.log("articleVisualShare.test.ts passed");

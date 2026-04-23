@@ -10,7 +10,7 @@ const meta = {
     tagline: "Why servicing the national debt costs more",
     date: "15 Mar 2026",
     author: "DebtWatch Research Desk",
-    authorBioUrl: "https://debtwatch.uk/methodology/",
+    authorBioUrl: "https://debtwatch.uk/sources/",
     description:
       "Debt interest is the annual cost of servicing government debt. It moves with inflation-linked bonds, refinancing rates and the size of the debt stock.",
     keyTakeaway:

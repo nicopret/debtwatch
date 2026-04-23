@@ -3,10 +3,12 @@ import { debtInterestExplainedArticle } from "./debtInterestExplainedArticle";
 import { debtToGdpExplainedArticle } from "./debtToGdpExplainedArticle";
 import { giltYieldsExplainedArticle } from "./giltYieldsExplainedArticle";
 import { governmentSpendingExplainedArticle } from "./governmentSpendingExplainedArticle";
+import { welfareBillOvertakesIncomeTaxArticle } from "./welfareBillOvertakesIncomeTaxArticle";
 import type { ArticleData } from "./articleTypes";
 import { parseArticlePublicationMonth } from "../../lib/articlePublicationDate";
 
 export const articles: ArticleData[] = [
+  welfareBillOvertakesIncomeTaxArticle,
   debtInterestExplainedArticle,
   debtToGdpExplainedArticle,
   governmentSpendingExplainedArticle,

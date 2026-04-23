@@ -58,7 +58,7 @@ export const FooterMoreLinkOnly: Story = {
     bodyText: "GBP 127B",
     footerText: undefined,
     moreText: "Methodology",
-    moreHref: "/methodology",
+    moreHref: "/sources",
   },
 };
 

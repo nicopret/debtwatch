@@ -3,6 +3,7 @@ import ReduxProvider from "@/store/provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://debtwatch.uk"),
   title: "DebtWatch",
   description: "UK debt, borrowing and public finance explained.",
   icons: {

@@ -10,16 +10,12 @@ const annualBorrowingTimeline = JSON.parse(
   items: Array<{ yearLabel: string; formattedValue: string }>;
 };
 
-const annualLendingMetric = JSON.parse(
-  readFileSync(join(process.cwd(), "src", "data", "annualLendingMetric.json"), "utf8"),
+const annualBorrowingMetric = JSON.parse(
+  readFileSync(join(process.cwd(), "src", "data", "annualBorrowingMetric.json"), "utf8"),
 ) as {
+  dateValue: string;
   formattedValue: string;
-};
-
-const debtToGdpTimeline = JSON.parse(
-  readFileSync(join(process.cwd(), "src", "data", "debtToGdpTimeline.json"), "utf8"),
-) as {
-  items: Array<{ yearLabel: string; numericValue: number; formattedValue: string }>;
+  releaseDate?: string;
 };
 
 const debtToGdpMetric = JSON.parse(
@@ -28,6 +24,7 @@ const debtToGdpMetric = JSON.parse(
   dateValue: string;
   numericValue: number;
   formattedValue: string;
+  releaseDate?: string;
 };
 
 const budgetDeficitMetric = JSON.parse(
@@ -38,23 +35,21 @@ const budgetDeficitMetric = JSON.parse(
 
 const latestAnnualBorrowing =
   annualBorrowingTimeline.items[annualBorrowingTimeline.items.length - 1];
-const latestDebtToGdpPoint =
-  debtToGdpTimeline.items[debtToGdpTimeline.items.length - 1];
 
 assert.ok(latestAnnualBorrowing);
-assert.ok(latestDebtToGdpPoint);
 
 assert.equal(
   borrowingExplainedArticle.metricStrip[0]?.helperText,
   "Latest annual net borrowing",
 );
-assert.notEqual(
-  latestAnnualBorrowing?.formattedValue,
-  annualLendingMetric.formattedValue,
-);
-assert.equal(debtToGdpMetric.dateValue, latestDebtToGdpPoint?.yearLabel);
-assert.equal(debtToGdpMetric.numericValue, latestDebtToGdpPoint?.numericValue);
-assert.equal(debtToGdpMetric.formattedValue, latestDebtToGdpPoint?.formattedValue);
+assert.equal(annualBorrowingMetric.dateValue, "Mar 2026");
+assert.equal(annualBorrowingMetric.formattedValue, "\u00A3132B");
+assert.equal(annualBorrowingMetric.releaseDate, "23 Apr 2026");
+assert.notEqual(latestAnnualBorrowing?.formattedValue, annualBorrowingMetric.formattedValue);
+assert.equal(debtToGdpMetric.dateValue, "Mar 2026");
+assert.equal(debtToGdpMetric.numericValue, 93.8);
+assert.equal(debtToGdpMetric.formattedValue, "93.8%");
+assert.equal(debtToGdpMetric.releaseDate, "23 Apr 2026");
 assert.match(budgetDeficitMetric.descriptiveText ?? "", /public sector net borrowing/i);
 assert.match(budgetDeficitMetric.descriptiveText ?? "", /gilt issuance/i);
 
