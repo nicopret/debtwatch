@@ -396,6 +396,29 @@ export const selectBudgetDeficitMetric = (state: RootState) =>
 export const selectBudgetReceiptsSpendingTimeline = (state: RootState) =>
   state.metrics.budgetReceiptsSpendingTimeline;
 
+export const selectWelfareIncomeTaxTimeline = (state: RootState) =>
+  state.metrics.welfareIncomeTaxTimeline;
+
+export function selectArticleWelfareIncomeTaxTimeline(
+  state: RootState,
+  articleDate: string,
+) {
+  const timeline = selectWelfareIncomeTaxTimeline(state);
+  const filteredItems = articleDate
+    ? filterItemsToArticleDate(timeline.items, articleDate, (item) => item.dateLabel)
+    : timeline.items;
+
+  if (filteredItems.length === 0) {
+    return null;
+  }
+
+  return {
+    ...timeline,
+    dateValue: filteredItems.at(-1)?.dateLabel ?? timeline.dateValue,
+    items: filteredItems,
+  };
+}
+
 export const selectOtherIncomeBreakdown = (state: RootState) =>
   state.metrics.otherIncomeBreakdown;
 

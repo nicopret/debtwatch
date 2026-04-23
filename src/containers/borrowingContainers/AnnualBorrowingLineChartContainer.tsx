@@ -1,7 +1,6 @@
 "use client";
 
 import AnnualBorrowingLineChartCard from "@/components/ui/annualBorrowingLineChartCardComponent/AnnualBorrowingLineChartCard";
-import { getUtcDateFolderName } from "@/lib/versioning";
 import { useAppSelector } from "@/store/hooks";
 import {
   selectArticleAnnualBorrowingTimelinePoints,
@@ -12,10 +11,12 @@ import {
 
 export interface AnnualBorrowingLineChartContainerProps {
   publicationDate?: string;
+  snapshotDate: string;
 }
 
 export default function AnnualBorrowingLineChartContainer({
   publicationDate,
+  snapshotDate,
 }: AnnualBorrowingLineChartContainerProps) {
   const points = useAppSelector((state) =>
     publicationDate
@@ -27,8 +28,6 @@ export default function AnnualBorrowingLineChartContainer({
       ? selectArticleBorrowingGovernmentBands(state, publicationDate)
       : selectBorrowingGovernmentBands(state),
   );
-  const snapshotDate = getUtcDateFolderName(new Date());
-
   return (
     <AnnualBorrowingLineChartCard
       title="Borrowing over time"
@@ -40,6 +39,9 @@ export default function AnnualBorrowingLineChartContainer({
         contextSlug: "borrowing-over-time",
         embedSlug: "borrowing-over-time",
         snapshotDate,
+        articleUrl: "https://debtwatch.uk/articles/borrowing-over-time",
+        socialUrl: "https://debtwatch.uk/articles/borrowing-over-time",
+        shareText: "Borrowing is the gap between what the government spends and what it raises.",
       }}
     />
   );

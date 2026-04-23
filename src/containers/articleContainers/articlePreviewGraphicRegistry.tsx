@@ -4,11 +4,14 @@ import DebtInterestArticlePreviewGraphic from "@/components/ui/debtInterestArtic
 import DebtToGdpArticlePreviewGraphic from "@/components/ui/debtToGdpArticlePreviewGraphicComponent/DebtToGdpArticlePreviewGraphic";
 import GiltYieldsArticlePreviewGraphic from "@/components/ui/giltYieldsArticlePreviewGraphicComponent/GiltYieldsArticlePreviewGraphic";
 import GovernmentSpendingArticlePreviewGraphic from "@/components/ui/governmentSpendingArticlePreviewGraphicComponent/GovernmentSpendingArticlePreviewGraphic";
+import WelfareIncomeTaxArticlePreviewGraphic from "@/components/ui/welfareIncomeTaxArticlePreviewGraphicComponent/WelfareIncomeTaxArticlePreviewGraphic";
+import WelfareSpendingArticlePreviewGraphic from "@/components/ui/welfareSpendingArticlePreviewGraphicComponent/WelfareSpendingArticlePreviewGraphic";
 import debtToGdpMetricsData from "@/data/debtToGdpMetrics.json";
 import debtToGdpTimelineData from "@/data/debtToGdpTimeline.json";
 import giltYieldTimelineData from "@/data/giltYieldTimeline.json";
 import giltYieldPeerTimelineData from "@/data/giltYieldPeerTimeline.json";
 import budgetReceiptsSpendingTimelineData from "@/data/budgetReceiptsSpendingTimeline.json";
+import welfareIncomeTaxTimelineData from "@/data/welfareIncomeTaxTimeline.json";
 import { isOnOrBeforePublicationMonth } from "@/lib/articlePublicationDate";
 
 export function renderArticlePreviewGraphic(
@@ -118,6 +121,30 @@ export function renderArticlePreviewGraphic(
           currentValue={latestPoint.formattedValue ?? debtToGdpMetricsData.formattedValue}
           points={recentPoints}
           dateLabel={latestPoint.yearLabel}
+        />
+      );
+    }
+    case "welfare-spending-breakdown-preview":
+      return <WelfareSpendingArticlePreviewGraphic />;
+    case "welfare-income-tax-trend": {
+      const cappedItems = welfareIncomeTaxTimelineData.items.filter((item) =>
+        articleDate ? isOnOrBeforePublicationMonth(item.dateLabel, articleDate) : true,
+      );
+      const sourceItems = cappedItems.length > 0 ? cappedItems : welfareIncomeTaxTimelineData.items;
+      const previewItems = sourceItems.slice(-48);
+      const latestPoint = sourceItems[sourceItems.length - 1];
+
+      if (!latestPoint) {
+        return null;
+      }
+
+      return (
+        <WelfareIncomeTaxArticlePreviewGraphic
+          incomeTaxPoints={previewItems.map((item) => item.incomeTax)}
+          benefitsPoints={previewItems.map((item) => item.benefits)}
+          latestIncomeTaxValue={latestPoint.incomeTaxFormatted}
+          latestBenefitsValue={latestPoint.benefitsFormatted}
+          dateLabel={latestPoint.dateLabel}
         />
       );
     }

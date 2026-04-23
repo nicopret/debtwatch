@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import annualInterestPaymentData from "@/data/annualInterestPayableMetric.json";
+import annualBorrowingMetricData from "@/data/annualBorrowingMetric.json";
 import annualBorrowingTimelineData from "@/data/annualBorrowingTimeline.json";
 import annualLendingData from "@/data/annualLendingMetric.json";
 import budgetDeficitData from "@/data/budgetDeficitMetric.json";
@@ -32,6 +33,7 @@ import structuralDebtFlowData from "@/data/structuralDebtFlow.json";
 import totalDebtMetricData from "@/data/totalDebtMetrics.json";
 import twentyYearGiltYieldData from "@/data/twentyYearGiltYieldMetric.json";
 import ukDebtOwnershipBreakdownData from "@/data/ukDebtOwnershipBreakdown.json";
+import welfareIncomeTaxTimelineData from "@/data/welfareIncomeTaxTimeline.json";
 import { GOVERNMENT_PERIODS, type GovernmentPeriod } from "@/lib/governmentPeriods";
 
 export interface AnnualInterestPaymentState {
@@ -40,6 +42,7 @@ export interface AnnualInterestPaymentState {
   currencySymbol: string;
   timestamp: string;
   dateValue: string;
+  releaseDate?: string;
 }
 
 export interface AnnualLendingtState {
@@ -48,6 +51,19 @@ export interface AnnualLendingtState {
   currencySymbol: string;
   timestamp: string;
   dateValue: string;
+}
+
+export interface AnnualBorrowingMetricState {
+  numericValue: number;
+  formattedValue: string;
+  timestamp: string;
+  dateValue: string;
+  source: string;
+  releaseDate?: string;
+  previousDateValue?: string;
+  previousNumericValue?: number;
+  previousFormattedValue?: string;
+  previousReleaseDate?: string;
 }
 
 export interface AnnualBorrowingTimelineItemState {
@@ -86,6 +102,27 @@ export interface BudgetReceiptsSpendingTimelineState {
   timestamp: string;
   source: string;
   items: BudgetReceiptsSpendingTimelinePointState[];
+}
+
+export interface WelfareIncomeTaxTimelinePointState {
+  dateLabel: string;
+  incomeTax: number;
+  benefits: number;
+  gap: number;
+  incomeTaxFormatted: string;
+  benefitsFormatted: string;
+  gapFormatted: string;
+}
+
+export interface WelfareIncomeTaxTimelineState {
+  title: string;
+  subtitle: string;
+  unit: "gbp_billions";
+  basis: "rolling_12_month";
+  dateValue: string;
+  timestamp: string;
+  source: string;
+  items: WelfareIncomeTaxTimelinePointState[];
 }
 
 export interface BorrowingGovernmentSummaryEntryState {
@@ -222,6 +259,11 @@ export interface DebtToGdpState {
   formattedValue: string;
   timestamp: string;
   dateValue: string;
+  releaseDate?: string;
+  previousDateValue?: string;
+  previousNumericValue?: number;
+  previousFormattedValue?: string;
+  previousReleaseDate?: string;
 }
 
 export interface DebtToGdpTimelineItemState {
@@ -346,6 +388,7 @@ export interface MonthlyInterestPayableState {
   source: string;
   taxYear: string;
   timestamp: string;
+  releaseDate?: string;
 }
 
 export interface TaxpayerDebtState {
@@ -366,6 +409,11 @@ export interface TotalDebtMetricState {
   currencySymbol: string;
   timestamp: string;
   dateValue: string;
+  releaseDate?: string;
+  previousDateValue?: string;
+  previousNumericValue?: number;
+  previousFormattedValue?: string;
+  previousReleaseDate?: string;
 }
 
 export interface StructuralDebtFlowNodeState {
@@ -406,6 +454,7 @@ export interface GiltYieldMetricState {
   timestamp: string;
   dateValue: string;
   source: string;
+  releaseDate?: string;
 }
 
 export interface GiltYieldTimelineItemState {
@@ -513,6 +562,7 @@ export interface DebtOwnershipBreakdownState {
 
 export interface MetricsState {
   annualInterestPaymentMetric: AnnualInterestPaymentState;
+  annualBorrowingMetric: AnnualBorrowingMetricState;
   annualBorrowingTimeline: AnnualBorrowingTimelineState;
   annualLendingMetric: AnnualLendingtState;
   budgetDeficitMetric: BudgetDeficitMetricState;
@@ -545,9 +595,12 @@ export interface MetricsState {
   taxpayerDebtMetric: TaxpayerDebtState;
   totalDebtMetric: TotalDebtMetricState;
   twentyYearGiltYieldMetric: GiltYieldMetricState;
+  welfareIncomeTaxTimeline: WelfareIncomeTaxTimelineState;
 }
 
 const annualInterestPaymentMetric: AnnualInterestPaymentState = annualInterestPaymentData;
+const annualBorrowingMetric: AnnualBorrowingMetricState =
+  annualBorrowingMetricData as AnnualBorrowingMetricState;
 const annualBorrowingTimeline: AnnualBorrowingTimelineState = annualBorrowingTimelineData;
 const annualLendingMetric: AnnualLendingtState = annualLendingData;
 const budgetDeficitMetric: BudgetDeficitMetricState = budgetDeficitData;
@@ -592,9 +645,12 @@ const tenYearGiltYieldMetric: GiltYieldMetricState = tenYearGiltYieldData;
 const taxpayerDebtMetric: TaxpayerDebtState = taxpayerDebtData;
 const totalDebtMetric: TotalDebtMetricState = totalDebtMetricData;
 const twentyYearGiltYieldMetric: GiltYieldMetricState = twentyYearGiltYieldData;
+const welfareIncomeTaxTimeline: WelfareIncomeTaxTimelineState =
+  welfareIncomeTaxTimelineData as WelfareIncomeTaxTimelineState;
 
 const initialState: MetricsState = {
   annualInterestPaymentMetric,
+  annualBorrowingMetric,
   annualBorrowingTimeline,
   annualLendingMetric,
   budgetDeficitMetric,
@@ -627,6 +683,7 @@ const initialState: MetricsState = {
   taxpayerDebtMetric,
   totalDebtMetric,
   twentyYearGiltYieldMetric,
+  welfareIncomeTaxTimeline,
 };
 
 const metricsSlice = createSlice({

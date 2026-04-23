@@ -1,5 +1,9 @@
+import ArticleVisualShareFrame from "@/components/ui/articleVisualShareFrameComponent/ArticleVisualShareFrame";
 import ArticleSection from "@/components/ui/articleSectionComponent/ArticleSection";
+import { getArticleVisualEmbedDefinition } from "@/data/embeds/articleVisualEmbedRegistry";
 import type { ArticleContentBlock, ArticleData } from "@/data/articles/articleTypes";
+import { buildArticleVisualShareConfig } from "@/lib/articleVisualShare";
+import { resolveVisualSnapshotVersion } from "@/lib/publishedVisualVersion";
 import {
   renderArticleCallout,
   renderArticleGraphBlock,
@@ -60,28 +64,67 @@ export default function ArticleSectionsContainer({
 }: ArticleSectionsContainerProps) {
   return (
     <>
-      {article.sections.map((section) => (
-        <ArticleSection
-          key={section.id}
-          heading={section.heading}
-          blocks={
-            renderSectionBlocks(
-              section.heading,
-              section.entities ?? [
-                { type: "text", body: section.body },
-                ...(section.blocks ?? []),
-              ],
-              section.id,
-              article,
-            )
-          }
-          layout={section.layout}
-          visual={
-            section.visualKey ? renderArticleVisual(section.visualKey, article) : undefined
-          }
-          callout={section.callout ? renderArticleCallout(section.callout) : undefined}
-        />
-      ))}
+      {article.sections.map((section) => {
+        const shareConfig = buildArticleVisualShareConfig(article, section);
+        const exportDefinition = section.visualKey
+          ? getArticleVisualEmbedDefinition(article.slug, section.visualKey)
+          : undefined;
+        const renderedVisual = section.visualKey
+          ? renderArticleVisual(section.visualKey, article)
+          : undefined;
+        const resolvedSnapshotDate =
+          section.shareSnapshotDate ??
+          article.publishedSnapshotVersion ??
+          (exportDefinition?.articleSlug && exportDefinition.embedSlug
+            ? resolveVisualSnapshotVersion({
+                contextSlug: exportDefinition.articleSlug,
+                assetSlug: exportDefinition.embedSlug,
+                embedSlug: exportDefinition.embedSlug,
+              })
+            : undefined);
+
+        return (
+          <ArticleSection
+            key={section.id}
+            heading={section.heading}
+            blocks={
+              renderSectionBlocks(
+                section.heading,
+                section.entities ?? [
+                  { type: "text", body: section.body },
+                  ...(section.blocks ?? []),
+                ],
+                section.id,
+                article,
+              )
+            }
+            layout={section.layout}
+            visual={
+              renderedVisual ? (
+                <ArticleVisualShareFrame
+                  shareAction={
+                    shareConfig
+                      ? {
+                          chartTitle: exportDefinition?.title ?? shareConfig.shareTitle,
+                          articleUrl: shareConfig.articleUrl,
+                          socialUrl: shareConfig.socialUrl,
+                          shareText: exportDefinition?.shareText ?? shareConfig.shareText,
+                          contextSlug: exportDefinition?.articleSlug ?? shareConfig.contextSlug,
+                          embedSlug: exportDefinition?.embedSlug ?? shareConfig.embedSlug,
+                          assetSlug: exportDefinition?.embedSlug ?? shareConfig.assetSlug,
+                          snapshotDate: resolvedSnapshotDate,
+                        }
+                      : null
+                  }
+                >
+                  {renderedVisual}
+                </ArticleVisualShareFrame>
+              ) : undefined
+            }
+            callout={section.callout ? renderArticleCallout(section.callout) : undefined}
+          />
+        );
+      })}
     </>
   );
 }

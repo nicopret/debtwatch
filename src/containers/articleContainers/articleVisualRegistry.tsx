@@ -14,16 +14,21 @@ import G7YieldRateChartBlock from "./G7YieldRateChartBlock";
 import G7YieldComparisonVisual from "./G7YieldComparisonVisual";
 import GiltYieldRatesHeroVisual from "./GiltYieldRatesHeroVisual";
 import InflationLinkedDebtExposureVisual from "./InflationLinkedDebtExposureVisual";
+import WelfareIncomeTaxHeroVisual from "./WelfareIncomeTaxHeroVisual";
+import WelfareSpendingBreakdownVisual from "./WelfareSpendingBreakdownVisual";
 import NhsSpendingBreakdownContainer from "@/containers/budgetContainers/NhsSpendingBreakdownContainer";
 import StructuralDebtFlowDiagramContainer from "@/containers/budgetContainers/StructuralDebtFlowDiagramContainer";
 import BudgetIncomeSpendingTotalsContainer from "@/containers/budgetContainers/BudgetIncomeSpendingTotalsContainer";
 import BudgetReceiptsSpendingHeroContainer from "@/containers/budgetContainers/BudgetReceiptsSpendingHeroContainer";
+import GiltYieldPeerFeaturedGraphicContainer from "./GiltYieldPeerFeaturedGraphicContainer";
 
 export function renderArticleVisual(
   visualKey: ArticleVisualKey,
   article?: ArticleData,
 ) {
   switch (visualKey) {
+    case "welfare-income-tax-hero":
+      return <WelfareIncomeTaxHeroVisual publicationDate={article?.date} />;
     case "debt-interest-hero":
       return (
         <ArticleVisualPanel
@@ -168,8 +173,12 @@ export function renderArticleVisual(
       return <BorrowingYieldRatesVisual publicationDate={article?.date} />;
     case "debt-ownership-breakdown":
       return <DebtOwnershipBreakdownVisual publicationDate={article?.date} />;
+    case "welfare-spending-breakdown":
+      return <WelfareSpendingBreakdownVisual />;
     case "gilt-yield-hero":
       return <GiltYieldRatesHeroVisual publicationDate={article?.date} />;
+    case "gilt-yield-peers":
+      return <GiltYieldPeerFeaturedGraphicContainer publicationDate={article?.date} />;
     case "gilt-yield-costs":
       return (
         <ArticleVisualPanel
@@ -196,9 +205,12 @@ export function renderArticleCallout(callout: ArticleCallout) {
       <p style={{ color: "#6b7280", fontSize: "0.78rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>
         {callout.label}
       </p>
-      <p style={{ color: "#17315f", marginTop: "0.35rem", lineHeight: 1.6, fontWeight: 600 }}>
-        {callout.text}
-      </p>
+      <p
+        style={{ color: "#17315f", marginTop: "0.35rem", lineHeight: 1.6, fontWeight: 600 }}
+        // Callout copy comes from trusted local article config, so inline markup like
+        // <b> and <a> can be rendered without a separate rich-text layer.
+        dangerouslySetInnerHTML={{ __html: callout.text }}
+      />
     </div>
   );
 }

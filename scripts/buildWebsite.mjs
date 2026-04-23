@@ -11,6 +11,7 @@ const exportDir = path.join(repoRoot, "out");
 const websiteDir = path.join(repoRoot, "static", "website");
 const nodeCommand = process.execPath;
 const nextScript = path.join(repoRoot, "node_modules", "next", "dist", "bin", "next");
+const validatePublishingScript = path.join(repoRoot, "scripts", "validatePublishing.ts");
 
 async function pathExists(targetPath) {
   try {
@@ -45,6 +46,12 @@ async function main() {
   await rm(exportDir, { recursive: true, force: true });
   await rm(nextBuildDir, { recursive: true, force: true });
 
+  await run(nodeCommand, [
+    "--experimental-specifier-resolution=node",
+    "--loader",
+    "ts-node/esm",
+    validatePublishingScript,
+  ]);
   await run(nodeCommand, [nextScript, "build"]);
 
   if (!(await pathExists(exportDir))) {

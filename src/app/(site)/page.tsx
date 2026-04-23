@@ -7,8 +7,22 @@ import TenYearGiltYieldCircleContainer from "@/containers/heroContainers/TenYear
 import FirstMetricRowContainer from "@/containers/rowContainers/FirstMetricRowContainer";
 import RowContainer from "@/containers/rowContainers/RowContainer";
 import SecondMetricRowContainer from "@/containers/rowContainers/SecondMetricRowContainer";
+import { resolveVisualSnapshotVersion } from "@/lib/publishedVisualVersion";
 
 export default function Home() {
+  const borrowingSnapshotDate = resolveVisualSnapshotVersion({
+    contextSlug: "borrowing-over-time",
+    assetSlug: "borrowing-over-time",
+  });
+  const debtToGdpSnapshotDate = resolveVisualSnapshotVersion({
+    contextSlug: "how-debt-to-gdp-works",
+    assetSlug: "debt-to-gdp-over-time",
+  });
+  const debtInterestSnapshotDate = resolveVisualSnapshotVersion({
+    contextSlug: "debt-interest-explained",
+    assetSlug: "debt-interest-over-time",
+  });
+
   return (
     <section className="site-container metrics-section home-dashboard">
       <div className="hero-section">
@@ -26,9 +40,9 @@ export default function Home() {
         <SecondMetricRowContainer />
       </div>
       <BudgetComparisonSectionContainer />
-      <BorrowingTimelineSectionContainer />
-      <DebtToGdpSectionContainer />
-      <DebtInterestSectionContainer />
+      <BorrowingTimelineSectionContainer snapshotDate={borrowingSnapshotDate} />
+      <DebtToGdpSectionContainer snapshotDate={debtToGdpSnapshotDate} />
+      <DebtInterestSectionContainer snapshotDate={debtInterestSnapshotDate} />
     </section>
   );
 }

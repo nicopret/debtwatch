@@ -6,6 +6,7 @@ import { debtInterestExplainedArticle } from "./debtInterestExplainedArticle.js"
 import { debtToGdpExplainedArticle } from "./debtToGdpExplainedArticle.js";
 import { giltYieldsExplainedArticle } from "./giltYieldsExplainedArticle.js";
 import { governmentSpendingExplainedArticle } from "./governmentSpendingExplainedArticle.js";
+import { welfareBillOvertakesIncomeTaxArticle } from "./welfareBillOvertakesIncomeTaxArticle.js";
 import { isOnOrBeforePublicationMonth } from "../../lib/articlePublicationDate.js";
 
 function readJson<T>(relativePath: string): T {
@@ -42,6 +43,10 @@ const budgetReceiptsSpendingTimeline = readJson<{
   dateValue: string;
   items: Array<{ yearLabel: string }>;
 }>("../budgetReceiptsSpendingTimeline.json");
+const welfareIncomeTaxTimeline = readJson<{
+  dateValue: string;
+  items: Array<{ dateLabel: string }>;
+}>("../welfareIncomeTaxTimeline.json");
 const governmentSpendingTopCategories = readJson<{
   dateValue: string;
 }>("../governmentSpendingTopCategories.json");
@@ -101,6 +106,13 @@ assert.ok(
   ),
 );
 assert.equal(budgetReceiptsSpendingTimeline.items.length, 5);
+assert.ok(
+  isOnOrBeforePublicationMonth(
+    welfareIncomeTaxTimeline.items.at(-1)?.dateLabel ?? welfareIncomeTaxTimeline.dateValue,
+    welfareBillOvertakesIncomeTaxArticle.date,
+  ),
+);
+assert.equal(welfareIncomeTaxTimeline.dateValue, "Feb 2026");
 assert.ok(
   isOnOrBeforePublicationMonth(
     governmentSpendingTopCategories.dateValue,

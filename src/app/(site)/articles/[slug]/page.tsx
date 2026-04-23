@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ArticlePageContainer from "@/containers/articleContainers/ArticlePageContainer";
 import { getAllArticles, getArticleBySlug } from "@/data/articles";
+import { buildArticleMetadata } from "@/lib/articleMetadata";
 
 interface ArticlePageProps {
   params: Promise<{
@@ -29,10 +30,7 @@ export async function generateMetadata({
     };
   }
 
-  return {
-    title: `${article.header} | DebtWatch`,
-    description: article.description,
-  };
+  return buildArticleMetadata(article);
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {

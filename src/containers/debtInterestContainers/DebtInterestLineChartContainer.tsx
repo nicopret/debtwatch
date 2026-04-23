@@ -1,7 +1,6 @@
 "use client";
 
 import DebtInterestLineChartCard from "@/components/ui/debtInterestLineChartCardComponent/DebtInterestLineChartCard";
-import { getUtcDateFolderName } from "@/lib/versioning";
 import { useAppSelector } from "@/store/hooks";
 import {
   selectArticleDebtInterestGovernmentBands,
@@ -12,10 +11,12 @@ import {
 
 export interface DebtInterestLineChartContainerProps {
   publicationDate?: string;
+  snapshotDate: string;
 }
 
 export default function DebtInterestLineChartContainer({
   publicationDate,
+  snapshotDate,
 }: DebtInterestLineChartContainerProps) {
   const points = useAppSelector((state) =>
     publicationDate
@@ -27,8 +28,6 @@ export default function DebtInterestLineChartContainer({
       ? selectArticleDebtInterestGovernmentBands(state, publicationDate)
       : selectDebtInterestGovernmentBands(state),
   );
-  const snapshotDate = getUtcDateFolderName(new Date());
-
   return (
     <DebtInterestLineChartCard
       title="Debt interest over time"
@@ -40,6 +39,9 @@ export default function DebtInterestLineChartContainer({
         contextSlug: "debt-interest-explained",
         embedSlug: "debt-interest-over-time",
         snapshotDate,
+        articleUrl: "https://debtwatch.uk/articles/debt-interest-explained",
+        socialUrl: "https://debtwatch.uk/articles/debt-interest-explained",
+        shareText: "Annual cost of servicing government debt,\n\nDebt interest over time",
       }}
     />
   );

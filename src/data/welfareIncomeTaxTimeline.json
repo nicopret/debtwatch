@@ -1,0 +1,2837 @@
+{
+  "title": "Income tax receipts vs benefits spending",
+  "subtitle": "Rolling 12-month totals, £ billions",
+  "unit": "gbp_billions",
+  "basis": "rolling_12_month",
+  "dateValue": "Feb 2026",
+  "timestamp": "2026-04-23T15:33:06.397Z",
+  "source": "Office for National Statistics | Public sector finances (PUSF) | 20-03-2026 release | LIBR income tax receipts | GZSL net social benefits",
+  "items": [
+    {
+      "dateLabel": "Jan 2000",
+      "incomeTax": 98.891,
+      "benefits": 107.601,
+      "gap": 8.709999999999994,
+      "incomeTaxFormatted": "£98.9bn",
+      "benefitsFormatted": "£108bn",
+      "gapFormatted": "£8.7bn"
+    },
+    {
+      "dateLabel": "Feb 2000",
+      "incomeTax": 97.862,
+      "benefits": 107.876,
+      "gap": 10.01400000000001,
+      "incomeTaxFormatted": "£97.9bn",
+      "benefitsFormatted": "£108bn",
+      "gapFormatted": "£10.0bn"
+    },
+    {
+      "dateLabel": "Mar 2000",
+      "incomeTax": 98.818,
+      "benefits": 107.437,
+      "gap": 8.619,
+      "incomeTaxFormatted": "£98.8bn",
+      "benefitsFormatted": "£107bn",
+      "gapFormatted": "£8.6bn"
+    },
+    {
+      "dateLabel": "Apr 2000",
+      "incomeTax": 98.97,
+      "benefits": 107.512,
+      "gap": 8.542000000000002,
+      "incomeTaxFormatted": "£99.0bn",
+      "benefitsFormatted": "£108bn",
+      "gapFormatted": "£8.5bn"
+    },
+    {
+      "dateLabel": "May 2000",
+      "incomeTax": 99.723,
+      "benefits": 108.13,
+      "gap": 8.406999999999996,
+      "incomeTaxFormatted": "£99.7bn",
+      "benefitsFormatted": "£108bn",
+      "gapFormatted": "£8.4bn"
+    },
+    {
+      "dateLabel": "Jun 2000",
+      "incomeTax": 100.838,
+      "benefits": 108.566,
+      "gap": 7.728000000000009,
+      "incomeTaxFormatted": "£101bn",
+      "benefitsFormatted": "£109bn",
+      "gapFormatted": "£7.7bn"
+    },
+    {
+      "dateLabel": "Jul 2000",
+      "incomeTax": 101.859,
+      "benefits": 108.559,
+      "gap": 6.700000000000003,
+      "incomeTaxFormatted": "£102bn",
+      "benefitsFormatted": "£109bn",
+      "gapFormatted": "£6.7bn"
+    },
+    {
+      "dateLabel": "Aug 2000",
+      "incomeTax": 102.859,
+      "benefits": 108.786,
+      "gap": 5.927000000000007,
+      "incomeTaxFormatted": "£103bn",
+      "benefitsFormatted": "£109bn",
+      "gapFormatted": "£5.9bn"
+    },
+    {
+      "dateLabel": "Sep 2000",
+      "incomeTax": 102.692,
+      "benefits": 109.369,
+      "gap": 6.677000000000007,
+      "incomeTaxFormatted": "£103bn",
+      "benefitsFormatted": "£109bn",
+      "gapFormatted": "£6.7bn"
+    },
+    {
+      "dateLabel": "Oct 2000",
+      "incomeTax": 104.132,
+      "benefits": 109.614,
+      "gap": 5.481999999999999,
+      "incomeTaxFormatted": "£104bn",
+      "benefitsFormatted": "£110bn",
+      "gapFormatted": "£5.5bn"
+    },
+    {
+      "dateLabel": "Nov 2000",
+      "incomeTax": 105.104,
+      "benefits": 109.563,
+      "gap": 4.459000000000003,
+      "incomeTaxFormatted": "£105bn",
+      "benefitsFormatted": "£110bn",
+      "gapFormatted": "£4.5bn"
+    },
+    {
+      "dateLabel": "Dec 2000",
+      "incomeTax": 105.459,
+      "benefits": 109.82,
+      "gap": 4.36099999999999,
+      "incomeTaxFormatted": "£105bn",
+      "benefitsFormatted": "£110bn",
+      "gapFormatted": "£4.4bn"
+    },
+    {
+      "dateLabel": "Jan 2001",
+      "incomeTax": 107.691,
+      "benefits": 110.389,
+      "gap": 2.6979999999999933,
+      "incomeTaxFormatted": "£108bn",
+      "benefitsFormatted": "£110bn",
+      "gapFormatted": "£2.7bn"
+    },
+    {
+      "dateLabel": "Feb 2001",
+      "incomeTax": 109.849,
+      "benefits": 110.628,
+      "gap": 0.7789999999999964,
+      "incomeTaxFormatted": "£110bn",
+      "benefitsFormatted": "£111bn",
+      "gapFormatted": "£0.8bn"
+    },
+    {
+      "dateLabel": "Mar 2001",
+      "incomeTax": 110.324,
+      "benefits": 110.936,
+      "gap": 0.612000000000009,
+      "incomeTaxFormatted": "£110bn",
+      "benefitsFormatted": "£111bn",
+      "gapFormatted": "£0.6bn"
+    },
+    {
+      "dateLabel": "Apr 2001",
+      "incomeTax": 111.136,
+      "benefits": 111.59,
+      "gap": 0.45400000000000773,
+      "incomeTaxFormatted": "£111bn",
+      "benefitsFormatted": "£112bn",
+      "gapFormatted": "£0.5bn"
+    },
+    {
+      "dateLabel": "May 2001",
+      "incomeTax": 111.504,
+      "benefits": 112.255,
+      "gap": 0.7509999999999906,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£112bn",
+      "gapFormatted": "£0.8bn"
+    },
+    {
+      "dateLabel": "Jun 2001",
+      "incomeTax": 111.543,
+      "benefits": 112.747,
+      "gap": 1.2039999999999935,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£113bn",
+      "gapFormatted": "£1.2bn"
+    },
+    {
+      "dateLabel": "Jul 2001",
+      "incomeTax": 112.019,
+      "benefits": 113.594,
+      "gap": 1.5749999999999886,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£114bn",
+      "gapFormatted": "£1.6bn"
+    },
+    {
+      "dateLabel": "Aug 2001",
+      "incomeTax": 111.793,
+      "benefits": 114.255,
+      "gap": 2.461999999999989,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£114bn",
+      "gapFormatted": "£2.5bn"
+    },
+    {
+      "dateLabel": "Sep 2001",
+      "incomeTax": 112.041,
+      "benefits": 115.152,
+      "gap": 3.111000000000004,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£115bn",
+      "gapFormatted": "£3.1bn"
+    },
+    {
+      "dateLabel": "Oct 2001",
+      "incomeTax": 112.289,
+      "benefits": 115.884,
+      "gap": 3.594999999999999,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£116bn",
+      "gapFormatted": "£3.6bn"
+    },
+    {
+      "dateLabel": "Nov 2001",
+      "incomeTax": 112.139,
+      "benefits": 116.556,
+      "gap": 4.417000000000002,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£117bn",
+      "gapFormatted": "£4.4bn"
+    },
+    {
+      "dateLabel": "Dec 2001",
+      "incomeTax": 112.165,
+      "benefits": 117.073,
+      "gap": 4.907999999999987,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£117bn",
+      "gapFormatted": "£4.9bn"
+    },
+    {
+      "dateLabel": "Jan 2002",
+      "incomeTax": 111.77,
+      "benefits": 117.509,
+      "gap": 5.739000000000004,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£118bn",
+      "gapFormatted": "£5.7bn"
+    },
+    {
+      "dateLabel": "Feb 2002",
+      "incomeTax": 111.055,
+      "benefits": 117.946,
+      "gap": 6.890999999999991,
+      "incomeTaxFormatted": "£111bn",
+      "benefitsFormatted": "£118bn",
+      "gapFormatted": "£6.9bn"
+    },
+    {
+      "dateLabel": "Mar 2002",
+      "incomeTax": 111.688,
+      "benefits": 118.432,
+      "gap": 6.744,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£118bn",
+      "gapFormatted": "£6.7bn"
+    },
+    {
+      "dateLabel": "Apr 2002",
+      "incomeTax": 111.205,
+      "benefits": 119.09,
+      "gap": 7.885000000000005,
+      "incomeTaxFormatted": "£111bn",
+      "benefitsFormatted": "£119bn",
+      "gapFormatted": "£7.9bn"
+    },
+    {
+      "dateLabel": "May 2002",
+      "incomeTax": 111.244,
+      "benefits": 119.954,
+      "gap": 8.709999999999994,
+      "incomeTaxFormatted": "£111bn",
+      "benefitsFormatted": "£120bn",
+      "gapFormatted": "£8.7bn"
+    },
+    {
+      "dateLabel": "Jun 2002",
+      "incomeTax": 111.499,
+      "benefits": 119.817,
+      "gap": 8.317999999999998,
+      "incomeTaxFormatted": "£111bn",
+      "benefitsFormatted": "£120bn",
+      "gapFormatted": "£8.3bn"
+    },
+    {
+      "dateLabel": "Jul 2002",
+      "incomeTax": 111.694,
+      "benefits": 120.206,
+      "gap": 8.512,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£120bn",
+      "gapFormatted": "£8.5bn"
+    },
+    {
+      "dateLabel": "Aug 2002",
+      "incomeTax": 111.867,
+      "benefits": 120.678,
+      "gap": 8.810999999999993,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£121bn",
+      "gapFormatted": "£8.8bn"
+    },
+    {
+      "dateLabel": "Sep 2002",
+      "incomeTax": 112.166,
+      "benefits": 120.93,
+      "gap": 8.76400000000001,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£121bn",
+      "gapFormatted": "£8.8bn"
+    },
+    {
+      "dateLabel": "Oct 2002",
+      "incomeTax": 112.418,
+      "benefits": 121.155,
+      "gap": 8.736999999999995,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£121bn",
+      "gapFormatted": "£8.7bn"
+    },
+    {
+      "dateLabel": "Nov 2002",
+      "incomeTax": 112.601,
+      "benefits": 121.671,
+      "gap": 9.070000000000007,
+      "incomeTaxFormatted": "£113bn",
+      "benefitsFormatted": "£122bn",
+      "gapFormatted": "£9.1bn"
+    },
+    {
+      "dateLabel": "Dec 2002",
+      "incomeTax": 112.44,
+      "benefits": 122.08,
+      "gap": 9.64,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£122bn",
+      "gapFormatted": "£9.6bn"
+    },
+    {
+      "dateLabel": "Jan 2003",
+      "incomeTax": 111.773,
+      "benefits": 122.698,
+      "gap": 10.924999999999997,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£123bn",
+      "gapFormatted": "£10.9bn"
+    },
+    {
+      "dateLabel": "Feb 2003",
+      "incomeTax": 112.212,
+      "benefits": 123.47,
+      "gap": 11.257999999999996,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£123bn",
+      "gapFormatted": "£11.3bn"
+    },
+    {
+      "dateLabel": "Mar 2003",
+      "incomeTax": 112.373,
+      "benefits": 123.709,
+      "gap": 11.335999999999999,
+      "incomeTaxFormatted": "£112bn",
+      "benefitsFormatted": "£124bn",
+      "gapFormatted": "£11.3bn"
+    },
+    {
+      "dateLabel": "Apr 2003",
+      "incomeTax": 113.068,
+      "benefits": 124.103,
+      "gap": 11.034999999999997,
+      "incomeTaxFormatted": "£113bn",
+      "benefitsFormatted": "£124bn",
+      "gapFormatted": "£11.0bn"
+    },
+    {
+      "dateLabel": "May 2003",
+      "incomeTax": 113.386,
+      "benefits": 124.446,
+      "gap": 11.060000000000002,
+      "incomeTaxFormatted": "£113bn",
+      "benefitsFormatted": "£124bn",
+      "gapFormatted": "£11.1bn"
+    },
+    {
+      "dateLabel": "Jun 2003",
+      "incomeTax": 113.901,
+      "benefits": 125.955,
+      "gap": 12.054000000000002,
+      "incomeTaxFormatted": "£114bn",
+      "benefitsFormatted": "£126bn",
+      "gapFormatted": "£12.1bn"
+    },
+    {
+      "dateLabel": "Jul 2003",
+      "incomeTax": 114.418,
+      "benefits": 127.054,
+      "gap": 12.635999999999996,
+      "incomeTaxFormatted": "£114bn",
+      "benefitsFormatted": "£127bn",
+      "gapFormatted": "£12.6bn"
+    },
+    {
+      "dateLabel": "Aug 2003",
+      "incomeTax": 114.858,
+      "benefits": 127.901,
+      "gap": 13.042999999999992,
+      "incomeTaxFormatted": "£115bn",
+      "benefitsFormatted": "£128bn",
+      "gapFormatted": "£13.0bn"
+    },
+    {
+      "dateLabel": "Sep 2003",
+      "incomeTax": 115.169,
+      "benefits": 129.507,
+      "gap": 14.338000000000008,
+      "incomeTaxFormatted": "£115bn",
+      "benefitsFormatted": "£130bn",
+      "gapFormatted": "£14.3bn"
+    },
+    {
+      "dateLabel": "Oct 2003",
+      "incomeTax": 115.306,
+      "benefits": 130.53,
+      "gap": 15.224000000000004,
+      "incomeTaxFormatted": "£115bn",
+      "benefitsFormatted": "£131bn",
+      "gapFormatted": "£15.2bn"
+    },
+    {
+      "dateLabel": "Nov 2003",
+      "incomeTax": 115.82,
+      "benefits": 131.281,
+      "gap": 15.461000000000013,
+      "incomeTaxFormatted": "£116bn",
+      "benefitsFormatted": "£131bn",
+      "gapFormatted": "£15.5bn"
+    },
+    {
+      "dateLabel": "Dec 2003",
+      "incomeTax": 116.509,
+      "benefits": 131.96,
+      "gap": 15.451000000000008,
+      "incomeTaxFormatted": "£117bn",
+      "benefitsFormatted": "£132bn",
+      "gapFormatted": "£15.5bn"
+    },
+    {
+      "dateLabel": "Jan 2004",
+      "incomeTax": 116.246,
+      "benefits": 132.816,
+      "gap": 16.570000000000007,
+      "incomeTaxFormatted": "£116bn",
+      "benefitsFormatted": "£133bn",
+      "gapFormatted": "£16.6bn"
+    },
+    {
+      "dateLabel": "Feb 2004",
+      "incomeTax": 118.083,
+      "benefits": 133.769,
+      "gap": 15.686000000000007,
+      "incomeTaxFormatted": "£118bn",
+      "benefitsFormatted": "£134bn",
+      "gapFormatted": "£15.7bn"
+    },
+    {
+      "dateLabel": "Mar 2004",
+      "incomeTax": 119.146,
+      "benefits": 134.981,
+      "gap": 15.834999999999994,
+      "incomeTaxFormatted": "£119bn",
+      "benefitsFormatted": "£135bn",
+      "gapFormatted": "£15.8bn"
+    },
+    {
+      "dateLabel": "Apr 2004",
+      "incomeTax": 119.17,
+      "benefits": 136.079,
+      "gap": 16.909000000000006,
+      "incomeTaxFormatted": "£119bn",
+      "benefitsFormatted": "£136bn",
+      "gapFormatted": "£16.9bn"
+    },
+    {
+      "dateLabel": "May 2004",
+      "incomeTax": 120.201,
+      "benefits": 136.798,
+      "gap": 16.59700000000001,
+      "incomeTaxFormatted": "£120bn",
+      "benefitsFormatted": "£137bn",
+      "gapFormatted": "£16.6bn"
+    },
+    {
+      "dateLabel": "Jun 2004",
+      "incomeTax": 120.159,
+      "benefits": 137.564,
+      "gap": 17.404999999999987,
+      "incomeTaxFormatted": "£120bn",
+      "benefitsFormatted": "£138bn",
+      "gapFormatted": "£17.4bn"
+    },
+    {
+      "dateLabel": "Jul 2004",
+      "incomeTax": 120.718,
+      "benefits": 138.056,
+      "gap": 17.338000000000008,
+      "incomeTaxFormatted": "£121bn",
+      "benefitsFormatted": "£138bn",
+      "gapFormatted": "£17.3bn"
+    },
+    {
+      "dateLabel": "Aug 2004",
+      "incomeTax": 121.61,
+      "benefits": 138.708,
+      "gap": 17.098,
+      "incomeTaxFormatted": "£122bn",
+      "benefitsFormatted": "£139bn",
+      "gapFormatted": "£17.1bn"
+    },
+    {
+      "dateLabel": "Sep 2004",
+      "incomeTax": 122.398,
+      "benefits": 138.884,
+      "gap": 16.48599999999999,
+      "incomeTaxFormatted": "£122bn",
+      "benefitsFormatted": "£139bn",
+      "gapFormatted": "£16.5bn"
+    },
+    {
+      "dateLabel": "Oct 2004",
+      "incomeTax": 123.189,
+      "benefits": 139.373,
+      "gap": 16.183999999999997,
+      "incomeTaxFormatted": "£123bn",
+      "benefitsFormatted": "£139bn",
+      "gapFormatted": "£16.2bn"
+    },
+    {
+      "dateLabel": "Nov 2004",
+      "incomeTax": 124.249,
+      "benefits": 139.984,
+      "gap": 15.735000000000014,
+      "incomeTaxFormatted": "£124bn",
+      "benefitsFormatted": "£140bn",
+      "gapFormatted": "£15.7bn"
+    },
+    {
+      "dateLabel": "Dec 2004",
+      "incomeTax": 125.032,
+      "benefits": 140.925,
+      "gap": 15.893000000000015,
+      "incomeTaxFormatted": "£125bn",
+      "benefitsFormatted": "£141bn",
+      "gapFormatted": "£15.9bn"
+    },
+    {
+      "dateLabel": "Jan 2005",
+      "incomeTax": 128.659,
+      "benefits": 141.11,
+      "gap": 12.451000000000022,
+      "incomeTaxFormatted": "£129bn",
+      "benefitsFormatted": "£141bn",
+      "gapFormatted": "£12.5bn"
+    },
+    {
+      "dateLabel": "Feb 2005",
+      "incomeTax": 128.652,
+      "benefits": 141.363,
+      "gap": 12.711000000000013,
+      "incomeTaxFormatted": "£129bn",
+      "benefitsFormatted": "£141bn",
+      "gapFormatted": "£12.7bn"
+    },
+    {
+      "dateLabel": "Mar 2005",
+      "incomeTax": 128.714,
+      "benefits": 141.593,
+      "gap": 12.87899999999999,
+      "incomeTaxFormatted": "£129bn",
+      "benefitsFormatted": "£142bn",
+      "gapFormatted": "£12.9bn"
+    },
+    {
+      "dateLabel": "Apr 2005",
+      "incomeTax": 130.049,
+      "benefits": 141.589,
+      "gap": 11.539999999999992,
+      "incomeTaxFormatted": "£130bn",
+      "benefitsFormatted": "£142bn",
+      "gapFormatted": "£11.5bn"
+    },
+    {
+      "dateLabel": "May 2005",
+      "incomeTax": 130.543,
+      "benefits": 141.82,
+      "gap": 11.276999999999987,
+      "incomeTaxFormatted": "£131bn",
+      "benefitsFormatted": "£142bn",
+      "gapFormatted": "£11.3bn"
+    },
+    {
+      "dateLabel": "Jun 2005",
+      "incomeTax": 131.535,
+      "benefits": 141.968,
+      "gap": 10.432999999999993,
+      "incomeTaxFormatted": "£132bn",
+      "benefitsFormatted": "£142bn",
+      "gapFormatted": "£10.4bn"
+    },
+    {
+      "dateLabel": "Jul 2005",
+      "incomeTax": 132.529,
+      "benefits": 142.233,
+      "gap": 9.704000000000008,
+      "incomeTaxFormatted": "£133bn",
+      "benefitsFormatted": "£142bn",
+      "gapFormatted": "£9.7bn"
+    },
+    {
+      "dateLabel": "Aug 2005",
+      "incomeTax": 133.452,
+      "benefits": 142.602,
+      "gap": 9.150000000000006,
+      "incomeTaxFormatted": "£133bn",
+      "benefitsFormatted": "£143bn",
+      "gapFormatted": "£9.2bn"
+    },
+    {
+      "dateLabel": "Sep 2005",
+      "incomeTax": 133.99,
+      "benefits": 143.424,
+      "gap": 9.433999999999997,
+      "incomeTaxFormatted": "£134bn",
+      "benefitsFormatted": "£143bn",
+      "gapFormatted": "£9.4bn"
+    },
+    {
+      "dateLabel": "Oct 2005",
+      "incomeTax": 134.879,
+      "benefits": 143.999,
+      "gap": 9.120000000000005,
+      "incomeTaxFormatted": "£135bn",
+      "benefitsFormatted": "£144bn",
+      "gapFormatted": "£9.1bn"
+    },
+    {
+      "dateLabel": "Nov 2005",
+      "incomeTax": 135.216,
+      "benefits": 145.465,
+      "gap": 10.248999999999995,
+      "incomeTaxFormatted": "£135bn",
+      "benefitsFormatted": "£145bn",
+      "gapFormatted": "£10.2bn"
+    },
+    {
+      "dateLabel": "Dec 2005",
+      "incomeTax": 135.867,
+      "benefits": 145.734,
+      "gap": 9.867000000000019,
+      "incomeTaxFormatted": "£136bn",
+      "benefitsFormatted": "£146bn",
+      "gapFormatted": "£9.9bn"
+    },
+    {
+      "dateLabel": "Jan 2006",
+      "incomeTax": 137.183,
+      "benefits": 146.404,
+      "gap": 9.221000000000004,
+      "incomeTaxFormatted": "£137bn",
+      "benefitsFormatted": "£146bn",
+      "gapFormatted": "£9.2bn"
+    },
+    {
+      "dateLabel": "Feb 2006",
+      "incomeTax": 138.077,
+      "benefits": 146.52,
+      "gap": 8.443000000000012,
+      "incomeTaxFormatted": "£138bn",
+      "benefitsFormatted": "£147bn",
+      "gapFormatted": "£8.4bn"
+    },
+    {
+      "dateLabel": "Mar 2006",
+      "incomeTax": 139.116,
+      "benefits": 147.16,
+      "gap": 8.043999999999983,
+      "incomeTaxFormatted": "£139bn",
+      "benefitsFormatted": "£147bn",
+      "gapFormatted": "£8.0bn"
+    },
+    {
+      "dateLabel": "Apr 2006",
+      "incomeTax": 139.842,
+      "benefits": 147.527,
+      "gap": 7.684999999999974,
+      "incomeTaxFormatted": "£140bn",
+      "benefitsFormatted": "£148bn",
+      "gapFormatted": "£7.7bn"
+    },
+    {
+      "dateLabel": "May 2006",
+      "incomeTax": 140.107,
+      "benefits": 148.396,
+      "gap": 8.288999999999987,
+      "incomeTaxFormatted": "£140bn",
+      "benefitsFormatted": "£148bn",
+      "gapFormatted": "£8.3bn"
+    },
+    {
+      "dateLabel": "Jun 2006",
+      "incomeTax": 141.06,
+      "benefits": 148.987,
+      "gap": 7.9269999999999925,
+      "incomeTaxFormatted": "£141bn",
+      "benefitsFormatted": "£149bn",
+      "gapFormatted": "£7.9bn"
+    },
+    {
+      "dateLabel": "Jul 2006",
+      "incomeTax": 142.641,
+      "benefits": 149.49,
+      "gap": 6.849000000000018,
+      "incomeTaxFormatted": "£143bn",
+      "benefitsFormatted": "£149bn",
+      "gapFormatted": "£6.8bn"
+    },
+    {
+      "dateLabel": "Aug 2006",
+      "incomeTax": 143.04,
+      "benefits": 150.236,
+      "gap": 7.195999999999998,
+      "incomeTaxFormatted": "£143bn",
+      "benefitsFormatted": "£150bn",
+      "gapFormatted": "£7.2bn"
+    },
+    {
+      "dateLabel": "Sep 2006",
+      "incomeTax": 143.818,
+      "benefits": 151.034,
+      "gap": 7.21599999999998,
+      "incomeTaxFormatted": "£144bn",
+      "benefitsFormatted": "£151bn",
+      "gapFormatted": "£7.2bn"
+    },
+    {
+      "dateLabel": "Oct 2006",
+      "incomeTax": 144.218,
+      "benefits": 151.201,
+      "gap": 6.983000000000004,
+      "incomeTaxFormatted": "£144bn",
+      "benefitsFormatted": "£151bn",
+      "gapFormatted": "£7.0bn"
+    },
+    {
+      "dateLabel": "Nov 2006",
+      "incomeTax": 144.462,
+      "benefits": 150.621,
+      "gap": 6.15900000000002,
+      "incomeTaxFormatted": "£144bn",
+      "benefitsFormatted": "£151bn",
+      "gapFormatted": "£6.2bn"
+    },
+    {
+      "dateLabel": "Dec 2006",
+      "incomeTax": 145.608,
+      "benefits": 150.726,
+      "gap": 5.117999999999995,
+      "incomeTaxFormatted": "£146bn",
+      "benefitsFormatted": "£151bn",
+      "gapFormatted": "£5.1bn"
+    },
+    {
+      "dateLabel": "Jan 2007",
+      "incomeTax": 147.864,
+      "benefits": 151.412,
+      "gap": 3.548000000000002,
+      "incomeTaxFormatted": "£148bn",
+      "benefitsFormatted": "£151bn",
+      "gapFormatted": "£3.5bn"
+    },
+    {
+      "dateLabel": "Feb 2007",
+      "incomeTax": 150.579,
+      "benefits": 151.521,
+      "gap": 0.9419999999999789,
+      "incomeTaxFormatted": "£151bn",
+      "benefitsFormatted": "£152bn",
+      "gapFormatted": "£0.9bn"
+    },
+    {
+      "dateLabel": "Mar 2007",
+      "incomeTax": 150.325,
+      "benefits": 152.261,
+      "gap": 1.936000000000007,
+      "incomeTaxFormatted": "£150bn",
+      "benefitsFormatted": "£152bn",
+      "gapFormatted": "£1.9bn"
+    },
+    {
+      "dateLabel": "Apr 2007",
+      "incomeTax": 150.508,
+      "benefits": 153.092,
+      "gap": 2.584000000000003,
+      "incomeTaxFormatted": "£151bn",
+      "benefitsFormatted": "£153bn",
+      "gapFormatted": "£2.6bn"
+    },
+    {
+      "dateLabel": "May 2007",
+      "incomeTax": 151.592,
+      "benefits": 154.013,
+      "gap": 2.4209999999999923,
+      "incomeTaxFormatted": "£152bn",
+      "benefitsFormatted": "£154bn",
+      "gapFormatted": "£2.4bn"
+    },
+    {
+      "dateLabel": "Jun 2007",
+      "incomeTax": 152.153,
+      "benefits": 155.028,
+      "gap": 2.875,
+      "incomeTaxFormatted": "£152bn",
+      "benefitsFormatted": "£155bn",
+      "gapFormatted": "£2.9bn"
+    },
+    {
+      "dateLabel": "Jul 2007",
+      "incomeTax": 153.183,
+      "benefits": 156.078,
+      "gap": 2.8950000000000102,
+      "incomeTaxFormatted": "£153bn",
+      "benefitsFormatted": "£156bn",
+      "gapFormatted": "£2.9bn"
+    },
+    {
+      "dateLabel": "Aug 2007",
+      "incomeTax": 153.685,
+      "benefits": 156.976,
+      "gap": 3.290999999999997,
+      "incomeTaxFormatted": "£154bn",
+      "benefitsFormatted": "£157bn",
+      "gapFormatted": "£3.3bn"
+    },
+    {
+      "dateLabel": "Sep 2007",
+      "incomeTax": 154.383,
+      "benefits": 157.768,
+      "gap": 3.384999999999991,
+      "incomeTaxFormatted": "£154bn",
+      "benefitsFormatted": "£158bn",
+      "gapFormatted": "£3.4bn"
+    },
+    {
+      "dateLabel": "Oct 2007",
+      "incomeTax": 155.289,
+      "benefits": 159.07,
+      "gap": 3.781000000000006,
+      "incomeTaxFormatted": "£155bn",
+      "benefitsFormatted": "£159bn",
+      "gapFormatted": "£3.8bn"
+    },
+    {
+      "dateLabel": "Nov 2007",
+      "incomeTax": 156.551,
+      "benefits": 160.045,
+      "gap": 3.4939999999999998,
+      "incomeTaxFormatted": "£157bn",
+      "benefitsFormatted": "£160bn",
+      "gapFormatted": "£3.5bn"
+    },
+    {
+      "dateLabel": "Dec 2007",
+      "incomeTax": 157.087,
+      "benefits": 160.998,
+      "gap": 3.9110000000000014,
+      "incomeTaxFormatted": "£157bn",
+      "benefitsFormatted": "£161bn",
+      "gapFormatted": "£3.9bn"
+    },
+    {
+      "dateLabel": "Jan 2008",
+      "incomeTax": 160.064,
+      "benefits": 161.87,
+      "gap": 1.8060000000000116,
+      "incomeTaxFormatted": "£160bn",
+      "benefitsFormatted": "£162bn",
+      "gapFormatted": "£1.8bn"
+    },
+    {
+      "dateLabel": "Feb 2008",
+      "incomeTax": 160.445,
+      "benefits": 163.247,
+      "gap": 2.802000000000021,
+      "incomeTaxFormatted": "£160bn",
+      "benefitsFormatted": "£163bn",
+      "gapFormatted": "£2.8bn"
+    },
+    {
+      "dateLabel": "Mar 2008",
+      "incomeTax": 162.36,
+      "benefits": 163.003,
+      "gap": 0.6429999999999723,
+      "incomeTaxFormatted": "£162bn",
+      "benefitsFormatted": "£163bn",
+      "gapFormatted": "£0.6bn"
+    },
+    {
+      "dateLabel": "Apr 2008",
+      "incomeTax": 162.511,
+      "benefits": 164.494,
+      "gap": 1.983000000000004,
+      "incomeTaxFormatted": "£163bn",
+      "benefitsFormatted": "£164bn",
+      "gapFormatted": "£2.0bn"
+    },
+    {
+      "dateLabel": "May 2008",
+      "incomeTax": 162.207,
+      "benefits": 165.518,
+      "gap": 3.311000000000007,
+      "incomeTaxFormatted": "£162bn",
+      "benefitsFormatted": "£166bn",
+      "gapFormatted": "£3.3bn"
+    },
+    {
+      "dateLabel": "Jun 2008",
+      "incomeTax": 162.31,
+      "benefits": 166.341,
+      "gap": 4.031000000000006,
+      "incomeTaxFormatted": "£162bn",
+      "benefitsFormatted": "£166bn",
+      "gapFormatted": "£4.0bn"
+    },
+    {
+      "dateLabel": "Jul 2008",
+      "incomeTax": 163.048,
+      "benefits": 167.594,
+      "gap": 4.545999999999992,
+      "incomeTaxFormatted": "£163bn",
+      "benefitsFormatted": "£168bn",
+      "gapFormatted": "£4.5bn"
+    },
+    {
+      "dateLabel": "Aug 2008",
+      "incomeTax": 163.411,
+      "benefits": 168.558,
+      "gap": 5.146999999999991,
+      "incomeTaxFormatted": "£163bn",
+      "benefitsFormatted": "£169bn",
+      "gapFormatted": "£5.1bn"
+    },
+    {
+      "dateLabel": "Sep 2008",
+      "incomeTax": 163.471,
+      "benefits": 170.193,
+      "gap": 6.722000000000008,
+      "incomeTaxFormatted": "£163bn",
+      "benefitsFormatted": "£170bn",
+      "gapFormatted": "£6.7bn"
+    },
+    {
+      "dateLabel": "Oct 2008",
+      "incomeTax": 163.262,
+      "benefits": 171.049,
+      "gap": 7.787000000000006,
+      "incomeTaxFormatted": "£163bn",
+      "benefitsFormatted": "£171bn",
+      "gapFormatted": "£7.8bn"
+    },
+    {
+      "dateLabel": "Nov 2008",
+      "incomeTax": 162.461,
+      "benefits": 171.658,
+      "gap": 9.196999999999974,
+      "incomeTaxFormatted": "£162bn",
+      "benefitsFormatted": "£172bn",
+      "gapFormatted": "£9.2bn"
+    },
+    {
+      "dateLabel": "Dec 2008",
+      "incomeTax": 161.631,
+      "benefits": 173.176,
+      "gap": 11.544999999999987,
+      "incomeTaxFormatted": "£162bn",
+      "benefitsFormatted": "£173bn",
+      "gapFormatted": "£11.5bn"
+    },
+    {
+      "dateLabel": "Jan 2009",
+      "incomeTax": 160.427,
+      "benefits": 175.319,
+      "gap": 14.891999999999996,
+      "incomeTaxFormatted": "£160bn",
+      "benefitsFormatted": "£175bn",
+      "gapFormatted": "£14.9bn"
+    },
+    {
+      "dateLabel": "Feb 2009",
+      "incomeTax": 160.015,
+      "benefits": 176.552,
+      "gap": 16.537000000000006,
+      "incomeTaxFormatted": "£160bn",
+      "benefitsFormatted": "£177bn",
+      "gapFormatted": "£16.5bn"
+    },
+    {
+      "dateLabel": "Mar 2009",
+      "incomeTax": 158.691,
+      "benefits": 178.808,
+      "gap": 20.11699999999999,
+      "incomeTaxFormatted": "£159bn",
+      "benefitsFormatted": "£179bn",
+      "gapFormatted": "£20.1bn"
+    },
+    {
+      "dateLabel": "Apr 2009",
+      "incomeTax": 158.687,
+      "benefits": 180.294,
+      "gap": 21.607,
+      "incomeTaxFormatted": "£159bn",
+      "benefitsFormatted": "£180bn",
+      "gapFormatted": "£21.6bn"
+    },
+    {
+      "dateLabel": "May 2009",
+      "incomeTax": 157.507,
+      "benefits": 181.671,
+      "gap": 24.163999999999987,
+      "incomeTaxFormatted": "£158bn",
+      "benefitsFormatted": "£182bn",
+      "gapFormatted": "£24.2bn"
+    },
+    {
+      "dateLabel": "Jun 2009",
+      "incomeTax": 157.336,
+      "benefits": 183.441,
+      "gap": 26.10499999999999,
+      "incomeTaxFormatted": "£157bn",
+      "benefitsFormatted": "£183bn",
+      "gapFormatted": "£26.1bn"
+    },
+    {
+      "dateLabel": "Jul 2009",
+      "incomeTax": 155.847,
+      "benefits": 185.401,
+      "gap": 29.554000000000002,
+      "incomeTaxFormatted": "£156bn",
+      "benefitsFormatted": "£185bn",
+      "gapFormatted": "£29.6bn"
+    },
+    {
+      "dateLabel": "Aug 2009",
+      "incomeTax": 154.809,
+      "benefits": 186.548,
+      "gap": 31.739000000000004,
+      "incomeTaxFormatted": "£155bn",
+      "benefitsFormatted": "£187bn",
+      "gapFormatted": "£31.7bn"
+    },
+    {
+      "dateLabel": "Sep 2009",
+      "incomeTax": 154.101,
+      "benefits": 188.128,
+      "gap": 34.02699999999999,
+      "incomeTaxFormatted": "£154bn",
+      "benefitsFormatted": "£188bn",
+      "gapFormatted": "£34.0bn"
+    },
+    {
+      "dateLabel": "Oct 2009",
+      "incomeTax": 153.358,
+      "benefits": 189.732,
+      "gap": 36.373999999999995,
+      "incomeTaxFormatted": "£153bn",
+      "benefitsFormatted": "£190bn",
+      "gapFormatted": "£36.4bn"
+    },
+    {
+      "dateLabel": "Nov 2009",
+      "incomeTax": 153.253,
+      "benefits": 191.287,
+      "gap": 38.03400000000002,
+      "incomeTaxFormatted": "£153bn",
+      "benefitsFormatted": "£191bn",
+      "gapFormatted": "£38.0bn"
+    },
+    {
+      "dateLabel": "Dec 2009",
+      "incomeTax": 152.553,
+      "benefits": 192.767,
+      "gap": 40.214,
+      "incomeTaxFormatted": "£153bn",
+      "benefitsFormatted": "£193bn",
+      "gapFormatted": "£40.2bn"
+    },
+    {
+      "dateLabel": "Jan 2010",
+      "incomeTax": 148.399,
+      "benefits": 193.31,
+      "gap": 44.911,
+      "incomeTaxFormatted": "£148bn",
+      "benefitsFormatted": "£193bn",
+      "gapFormatted": "£44.9bn"
+    },
+    {
+      "dateLabel": "Feb 2010",
+      "incomeTax": 147.73,
+      "benefits": 193.997,
+      "gap": 46.267000000000024,
+      "incomeTaxFormatted": "£148bn",
+      "benefitsFormatted": "£194bn",
+      "gapFormatted": "£46.3bn"
+    },
+    {
+      "dateLabel": "Mar 2010",
+      "incomeTax": 149.639,
+      "benefits": 195.453,
+      "gap": 45.81399999999999,
+      "incomeTaxFormatted": "£150bn",
+      "benefitsFormatted": "£195bn",
+      "gapFormatted": "£45.8bn"
+    },
+    {
+      "dateLabel": "Apr 2010",
+      "incomeTax": 149.038,
+      "benefits": 196.138,
+      "gap": 47.099999999999994,
+      "incomeTaxFormatted": "£149bn",
+      "benefitsFormatted": "£196bn",
+      "gapFormatted": "£47.1bn"
+    },
+    {
+      "dateLabel": "May 2010",
+      "incomeTax": 150.128,
+      "benefits": 196.704,
+      "gap": 46.57600000000002,
+      "incomeTaxFormatted": "£150bn",
+      "benefitsFormatted": "£197bn",
+      "gapFormatted": "£46.6bn"
+    },
+    {
+      "dateLabel": "Jun 2010",
+      "incomeTax": 150.465,
+      "benefits": 197.447,
+      "gap": 46.982,
+      "incomeTaxFormatted": "£150bn",
+      "benefitsFormatted": "£197bn",
+      "gapFormatted": "£47.0bn"
+    },
+    {
+      "dateLabel": "Jul 2010",
+      "incomeTax": 151.287,
+      "benefits": 197.889,
+      "gap": 46.602000000000004,
+      "incomeTaxFormatted": "£151bn",
+      "benefitsFormatted": "£198bn",
+      "gapFormatted": "£46.6bn"
+    },
+    {
+      "dateLabel": "Aug 2010",
+      "incomeTax": 151.887,
+      "benefits": 198.752,
+      "gap": 46.86500000000001,
+      "incomeTaxFormatted": "£152bn",
+      "benefitsFormatted": "£199bn",
+      "gapFormatted": "£46.9bn"
+    },
+    {
+      "dateLabel": "Sep 2010",
+      "incomeTax": 152.129,
+      "benefits": 199.727,
+      "gap": 47.59800000000001,
+      "incomeTaxFormatted": "£152bn",
+      "benefitsFormatted": "£200bn",
+      "gapFormatted": "£47.6bn"
+    },
+    {
+      "dateLabel": "Oct 2010",
+      "incomeTax": 152.66,
+      "benefits": 200.337,
+      "gap": 47.67699999999999,
+      "incomeTaxFormatted": "£153bn",
+      "benefitsFormatted": "£200bn",
+      "gapFormatted": "£47.7bn"
+    },
+    {
+      "dateLabel": "Nov 2010",
+      "incomeTax": 152.716,
+      "benefits": 201.197,
+      "gap": 48.480999999999995,
+      "incomeTaxFormatted": "£153bn",
+      "benefitsFormatted": "£201bn",
+      "gapFormatted": "£48.5bn"
+    },
+    {
+      "dateLabel": "Dec 2010",
+      "incomeTax": 153.503,
+      "benefits": 202.136,
+      "gap": 48.63300000000001,
+      "incomeTaxFormatted": "£154bn",
+      "benefitsFormatted": "£202bn",
+      "gapFormatted": "£48.6bn"
+    },
+    {
+      "dateLabel": "Jan 2011",
+      "incomeTax": 158.221,
+      "benefits": 202.43,
+      "gap": 44.209,
+      "incomeTaxFormatted": "£158bn",
+      "benefitsFormatted": "£202bn",
+      "gapFormatted": "£44.2bn"
+    },
+    {
+      "dateLabel": "Feb 2011",
+      "incomeTax": 157.799,
+      "benefits": 202.974,
+      "gap": 45.17499999999998,
+      "incomeTaxFormatted": "£158bn",
+      "benefitsFormatted": "£203bn",
+      "gapFormatted": "£45.2bn"
+    },
+    {
+      "dateLabel": "Mar 2011",
+      "incomeTax": 156.847,
+      "benefits": 203.257,
+      "gap": 46.41,
+      "incomeTaxFormatted": "£157bn",
+      "benefitsFormatted": "£203bn",
+      "gapFormatted": "£46.4bn"
+    },
+    {
+      "dateLabel": "Apr 2011",
+      "incomeTax": 156.82,
+      "benefits": 204.206,
+      "gap": 47.385999999999996,
+      "incomeTaxFormatted": "£157bn",
+      "benefitsFormatted": "£204bn",
+      "gapFormatted": "£47.4bn"
+    },
+    {
+      "dateLabel": "May 2011",
+      "incomeTax": 157.544,
+      "benefits": 204.834,
+      "gap": 47.28999999999999,
+      "incomeTaxFormatted": "£158bn",
+      "benefitsFormatted": "£205bn",
+      "gapFormatted": "£47.3bn"
+    },
+    {
+      "dateLabel": "Jun 2011",
+      "incomeTax": 157.915,
+      "benefits": 205.573,
+      "gap": 47.658000000000015,
+      "incomeTaxFormatted": "£158bn",
+      "benefitsFormatted": "£206bn",
+      "gapFormatted": "£47.7bn"
+    },
+    {
+      "dateLabel": "Jul 2011",
+      "incomeTax": 158.412,
+      "benefits": 205.95,
+      "gap": 47.53799999999998,
+      "incomeTaxFormatted": "£158bn",
+      "benefitsFormatted": "£206bn",
+      "gapFormatted": "£47.5bn"
+    },
+    {
+      "dateLabel": "Aug 2011",
+      "incomeTax": 158.499,
+      "benefits": 207.117,
+      "gap": 48.617999999999995,
+      "incomeTaxFormatted": "£158bn",
+      "benefitsFormatted": "£207bn",
+      "gapFormatted": "£48.6bn"
+    },
+    {
+      "dateLabel": "Sep 2011",
+      "incomeTax": 158.101,
+      "benefits": 207.615,
+      "gap": 49.51400000000001,
+      "incomeTaxFormatted": "£158bn",
+      "benefitsFormatted": "£208bn",
+      "gapFormatted": "£49.5bn"
+    },
+    {
+      "dateLabel": "Oct 2011",
+      "incomeTax": 157.678,
+      "benefits": 208.161,
+      "gap": 50.483000000000004,
+      "incomeTaxFormatted": "£158bn",
+      "benefitsFormatted": "£208bn",
+      "gapFormatted": "£50.5bn"
+    },
+    {
+      "dateLabel": "Nov 2011",
+      "incomeTax": 158.734,
+      "benefits": 208.834,
+      "gap": 50.099999999999994,
+      "incomeTaxFormatted": "£159bn",
+      "benefitsFormatted": "£209bn",
+      "gapFormatted": "£50.1bn"
+    },
+    {
+      "dateLabel": "Dec 2011",
+      "incomeTax": 159.066,
+      "benefits": 209.349,
+      "gap": 50.28299999999999,
+      "incomeTaxFormatted": "£159bn",
+      "benefitsFormatted": "£209bn",
+      "gapFormatted": "£50.3bn"
+    },
+    {
+      "dateLabel": "Jan 2012",
+      "incomeTax": 159.354,
+      "benefits": 210.078,
+      "gap": 50.72399999999999,
+      "incomeTaxFormatted": "£159bn",
+      "benefitsFormatted": "£210bn",
+      "gapFormatted": "£50.7bn"
+    },
+    {
+      "dateLabel": "Feb 2012",
+      "incomeTax": 157.29,
+      "benefits": 211.532,
+      "gap": 54.24200000000002,
+      "incomeTaxFormatted": "£157bn",
+      "benefitsFormatted": "£212bn",
+      "gapFormatted": "£54.2bn"
+    },
+    {
+      "dateLabel": "Mar 2012",
+      "incomeTax": 157.039,
+      "benefits": 212.301,
+      "gap": 55.262,
+      "incomeTaxFormatted": "£157bn",
+      "benefitsFormatted": "£212bn",
+      "gapFormatted": "£55.3bn"
+    },
+    {
+      "dateLabel": "Apr 2012",
+      "incomeTax": 157.763,
+      "benefits": 213.36,
+      "gap": 55.59700000000001,
+      "incomeTaxFormatted": "£158bn",
+      "benefitsFormatted": "£213bn",
+      "gapFormatted": "£55.6bn"
+    },
+    {
+      "dateLabel": "May 2012",
+      "incomeTax": 156.737,
+      "benefits": 215.189,
+      "gap": 58.452,
+      "incomeTaxFormatted": "£157bn",
+      "benefitsFormatted": "£215bn",
+      "gapFormatted": "£58.5bn"
+    },
+    {
+      "dateLabel": "Jun 2012",
+      "incomeTax": 156.465,
+      "benefits": 215.647,
+      "gap": 59.18199999999999,
+      "incomeTaxFormatted": "£156bn",
+      "benefitsFormatted": "£216bn",
+      "gapFormatted": "£59.2bn"
+    },
+    {
+      "dateLabel": "Jul 2012",
+      "incomeTax": 156.497,
+      "benefits": 216.694,
+      "gap": 60.196999999999974,
+      "incomeTaxFormatted": "£156bn",
+      "benefitsFormatted": "£217bn",
+      "gapFormatted": "£60.2bn"
+    },
+    {
+      "dateLabel": "Aug 2012",
+      "incomeTax": 155.843,
+      "benefits": 217.545,
+      "gap": 61.702,
+      "incomeTaxFormatted": "£156bn",
+      "benefitsFormatted": "£218bn",
+      "gapFormatted": "£61.7bn"
+    },
+    {
+      "dateLabel": "Sep 2012",
+      "incomeTax": 156.142,
+      "benefits": 217.832,
+      "gap": 61.69,
+      "incomeTaxFormatted": "£156bn",
+      "benefitsFormatted": "£218bn",
+      "gapFormatted": "£61.7bn"
+    },
+    {
+      "dateLabel": "Oct 2012",
+      "incomeTax": 156.433,
+      "benefits": 219.059,
+      "gap": 62.626000000000005,
+      "incomeTaxFormatted": "£156bn",
+      "benefitsFormatted": "£219bn",
+      "gapFormatted": "£62.6bn"
+    },
+    {
+      "dateLabel": "Nov 2012",
+      "incomeTax": 155.049,
+      "benefits": 219.946,
+      "gap": 64.89699999999999,
+      "incomeTaxFormatted": "£155bn",
+      "benefitsFormatted": "£220bn",
+      "gapFormatted": "£64.9bn"
+    },
+    {
+      "dateLabel": "Dec 2012",
+      "incomeTax": 155.274,
+      "benefits": 220.459,
+      "gap": 65.185,
+      "incomeTaxFormatted": "£155bn",
+      "benefitsFormatted": "£220bn",
+      "gapFormatted": "£65.2bn"
+    },
+    {
+      "dateLabel": "Jan 2013",
+      "incomeTax": 156.431,
+      "benefits": 221.717,
+      "gap": 65.286,
+      "incomeTaxFormatted": "£156bn",
+      "benefitsFormatted": "£222bn",
+      "gapFormatted": "£65.3bn"
+    },
+    {
+      "dateLabel": "Feb 2013",
+      "incomeTax": 156.417,
+      "benefits": 221.677,
+      "gap": 65.25999999999999,
+      "incomeTaxFormatted": "£156bn",
+      "benefitsFormatted": "£222bn",
+      "gapFormatted": "£65.3bn"
+    },
+    {
+      "dateLabel": "Mar 2013",
+      "incomeTax": 156.218,
+      "benefits": 222.551,
+      "gap": 66.333,
+      "incomeTaxFormatted": "£156bn",
+      "benefitsFormatted": "£223bn",
+      "gapFormatted": "£66.3bn"
+    },
+    {
+      "dateLabel": "Apr 2013",
+      "incomeTax": 157.66,
+      "benefits": 222.637,
+      "gap": 64.977,
+      "incomeTaxFormatted": "£158bn",
+      "benefitsFormatted": "£223bn",
+      "gapFormatted": "£65.0bn"
+    },
+    {
+      "dateLabel": "May 2013",
+      "incomeTax": 158.509,
+      "benefits": 222.664,
+      "gap": 64.155,
+      "incomeTaxFormatted": "£159bn",
+      "benefitsFormatted": "£223bn",
+      "gapFormatted": "£64.2bn"
+    },
+    {
+      "dateLabel": "Jun 2013",
+      "incomeTax": 158.765,
+      "benefits": 222.827,
+      "gap": 64.06200000000001,
+      "incomeTaxFormatted": "£159bn",
+      "benefitsFormatted": "£223bn",
+      "gapFormatted": "£64.1bn"
+    },
+    {
+      "dateLabel": "Jul 2013",
+      "incomeTax": 159.022,
+      "benefits": 223.398,
+      "gap": 64.376,
+      "incomeTaxFormatted": "£159bn",
+      "benefitsFormatted": "£223bn",
+      "gapFormatted": "£64.4bn"
+    },
+    {
+      "dateLabel": "Aug 2013",
+      "incomeTax": 158.853,
+      "benefits": 223.36,
+      "gap": 64.507,
+      "incomeTaxFormatted": "£159bn",
+      "benefitsFormatted": "£223bn",
+      "gapFormatted": "£64.5bn"
+    },
+    {
+      "dateLabel": "Sep 2013",
+      "incomeTax": 159.216,
+      "benefits": 223.585,
+      "gap": 64.369,
+      "incomeTaxFormatted": "£159bn",
+      "benefitsFormatted": "£224bn",
+      "gapFormatted": "£64.4bn"
+    },
+    {
+      "dateLabel": "Oct 2013",
+      "incomeTax": 159.471,
+      "benefits": 223.773,
+      "gap": 64.30199999999999,
+      "incomeTaxFormatted": "£159bn",
+      "benefitsFormatted": "£224bn",
+      "gapFormatted": "£64.3bn"
+    },
+    {
+      "dateLabel": "Nov 2013",
+      "incomeTax": 160.456,
+      "benefits": 223.434,
+      "gap": 62.97800000000001,
+      "incomeTaxFormatted": "£160bn",
+      "benefitsFormatted": "£223bn",
+      "gapFormatted": "£63.0bn"
+    },
+    {
+      "dateLabel": "Dec 2013",
+      "incomeTax": 160.693,
+      "benefits": 223.971,
+      "gap": 63.27799999999999,
+      "incomeTaxFormatted": "£161bn",
+      "benefitsFormatted": "£224bn",
+      "gapFormatted": "£63.3bn"
+    },
+    {
+      "dateLabel": "Jan 2014",
+      "incomeTax": 159.399,
+      "benefits": 224.194,
+      "gap": 64.79499999999999,
+      "incomeTaxFormatted": "£159bn",
+      "benefitsFormatted": "£224bn",
+      "gapFormatted": "£64.8bn"
+    },
+    {
+      "dateLabel": "Feb 2014",
+      "incomeTax": 160.08,
+      "benefits": 224.515,
+      "gap": 64.43499999999997,
+      "incomeTaxFormatted": "£160bn",
+      "benefitsFormatted": "£225bn",
+      "gapFormatted": "£64.4bn"
+    },
+    {
+      "dateLabel": "Mar 2014",
+      "incomeTax": 161.526,
+      "benefits": 224.566,
+      "gap": 63.03999999999999,
+      "incomeTaxFormatted": "£162bn",
+      "benefitsFormatted": "£225bn",
+      "gapFormatted": "£63.0bn"
+    },
+    {
+      "dateLabel": "Apr 2014",
+      "incomeTax": 160.871,
+      "benefits": 225.326,
+      "gap": 64.45499999999998,
+      "incomeTaxFormatted": "£161bn",
+      "benefitsFormatted": "£225bn",
+      "gapFormatted": "£64.5bn"
+    },
+    {
+      "dateLabel": "May 2014",
+      "incomeTax": 160.466,
+      "benefits": 225.526,
+      "gap": 65.06,
+      "incomeTaxFormatted": "£160bn",
+      "benefitsFormatted": "£226bn",
+      "gapFormatted": "£65.1bn"
+    },
+    {
+      "dateLabel": "Jun 2014",
+      "incomeTax": 160.438,
+      "benefits": 225.838,
+      "gap": 65.4,
+      "incomeTaxFormatted": "£160bn",
+      "benefitsFormatted": "£226bn",
+      "gapFormatted": "£65.4bn"
+    },
+    {
+      "dateLabel": "Jul 2014",
+      "incomeTax": 161.204,
+      "benefits": 226.196,
+      "gap": 64.99199999999999,
+      "incomeTaxFormatted": "£161bn",
+      "benefitsFormatted": "£226bn",
+      "gapFormatted": "£65.0bn"
+    },
+    {
+      "dateLabel": "Aug 2014",
+      "incomeTax": 162.315,
+      "benefits": 226.562,
+      "gap": 64.24700000000001,
+      "incomeTaxFormatted": "£162bn",
+      "benefitsFormatted": "£227bn",
+      "gapFormatted": "£64.2bn"
+    },
+    {
+      "dateLabel": "Sep 2014",
+      "incomeTax": 162.564,
+      "benefits": 227.241,
+      "gap": 64.67700000000002,
+      "incomeTaxFormatted": "£163bn",
+      "benefitsFormatted": "£227bn",
+      "gapFormatted": "£64.7bn"
+    },
+    {
+      "dateLabel": "Oct 2014",
+      "incomeTax": 163.061,
+      "benefits": 227.807,
+      "gap": 64.74599999999998,
+      "incomeTaxFormatted": "£163bn",
+      "benefitsFormatted": "£228bn",
+      "gapFormatted": "£64.7bn"
+    },
+    {
+      "dateLabel": "Nov 2014",
+      "incomeTax": 163.705,
+      "benefits": 228.335,
+      "gap": 64.63,
+      "incomeTaxFormatted": "£164bn",
+      "benefitsFormatted": "£228bn",
+      "gapFormatted": "£64.6bn"
+    },
+    {
+      "dateLabel": "Dec 2014",
+      "incomeTax": 164.153,
+      "benefits": 228.853,
+      "gap": 64.70000000000002,
+      "incomeTaxFormatted": "£164bn",
+      "benefitsFormatted": "£229bn",
+      "gapFormatted": "£64.7bn"
+    },
+    {
+      "dateLabel": "Jan 2015",
+      "incomeTax": 167.448,
+      "benefits": 229.169,
+      "gap": 61.721000000000004,
+      "incomeTaxFormatted": "£167bn",
+      "benefitsFormatted": "£229bn",
+      "gapFormatted": "£61.7bn"
+    },
+    {
+      "dateLabel": "Feb 2015",
+      "incomeTax": 168.543,
+      "benefits": 229.695,
+      "gap": 61.15199999999999,
+      "incomeTaxFormatted": "£169bn",
+      "benefitsFormatted": "£230bn",
+      "gapFormatted": "£61.2bn"
+    },
+    {
+      "dateLabel": "Mar 2015",
+      "incomeTax": 169.178,
+      "benefits": 230.334,
+      "gap": 61.156000000000006,
+      "incomeTaxFormatted": "£169bn",
+      "benefitsFormatted": "£230bn",
+      "gapFormatted": "£61.2bn"
+    },
+    {
+      "dateLabel": "Apr 2015",
+      "incomeTax": 169.486,
+      "benefits": 230.516,
+      "gap": 61.03,
+      "incomeTaxFormatted": "£169bn",
+      "benefitsFormatted": "£231bn",
+      "gapFormatted": "£61.0bn"
+    },
+    {
+      "dateLabel": "May 2015",
+      "incomeTax": 170.649,
+      "benefits": 230.491,
+      "gap": 59.84200000000001,
+      "incomeTaxFormatted": "£171bn",
+      "benefitsFormatted": "£230bn",
+      "gapFormatted": "£59.8bn"
+    },
+    {
+      "dateLabel": "Jun 2015",
+      "incomeTax": 170.926,
+      "benefits": 231.159,
+      "gap": 60.233000000000004,
+      "incomeTaxFormatted": "£171bn",
+      "benefitsFormatted": "£231bn",
+      "gapFormatted": "£60.2bn"
+    },
+    {
+      "dateLabel": "Jul 2015",
+      "incomeTax": 171.878,
+      "benefits": 231.475,
+      "gap": 59.59700000000001,
+      "incomeTaxFormatted": "£172bn",
+      "benefitsFormatted": "£231bn",
+      "gapFormatted": "£59.6bn"
+    },
+    {
+      "dateLabel": "Aug 2015",
+      "incomeTax": 171.703,
+      "benefits": 231.487,
+      "gap": 59.78399999999999,
+      "incomeTaxFormatted": "£172bn",
+      "benefitsFormatted": "£231bn",
+      "gapFormatted": "£59.8bn"
+    },
+    {
+      "dateLabel": "Sep 2015",
+      "incomeTax": 171.989,
+      "benefits": 231.714,
+      "gap": 59.724999999999994,
+      "incomeTaxFormatted": "£172bn",
+      "benefitsFormatted": "£232bn",
+      "gapFormatted": "£59.7bn"
+    },
+    {
+      "dateLabel": "Oct 2015",
+      "incomeTax": 172.504,
+      "benefits": 231.627,
+      "gap": 59.12300000000002,
+      "incomeTaxFormatted": "£173bn",
+      "benefitsFormatted": "£232bn",
+      "gapFormatted": "£59.1bn"
+    },
+    {
+      "dateLabel": "Nov 2015",
+      "incomeTax": 172.893,
+      "benefits": 231.993,
+      "gap": 59.099999999999994,
+      "incomeTaxFormatted": "£173bn",
+      "benefitsFormatted": "£232bn",
+      "gapFormatted": "£59.1bn"
+    },
+    {
+      "dateLabel": "Dec 2015",
+      "incomeTax": 172.794,
+      "benefits": 232.221,
+      "gap": 59.42699999999999,
+      "incomeTaxFormatted": "£173bn",
+      "benefitsFormatted": "£232bn",
+      "gapFormatted": "£59.4bn"
+    },
+    {
+      "dateLabel": "Jan 2016",
+      "incomeTax": 174.646,
+      "benefits": 232.249,
+      "gap": 57.60300000000001,
+      "incomeTaxFormatted": "£175bn",
+      "benefitsFormatted": "£232bn",
+      "gapFormatted": "£57.6bn"
+    },
+    {
+      "dateLabel": "Feb 2016",
+      "incomeTax": 175.343,
+      "benefits": 233.046,
+      "gap": 57.703,
+      "incomeTaxFormatted": "£175bn",
+      "benefitsFormatted": "£233bn",
+      "gapFormatted": "£57.7bn"
+    },
+    {
+      "dateLabel": "Mar 2016",
+      "incomeTax": 175.934,
+      "benefits": 233.164,
+      "gap": 57.22999999999999,
+      "incomeTaxFormatted": "£176bn",
+      "benefitsFormatted": "£233bn",
+      "gapFormatted": "£57.2bn"
+    },
+    {
+      "dateLabel": "Apr 2016",
+      "incomeTax": 176.146,
+      "benefits": 233.512,
+      "gap": 57.366000000000014,
+      "incomeTaxFormatted": "£176bn",
+      "benefitsFormatted": "£234bn",
+      "gapFormatted": "£57.4bn"
+    },
+    {
+      "dateLabel": "May 2016",
+      "incomeTax": 176.219,
+      "benefits": 233.631,
+      "gap": 57.412000000000006,
+      "incomeTaxFormatted": "£176bn",
+      "benefitsFormatted": "£234bn",
+      "gapFormatted": "£57.4bn"
+    },
+    {
+      "dateLabel": "Jun 2016",
+      "incomeTax": 176.6,
+      "benefits": 233.689,
+      "gap": 57.089,
+      "incomeTaxFormatted": "£177bn",
+      "benefitsFormatted": "£234bn",
+      "gapFormatted": "£57.1bn"
+    },
+    {
+      "dateLabel": "Jul 2016",
+      "incomeTax": 177.339,
+      "benefits": 233.489,
+      "gap": 56.150000000000006,
+      "incomeTaxFormatted": "£177bn",
+      "benefitsFormatted": "£233bn",
+      "gapFormatted": "£56.2bn"
+    },
+    {
+      "dateLabel": "Aug 2016",
+      "incomeTax": 178.413,
+      "benefits": 234.11,
+      "gap": 55.697,
+      "incomeTaxFormatted": "£178bn",
+      "benefitsFormatted": "£234bn",
+      "gapFormatted": "£55.7bn"
+    },
+    {
+      "dateLabel": "Sep 2016",
+      "incomeTax": 178.734,
+      "benefits": 234.22,
+      "gap": 55.48599999999999,
+      "incomeTaxFormatted": "£179bn",
+      "benefitsFormatted": "£234bn",
+      "gapFormatted": "£55.5bn"
+    },
+    {
+      "dateLabel": "Oct 2016",
+      "incomeTax": 178.964,
+      "benefits": 234.203,
+      "gap": 55.239000000000004,
+      "incomeTaxFormatted": "£179bn",
+      "benefitsFormatted": "£234bn",
+      "gapFormatted": "£55.2bn"
+    },
+    {
+      "dateLabel": "Nov 2016",
+      "incomeTax": 179.089,
+      "benefits": 234.511,
+      "gap": 55.422,
+      "incomeTaxFormatted": "£179bn",
+      "benefitsFormatted": "£235bn",
+      "gapFormatted": "£55.4bn"
+    },
+    {
+      "dateLabel": "Dec 2016",
+      "incomeTax": 180.033,
+      "benefits": 234.662,
+      "gap": 54.62900000000002,
+      "incomeTaxFormatted": "£180bn",
+      "benefitsFormatted": "£235bn",
+      "gapFormatted": "£54.6bn"
+    },
+    {
+      "dateLabel": "Jan 2017",
+      "incomeTax": 181.816,
+      "benefits": 234.644,
+      "gap": 52.828,
+      "incomeTaxFormatted": "£182bn",
+      "benefitsFormatted": "£235bn",
+      "gapFormatted": "£52.8bn"
+    },
+    {
+      "dateLabel": "Feb 2017",
+      "incomeTax": 185.086,
+      "benefits": 234.002,
+      "gap": 48.916,
+      "incomeTaxFormatted": "£185bn",
+      "benefitsFormatted": "£234bn",
+      "gapFormatted": "£48.9bn"
+    },
+    {
+      "dateLabel": "Mar 2017",
+      "incomeTax": 185.512,
+      "benefits": 234.084,
+      "gap": 48.572,
+      "incomeTaxFormatted": "£186bn",
+      "benefitsFormatted": "£234bn",
+      "gapFormatted": "£48.6bn"
+    },
+    {
+      "dateLabel": "Apr 2017",
+      "incomeTax": 185.584,
+      "benefits": 234.117,
+      "gap": 48.53299999999999,
+      "incomeTaxFormatted": "£186bn",
+      "benefitsFormatted": "£234bn",
+      "gapFormatted": "£48.5bn"
+    },
+    {
+      "dateLabel": "May 2017",
+      "incomeTax": 185.71,
+      "benefits": 234.562,
+      "gap": 48.852000000000004,
+      "incomeTaxFormatted": "£186bn",
+      "benefitsFormatted": "£235bn",
+      "gapFormatted": "£48.9bn"
+    },
+    {
+      "dateLabel": "Jun 2017",
+      "incomeTax": 186.4,
+      "benefits": 234.892,
+      "gap": 48.49199999999999,
+      "incomeTaxFormatted": "£186bn",
+      "benefitsFormatted": "£235bn",
+      "gapFormatted": "£48.5bn"
+    },
+    {
+      "dateLabel": "Jul 2017",
+      "incomeTax": 186.993,
+      "benefits": 234.967,
+      "gap": 47.97400000000002,
+      "incomeTaxFormatted": "£187bn",
+      "benefitsFormatted": "£235bn",
+      "gapFormatted": "£48.0bn"
+    },
+    {
+      "dateLabel": "Aug 2017",
+      "incomeTax": 186.477,
+      "benefits": 235.24,
+      "gap": 48.763000000000005,
+      "incomeTaxFormatted": "£186bn",
+      "benefitsFormatted": "£235bn",
+      "gapFormatted": "£48.8bn"
+    },
+    {
+      "dateLabel": "Sep 2017",
+      "incomeTax": 187.049,
+      "benefits": 235.137,
+      "gap": 48.087999999999994,
+      "incomeTaxFormatted": "£187bn",
+      "benefitsFormatted": "£235bn",
+      "gapFormatted": "£48.1bn"
+    },
+    {
+      "dateLabel": "Oct 2017",
+      "incomeTax": 187.859,
+      "benefits": 235.59,
+      "gap": 47.730999999999995,
+      "incomeTaxFormatted": "£188bn",
+      "benefitsFormatted": "£236bn",
+      "gapFormatted": "£47.7bn"
+    },
+    {
+      "dateLabel": "Nov 2017",
+      "incomeTax": 188.424,
+      "benefits": 235.878,
+      "gap": 47.45399999999998,
+      "incomeTaxFormatted": "£188bn",
+      "benefitsFormatted": "£236bn",
+      "gapFormatted": "£47.5bn"
+    },
+    {
+      "dateLabel": "Dec 2017",
+      "incomeTax": 189.372,
+      "benefits": 235.891,
+      "gap": 46.51899999999998,
+      "incomeTaxFormatted": "£189bn",
+      "benefitsFormatted": "£236bn",
+      "gapFormatted": "£46.5bn"
+    },
+    {
+      "dateLabel": "Jan 2018",
+      "incomeTax": 188.381,
+      "benefits": 236.486,
+      "gap": 48.10499999999999,
+      "incomeTaxFormatted": "£188bn",
+      "benefitsFormatted": "£236bn",
+      "gapFormatted": "£48.1bn"
+    },
+    {
+      "dateLabel": "Feb 2018",
+      "incomeTax": 187.86,
+      "benefits": 236.806,
+      "gap": 48.946,
+      "incomeTaxFormatted": "£188bn",
+      "benefitsFormatted": "£237bn",
+      "gapFormatted": "£48.9bn"
+    },
+    {
+      "dateLabel": "Mar 2018",
+      "incomeTax": 188.402,
+      "benefits": 237.304,
+      "gap": 48.902000000000015,
+      "incomeTaxFormatted": "£188bn",
+      "benefitsFormatted": "£237bn",
+      "gapFormatted": "£48.9bn"
+    },
+    {
+      "dateLabel": "Apr 2018",
+      "incomeTax": 189.128,
+      "benefits": 237.457,
+      "gap": 48.32900000000001,
+      "incomeTaxFormatted": "£189bn",
+      "benefitsFormatted": "£237bn",
+      "gapFormatted": "£48.3bn"
+    },
+    {
+      "dateLabel": "May 2018",
+      "incomeTax": 189.575,
+      "benefits": 238.162,
+      "gap": 48.58700000000002,
+      "incomeTaxFormatted": "£190bn",
+      "benefitsFormatted": "£238bn",
+      "gapFormatted": "£48.6bn"
+    },
+    {
+      "dateLabel": "Jun 2018",
+      "incomeTax": 190.108,
+      "benefits": 238.396,
+      "gap": 48.28799999999998,
+      "incomeTaxFormatted": "£190bn",
+      "benefitsFormatted": "£238bn",
+      "gapFormatted": "£48.3bn"
+    },
+    {
+      "dateLabel": "Jul 2018",
+      "incomeTax": 191.794,
+      "benefits": 238.836,
+      "gap": 47.042,
+      "incomeTaxFormatted": "£192bn",
+      "benefitsFormatted": "£239bn",
+      "gapFormatted": "£47.0bn"
+    },
+    {
+      "dateLabel": "Aug 2018",
+      "incomeTax": 192.646,
+      "benefits": 239.391,
+      "gap": 46.745000000000005,
+      "incomeTaxFormatted": "£193bn",
+      "benefitsFormatted": "£239bn",
+      "gapFormatted": "£46.7bn"
+    },
+    {
+      "dateLabel": "Sep 2018",
+      "incomeTax": 193.487,
+      "benefits": 239.573,
+      "gap": 46.08600000000001,
+      "incomeTaxFormatted": "£193bn",
+      "benefitsFormatted": "£240bn",
+      "gapFormatted": "£46.1bn"
+    },
+    {
+      "dateLabel": "Oct 2018",
+      "incomeTax": 193.949,
+      "benefits": 240.389,
+      "gap": 46.44,
+      "incomeTaxFormatted": "£194bn",
+      "benefitsFormatted": "£240bn",
+      "gapFormatted": "£46.4bn"
+    },
+    {
+      "dateLabel": "Nov 2018",
+      "incomeTax": 194.881,
+      "benefits": 241.008,
+      "gap": 46.12700000000001,
+      "incomeTaxFormatted": "£195bn",
+      "benefitsFormatted": "£241bn",
+      "gapFormatted": "£46.1bn"
+    },
+    {
+      "dateLabel": "Dec 2018",
+      "incomeTax": 195.784,
+      "benefits": 241.507,
+      "gap": 45.72300000000001,
+      "incomeTaxFormatted": "£196bn",
+      "benefitsFormatted": "£242bn",
+      "gapFormatted": "£45.7bn"
+    },
+    {
+      "dateLabel": "Jan 2019",
+      "incomeTax": 199.221,
+      "benefits": 242.019,
+      "gap": 42.798,
+      "incomeTaxFormatted": "£199bn",
+      "benefitsFormatted": "£242bn",
+      "gapFormatted": "£42.8bn"
+    },
+    {
+      "dateLabel": "Feb 2019",
+      "incomeTax": 199.438,
+      "benefits": 242.563,
+      "gap": 43.125,
+      "incomeTaxFormatted": "£199bn",
+      "benefitsFormatted": "£243bn",
+      "gapFormatted": "£43.1bn"
+    },
+    {
+      "dateLabel": "Mar 2019",
+      "incomeTax": 201.696,
+      "benefits": 242.909,
+      "gap": 41.212999999999994,
+      "incomeTaxFormatted": "£202bn",
+      "benefitsFormatted": "£243bn",
+      "gapFormatted": "£41.2bn"
+    },
+    {
+      "dateLabel": "Apr 2019",
+      "incomeTax": 202.255,
+      "benefits": 243.249,
+      "gap": 40.994,
+      "incomeTaxFormatted": "£202bn",
+      "benefitsFormatted": "£243bn",
+      "gapFormatted": "£41.0bn"
+    },
+    {
+      "dateLabel": "May 2019",
+      "incomeTax": 202.937,
+      "benefits": 243.181,
+      "gap": 40.244,
+      "incomeTaxFormatted": "£203bn",
+      "benefitsFormatted": "£243bn",
+      "gapFormatted": "£40.2bn"
+    },
+    {
+      "dateLabel": "Jun 2019",
+      "incomeTax": 203.265,
+      "benefits": 242.875,
+      "gap": 39.610000000000014,
+      "incomeTaxFormatted": "£203bn",
+      "benefitsFormatted": "£243bn",
+      "gapFormatted": "£39.6bn"
+    },
+    {
+      "dateLabel": "Jul 2019",
+      "incomeTax": 203.331,
+      "benefits": 242.983,
+      "gap": 39.652000000000015,
+      "incomeTaxFormatted": "£203bn",
+      "benefitsFormatted": "£243bn",
+      "gapFormatted": "£39.7bn"
+    },
+    {
+      "dateLabel": "Aug 2019",
+      "incomeTax": 203.726,
+      "benefits": 242.682,
+      "gap": 38.95599999999999,
+      "incomeTaxFormatted": "£204bn",
+      "benefitsFormatted": "£243bn",
+      "gapFormatted": "£39.0bn"
+    },
+    {
+      "dateLabel": "Sep 2019",
+      "incomeTax": 203.304,
+      "benefits": 242.391,
+      "gap": 39.08699999999999,
+      "incomeTaxFormatted": "£203bn",
+      "benefitsFormatted": "£242bn",
+      "gapFormatted": "£39.1bn"
+    },
+    {
+      "dateLabel": "Oct 2019",
+      "incomeTax": 202.287,
+      "benefits": 242.113,
+      "gap": 39.82599999999999,
+      "incomeTaxFormatted": "£202bn",
+      "benefitsFormatted": "£242bn",
+      "gapFormatted": "£39.8bn"
+    },
+    {
+      "dateLabel": "Nov 2019",
+      "incomeTax": 201.566,
+      "benefits": 241.425,
+      "gap": 39.85900000000001,
+      "incomeTaxFormatted": "£202bn",
+      "benefitsFormatted": "£241bn",
+      "gapFormatted": "£39.9bn"
+    },
+    {
+      "dateLabel": "Dec 2019",
+      "incomeTax": 201.107,
+      "benefits": 241.304,
+      "gap": 40.197,
+      "incomeTaxFormatted": "£201bn",
+      "benefitsFormatted": "£241bn",
+      "gapFormatted": "£40.2bn"
+    },
+    {
+      "dateLabel": "Jan 2020",
+      "incomeTax": 202.606,
+      "benefits": 241.9,
+      "gap": 39.29400000000001,
+      "incomeTaxFormatted": "£203bn",
+      "benefitsFormatted": "£242bn",
+      "gapFormatted": "£39.3bn"
+    },
+    {
+      "dateLabel": "Feb 2020",
+      "incomeTax": 202.568,
+      "benefits": 242.177,
+      "gap": 39.60899999999998,
+      "incomeTaxFormatted": "£203bn",
+      "benefitsFormatted": "£242bn",
+      "gapFormatted": "£39.6bn"
+    },
+    {
+      "dateLabel": "Mar 2020",
+      "incomeTax": 202.364,
+      "benefits": 242.283,
+      "gap": 39.91899999999998,
+      "incomeTaxFormatted": "£202bn",
+      "benefitsFormatted": "£242bn",
+      "gapFormatted": "£39.9bn"
+    },
+    {
+      "dateLabel": "Apr 2020",
+      "incomeTax": 200.76,
+      "benefits": 243.774,
+      "gap": 43.01400000000001,
+      "incomeTaxFormatted": "£201bn",
+      "benefitsFormatted": "£244bn",
+      "gapFormatted": "£43.0bn"
+    },
+    {
+      "dateLabel": "May 2020",
+      "incomeTax": 200.182,
+      "benefits": 245.087,
+      "gap": 44.905,
+      "incomeTaxFormatted": "£200bn",
+      "benefitsFormatted": "£245bn",
+      "gapFormatted": "£44.9bn"
+    },
+    {
+      "dateLabel": "Jun 2020",
+      "incomeTax": 199.028,
+      "benefits": 246.77,
+      "gap": 47.74200000000002,
+      "incomeTaxFormatted": "£199bn",
+      "benefitsFormatted": "£247bn",
+      "gapFormatted": "£47.7bn"
+    },
+    {
+      "dateLabel": "Jul 2020",
+      "incomeTax": 194.234,
+      "benefits": 248.841,
+      "gap": 54.607,
+      "incomeTaxFormatted": "£194bn",
+      "benefitsFormatted": "£249bn",
+      "gapFormatted": "£54.6bn"
+    },
+    {
+      "dateLabel": "Aug 2020",
+      "incomeTax": 194.923,
+      "benefits": 250.134,
+      "gap": 55.210999999999984,
+      "incomeTaxFormatted": "£195bn",
+      "benefitsFormatted": "£250bn",
+      "gapFormatted": "£55.2bn"
+    },
+    {
+      "dateLabel": "Sep 2020",
+      "incomeTax": 195.531,
+      "benefits": 252.202,
+      "gap": 56.67099999999999,
+      "incomeTaxFormatted": "£196bn",
+      "benefitsFormatted": "£252bn",
+      "gapFormatted": "£56.7bn"
+    },
+    {
+      "dateLabel": "Oct 2020",
+      "incomeTax": 196.689,
+      "benefits": 254.034,
+      "gap": 57.345,
+      "incomeTaxFormatted": "£197bn",
+      "benefitsFormatted": "£254bn",
+      "gapFormatted": "£57.3bn"
+    },
+    {
+      "dateLabel": "Nov 2020",
+      "incomeTax": 198.673,
+      "benefits": 256.203,
+      "gap": 57.52999999999997,
+      "incomeTaxFormatted": "£199bn",
+      "benefitsFormatted": "£256bn",
+      "gapFormatted": "£57.5bn"
+    },
+    {
+      "dateLabel": "Dec 2020",
+      "incomeTax": 200.408,
+      "benefits": 258.007,
+      "gap": 57.59900000000002,
+      "incomeTaxFormatted": "£200bn",
+      "benefitsFormatted": "£258bn",
+      "gapFormatted": "£57.6bn"
+    },
+    {
+      "dateLabel": "Jan 2021",
+      "incomeTax": 203.389,
+      "benefits": 259.106,
+      "gap": 55.716999999999985,
+      "incomeTaxFormatted": "£203bn",
+      "benefitsFormatted": "£259bn",
+      "gapFormatted": "£55.7bn"
+    },
+    {
+      "dateLabel": "Feb 2021",
+      "incomeTax": 205.401,
+      "benefits": 260.811,
+      "gap": 55.40999999999997,
+      "incomeTaxFormatted": "£205bn",
+      "benefitsFormatted": "£261bn",
+      "gapFormatted": "£55.4bn"
+    },
+    {
+      "dateLabel": "Mar 2021",
+      "incomeTax": 206.394,
+      "benefits": 263.247,
+      "gap": 56.85300000000001,
+      "incomeTaxFormatted": "£206bn",
+      "benefitsFormatted": "£263bn",
+      "gapFormatted": "£56.9bn"
+    },
+    {
+      "dateLabel": "Apr 2021",
+      "incomeTax": 210.176,
+      "benefits": 264.173,
+      "gap": 53.997000000000014,
+      "incomeTaxFormatted": "£210bn",
+      "benefitsFormatted": "£264bn",
+      "gapFormatted": "£54.0bn"
+    },
+    {
+      "dateLabel": "May 2021",
+      "incomeTax": 213.258,
+      "benefits": 264.309,
+      "gap": 51.051000000000016,
+      "incomeTaxFormatted": "£213bn",
+      "benefitsFormatted": "£264bn",
+      "gapFormatted": "£51.1bn"
+    },
+    {
+      "dateLabel": "Jun 2021",
+      "incomeTax": 215.81,
+      "benefits": 264.745,
+      "gap": 48.935,
+      "incomeTaxFormatted": "£216bn",
+      "benefitsFormatted": "£265bn",
+      "gapFormatted": "£48.9bn"
+    },
+    {
+      "dateLabel": "Jul 2021",
+      "incomeTax": 221.616,
+      "benefits": 264.455,
+      "gap": 42.83899999999997,
+      "incomeTaxFormatted": "£222bn",
+      "benefitsFormatted": "£264bn",
+      "gapFormatted": "£42.8bn"
+    },
+    {
+      "dateLabel": "Aug 2021",
+      "incomeTax": 223.321,
+      "benefits": 264.79,
+      "gap": 41.46900000000002,
+      "incomeTaxFormatted": "£223bn",
+      "benefitsFormatted": "£265bn",
+      "gapFormatted": "£41.5bn"
+    },
+    {
+      "dateLabel": "Sep 2021",
+      "incomeTax": 225.326,
+      "benefits": 264.645,
+      "gap": 39.31899999999999,
+      "incomeTaxFormatted": "£225bn",
+      "benefitsFormatted": "£265bn",
+      "gapFormatted": "£39.3bn"
+    },
+    {
+      "dateLabel": "Oct 2021",
+      "incomeTax": 227.195,
+      "benefits": 263.873,
+      "gap": 36.678,
+      "incomeTaxFormatted": "£227bn",
+      "benefitsFormatted": "£264bn",
+      "gapFormatted": "£36.7bn"
+    },
+    {
+      "dateLabel": "Nov 2021",
+      "incomeTax": 227.978,
+      "benefits": 263.762,
+      "gap": 35.78399999999999,
+      "incomeTaxFormatted": "£228bn",
+      "benefitsFormatted": "£264bn",
+      "gapFormatted": "£35.8bn"
+    },
+    {
+      "dateLabel": "Dec 2021",
+      "incomeTax": 229.856,
+      "benefits": 263.868,
+      "gap": 34.012,
+      "incomeTaxFormatted": "£230bn",
+      "benefitsFormatted": "£264bn",
+      "gapFormatted": "£34.0bn"
+    },
+    {
+      "dateLabel": "Jan 2022",
+      "incomeTax": 234.55,
+      "benefits": 263.077,
+      "gap": 28.526999999999987,
+      "incomeTaxFormatted": "£235bn",
+      "benefitsFormatted": "£263bn",
+      "gapFormatted": "£28.5bn"
+    },
+    {
+      "dateLabel": "Feb 2022",
+      "incomeTax": 235.249,
+      "benefits": 262.668,
+      "gap": 27.41900000000001,
+      "incomeTaxFormatted": "£235bn",
+      "benefitsFormatted": "£263bn",
+      "gapFormatted": "£27.4bn"
+    },
+    {
+      "dateLabel": "Mar 2022",
+      "incomeTax": 240.046,
+      "benefits": 262.02,
+      "gap": 21.97399999999999,
+      "incomeTaxFormatted": "£240bn",
+      "benefitsFormatted": "£262bn",
+      "gapFormatted": "£22.0bn"
+    },
+    {
+      "dateLabel": "Apr 2022",
+      "incomeTax": 241.557,
+      "benefits": 262.356,
+      "gap": 20.799000000000007,
+      "incomeTaxFormatted": "£242bn",
+      "benefitsFormatted": "£262bn",
+      "gapFormatted": "£20.8bn"
+    },
+    {
+      "dateLabel": "May 2022",
+      "incomeTax": 242.051,
+      "benefits": 262.718,
+      "gap": 20.66700000000003,
+      "incomeTaxFormatted": "£242bn",
+      "benefitsFormatted": "£263bn",
+      "gapFormatted": "£20.7bn"
+    },
+    {
+      "dateLabel": "Jun 2022",
+      "incomeTax": 244.132,
+      "benefits": 263.468,
+      "gap": 19.336000000000013,
+      "incomeTaxFormatted": "£244bn",
+      "benefitsFormatted": "£263bn",
+      "gapFormatted": "£19.3bn"
+    },
+    {
+      "dateLabel": "Jul 2022",
+      "incomeTax": 247.053,
+      "benefits": 266.215,
+      "gap": 19.161999999999978,
+      "incomeTaxFormatted": "£247bn",
+      "benefitsFormatted": "£266bn",
+      "gapFormatted": "£19.2bn"
+    },
+    {
+      "dateLabel": "Aug 2022",
+      "incomeTax": 248.341,
+      "benefits": 267.213,
+      "gap": 18.872000000000014,
+      "incomeTaxFormatted": "£248bn",
+      "benefitsFormatted": "£267bn",
+      "gapFormatted": "£18.9bn"
+    },
+    {
+      "dateLabel": "Sep 2022",
+      "incomeTax": 249.947,
+      "benefits": 271.652,
+      "gap": 21.704999999999984,
+      "incomeTaxFormatted": "£250bn",
+      "benefitsFormatted": "£272bn",
+      "gapFormatted": "£21.7bn"
+    },
+    {
+      "dateLabel": "Oct 2022",
+      "incomeTax": 251.775,
+      "benefits": 272.908,
+      "gap": 21.13300000000001,
+      "incomeTaxFormatted": "£252bn",
+      "benefitsFormatted": "£273bn",
+      "gapFormatted": "£21.1bn"
+    },
+    {
+      "dateLabel": "Nov 2022",
+      "incomeTax": 254.115,
+      "benefits": 276.735,
+      "gap": 22.620000000000005,
+      "incomeTaxFormatted": "£254bn",
+      "benefitsFormatted": "£277bn",
+      "gapFormatted": "£22.6bn"
+    },
+    {
+      "dateLabel": "Dec 2022",
+      "incomeTax": 256.13,
+      "benefits": 277.584,
+      "gap": 21.454000000000008,
+      "incomeTaxFormatted": "£256bn",
+      "benefitsFormatted": "£278bn",
+      "gapFormatted": "£21.5bn"
+    },
+    {
+      "dateLabel": "Jan 2023",
+      "incomeTax": 265.384,
+      "benefits": 279.061,
+      "gap": 13.676999999999964,
+      "incomeTaxFormatted": "£265bn",
+      "benefitsFormatted": "£279bn",
+      "gapFormatted": "£13.7bn"
+    },
+    {
+      "dateLabel": "Feb 2023",
+      "incomeTax": 267.234,
+      "benefits": 280.046,
+      "gap": 12.812000000000012,
+      "incomeTaxFormatted": "£267bn",
+      "benefitsFormatted": "£280bn",
+      "gapFormatted": "£12.8bn"
+    },
+    {
+      "dateLabel": "Mar 2023",
+      "incomeTax": 268.915,
+      "benefits": 280.476,
+      "gap": 11.560999999999979,
+      "incomeTaxFormatted": "£269bn",
+      "benefitsFormatted": "£280bn",
+      "gapFormatted": "£11.6bn"
+    },
+    {
+      "dateLabel": "Apr 2023",
+      "incomeTax": 270.698,
+      "benefits": 284.793,
+      "gap": 14.095000000000027,
+      "incomeTaxFormatted": "£271bn",
+      "benefitsFormatted": "£285bn",
+      "gapFormatted": "£14.1bn"
+    },
+    {
+      "dateLabel": "May 2023",
+      "incomeTax": 272.98,
+      "benefits": 287.819,
+      "gap": 14.838999999999999,
+      "incomeTaxFormatted": "£273bn",
+      "benefitsFormatted": "£288bn",
+      "gapFormatted": "£14.8bn"
+    },
+    {
+      "dateLabel": "Jun 2023",
+      "incomeTax": 275.562,
+      "benefits": 291.842,
+      "gap": 16.279999999999973,
+      "incomeTaxFormatted": "£276bn",
+      "benefitsFormatted": "£292bn",
+      "gapFormatted": "£16.3bn"
+    },
+    {
+      "dateLabel": "Jul 2023",
+      "incomeTax": 279.159,
+      "benefits": 292.48,
+      "gap": 13.321000000000026,
+      "incomeTaxFormatted": "£279bn",
+      "benefitsFormatted": "£292bn",
+      "gapFormatted": "£13.3bn"
+    },
+    {
+      "dateLabel": "Aug 2023",
+      "incomeTax": 280.566,
+      "benefits": 295.497,
+      "gap": 14.93100000000004,
+      "incomeTaxFormatted": "£281bn",
+      "benefitsFormatted": "£295bn",
+      "gapFormatted": "£14.9bn"
+    },
+    {
+      "dateLabel": "Sep 2023",
+      "incomeTax": 282.043,
+      "benefits": 297.527,
+      "gap": 15.48399999999998,
+      "incomeTaxFormatted": "£282bn",
+      "benefitsFormatted": "£298bn",
+      "gapFormatted": "£15.5bn"
+    },
+    {
+      "dateLabel": "Oct 2023",
+      "incomeTax": 283.726,
+      "benefits": 302.11,
+      "gap": 18.384000000000015,
+      "incomeTaxFormatted": "£284bn",
+      "benefitsFormatted": "£302bn",
+      "gapFormatted": "£18.4bn"
+    },
+    {
+      "dateLabel": "Nov 2023",
+      "incomeTax": 285.309,
+      "benefits": 303.559,
+      "gap": 18.25,
+      "incomeTaxFormatted": "£285bn",
+      "benefitsFormatted": "£304bn",
+      "gapFormatted": "£18.3bn"
+    },
+    {
+      "dateLabel": "Dec 2023",
+      "incomeTax": 287.235,
+      "benefits": 306.464,
+      "gap": 19.228999999999985,
+      "incomeTaxFormatted": "£287bn",
+      "benefitsFormatted": "£306bn",
+      "gapFormatted": "£19.2bn"
+    },
+    {
+      "dateLabel": "Jan 2024",
+      "incomeTax": 286.42,
+      "benefits": 310.018,
+      "gap": 23.597999999999956,
+      "incomeTaxFormatted": "£286bn",
+      "benefitsFormatted": "£310bn",
+      "gapFormatted": "£23.6bn"
+    },
+    {
+      "dateLabel": "Feb 2024",
+      "incomeTax": 288.758,
+      "benefits": 316.103,
+      "gap": 27.345000000000027,
+      "incomeTaxFormatted": "£289bn",
+      "benefitsFormatted": "£316bn",
+      "gapFormatted": "£27.3bn"
+    },
+    {
+      "dateLabel": "Mar 2024",
+      "incomeTax": 291.491,
+      "benefits": 319.66,
+      "gap": 28.16900000000004,
+      "incomeTaxFormatted": "£291bn",
+      "benefitsFormatted": "£320bn",
+      "gapFormatted": "£28.2bn"
+    },
+    {
+      "dateLabel": "Apr 2024",
+      "incomeTax": 292.755,
+      "benefits": 320.24,
+      "gap": 27.485000000000014,
+      "incomeTaxFormatted": "£293bn",
+      "benefitsFormatted": "£320bn",
+      "gapFormatted": "£27.5bn"
+    },
+    {
+      "dateLabel": "May 2024",
+      "incomeTax": 294.126,
+      "benefits": 322.479,
+      "gap": 28.35300000000001,
+      "incomeTaxFormatted": "£294bn",
+      "benefitsFormatted": "£322bn",
+      "gapFormatted": "£28.4bn"
+    },
+    {
+      "dateLabel": "Jun 2024",
+      "incomeTax": 296.527,
+      "benefits": 323.595,
+      "gap": 27.06800000000004,
+      "incomeTaxFormatted": "£297bn",
+      "benefitsFormatted": "£324bn",
+      "gapFormatted": "£27.1bn"
+    },
+    {
+      "dateLabel": "Jul 2024",
+      "incomeTax": 299.148,
+      "benefits": 326.45,
+      "gap": 27.301999999999964,
+      "incomeTaxFormatted": "£299bn",
+      "benefitsFormatted": "£326bn",
+      "gapFormatted": "£27.3bn"
+    },
+    {
+      "dateLabel": "Aug 2024",
+      "incomeTax": 301.038,
+      "benefits": 329.174,
+      "gap": 28.135999999999967,
+      "incomeTaxFormatted": "£301bn",
+      "benefitsFormatted": "£329bn",
+      "gapFormatted": "£28.1bn"
+    },
+    {
+      "dateLabel": "Sep 2024",
+      "incomeTax": 303.116,
+      "benefits": 327.076,
+      "gap": 23.960000000000036,
+      "incomeTaxFormatted": "£303bn",
+      "benefitsFormatted": "£327bn",
+      "gapFormatted": "£24.0bn"
+    },
+    {
+      "dateLabel": "Oct 2024",
+      "incomeTax": 305.252,
+      "benefits": 327.902,
+      "gap": 22.649999999999977,
+      "incomeTaxFormatted": "£305bn",
+      "benefitsFormatted": "£328bn",
+      "gapFormatted": "£22.6bn"
+    },
+    {
+      "dateLabel": "Nov 2024",
+      "incomeTax": 307.187,
+      "benefits": 329.006,
+      "gap": 21.81899999999996,
+      "incomeTaxFormatted": "£307bn",
+      "benefitsFormatted": "£329bn",
+      "gapFormatted": "£21.8bn"
+    },
+    {
+      "dateLabel": "Dec 2024",
+      "incomeTax": 310.064,
+      "benefits": 331.39,
+      "gap": 21.325999999999965,
+      "incomeTaxFormatted": "£310bn",
+      "benefitsFormatted": "£331bn",
+      "gapFormatted": "£21.3bn"
+    },
+    {
+      "dateLabel": "Jan 2025",
+      "incomeTax": 315.809,
+      "benefits": 333.816,
+      "gap": 18.006999999999948,
+      "incomeTaxFormatted": "£316bn",
+      "benefitsFormatted": "£334bn",
+      "gapFormatted": "£18.0bn"
+    },
+    {
+      "dateLabel": "Feb 2025",
+      "incomeTax": 317.17,
+      "benefits": 332.958,
+      "gap": 15.788000000000011,
+      "incomeTaxFormatted": "£317bn",
+      "benefitsFormatted": "£333bn",
+      "gapFormatted": "£15.8bn"
+    },
+    {
+      "dateLabel": "Mar 2025",
+      "incomeTax": 319.591,
+      "benefits": 335.607,
+      "gap": 16.01600000000002,
+      "incomeTaxFormatted": "£320bn",
+      "benefitsFormatted": "£336bn",
+      "gapFormatted": "£16.0bn"
+    },
+    {
+      "dateLabel": "Apr 2025",
+      "incomeTax": 320.676,
+      "benefits": 336.723,
+      "gap": 16.047000000000025,
+      "incomeTaxFormatted": "£321bn",
+      "benefitsFormatted": "£337bn",
+      "gapFormatted": "£16.0bn"
+    },
+    {
+      "dateLabel": "May 2025",
+      "incomeTax": 322.107,
+      "benefits": 338.844,
+      "gap": 16.736999999999966,
+      "incomeTaxFormatted": "£322bn",
+      "benefitsFormatted": "£339bn",
+      "gapFormatted": "£16.7bn"
+    },
+    {
+      "dateLabel": "Jun 2025",
+      "incomeTax": 322.738,
+      "benefits": 340.342,
+      "gap": 17.603999999999985,
+      "incomeTaxFormatted": "£323bn",
+      "benefitsFormatted": "£340bn",
+      "gapFormatted": "£17.6bn"
+    },
+    {
+      "dateLabel": "Jul 2025",
+      "incomeTax": 327.494,
+      "benefits": 341.857,
+      "gap": 14.363,
+      "incomeTaxFormatted": "£327bn",
+      "benefitsFormatted": "£342bn",
+      "gapFormatted": "£14.4bn"
+    },
+    {
+      "dateLabel": "Aug 2025",
+      "incomeTax": 329.678,
+      "benefits": 343.001,
+      "gap": 13.322999999999979,
+      "incomeTaxFormatted": "£330bn",
+      "benefitsFormatted": "£343bn",
+      "gapFormatted": "£13.3bn"
+    },
+    {
+      "dateLabel": "Sep 2025",
+      "incomeTax": 330.956,
+      "benefits": 346.523,
+      "gap": 15.567000000000007,
+      "incomeTaxFormatted": "£331bn",
+      "benefitsFormatted": "£347bn",
+      "gapFormatted": "£15.6bn"
+    },
+    {
+      "dateLabel": "Oct 2025",
+      "incomeTax": 331.955,
+      "benefits": 348.507,
+      "gap": 16.55200000000002,
+      "incomeTaxFormatted": "£332bn",
+      "benefitsFormatted": "£349bn",
+      "gapFormatted": "£16.6bn"
+    },
+    {
+      "dateLabel": "Nov 2025",
+      "incomeTax": 333.405,
+      "benefits": 349.853,
+      "gap": 16.448000000000036,
+      "incomeTaxFormatted": "£333bn",
+      "benefitsFormatted": "£350bn",
+      "gapFormatted": "£16.4bn"
+    },
+    {
+      "dateLabel": "Dec 2025",
+      "incomeTax": 335.367,
+      "benefits": 351.677,
+      "gap": 16.310000000000002,
+      "incomeTaxFormatted": "£335bn",
+      "benefitsFormatted": "£352bn",
+      "gapFormatted": "£16.3bn"
+    },
+    {
+      "dateLabel": "Jan 2026",
+      "incomeTax": 347.734,
+      "benefits": 353.227,
+      "gap": 5.492999999999995,
+      "incomeTaxFormatted": "£348bn",
+      "benefitsFormatted": "£353bn",
+      "gapFormatted": "£5.5bn"
+    },
+    {
+      "dateLabel": "Feb 2026",
+      "incomeTax": 352.269,
+      "benefits": 354.631,
+      "gap": 2.3619999999999663,
+      "incomeTaxFormatted": "£352bn",
+      "benefitsFormatted": "£355bn",
+      "gapFormatted": "£2.4bn"
+    }
+  ]
+}

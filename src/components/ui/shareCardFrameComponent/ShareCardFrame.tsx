@@ -50,6 +50,18 @@ export default function ShareCardFrame({
           rel="noreferrer"
           target="_blank"
         >
+          <svg
+            aria-hidden="true"
+            className={styles.linkIcon}
+            viewBox="0 0 108 108"
+          >
+            <rect x="0" y="0" width="108" height="108" rx="12" fill="#ffffff" />
+            <circle cx="27" cy="54" r="10" fill="#ffffff" stroke="#000000" strokeWidth="6" />
+            <circle cx="81" cy="23" r="10" fill="#ffffff" stroke="#000000" strokeWidth="6" />
+            <circle cx="81" cy="85" r="10" fill="#ffffff" stroke="#000000" strokeWidth="6" />
+            <line x1="35" y1="49" x2="73" y2="28" stroke="#000000" strokeWidth="8" strokeLinecap="round" />
+            <line x1="35" y1="59" x2="73" y2="80" stroke="#000000" strokeWidth="8" strokeLinecap="round" />
+          </svg>
           debtwatch.uk
         </a>
       </footer>

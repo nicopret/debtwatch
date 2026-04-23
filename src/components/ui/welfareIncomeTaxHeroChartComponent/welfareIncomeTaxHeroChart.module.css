@@ -1,0 +1,81 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.header {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  color: #17315f;
+  font-size: 1.55rem;
+  line-height: 1.1;
+}
+
+.summaryRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.summaryItem {
+  background: #f6f8fb;
+  border: 1px solid #e6ebf2;
+  border-radius: 16px;
+  padding: 0.8rem 0.9rem;
+  display: grid;
+  gap: 0.18rem;
+}
+
+.summaryLabel {
+  color: #6b7280;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.summaryValue {
+  color: #17315f;
+  font-size: 1.02rem;
+  line-height: 1.1;
+}
+
+.chartWrap {
+  height: 340px;
+}
+
+.footer {
+  color: #5a6677;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.footer strong {
+  color: #17315f;
+  font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .summaryRow {
+    grid-template-columns: 1fr;
+  }
+
+  .chartWrap {
+    height: 300px;
+  }
+}

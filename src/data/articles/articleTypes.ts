@@ -1,6 +1,7 @@
 export type ArticleTone = "neutral" | "teal" | "amber" | "navyblue";
 
 export type ArticleVisualKey =
+  | "welfare-income-tax-hero"
   | "debt-interest-hero"
   | "debt-interest-history"
   | "debt-interest-budget-share"
@@ -17,8 +18,10 @@ export type ArticleVisualKey =
   | "borrowing-shocks"
   | "borrowing-yield-rates"
   | "debt-ownership-breakdown"
+  | "welfare-spending-breakdown"
   | "gilt-yield-hero"
-  | "gilt-yield-costs";
+  | "gilt-yield-costs"
+  | "gilt-yield-peers";
 
 export type ArticleGraphKey =
   | "uk-debt-growth-borrowing-costs"
@@ -29,7 +32,9 @@ export type ArticlePreviewGraphicKey =
   | "debt-interest-yield-trend"
   | "gilt-yield-peer-trend"
   | "budget-gap-trend"
-  | "debt-to-gdp-ratio";
+  | "debt-to-gdp-ratio"
+  | "welfare-spending-breakdown-preview"
+  | "welfare-income-tax-trend";
 
 export type ArticlePreviewGraphicPosition = "left" | "right";
 
@@ -97,6 +102,12 @@ export interface ArticleSectionData {
   entities?: ArticleContentBlock[];
   body: string[];
   visualKey?: ArticleVisualKey;
+  visualShareTitle?: string;
+  visualShareText?: string;
+  shareContextSlug?: string;
+  shareEmbedSlug?: string;
+  shareAssetSlug?: string;
+  shareSnapshotDate?: string;
   blocks?: ArticleContentBlock[];
   callout?: ArticleCallout;
   layout?: "stacked" | "split" | "split-reverse";
@@ -107,9 +118,11 @@ export interface ArticleData {
   header: string;
   tagline: string;
   date: string;
+  publishedSnapshotVersion?: string;
   author: string;
   authorBioUrl: string;
   description: string;
+  shareText?: string;
   keyTakeaway: string;
   heroVisual: ArticleVisualKey;
   previewGraphicKey?: ArticlePreviewGraphicKey;
